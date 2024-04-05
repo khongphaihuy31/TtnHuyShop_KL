@@ -1,0 +1,20 @@
+package Bo;
+
+import Bean.KhachHangBean;
+import Dao.KhachHangDao;
+
+public class KhachHangBo {
+	KhachHangDao khdao = new KhachHangDao();
+//	Kiểm tra đăng nhập
+	public KhachHangBean ktradangnhap(String tendangnhap, String matkhau) throws Exception {
+		return khdao.ktradangnhap(tendangnhap, matkhau);
+	}
+//	Kiểm tra tên đăng nhập khi đăng kí
+	public int ktradangki(String tendangnhap, String sodienthoai) throws Exception{
+		return khdao.ktradangki(tendangnhap, sodienthoai);
+	}
+//	Đăng kí khách hàng
+	public int dangkikhachhang(String hoten, String diachi, String sodienthoai, String email, String tendangnhap, String matkhau) throws Exception{
+		return khdao.dangkikhachhang(hoten, diachi, sodienthoai, email, tendangnhap, matkhau);
+	}
+}
