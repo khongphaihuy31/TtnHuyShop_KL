@@ -9,10 +9,10 @@ import java.util.Date;
 
 public class DonDatHangDao {
 	//xử lý thêm đơn đặt hàng
-	public int themDonDatHang(long makhachhang) throws Exception{
+	public int themDonDatHang(long makhachhang, boolean phuongthucthanhtoan, boolean thanhtoan, long tongdongia, String diachinhanhang) throws Exception{
 		KetNoiDao kn = new KetNoiDao();
 		kn.ketnoi();
-		String sql = "insert into DonDatHang values (?,?,?)";
+		String sql = "insert into DonDatHang values (?,?,?,?,?,?,?)";
 		PreparedStatement cmd = kn.cn.prepareStatement(sql);
 		
 		Date n1 = new Date();
@@ -24,6 +24,10 @@ public class DonDatHangDao {
 		cmd.setLong(2, 1);
 		
 		cmd.setLong(3, makhachhang);
+		cmd.setBoolean(4, phuongthucthanhtoan);
+		cmd.setBoolean(5, thanhtoan);
+		cmd.setLong(6, tongdongia);
+		cmd.setString(7, diachinhanhang);
 		int kq = cmd.executeUpdate();
 		cmd.close();
 		kn.cn.close();
@@ -47,8 +51,8 @@ public class DonDatHangDao {
 		return max;
 	}
 	
-	//xử lý cập nhật trạng thái đơn đặt hàng	
-	public int capNhatChiTietHD(long mahoadon) throws Exception{
+	//xử lý cập nhật trạng thái chuẩn bị đơn cho đơn đặt hàng	
+	public int capNhatChiTietHDChuanBiDon(long mahoadon) throws Exception{
 		KetNoiDao kn = new KetNoiDao();
 		kn.ketnoi();
 		
@@ -61,8 +65,36 @@ public class DonDatHangDao {
 		return kq;
 	}
 	
-	//xử lý lấy danh sách hóa đơn
-	public ArrayList<Long> dshoadon()throws Exception{
+	//xử lý cập nhật trạng thái đang giao cho đơn đặt hàng	
+		public int capNhatChiTietHDDangGiao(long mahoadon) throws Exception{
+			KetNoiDao kn = new KetNoiDao();
+			kn.ketnoi();
+			
+			String sql = "update DonDatHang set matrangthai = 3 where mahoadon = ?";
+			PreparedStatement cmd = kn.cn.prepareStatement(sql);
+			cmd.setLong(1, mahoadon);
+			int kq = cmd.executeUpdate();
+			cmd.close();
+			kn.cn.close();
+			return kq;
+		}
+		
+		//xử lý cập nhật trạng thái đã giao cho đơn đặt hàng	
+		public int capNhatChiTietHDDaGiao(long mahoadon) throws Exception{
+			KetNoiDao kn = new KetNoiDao();
+			kn.ketnoi();
+			
+			String sql = "update DonDatHang set matrangthai = 4 where mahoadon = ?";
+			PreparedStatement cmd = kn.cn.prepareStatement(sql);
+			cmd.setLong(1, mahoadon);
+			int kq = cmd.executeUpdate();
+			cmd.close();
+			kn.cn.close();
+			return kq;
+		}
+	
+	//xử lý lấy danh sách mã hóa đơn chờ xác nhận
+	public ArrayList<Long> dshoadonchoxacnhan()throws Exception{
 		ArrayList<Long> dshoadon = new ArrayList<Long>();
 		KetNoiDao kn = new KetNoiDao();
 		kn.ketnoi();
@@ -79,4 +111,60 @@ public class DonDatHangDao {
 		}
 		return dshoadon;
 	}
+	
+	//xử lý lấy danh sách mã hóa đơn chuẩn bị đơn
+		public ArrayList<Long> dshoadonchuanbidon()throws Exception{
+			ArrayList<Long> dshoadon = new ArrayList<Long>();
+			KetNoiDao kn = new KetNoiDao();
+			kn.ketnoi();
+			
+			String sql = "select mahoadon from DonDatHang where matrangthai = 2";
+			
+			PreparedStatement cmd = kn.cn.prepareStatement(sql);
+			
+			ResultSet rs = cmd.executeQuery();
+			while(rs.next()) {
+				long mahoadon = rs.getLong("mahoadon");
+						
+				dshoadon.add(mahoadon);
+			}
+			return dshoadon;
+		}
+	
+		//xử lý lấy danh sách mã hóa đơn đang giao
+				public ArrayList<Long> dshoadondanggiao()throws Exception{
+					ArrayList<Long> dshoadon = new ArrayList<Long>();
+					KetNoiDao kn = new KetNoiDao();
+					kn.ketnoi();
+					
+					String sql = "select mahoadon from DonDatHang where matrangthai = 3";
+					
+					PreparedStatement cmd = kn.cn.prepareStatement(sql);
+					
+					ResultSet rs = cmd.executeQuery();
+					while(rs.next()) {
+						long mahoadon = rs.getLong("mahoadon");
+								
+						dshoadon.add(mahoadon);
+					}
+					return dshoadon;
+				}
+				//xử lý lấy danh sách mã hóa đơn đã giao
+				public ArrayList<Long> dshoadondagiao()throws Exception{
+					ArrayList<Long> dshoadon = new ArrayList<Long>();
+					KetNoiDao kn = new KetNoiDao();
+					kn.ketnoi();
+					
+					String sql = "select mahoadon from DonDatHang where matrangthai = 4";
+					
+					PreparedStatement cmd = kn.cn.prepareStatement(sql);
+					
+					ResultSet rs = cmd.executeQuery();
+					while(rs.next()) {
+						long mahoadon = rs.getLong("mahoadon");
+								
+						dshoadon.add(mahoadon);
+					}
+					return dshoadon;
+				}
 }

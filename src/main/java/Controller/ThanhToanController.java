@@ -103,7 +103,7 @@ public class ThanhToanController extends HttpServlet {
 				request.setAttribute("tiengiamdiem", tiengiamdiem);
 			}
 			
-			System.out.print("Huy đẹp trai");
+			
 			
 			RequestDispatcher rd = request.getRequestDispatcher("thanhtoan.jsp");
 			rd.forward(request, response);

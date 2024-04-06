@@ -1,9 +1,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@page import="Bean.DonMuaBean"%>
 <%@page import="Bean.NoiNhanBean"%>
 <%@page import="Bean.KhachHangBean"%>
 <%@page import="Bean.GioHangBean"%>
-<%@page import="Bo.GioHangBo"%>
 <%@page import="Bean.SanPhamFullBean"%>
 <%@page import="Bean.SanPhamBean"%>
 <%@page import="Bean.ThuongHieuBean"%>
@@ -27,7 +27,6 @@
 <link rel="stylesheet" href="assets/css/base.css">
 <link rel="stylesheet" href="assets/css/grid.css">
 <link rel="stylesheet" href="assets/css/main.css">
-<link rel="stylesheet" href="assets/css/chi-tiet.css">
 <link rel="stylesheet" href="assets/css/responsive.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
@@ -75,32 +74,9 @@ div#modalDangNhap.modal.fade.in {
 a:hover, a:focus {
 	text-decoration: inherit !important;
 }
-
-#nganhang:checked ~ .nganhang{
-	background-color: var(--primary-color);
-	color: var(--text-color);
-}
-
-#tienmat:checked ~ .tienmat{
-	background-color: var(--primary-color);
-	color: var(--text-color);
-}
-
-@media (max-width:739px){
-	.header-with-search span{
-		line-height: 20px;
-		top: 20px !important;
-    	right: 4px !important;
-	}
-}
 </style>
 </head>
 <body>
-<%if(request.getParameter("nn")!=null){ %>
-	<script type="text/javascript">
-		window.alert("Thông tin nơi nhận của bạn đang trống! Vui lòng click vào (Thay đổi nơi nhận để điền nơi nhận). Cảm ơn!");
-	</script>
-<%} %>
 	<div class="app">
 		<header class="header">
 			<div class="grid wide">
@@ -594,303 +570,303 @@ a:hover, a:focus {
 				</div>
 			</div>
 		</header>
-		<!-- Container -->
-		<div style="top: var(--header-height);" class="container">
+		
+		<div class="container" style="margin-top: var(--header-height);">
 			<div class="grid wide">
-				<h1 style="font-weight: 600; color: var(--primary-color);"
-					class="container-title">
-					<i class="fa-solid fa-credit-card"></i> Thanh toán
-				</h1>
-				<c:choose>
-					<c:when test="${dn != null }">
-						<c:choose>
-							<c:when test="${giohang.size() !=0 }">
+				<div class="row" style="margin-top: 30px;">
+					<div class="col l-2">
+						<div class="row" style="padding-bottom: 15px; padding-top: 15px; border-bottom: 1px solid var(--primary-color);">
+							<div class="col l-4">
+								<span style="display:block; width: 100%; line-height: 40px; height: 40px; background-color: green; color: white; border-radius: 50%; text-align: center; margin-right: 5px; font-weight: 500; font-size: 30px;"><%=session.getAttribute("taikhoan").toString().toUpperCase().charAt(0)%></span>
+							</div>
+							<div class="col l-8">
+								<b style="font-size: 18px; line-height: 40px;"><%=session.getAttribute("taikhoan") %></b>
+							</div>
+						</div>
+						<%if(request.getParameter("info") != null){ %>
+						<a href="HoSoKhachHangController?info=1" class="row" style=" margin-top: 10px; cursor: pointer;">
+							<div class="col l-12">
+								<span style="font-size: 1.8rem;"><i style="color: var(--primary-color);" class="fa-solid fa-user"></i> Thông tin</span>
+							</div>
+						</a>
+						<a href="HoSoKhachHangController?location=1" class="row" style=" margin-top: 10px; cursor: pointer; color: black;">
+							<div class="col l-12">
+								<span style="font-size: 1.8rem;"><i class="fa-solid fa-location-dot"></i> Địa chỉ nhận hàng</span>
+							</div>
+						</a>
+						<a href="HoSoKhachHangController?donmua=1" class="row" style=" margin-top: 10px; cursor: pointer; color: black;">
+							<div class="col l-12">
+								<span style="font-size: 1.8rem;"><i class="fa-solid fa-box"></i> Đơn hàng</span>
+							</div>
+						</a>
+						<%} %>
+						<%if(request.getParameter("location") != null){ %>
+						<a href="HoSoKhachHangController?info=1" class="row" style=" margin-top: 10px; cursor: pointer; color: black;">
+							<div class="col l-12">
+								<span style="font-size: 1.8rem;"><i  class="fa-solid fa-user"></i> Thông tin</span>
+							</div>
+						</a>
+						<a href="HoSoKhachHangController?location=1" class="row" style=" margin-top: 10px; cursor: pointer;">
+							<div class="col l-12">
+								<span style="font-size: 1.8rem;"><i style="color: var(--primary-color);" class="fa-solid fa-location-dot"></i> Địa chỉ nhận hàng</span>
+							</div>
+						</a>
+						<a href="HoSoKhachHangController?donmua=1" class="row" style=" margin-top: 10px; cursor: pointer; color: black;">
+							<div class="col l-12">
+								<span style="font-size: 1.8rem;"><i class="fa-solid fa-box"></i> Đơn hàng</span>
+							</div>
+						</a>
+						<%} %>
+						<%if(request.getParameter("donmua") != null){ %>
+						<a href="HoSoKhachHangController?info=1" class="row" style=" margin-top: 10px; cursor: pointer; color: black;">
+							<div class="col l-12">
+								<span style="font-size: 1.8rem;"><i  class="fa-solid fa-user"></i> Thông tin</span>
+							</div>
+						</a>
+						<a href="HoSoKhachHangController?location=1" class="row" style=" margin-top: 10px; cursor: pointer; color: black;">
+							<div class="col l-12">
+								<span style="font-size: 1.8rem;"><i  class="fa-solid fa-location-dot"></i> Địa chỉ nhận hàng</span>
+							</div>
+						</a>
+						<a href="HoSoKhachHangController?donmua=1" class="row" style=" margin-top: 10px; cursor: pointer; ">
+							<div class="col l-12">
+								<span style="font-size: 1.8rem;"><i style="color: var(--primary-color);" class="fa-solid fa-box"></i> Đơn hàng</span>
+							</div>
+						</a>
+						<%} %>
+					</div>
+					<div class="col l-1"></div>
+					<div class="col l-9" style="padding: 5px 10px;">
+						<%if(request.getParameter("info") != null){ %>
+						<div class="row" style="padding-bottom: 15px; padding-top: 15px; border-bottom: 1px solid var(--primary-color);">
+							<div class="col l-12">
+								<h2 style="margin: 0; padding-bottom: 1px; color: var(--primary-color);"> <b>Thông tin của tôi</b> </h2>
+							</div>
+						</div>
+						<%KhachHangBean khbean = (KhachHangBean)session.getAttribute("dn");%>
+						<form id="suathongtin" action="HoSoKhachHangController"></form>
+						<div class="row" style="margin-top: 20px;">
+							<table class="table table-hover table-striped table-bordered">
+								<tr>
+									<td width="500"> Tên đăng nhập</td>
+									<td width="500"> <%= khbean.getTendangnhap()%></td>
+								</tr>
+								<tr>
+									<td width="500"> Họ tên</td>
+									<td width="500"> <input form="suathongtin" type="text" name="hoten" value="<%= khbean.getHoten()%>"> </td>
+								</tr>
+								<tr>
+									<td width="500"> Địa chỉ</td>
+									<td width="500"><input form="suathongtin" type="text" name="diachi" value="<%= khbean.getDiachi()%>"></td>
+								</tr>
+								<tr>
+									<td width="500"> Số điện thoại</td>
+									<td width="500"><input form="suathongtin" type="text" name="sodienthoai" value="<%= khbean.getSodienthoai()%>"></td>
+								</tr>
+								<tr>
+									<td width="500"> Email</td>
+									<td width="500"><input form="suathongtin" type="email" name="email" value="<%= khbean.getEmail()%>"></td>
+								</tr>
+								<tr>
+									<td width="500"> </td>
+									<td width="500"><input style="width: 80px; color: var(--text-color); background-color: var(--primary-color); height: 40px; line-height: 40px; border: none; font-size: 16px;" form="suathongtin" type="submit" name="btnluu" value="Lưu"></td>
+								</tr>
+							</table>
+						</div>
+						<%} %>
+						<%if(request.getParameter("location") != null){ %>
+						<div class="row" style="padding-bottom: 15px; padding-top: 15px; border-bottom: 1px solid var(--primary-color);">
+							<div class="col l-12">
+								<h2 style="margin: 0; padding-bottom: 1px; color: var(--primary-color);"> <b>Địa chỉ nhận hàng</b> </h2>
+							</div>
+						</div>
+						<form id="noinhan" action="HoSoKhachHangController"></form>
+						<%if(session.getAttribute("noinhan")!=null){
+							NoiNhanBean nnbean = (NoiNhanBean)session.getAttribute("noinhan");
+						%>
+						<div class="row" style="margin-top: 20px;">
+							<table class="table table-hover table-striped table-bordered">
+								<tr>
+									<td width="500"> Thành phố</td>
+									<td width="500"> <input form="noinhan" type="text" name="thanhpho" value="<%= nnbean.getThanhpho()%>"> </td>
+								</tr>
+								<tr>
+									<td width="500"> Quận</td>
+									<td width="500"><input form="noinhan" type="text" name="quan" value="<%= nnbean.getQuan()%>"></td>
+								</tr>
+								<tr>
+									<td width="500"> Phường</td>
+									<td width="500"><input form="noinhan" type="text" name="phuong" value="<%= nnbean.getPhuong()%>"></td>
+								</tr>
+								<tr>
+									<td width="500"> Địa chỉ chi tiết</td>
+									<td width="500"><input form="noinhan" type="text" name="sonha" value="<%= nnbean.getSonha()%>"></td>
+								</tr>
+								<tr>
+									<td width="500"> </td>
+									<td width="500">
+										<input style="width: 80px; color: black; background-color: #ccc; height: 40px; line-height: 40px; border: none; font-size: 16px;" type="submit" name="btnlocationthem" value="Thêm">
+										<input style="width: 80px; color: var(--text-color); background-color: var(--primary-color); height: 40px; line-height: 40px; border: none; font-size: 16px; margin-left: 10px;" form="noinhan" type="submit" name="btnlocationluu" value="Lưu">
+									</td>
+								</tr>
+							</table>
+						</div>
+						<%}else{ %>
+						<div class="row" style="margin-top: 20px;">
+							<table class="table table-hover table-striped table-bordered">
+								<tr>
+									<td width="500"> Thành phố</td>
+									<td width="500"> <input form="noinhan" type="text" name="thanhpho" value=""> </td>
+								</tr>
+								<tr>
+									<td width="500"> Quận</td>
+									<td width="500"><input form="noinhan" type="text" name="quan" value=""></td>
+								</tr>
+								<tr>
+									<td width="500"> Phường</td>
+									<td width="500"><input form="noinhan" type="text" name="phuong" value=""></td>
+								</tr>
+								<tr>
+									<td width="500"> Địa chỉ chi tiết</td>
+									<td width="500"><input form="noinhan" type="text" name="sonha" value=""></td>
+								</tr>
+								<tr>
+									<td width="500"> </td>
+									<td width="500">
+										<input style="width: 80px; color: var(--text-color); background-color: var(--primary-color); height: 40px; line-height: 40px; border: none; font-size: 16px;" form="noinhan" type="submit" name="btnlocationthem" value="Thêm">
+										<input style="width: 80px; color: var(--text-color); background-color: var(--primary-color); height: 40px; line-height: 40px; border: none; font-size: 16px; margin-left: 10px;" form="noinhan" type="submit" name="btnlocationluu" value="Lưu">
+									</td>
+								</tr>
+							</table>
+						</div>
+						<%} %>
+						<%}%>
+						<%if(request.getParameter("donmua") != null){ %>
+						<div class="row" style="padding-bottom: 15px; padding-top: 15px; border-bottom: 1px solid var(--primary-color);">
+							<%if(request.getParameter("btndagiao") != null) {%>
+							<div class="col l-4">
+								<a href="HoSoKhachHangController?donmua=1&btnchoxacnhan=1" style="margin: 0; padding-bottom: 1px; color: black; font-size: 25px;"> <b>Chờ xác nhận</b> </a>
+							</div>
+							<div class="col l-5">
+								<a href="HoSoKhachHangController?donmua=1&btndagiao=1" style="margin: 0; padding-bottom: 1px; color: var(--primary-color); font-size: 25px;"> <b>Đã giao</b> </a>
+							</div>
+							<%} else{ %>
+							<div class="col l-4">
+								<a href="HoSoKhachHangController?donmua=1&btnchoxacnhan=1" style="margin: 0; padding-bottom: 1px; color: var(--primary-color); font-size: 25px;"> <b>Chờ xác nhận</b> </a>
+							</div>
+							<div class="col l-5">
+								<a href="HoSoKhachHangController?donmua=1&btndagiao=1" style="margin: 0; padding-bottom: 1px; color: black; font-size: 25px;"> <b>Đã giao</b> </a>
+							</div>
+							<%} %>
+						</div>
+						<%if(request.getParameter("btndagiao") != null) {
+							ArrayList<DonMuaBean> dsSPDaGiao = (ArrayList<DonMuaBean>)request.getAttribute("dsSPDaGiao");
+							if(dsSPDaGiao.size() != 0){%>
+							<div class="row text-center" style="border-radius: 10px; padding: 10px 0; background-color: var(--primary-color); color: var(--text-color); margin-top: 20px;">
+							<div class="col l-6">
+							<b style="font-size: 18px;">Sản phẩm</b>
+							</div>
+							<div class="col l-2">
+							<b style="font-size: 18px;">Đơn giá</b>
+							</div>
+							<div class="col l-2">
+							<b style="font-size: 18px;">Số lượng</b>
+							</div>
+							<div class="col l-2">
+							<b style="font-size: 18px;">Thành tiền</b>
+							</div>
+							</div>
+						<%		for(DonMuaBean dm: dsSPDaGiao){
+						%>
+						<div class="row" style="margin-top: 10px; padding-bottom: 10px; border-bottom: 1px solid var(--primary-color);">
+							<div class="col l-6">
 								<div class="row">
-									<div class="col l-12">
-										<div class="row text-center" style="border-radius: 10px; padding: 10px 0; background-color: var(--primary-color); color: var(--text-color);">
-											<div class="col l-6">
-											<b style="font-size: 18px;">Sản phẩm</b>
+									<div class="col l-3">
+										<img style="width: 80px; display: inline-block;" alt="" src="<%=dm.getAnh()%>">
+									</div>
+									<div class="col l-9">
+										<h4 style="font-size: 2rem;line-height: 2.5rem;font-weight: 500;height: 5rem;overflow: hidden;display: block;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2;"><%=dm.getTensanpham() %></h4>
+										<div class="row">
+											<div class="col l-4">
+												<p style="font-size: 1.6rem;">Màu: <b style="font-size: 1.8rem;"><%=dm.getMausanpham() %></b></p>
 											</div>
-											<div class="col l-2">
-											<b style="font-size: 18px;">Đơn giá</b>
-											</div>
-											<div class="col l-2">
-											<b style="font-size: 18px;">Số lượng</b>
-											</div>
-											<div class="col l-2">
-											<b style="font-size: 18px;">Thành tiền</b>
+											<div class="col l-8">
+												<p style="font-size: 1.6rem;">Size: <b style="font-size: 1.8rem;"><%=dm.getSizesanpham() %></b></p>
 											</div>
 										</div>
-										<form id="xoachon"action="GioHangController" method="get">
-				        				</form>
-				        				<c:forEach items="${giohang }" var="sp">
-											<div style="margin-top: 10px; padding-bottom: 10px;border-bottom: 1px solid var(--primary-color);" class="row">
-												<div class="col l-6">
-													<div class="row">
-														<div class="col l-3">
-															<img style="width: 80px; display: inline-block;" alt="" src="${sp.getAnhTheoMau()}">
-														</div>
-														<div class="col l-9">
-															<h4 style="font-size: 2rem;line-height: 2.5rem;font-weight: 500;height: 5rem;overflow: hidden;display: block;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2;">${sp.getTensanpham()}</h4>
-															<div class="row">
-																<div class="col l-4">
-																	<p style="font-size: 1.6rem;">Màu: <b style="font-size: 1.8rem; color: var(--primary-color); font-weight: bold;">${sp.getMausanpham()}</b></p>
-																</div>
-																<div class="col l-8">
-																	<p style="font-size: 1.6rem;">Size: <b style="font-size: 1.8rem; color: var(--primary-color); font-weight: bold;">${sp.getSize() }</b></p>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-												<div class="col l-2 text-center">
-													<c:choose>
-														<c:when test="${sp.getGiagiam() == 0}">
-															<h4 style="font-size: 20px; color: var(--primary-color); font-weight: bold;">
-																<fmt:setLocale value="vi_VN"/>
-																<fmt:formatNumber value="${sp.getGiaban()}" type="currency"/>
-															</h4>
-														</c:when>
-														<c:otherwise>
-															<h4 style="font-size: 20px; color: var(--primary-color); font-weight: bold;">
-																<fmt:setLocale value="vi_VN"/>
-																<fmt:formatNumber value="${sp.getGiagiam()}" type="currency"/>
-															</h4>
-														</c:otherwise>
-													</c:choose>
-												</div>
-												<div class="col l-2 text-center">
-													<h4 style="font-size: 20px;">${sp.getSoluongmua()}</h4>
-												</div>
-												<div class="col l-2 text-center">
-													<h4 style="font-size: 20px; color: var(--primary-color); font-weight: bold;">
-														<fmt:setLocale value="vi_VN"/>
-														<fmt:formatNumber value="${sp.getThanhtien()}" type="currency"/>
-													</h4>
-												</div>
-											</div>
-				        				</c:forEach>
 									</div>
 								</div>
-							</c:when>
-							<c:otherwise>
-								<h3 style="color: var(--primary-color);">Không có sản phẩm cần thanh toán!</h3>
-							</c:otherwise>
-						</c:choose>
-					</c:when>
-					<c:otherwise>
-						<h3 style="color: var(--primary-color);">Không có sản phẩm cần thanh toán!</h3>
-					</c:otherwise>
-				</c:choose>
-					
-				<h4 style="margin: 30px 0 10px 0"> <span style="color: red;">(*)</span> Lưu ý: kiểm tra kỹ các thông tin sau </h4>
-				
-				<div style="border: 1px solid var(--primary-color); padding: 15px; border-radius: 20px">
-				<h3 style="margin-top: 10px;border-bottom: 1px solid var(--primary-color); padding-bottom: 25px; font-weight: bold; color: var(--primary-color);">THÔNG TIN GIAO HÀNG & THANH TOÁN</h3>
-				<form id="thanhtoan" action="XacNhanThanhToanController" method="get"></form>
-				<h3 style="margin-left: 15px; display: inline-block;"> <b>Thông tin khách hàng</b></h3> <a href="HoSoKhachHangController?info=1" style="display: inline-block; cursor: pointer; margin-left: 20px; font-size: 1.4rem;"> <b>Thay đổi thông tin</b> </a>
-				<div class="row">
-					<div class="col l-6" style="width: 50%;">
-						<h4 style="font-size: 20px;">Họ tên:</h4>
-						<input form="thanhtoan" style="width: 100%; margin-bottom: 10px; height: 35px; padding-left: 10px; font-size: 1.6rem;border-radius: 5px;"  type="text" name="hoten" value="${dn.getHoten()}" disabled>
-						<h4 style="font-size: 20px;">Địa chỉ:</h4>
-						<input form="thanhtoan" style="width: 100%; margin-bottom: 10px; height: 35px; padding-left: 10px; font-size: 1.6rem;border-radius: 5px;"  type="text" name="diachi" value="${dn.getDiachi()}" disabled>
-					</div>
-					<div class="col l-6" style="width: 50%;">
-						<h4 style="font-size: 20px;">Số điện thoại:</h4>
-						<input form="thanhtoan" style="width: 100%; margin-bottom: 10px; height: 35px; padding-left: 10px; font-size: 1.6rem;border-radius: 5px;"  type="text" name="sodienthoai" value="${dn.getSodienthoai()}" disabled>
-						<h4 style="font-size: 20px;">Email:</h4>
-						<input form="thanhtoan" style="width: 100%; margin-bottom: 10px; height: 35px; padding-left: 10px; font-size: 1.6rem; border-radius: 5px;"  type="text" name="email" value="${dn.getEmail()}" disabled>
-					</div>
-				</div>
-				<h3 style="margin-left: 15px; display: inline-block;"> <b>Địa chỉ giao hàng</b></h3> <a href="HoSoKhachHangController?location=1" style="display: inline-block; cursor: pointer; margin-left: 20px; font-size: 1.4rem;"> <b>Thêm / Thay đổi nơi giao hàng</b> </a>
-				<c:choose>
-					<c:when test="${noinhan == null}">
-						<div class="row">
-							<div class="col l-6" style="width: 50%;">
-								<h4 style="font-size: 20px;">Thành phố:</h4>
-								<input form="thanhtoan" style="width: 100%; margin-bottom: 10px; height: 35px; padding-left: 10px; font-size: 1.6rem;border-radius: 5px;"  type="text" name="thanhpho" value="" disabled required>
-								<h4 style="font-size: 20px;">Phường:</h4>
-								<input form="thanhtoan" style="width: 100%; margin-bottom: 10px; height: 35px; padding-left: 10px; font-size: 1.6rem;border-radius: 5px;"  type="text" name="phuong" value="" disabled required>
 							</div>
-							<div class="col l-6" style="width: 50%;">
-								<h4 style="font-size: 20px;">Quận:</h4>
-								<input form="thanhtoan" style="width: 100%; margin-bottom: 10px; height: 35px; padding-left: 10px; font-size: 1.6rem;border-radius: 5px;"  type="text" name="quan" value="" disabled required>
-								<h4 style="font-size: 20px;">Địa chỉ cụ thể:</h4>
-								<input form="thanhtoan" style="width: 100%; margin-bottom: 10px; height: 35px; padding-left: 10px; font-size: 1.6rem;border-radius: 5px;"  type="text" name="sonha" value="" disabled required>
+							<div class="col l-2 text-center">
+								<h4 style="font-size: 20px;"><%=dm.getGia() %> VNĐ</h4>
+							</div>
+							<div class="col l-2 text-center">
+								<h4 style="font-size: 20px;"><%=dm.getSoluongmua() %></h4>
+							</div>
+							<div class="col l-2 text-center">
+								<h4 style="font-size: 20px;"><%=dm.getThanhtien() %> VNĐ</h4>
 							</div>
 						</div>
-					</c:when>
-					<c:otherwise>
-						<div class="row">
-							<div class="col l-6" style="width: 50%;">
-								<h4 style="font-size: 20px;">Thành phố:</h4>
-								<input form="thanhtoan" style="width: 100%; margin-bottom: 10px; height: 35px; padding-left: 10px; font-size: 1.6rem;border-radius: 5px;"  type="text" name="thanhpho" value="${ noinhan.getThanhpho() }" disabled required>
-								<h4 style="font-size: 20px;">Phường:</h4>
-								<input form="thanhtoan" style="width: 100%; margin-bottom: 10px; height: 35px; padding-left: 10px; font-size: 1.6rem;border-radius: 5px;"  type="text" name="phuong" value="${ noinhan.getPhuong() }" disabled required>
+						<%}}else{ %>
+							<div class="row" style="margin-top: 10px;"> <h3>Chưa có đơn hàng</h3> </div>
+						<%} %>
+						<%}else{ 
+							ArrayList<DonMuaBean> dsSPChoXacNhan = (ArrayList<DonMuaBean>)request.getAttribute("dsSPChoXacNhan");
+							if(dsSPChoXacNhan.size()!=0){%>
+							<div class="row text-center" style="border-radius: 10px; padding: 10px 0; background-color: var(--primary-color); color: var(--text-color); margin-top: 20px;">
+							<div class="col l-6">
+							<b style="font-size: 18px;">Sản phẩm</b>
 							</div>
-							<div class="col l-6" style="width: 50%;">
-								<h4 style="font-size: 20px;">Quận:</h4>
-								<input form="thanhtoan" style="width: 100%; margin-bottom: 10px; height: 35px; padding-left: 10px; font-size: 1.6rem; border-radius: 5px;"  type="text" name="quan" value="${ noinhan.getQuan()}" disabled required>
-								<h4 style="font-size: 20px;">Địa chỉ cụ thể:</h4>
-								<input form="thanhtoan" style="width: 100%; margin-bottom: 10px; height: 35px; padding-left: 10px; font-size: 1.6rem;border-radius: 5px;"  type="text" name="sonha" value="${ noinhan.getSonha() }" disabled required>
+							<div class="col l-2">
+							<b style="font-size: 18px;">Đơn giá</b>
+							</div>
+							<div class="col l-2">
+							<b style="font-size: 18px;">Số lượng</b>
+							</div>
+							<div class="col l-2">
+							<b style="font-size: 18px;">Thành tiền</b>
+							</div>
+							</div>
+						<%		for(DonMuaBean dm: dsSPChoXacNhan){
+						%>
+						<div class="row" style="margin-top: 10px; padding-bottom: 10px; border-bottom: 1px solid var(--primary-color);">
+							<div class="col l-6">
+								<div class="row">
+									<div class="col l-3">
+										<img style="width: 80px; display: inline-block;" alt="" src="<%=dm.getAnh()%>">
+									</div>
+									<div class="col l-9">
+										<h4 style="font-size: 2rem;line-height: 2.5rem;font-weight: 500;height: 5rem;overflow: hidden;display: block;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2;"><%=dm.getTensanpham() %></h4>
+										<div class="row">
+											<div class="col l-4">
+												<p style="font-size: 1.6rem;">Màu: <b style="font-size: 1.8rem;"><%=dm.getMausanpham() %></b></p>
+											</div>
+											<div class="col l-8">
+												<p style="font-size: 1.6rem;">Size: <b style="font-size: 1.8rem;"><%=dm.getSizesanpham() %></b></p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col l-2 text-center">
+								<h4 style="font-size: 20px;"><%=dm.getGia() %> VNĐ</h4>
+							</div>
+							<div class="col l-2 text-center">
+								<h4 style="font-size: 20px;"><%=dm.getSoluongmua() %></h4>
+							</div>
+							<div class="col l-2 text-center">
+								<h4 style="font-size: 20px;"><%=dm.getThanhtien() %> VNĐ</h4>
 							</div>
 						</div>
-					</c:otherwise>
-				</c:choose>
-				
-				
-				<h3 style="margin-left: 15px; display: inline-block;"> <b>Phương thức thanh toán</b></h3>
-				<div class="row">
-					<div class="col l-5">
-						<input style="position: relative; top: -8px;" form="thanhtoan" id="nganhang" type="radio" name="thanhtoan" value="nganhang" required> 
-						<label style="font-weight: 500; width: 90%; font-size: 1.6rem;border-radius: 10px;" class="container__col--info-right-info nganhang" for="nganhang">
-							<b>Thanh toán online</b><br>
-							Thanh toán chuyển khoản qua QRCODE
-						</label>
+						<%}}else{ %>
+							<div class="row" style="margin-top: 10px;"> <h3>Chưa có đơn hàng</h3> </div>
+						<%} %>
+						<%}} %>
 					</div>
-					<div class="col l-2">
-					</div>
-					<div class="col l-5">
-						<input style="position: relative; top: -8px; " form="thanhtoan" id="tienmat" type="radio" name="thanhtoan" value="tienmat" required> 
-						<label style="font-weight: 500; width: 90%; font-size: 1.6rem;border-radius: 10px;" class="container__col--info-right-info tienmat" for="tienmat">
-							<b>Trả tiền mặt</b><br>
-							Thanh toán khi nhận hàng
-						</label>
-					</div>
-				</div>
-				<c:if test="${giohang != null }">
-					<div class="row" style="margin-top: 30px; border-top: 1px solid var(--primary-color); padding-top: 20px; margin-left: 20px; margin-right: 20px;">
-						<div class="col l-2">
-						</div>
-						<div style="font-size: 2.2rem;" class="col l-4">
-							<span>Tạm tính (${giohang.size()} sản phẩm)</span> <br>
-							<span>Phí giao hàng</span> <br>
-							<span>Giảm giá</span><br>
-							<c:if test="${dn.getTichdiem() != 0}">
-								<input style="" form="thanhtoan" id="diem" type="checkbox" name="diem"> 
-								<label style=" font-weight: 500;" class="" for="diem">
-									<span style="color: orange;">Đổi ${dn.getTichdiem()} điểm của bạn</span>
-								</label> <br>
-							</c:if>
-							<span> <b>Tổng giá trị đơn hàng</b> </span><br>
-						</div>
-						<div style="font-size: 2.2rem; text-align: right;" class="col l-4">
-							<span style="font-weight: bold;">
-								<fmt:setLocale value="vi_VN"/>
-								<fmt:formatNumber value="${tongtien}" type="currency"/>
-							</span><br>
-							<span style="font-weight: bold;">
-								<fmt:setLocale value="vi_VN"/>
-								<fmt:formatNumber value="0" type="currency"/>
-							</span><br>
-							<c:choose>
-								<c:when test="${tiensaukhigiamgia != null}">
-									<span style="font-weight: bold;">
-										<fmt:setLocale value="vi_VN"/>
-										<fmt:formatNumber value="${giamgia}" type="currency"/>
-									</span><br>
-								</c:when>
-								<c:otherwise>
-									<span style="font-weight: bold;">
-										<fmt:setLocale value="vi_VN"/>
-										<fmt:formatNumber value="0" type="currency"/>
-									</span><br>
-								</c:otherwise>
-							</c:choose>
-							
-							<c:if test="${dn.getTichdiem() != 0}">
-								<span class="tichdiem" style="font-weight: bold;">
-									<fmt:setLocale value="vi_VN"/>
-									<fmt:formatNumber value="0" type="currency"/>
-								</span><br>
-							</c:if>
-							
-							
-							<c:choose>
-								<c:when test="${tiensaukhigiamgia != null}">
-									<span > <b class="tonggia" style="color: red; ">
-										<fmt:setLocale value="vi_VN"/>
-										<fmt:formatNumber value="${tiensaukhigiamgia}" type="currency"/></b> 
-									</span><br>
-								</c:when>
-								<c:otherwise>
-									<span > <b class="tonggia" style="color: red; ">
-										<fmt:setLocale value="vi_VN"/>
-										<fmt:formatNumber value="${tongtien}" type="currency"/></b> 
-									</span><br>
-								</c:otherwise>
-							</c:choose>
-						</div>
-						<div class="col l-2">
-						</div>
-					</div>
-				</c:if>
-				<c:choose>
-					<c:when test="${tiensaukhigiamgia != null }">
-						<script type="text/javascript">
-							const td =  document.querySelector('.tichdiem');
-							const tg =  document.querySelector('.tonggia');
-								document.querySelectorAll('input[id="diem"]').forEach((e)=>{
-							        e.onclick = function(e){
-							        if (this.checked){
-							        	td.innerHTML = "<fmt:setLocale value='vi_VN'/><fmt:formatNumber value='-${dn.getTichdiem()}000' type='currency'/>"
-						        		tg.innerHTML = "<fmt:setLocale value='vi_VN'/><fmt:formatNumber value='${tiengiamdiem1}' type='currency'/>"
-							        }else{
-							        	td.innerHTML = "<fmt:setLocale value='vi_VN'/><fmt:formatNumber value='0' type='currency'/>"
-							        	tg.innerHTML = "<fmt:setLocale value='vi_VN'/><fmt:formatNumber value='${tiensaukhigiamgia}' type='currency'/>"
-							        }
-							    };
-							    })
-						</script>
-					</c:when>
-					<c:otherwise>
-						<script type="text/javascript">
-							const td =  document.querySelector('.tichdiem');
-							const tg =  document.querySelector('.tonggia');
-								document.querySelectorAll('input[id="diem"]').forEach((e)=>{
-							        e.onclick = function(e){
-							        if (this.checked){
-							        	td.innerHTML = "<fmt:setLocale value='vi_VN'/><fmt:formatNumber value='-${dn.getTichdiem()}000' type='currency'/>"
-						        		tg.innerHTML = "<fmt:setLocale value='vi_VN'/><fmt:formatNumber value='${tiengiamdiem}' type='currency'/>"
-							        }else{
-							        	td.innerHTML = "<fmt:setLocale value='vi_VN'/><fmt:formatNumber value='0' type='currency'/>"
-							        	tg.innerHTML = "<fmt:setLocale value='vi_VN'/><fmt:formatNumber value='${tongtien}' type='currency'/>"
-							        }
-							    };
-							    })
-						</script>
-					</c:otherwise>
-				</c:choose>
-				
-				
-				<%if(session.getAttribute("noinhan")!= null) {%>
-				<div style="margin-top: 20px;" class="row">
-					<div class="col l-4 text-center">
-					</div>
-					<div class="col l-4 text-center">
-						<input form="thanhtoan" type="text" hidden="" name="donmua" value="1">
-						<button form="thanhtoan" style="padding: 15px 5px; color: var(--text-color); background-color: var(--primary-color); width: 100%; display: block; font-size: 2rem; border: none;" ><b>Xác nhận thanh toán</b> </button>
-					</div>
-					<div class="col l-4 text-center">
-					</div>
-				</div>
-				<%}else{ %>
-				<div style="margin-top: 20px;" class="row">
-					<div class="col l-4 text-center">
-					</div>
-					<div class="col l-4 text-center">
-						<a href="ThanhToanController?nn=null" style="padding: 15px 5px; color: var(--text-color); background-color: var(--primary-color); width: 100%; display: block; font-size: 2rem; border: none;" ><b>Xác nhận thanh toán</b> </a>
-					</div>
-					<div class="col l-4 text-center">
-					</div>
-				</div>
-				<%}%>
 				</div>
 			</div>
 		</div>
-		
-		<footer class="footer">
+		<footer class="footer" style="margin-top: 100px;">
 			<div class="grid wide">
 				<div class="row footer-top">
 					<div class="col l-3 m-6 c-6">

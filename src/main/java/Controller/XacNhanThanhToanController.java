@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.swing.ButtonGroup;
 
 import Bean.GioHangBean;
 import Bean.KhachHangBean;
@@ -40,7 +41,7 @@ public class XacNhanThanhToanController extends HttpServlet {
 			HttpSession session = request.getSession();
 			KhachHangBean khbean = (KhachHangBean)session.getAttribute("dn");
 			DonDatHangBo ddhbo = new DonDatHangBo();
-			ddhbo.themDonDatHang(khbean.getMakhachhang());
+			ddhbo.themDonDatHang(khbean.getMakhachhang(), phuongthucthanhtoan, thanhtoan, tongdongia, diachinhanhang);
 			long madonvuathem = ddhbo.getMaxHD();
 			DonHangChiTietBo dhctbo = new DonHangChiTietBo();
 //			GioHangBo giohang = (GioHangBo)session.getAttribute("giohang");
