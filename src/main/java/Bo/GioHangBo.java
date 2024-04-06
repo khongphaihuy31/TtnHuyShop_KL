@@ -11,6 +11,10 @@ public class GioHangBo {
 		return ghdao.getSanPhamTrongGio(makhachhang);
 	}
 	
+	public GioHangBean getSanPhamMua(long makhachhang, long magiohang1)throws Exception{
+		return ghdao.getSanPhamMua(makhachhang, magiohang1);
+	}
+	
 	public int capNhatGio(long masanpham, long makhachhang, long soluongmua, String mau, String size) throws Exception{
 		return ghdao.capNhatGio(masanpham, makhachhang, soluongmua, mau, size);
 	}
@@ -33,8 +37,8 @@ public class GioHangBo {
 		}
 	}
 	
-	public int xoaSpTrongGio(long masanpham, long makhachhang, String mau, String size)throws Exception{
-		return ghdao.xoaSpTrongGio(masanpham, makhachhang, mau, size);
+	public int xoaSpTrongGio(long magiohang)throws Exception{
+		return ghdao.xoaSpTrongGio(magiohang);
 	}
 	
 	public int xoachon(ArrayList<GioHangBean> dsSpGio, long makhachhang) throws Exception{
@@ -43,7 +47,7 @@ public class GioHangBo {
 		for(GioHangBean gh: dsGioHang) {
 			for(GioHangBean sp: dsSpGio) {
 				if(sp.getMasanpham()== gh.getMasanpham() && sp.getMausanpham().equals(gh.getMausanpham()) && sp.getSize().equals(gh.getSize())) {
-					ghdao.xoaSpTrongGio(sp.getMasanpham(), makhachhang, sp.getMausanpham(), sp.getSize());
+					ghdao.xoaSpTrongGio(sp.getMagiohang());
 					dsSpGio.remove(sp);
 					break;
 				}

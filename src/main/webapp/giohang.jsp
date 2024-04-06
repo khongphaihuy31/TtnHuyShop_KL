@@ -22,6 +22,8 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<script src="assets/script/toast.js"></script>
+	<link rel="stylesheet" href="assets/css/toast.css">
 <link rel="stylesheet" href="assets/css/base.css">
 <link rel="stylesheet" href="assets/css/grid.css">
 <link rel="stylesheet" href="assets/css/main.css">
@@ -99,7 +101,7 @@ a:hover, a:focus {
 </style>
 </head>
 <body>
-
+<div style="z-index: 9999999999999999" id="toast"></div>
 	<div class="app">
 				<header class="header">
 			<div class="grid wide">
@@ -610,11 +612,12 @@ a:hover, a:focus {
 										<form id="xoachon"action="GioHangController" method="get">
 				        				</form>
 				        				<c:forEach items="${giohang }" var="sp">
+				        					<h1 style="display: none;" class="huy${sp.getMagiohang() }">${sp.getThanhtien() }</h1>
 				        					<div style="margin-top: 10px; padding-bottom: 10px;border-bottom: 1px solid var(--primary-color);" class="row">
 												<div class="col l-6">
 													<div class="row">
 														<div class="col l-3">
-															<input id="chonmua" style="display: inline-block;" form="xoachon" type="checkbox" name="${sp.getMasanpham()}/${sp.getMausanpham()}/${sp.getSize()}">
+															<input id="chonmua" style="display: inline-block;" form="xoachon" type="checkbox" name="${sp.getMagiohang()}">
 															<img style="width: 80px; display: inline-block;" alt="" src="${sp.getAnhTheoMau()}">
 														</div>
 														<div class="col l-9">
@@ -659,7 +662,7 @@ a:hover, a:focus {
 													<form id="xoa-${sp.getMasanpham()}-${sp.getMausanpham()}-${sp.getSize()}" action="GioHangController"></form>
 														<input hidden="" form="xoa-${sp.getMasanpham()}-${sp.getMausanpham()}-${sp.getSize()}" type="text" name="mausp" value="${sp.getMausanpham()}">
 														<input hidden="" form="xoa-${sp.getMasanpham()}-${sp.getMausanpham()}-${sp.getSize()}" type="text" name="size" value="${sp.getSize()}">
-														<button style="font-size: 20px; margin-top: 8px;" form="xoa-${sp.getMasanpham()}-${sp.getMausanpham()}-${sp.getSize()}" name="delete" value="${sp.getMasanpham()}">
+														<button style="font-size: 20px; margin-top: 8px;" form="xoa-${sp.getMasanpham()}-${sp.getMausanpham()}-${sp.getSize()}" name="delete" value="${sp.getMagiohang()}">
 															<i style="color: var(--primary-color);" class="fa-solid fa-trash"></i>
 														</button>
 												</div>
@@ -674,12 +677,15 @@ a:hover, a:focus {
 											</div>
 											<div class="col l-6 text-right" style="padding: 10px 5px; font-size: 1.8rem;">
 												<b>Tổng tiền: 
-												<fmt:setLocale value="vi_VN"/>
-												<fmt:formatNumber value="${tongtien }" type="currency"/> </b>
+												<span class="tongtien">
+													<fmt:setLocale value="vi_VN"/>
+													<fmt:formatNumber value="0" type="currency"/> </b>
+												</span>
 												
 											</div>
 											<div class="col l-3 text-center">
-												<a style="padding: 10px 5px; color: var(--text-color); background-color: var(--primary-color); width: 100%; display: block; font-size: 1.6rem;" href="ThanhToanController"><b>Mua hàng</b></a>
+												<b><input style="padding: 10px 5px; color: var(--text-color); background-color: var(--primary-color); width: 200px; display: block; font-size: 1.6rem; border: none;" form="xoachon" type="submit" name="btnmuahang" value="Mua hàng"></b>
+												<!--  <a style="padding: 10px 5px; color: var(--text-color); background-color: var(--primary-color); width: 100%; display: block; font-size: 1.6rem;" href="ThanhToanController"><b>Mua hàng</b></a>-->
 											</div>
 										</div>
 									</div>
@@ -695,21 +701,8 @@ a:hover, a:focus {
 					</c:otherwise>
 				</c:choose>
 					
-					<script type="text/javascript">
-					//var tongtien = 0;
-					//const tt =  document.querySelector('.tongtien');
-						//document.querySelectorAll('input[id="chonmua"]').forEach((e)=>{
-					      //  e.onclick = function(e){
-					        //if (this.checked){
-					        //	var name = this.name;
-					        	//console.log(name);
-					        	//var a = ${name};
-					        	//console.log(a);
-					        	//tongtien += ${name};
-					        	//tt.innerHTML = tongtien;
-					       // }
-					    //};
-					    //})
+					<script type="text/javascript" src="assets/script/giohang.js">
+					
 					</script>
 					
 					
@@ -855,6 +848,20 @@ a:hover, a:focus {
 				</div>
 			</div>
 		</footer>
-	</div>
+	
+	<c:if test="${param.csp != null}">
+		<script type="text/javascript">
+			//window.alert("Tài khoản hoặc mật khẩu chưa đúng!");
+			function showWarningToastChuaChonSanPhamMua(){
+			    toast({
+			        title :'Chưa chọn phẩm cần mua',
+			        message : 'Vui lòng chọn sản phẩm cần mua.',
+			        type  : 'warning',
+			        duration : 5000
+			    })
+			}
+			showWarningToastChuaChonSanPhamMua();
+		</script>
+	</c:if>
 </body>
 </html>

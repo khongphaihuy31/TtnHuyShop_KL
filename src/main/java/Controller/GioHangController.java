@@ -113,10 +113,10 @@ public class GioHangController extends HttpServlet {
 					long thanhTien;
 					if(g.getGiagiam() == 0) {
 						thanhTien = g.getGiaban() * g.getSoluongmua();
-//						request.setAttribute(a, thanhTien);
+						request.setAttribute(String.valueOf(g.getMagiohang()), thanhTien);
 					}else {
 						thanhTien = g.getGiagiam() * g.getSoluongmua();
-//						request.setAttribute(a, thanhTien);
+						request.setAttribute(String.valueOf(g.getMagiohang()), thanhTien);
 					}
 					tongtien += thanhTien;
 				}
@@ -141,12 +141,12 @@ public class GioHangController extends HttpServlet {
 			//Xử lý xóa
 			String btnxoa = request.getParameter("delete");
 			if(btnxoa != null && session.getAttribute("dn")!= null) {
-				long masanpham = Long.parseLong(btnxoa);
+				long magiohang = Long.parseLong(btnxoa);
 				String mausanpham = request.getParameter("mausp");
 				String size = request.getParameter("size");
 				KhachHangBean khbaen = (KhachHangBean)session.getAttribute("dn");
 				GioHangBo ghbo = new GioHangBo();
-				ghbo.xoaSpTrongGio(masanpham, khbaen.getMakhachhang(), mausanpham, size);
+				ghbo.xoaSpTrongGio(magiohang);
 				response.sendRedirect("GioHangController");
 				return;
 			}
@@ -162,13 +162,45 @@ public class GioHangController extends HttpServlet {
 					String name = d.nextElement();
 					String value = request.getParameter(name);
 					if(value.equals("on")) {
-						String [] sp1 = name.split("/");
-						long msp = Long.parseLong(sp1[0]) ;
-						ghbo.xoaSpTrongGio(msp, khbaen.getMakhachhang(), sp1[1], sp1[2]); 
+						long mgh = Long.parseLong(name) ;
+						ghbo.xoaSpTrongGio(mgh); 
 					}
 				}
 				response.sendRedirect("GioHangController");
 				return;
+			}
+			
+			//Xử lý mua chọn
+			String btnmuahang = request.getParameter("btnmuahang");
+			if(btnmuahang != null && session.getAttribute("dn")!= null) {
+				Enumeration<String> d = request.getParameterNames();
+				KhachHangBean khbaen = (KhachHangBean)session.getAttribute("dn");
+				GioHangBo ghbo = new GioHangBo();
+				ArrayList<GioHangBean> dsSpChon = new ArrayList<GioHangBean>();
+				boolean chonSp = false;
+				String dsMaGioChon = "";
+				while(d.hasMoreElements()) {
+					String name = d.nextElement();
+					String value = request.getParameter(name);
+					if(value.equals("on")) {
+						chonSp = true;
+						long mgh = Long.parseLong(name) ;
+						if(dsMaGioChon.equals("")) {
+							dsMaGioChon += name;
+						}else {
+							dsMaGioChon += "/"+name;
+							request.setAttribute("sosp", "lonhon2");
+						}
+					}
+				}
+				if(chonSp) {
+					response.sendRedirect("ThanhToanController?dsMaGioChon="+dsMaGioChon);
+					return;
+				}else {
+//					request.setAttribute("csp", 1);
+					response.sendRedirect("GioHangController?csp=null");
+					return;
+				}
 			}
 			
 			RequestDispatcher rd = request.getRequestDispatcher("giohang.jsp");

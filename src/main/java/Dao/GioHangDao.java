@@ -12,7 +12,7 @@ public class GioHangDao {
 		KetNoiDao kn = new KetNoiDao();
 		kn.ketnoi();
 		
-		String sql = "SELECT dbo.GioHang.masanpham, dbo.GioHang.makhachhang, dbo.GioHang.soluongmua, dbo.GioHang.mau, dbo.GioHang.size, dbo.AnhSanPham.srcanh, dbo.SanPham.tensanpham, dbo.SanPham.anh, dbo.SanPham.giaban, dbo.SanPham.giagiam, dbo.SanPham.soluongdaban, dbo.SanPham.sanphamhot, dbo.SanPham.motasanpham, dbo.SanPham.maloai, dbo.SanPham.mathuonghieu, dbo.SanPham.madanhmuc, dbo.SanPham.anhchonsize\r\n"
+		String sql = "SELECT dbo.GioHang.magiohang, dbo.GioHang.masanpham, dbo.GioHang.makhachhang, dbo.GioHang.soluongmua, dbo.GioHang.mau, dbo.GioHang.size, dbo.AnhSanPham.srcanh, dbo.SanPham.tensanpham, dbo.SanPham.anh, dbo.SanPham.giaban, dbo.SanPham.giagiam, dbo.SanPham.soluongdaban, dbo.SanPham.sanphamhot, dbo.SanPham.motasanpham, dbo.SanPham.maloai, dbo.SanPham.mathuonghieu, dbo.SanPham.madanhmuc, dbo.SanPham.anhchonsize\r\n"
 				+ "FROM     dbo.AnhSanPham INNER JOIN\r\n"
 				+ "dbo.GioHang ON dbo.AnhSanPham.masanpham = dbo.GioHang.masanpham INNER JOIN\r\n"
 				+ "dbo.SanPham ON dbo.AnhSanPham.masanpham = dbo.SanPham.masanpham AND dbo.GioHang.masanpham = dbo.SanPham.masanpham where makhachhang=? and dbo.GioHang.mau = dbo.AnhSanPham.mau";
@@ -21,6 +21,7 @@ public class GioHangDao {
 		cmd.setLong(1, makhachhang);
 		ResultSet rs = cmd.executeQuery();
 		while(rs.next()) {
+			long magiohang = rs.getLong("magiohang");
 			long masanpham = rs.getLong("masanpham");
 			long soluongmua = rs.getLong("soluongmua");
 			String mau = rs.getString("mau");
@@ -38,9 +39,48 @@ public class GioHangDao {
 			long madanhmuc = rs.getLong("madanhmuc");
 			String anhchonsize = rs.getString("anhchonsize");
 			
-			dsSanPhamTrongGio.add(new GioHangBean(masanpham, tensanpham, anh, giaban, giagiam, soluongdaban, sanphamhot, motasanpham, maloai, mathuonghieu, madanhmuc, anhchonsize, soluongmua, soluongmua*giagiam, mau, size, anhtheomau));
+			dsSanPhamTrongGio.add(new GioHangBean(magiohang, masanpham, tensanpham, anh, giaban, giagiam, soluongdaban, sanphamhot, motasanpham, maloai, mathuonghieu, madanhmuc, anhchonsize, soluongmua, soluongmua*giagiam, mau, size, anhtheomau));
 		}
 		return dsSanPhamTrongGio;
+	}
+	
+	// Lấy ra sản phẩm mua
+	public GioHangBean getSanPhamMua(long makhachhang, long magiohang1)throws Exception{
+		GioHangBean SanPhamMua = null;
+		KetNoiDao kn = new KetNoiDao();
+		kn.ketnoi();
+		
+		String sql = "SELECT dbo.GioHang.magiohang, dbo.GioHang.masanpham, dbo.GioHang.makhachhang, dbo.GioHang.soluongmua, dbo.GioHang.mau, dbo.GioHang.size, dbo.AnhSanPham.srcanh, dbo.SanPham.tensanpham, dbo.SanPham.anh, dbo.SanPham.giaban, dbo.SanPham.giagiam, dbo.SanPham.soluongdaban, dbo.SanPham.sanphamhot, dbo.SanPham.motasanpham, dbo.SanPham.maloai, dbo.SanPham.mathuonghieu, dbo.SanPham.madanhmuc, dbo.SanPham.anhchonsize\r\n"
+				+ "FROM     dbo.AnhSanPham INNER JOIN\r\n"
+				+ "dbo.GioHang ON dbo.AnhSanPham.masanpham = dbo.GioHang.masanpham INNER JOIN\r\n"
+				+ "dbo.SanPham ON dbo.AnhSanPham.masanpham = dbo.SanPham.masanpham AND dbo.GioHang.masanpham = dbo.SanPham.masanpham where makhachhang=? and dbo.GioHang.mau = dbo.AnhSanPham.mau and magiohang = ?";
+		
+		PreparedStatement cmd = kn.cn.prepareStatement(sql);
+		cmd.setLong(1, makhachhang);
+		cmd.setLong(2, magiohang1);
+		ResultSet rs = cmd.executeQuery();
+		while(rs.next()) {
+			long magiohang = rs.getLong("magiohang");
+			long masanpham = rs.getLong("masanpham");
+			long soluongmua = rs.getLong("soluongmua");
+			String mau = rs.getString("mau");
+			String size = rs.getString("size");
+			String anhtheomau = rs.getString("srcanh");
+			String tensanpham = rs.getString("tensanpham");
+			String anh = rs.getString("anh");
+			long giaban = rs.getLong("giaban");
+			long giagiam = rs.getLong("giagiam");
+			long soluongdaban = rs.getLong("soluongdaban");
+			boolean sanphamhot = rs.getBoolean("sanphamhot");
+			String motasanpham = rs.getString("motasanpham");
+			long maloai = rs.getLong("maloai");
+			long mathuonghieu = rs.getLong("mathuonghieu");
+			long madanhmuc = rs.getLong("madanhmuc");
+			String anhchonsize = rs.getString("anhchonsize");
+			
+			SanPhamMua = new GioHangBean(magiohang, masanpham, tensanpham, anh, giaban, giagiam, soluongdaban, sanphamhot, motasanpham, maloai, mathuonghieu, madanhmuc, anhchonsize, soluongmua, soluongmua*giagiam, mau, size, anhtheomau);
+		}
+		return SanPhamMua;
 	}
 	
 	// Thêm sản phẩm vào giỏ
@@ -82,17 +122,30 @@ public class GioHangDao {
 		}
 		
 		//Xóa sản phẩm trong giỏ
-		public int xoaSpTrongGio(long masanpham, long makhachhang, String mau, String size)throws Exception{
+		public int xoaSpTrongGio(long magiohang)throws Exception{
 			KetNoiDao kn = new KetNoiDao();
 			kn.ketnoi();
 			
-			String sql = "delete from GioHang where masanpham = ? and makhachhang = ? and mau = ? and size=? ";
+			String sql = "delete from GioHang where magiohang = ?";
 			PreparedStatement cmd = kn.cn.prepareStatement(sql);
 			
-			cmd.setLong(1, masanpham);
-			cmd.setLong(2, makhachhang);
-			cmd.setString(3, mau);
-			cmd.setString(4, size);
+			cmd.setLong(1, magiohang);
+			
+			int kq = cmd.executeUpdate();
+			cmd.close();
+			kn.cn.close();
+			return kq;
+		}
+		
+		//Xóa sản phẩm trong giỏ
+		public int xoaSpTrongGioTheoMaGioHang(long magiohang)throws Exception{
+			KetNoiDao kn = new KetNoiDao();
+			kn.ketnoi();
+			
+			String sql = "delete from GioHang where magiohang = ?";
+			PreparedStatement cmd = kn.cn.prepareStatement(sql);
+			
+			cmd.setLong(1, magiohang);
 			
 			int kq = cmd.executeUpdate();
 			cmd.close();

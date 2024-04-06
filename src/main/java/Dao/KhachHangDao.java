@@ -78,4 +78,34 @@ public class KhachHangDao {
 		}
 		return 0;
 	}
+	
+	//xử lý điểm tích lũy cho khách hàng	
+	public int capNhatDiem(long makhachhang, long tichdiem) throws Exception{
+		KetNoiDao kn = new KetNoiDao();
+		kn.ketnoi();
+		
+		String sql = "update KhachHang set tichdiem = ? where makhachhang = ?";
+		PreparedStatement cmd = kn.cn.prepareStatement(sql);
+		cmd.setLong(1, tichdiem);
+		cmd.setLong(2, makhachhang);
+		
+		int kq = cmd.executeUpdate();
+		cmd.close();
+		kn.cn.close();
+		return kq;
+	}
+	
+	public long getTichDiem(long makhachhang)throws Exception {
+		KetNoiDao kn= new KetNoiDao();
+		kn.ketnoi();
+		
+		String sql = "select tichdiem from KhachHang where makhachhang= ?";
+		PreparedStatement cdm = kn.cn.prepareStatement(sql);
+		cdm.setLong(1, makhachhang);
+		ResultSet rs = cdm.executeQuery();
+		if(rs.next()) {
+			return rs.getLong("tichdiem");
+		}
+		return 0;
+	}
 }

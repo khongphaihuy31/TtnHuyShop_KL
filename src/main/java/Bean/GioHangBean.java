@@ -1,6 +1,7 @@
 package Bean;
 
 public class GioHangBean extends SanPhamBean{
+	private long magiohang;
 	private long soluongmua;
 	private long thanhtien;
 	private String mausanpham;
@@ -13,7 +14,7 @@ public class GioHangBean extends SanPhamBean{
 	}
 	
 
-	public GioHangBean(long masanpham, String tensanpham, String anh, long giaban, long giagiam, long soluongdaban,
+	public GioHangBean(long magiohang, long masanpham, String tensanpham, String anh, long giaban, long giagiam, long soluongdaban,
 			boolean sanphamhot, String motasanpham, long maloai, long mathuonghieu,
 			long madanhmuc, String anhchonsize,long soluongmua, long thanhtien, String mausanpham, String size,String anhTheoMau) {
 		super(masanpham, tensanpham, anh, giaban, giagiam, soluongdaban, sanphamhot, motasanpham, maloai,
@@ -27,6 +28,7 @@ public class GioHangBean extends SanPhamBean{
 		this.mausanpham = mausanpham;
 		this.size = size;
 		this.anhTheoMau = anhTheoMau;
+		this.magiohang = magiohang;
 	}
 
 	public long getSoluongmua() {
@@ -69,6 +71,16 @@ public class GioHangBean extends SanPhamBean{
 
 	public void setAnhTheoMau(String anhTheoMau) {
 		this.anhTheoMau = anhTheoMau;
+	}
+
+
+	public long getMagiohang() {
+		return magiohang;
+	}
+
+
+	public void setMagiohang(long magiohang) {
+		this.magiohang = magiohang;
 	}
 	
 }

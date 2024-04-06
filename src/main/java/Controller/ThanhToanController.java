@@ -19,6 +19,7 @@ import Bo.GiamGiaBo;
 import Bo.GioHangBo;
 //import Bo.GioHangBo;
 import Bo.HoSoKhachHangBo;
+import Bo.KhachHangBo;
 import Bo.LoaiBo;
 
 /**
@@ -58,17 +59,27 @@ public class ThanhToanController extends HttpServlet {
 				HoSoKhachHangBo hskhbo = new HoSoKhachHangBo();
 				NoiNhanBean noiNhanBean= hskhbo.getNoiNhanHang(khbean.getMakhachhang());
 				if(noiNhanBean != null) {
-					session.setAttribute("noinhan", noiNhanBean);
+					request.setAttribute("noinhan", noiNhanBean);
 				}
 			}
 			
 			
 			GioHangBo sp =  new GioHangBo();
 			if(session.getAttribute("dn")!= null) {
-				ArrayList<GioHangBean> dsgio = new ArrayList<GioHangBean>();
-				dsgio = sp.getSanPhamTrongGio(khbean.getMakhachhang());
-				request.setAttribute("giohang", dsgio);
+				String dsMaGioChon = request.getParameter("dsMaGioChon");
 				
+				ArrayList<GioHangBean> dsgio = new ArrayList<GioHangBean>();
+				if(dsMaGioChon != null) {
+					String dsMagiohang[] = dsMaGioChon.split("/");
+					for(int i=0; i<dsMagiohang.length;i++) {
+						long magiohang = Long.parseLong(dsMagiohang[i]);
+						GioHangBean gh = sp.getSanPhamMua(khbean.getMakhachhang(), magiohang);
+						dsgio.add(gh);
+					}
+				}
+//				dsgio = sp.getSanPhamTrongGio(khbean.getMakhachhang());
+				request.setAttribute("giohang", dsgio);
+				request.setAttribute("dsMaGioChon", dsMaGioChon);
 				long tongtien=0;
 				for(GioHangBean g : dsgio) {
 //					String a = g.getMasanpham()+"/"+g.getMausanpham()+"/"+g.getSize();
@@ -85,6 +96,11 @@ public class ThanhToanController extends HttpServlet {
 				}
 				request.setAttribute("tongtien", tongtien);
 				
+				KhachHangBo khbo = new KhachHangBo();
+				long diemKhachHang = khbo.getTichDiem(khbean.getMakhachhang());
+				System.out.print(diemKhachHang);
+				request.setAttribute("diemKhachHang", diemKhachHang);
+				
 				GiamGiaBo ggbo = new GiamGiaBo();
 				ArrayList<GiamGiaBean> dsgg = new ArrayList<GiamGiaBean>();
 				dsgg = ggbo.getGiamGia();
@@ -93,15 +109,16 @@ public class ThanhToanController extends HttpServlet {
 						tongtien = tongtien - gg.getTiengiam();
 						request.setAttribute("giamgia", -gg.getTiengiam());
 						request.setAttribute("tiensaukhigiamgia", tongtien);
-						long tiengiamdiem1 = tongtien- (khbean.getTichdiem()*1000);
+						long tiengiamdiem1 = tongtien- (diemKhachHang *1000);
 						request.setAttribute("tiengiamdiem1", tiengiamdiem1);
 						break;
 					}
 				}
 				
-				long tiengiamdiem = tongtien- (khbean.getTichdiem()*1000);
+				long tiengiamdiem = tongtien- (diemKhachHang*1000);
 				request.setAttribute("tiengiamdiem", tiengiamdiem);
 			}
+			
 			
 			
 			

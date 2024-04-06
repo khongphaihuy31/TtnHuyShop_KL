@@ -743,7 +743,7 @@ a:hover, a:focus {
 				<h3 style="margin-left: 15px; display: inline-block;"> <b>Phương thức thanh toán</b></h3>
 				<div class="row">
 					<div class="col l-5">
-						<input style="position: relative; top: -8px;" form="thanhtoan" id="nganhang" type="radio" name="thanhtoan" value="nganhang" required> 
+						<input style="position: relative; top: -8px;" form="thanhtoan" id="nganhang" type="radio" name="thanhtoan" value="chuyenkhoan" required> 
 						<label style="font-weight: 500; width: 90%; font-size: 1.6rem;border-radius: 10px;" class="container__col--info-right-info nganhang" for="nganhang">
 							<b>Thanh toán online</b><br>
 							Thanh toán chuyển khoản qua QRCODE
@@ -769,8 +769,8 @@ a:hover, a:focus {
 							<span>Giảm giá</span><br>
 							<c:if test="${dn.getTichdiem() != 0}">
 								<input style="" form="thanhtoan" id="diem" type="checkbox" name="diem"> 
-								<label style=" font-weight: 500;" class="" for="diem">
-									<span style="color: orange;">Đổi ${dn.getTichdiem()} điểm của bạn</span>
+								<label style=" font-weight: 500; margin-bottom: 0px" class="" for="diem">
+									<span style="color: orange;">Đổi ${diemKhachHang} điểm của bạn</span>
 								</label> <br>
 							</c:if>
 							<span> <b>Tổng giá trị đơn hàng</b> </span><br>
@@ -813,12 +813,14 @@ a:hover, a:focus {
 										<fmt:setLocale value="vi_VN"/>
 										<fmt:formatNumber value="${tiensaukhigiamgia}" type="currency"/></b> 
 									</span><br>
+									<input name="tienthanhtoan" form="thanhtoan" type="text" hidden="" value="${tiensaukhigiamgia }">
 								</c:when>
 								<c:otherwise>
 									<span > <b class="tonggia" style="color: red; ">
 										<fmt:setLocale value="vi_VN"/>
 										<fmt:formatNumber value="${tongtien}" type="currency"/></b> 
 									</span><br>
+									<input name="tienthanhtoan" form="thanhtoan" type="text" hidden="" value="${tongtien }">
 								</c:otherwise>
 							</c:choose>
 						</div>
@@ -834,7 +836,7 @@ a:hover, a:focus {
 								document.querySelectorAll('input[id="diem"]').forEach((e)=>{
 							        e.onclick = function(e){
 							        if (this.checked){
-							        	td.innerHTML = "<fmt:setLocale value='vi_VN'/><fmt:formatNumber value='-${dn.getTichdiem()}000' type='currency'/>"
+							        	td.innerHTML = "<fmt:setLocale value='vi_VN'/><fmt:formatNumber value='-${diemKhachHang}000' type='currency'/>"
 						        		tg.innerHTML = "<fmt:setLocale value='vi_VN'/><fmt:formatNumber value='${tiengiamdiem1}' type='currency'/>"
 							        }else{
 							        	td.innerHTML = "<fmt:setLocale value='vi_VN'/><fmt:formatNumber value='0' type='currency'/>"
@@ -851,7 +853,7 @@ a:hover, a:focus {
 								document.querySelectorAll('input[id="diem"]').forEach((e)=>{
 							        e.onclick = function(e){
 							        if (this.checked){
-							        	td.innerHTML = "<fmt:setLocale value='vi_VN'/><fmt:formatNumber value='-${dn.getTichdiem()}000' type='currency'/>"
+							        	td.innerHTML = "<fmt:setLocale value='vi_VN'/><fmt:formatNumber value='-${diemKhachHang}000' type='currency'/>"
 						        		tg.innerHTML = "<fmt:setLocale value='vi_VN'/><fmt:formatNumber value='${tiengiamdiem}' type='currency'/>"
 							        }else{
 							        	td.innerHTML = "<fmt:setLocale value='vi_VN'/><fmt:formatNumber value='0' type='currency'/>"
@@ -863,29 +865,32 @@ a:hover, a:focus {
 					</c:otherwise>
 				</c:choose>
 				
-				
-				<%if(session.getAttribute("noinhan")!= null) {%>
-				<div style="margin-top: 20px;" class="row">
-					<div class="col l-4 text-center">
-					</div>
-					<div class="col l-4 text-center">
-						<input form="thanhtoan" type="text" hidden="" name="donmua" value="1">
-						<button form="thanhtoan" style="padding: 15px 5px; color: var(--text-color); background-color: var(--primary-color); width: 100%; display: block; font-size: 2rem; border: none;" ><b>Xác nhận thanh toán</b> </button>
-					</div>
-					<div class="col l-4 text-center">
-					</div>
-				</div>
-				<%}else{ %>
-				<div style="margin-top: 20px;" class="row">
-					<div class="col l-4 text-center">
-					</div>
-					<div class="col l-4 text-center">
-						<a href="ThanhToanController?nn=null" style="padding: 15px 5px; color: var(--text-color); background-color: var(--primary-color); width: 100%; display: block; font-size: 2rem; border: none;" ><b>Xác nhận thanh toán</b> </a>
-					</div>
-					<div class="col l-4 text-center">
-					</div>
-				</div>
-				<%}%>
+				<c:choose>
+					<c:when test="${noinhan != null }">
+						<div style="margin-top: 20px;" class="row">
+							<div class="col l-4 text-center">
+							</div>
+							<div class="col l-4 text-center">
+								<input form="thanhtoan" type="text" hidden="" name="donmua" value="1">
+								<input form="thanhtoan" type="text" hidden="" name="dsMaGioChon" value="${dsMaGioChon }">
+								<button form="thanhtoan" style="padding: 15px 5px; color: var(--text-color); background-color: var(--primary-color); width: 100%; display: block; font-size: 2rem; border: none;" ><b>Xác nhận thanh toán</b> </button>
+							</div>
+							<div class="col l-4 text-center">
+							</div>
+						</div>
+					</c:when>
+					<c:otherwise>
+						<div style="margin-top: 20px;" class="row">
+							<div class="col l-4 text-center">
+							</div>
+							<div class="col l-4 text-center">
+								<a href="ThanhToanController?nn=null" style="padding: 15px 5px; color: var(--text-color); background-color: var(--primary-color); width: 100%; display: block; font-size: 2rem; border: none;" ><b>Xác nhận thanh toán</b> </a>
+							</div>
+							<div class="col l-4 text-center">
+							</div>
+						</div>
+					</c:otherwise>
+				</c:choose>
 				</div>
 			</div>
 		</div>

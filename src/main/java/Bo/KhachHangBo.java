@@ -17,4 +17,13 @@ public class KhachHangBo {
 	public int dangkikhachhang(String hoten, String diachi, String sodienthoai, String email, String tendangnhap, String matkhau) throws Exception{
 		return khdao.dangkikhachhang(hoten, diachi, sodienthoai, email, tendangnhap, matkhau);
 	}
+	
+//xử lý điểm tích lũy cho khách hàng	
+	public int capNhatDiem(long makhachhang, long tichdiem) throws Exception{
+		return khdao.capNhatDiem(makhachhang, tichdiem);
+	}
+	// Xử lý lấy điểm tích lũy hiện tại
+	public long getTichDiem(long makhachhang)throws Exception {
+		return khdao.getTichDiem(makhachhang);
+	}
 }

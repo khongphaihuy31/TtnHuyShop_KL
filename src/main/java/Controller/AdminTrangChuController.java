@@ -48,7 +48,7 @@ public class AdminTrangChuController extends HttpServlet {
 			//lấy danh sách hóa đơn
 			DonDatHangBo ddhbo = new DonDatHangBo();
 			ArrayList<Long> dshoadon;
-			dshoadon = ddhbo.dshoadon();
+			dshoadon = ddhbo.dshoadonchoxacnhan();
 			request.setAttribute("dshoadon", dshoadon);
 			
 			//lấy danh sách sản phẩm chưa xác nhận
