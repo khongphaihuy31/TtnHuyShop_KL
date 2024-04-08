@@ -20,9 +20,6 @@ public class DonMuaDao {
 		ResultSet rs = cmd.executeQuery();
 		while(rs.next()) {
 			long masanpham = rs.getLong("masanpham");
-			String tensanpham = rs.getString("tensanpham");
-			String anh = rs.getString("anh");
-			long giamoi = rs.getLong("giamoi");
 			long soluongmua = rs.getLong("soluongmua");
 			long makhachhang1 = rs.getLong("makhachhang");
 			long matrangthai = rs.getLong("matrangthai");
@@ -31,9 +28,16 @@ public class DonMuaDao {
 			long thanhtien = rs.getLong("thanhtien");
 			String mausanpham = rs.getString("mausanpham");
 			String sizesanpham = rs.getString("sizesanpham");
-			String hoten = rs.getString("hoten");
+			String anhthietke = rs.getString("anhthietke");
+			long giasanpham = rs.getLong("giasanpham");
+			String tensanpham = rs.getString("tensanpham");
+			String anhsanpham = rs.getString("anhsanpham");
+			boolean phuongthucthanhtoan = rs.getBoolean("phuongthucthanhtoan");
+			boolean thanhtoan = rs.getBoolean("thanhtoan");
+			long tongdongia = rs.getLong("tongdongia");
+			String diachinhanhang = rs.getString("diachinhanhang");
 			
-//			dsSPChoXacNhan.add(new DonMuaBean(masanpham, tensanpham, anh, giamoi, soluongmua, makhachhang1, matrangthai, ngaydat, mahoadon, mausanpham, sizesanpham, thanhtien, hoten));
+			dsSPChoXacNhan.add(new DonMuaBean(masanpham, makhachhang1, matrangthai, ngaydat, mahoadon, soluongmua, mausanpham, sizesanpham, anhthietke, giasanpham, tensanpham, anhsanpham, phuongthucthanhtoan, thanhtoan, tongdongia, thanhtien, diachinhanhang));
 		}
 		return dsSPChoXacNhan;
 	}
@@ -50,9 +54,6 @@ public class DonMuaDao {
 		ResultSet rs = cmd.executeQuery();
 		while(rs.next()) {
 			long masanpham = rs.getLong("masanpham");
-			String tensanpham = rs.getString("tensanpham");
-			String anh = rs.getString("anh");
-			long giamoi = rs.getLong("giamoi");
 			long soluongmua = rs.getLong("soluongmua");
 			long makhachhang1 = rs.getLong("makhachhang");
 			long matrangthai = rs.getLong("matrangthai");
@@ -61,9 +62,16 @@ public class DonMuaDao {
 			long thanhtien = rs.getLong("thanhtien");
 			String mausanpham = rs.getString("mausanpham");
 			String sizesanpham = rs.getString("sizesanpham");
-			String hoten = rs.getString("hoten");
+			String anhthietke = rs.getString("anhthietke");
+			long giasanpham = rs.getLong("giasanpham");
+			String tensanpham = rs.getString("tensanpham");
+			String anhsanpham = rs.getString("anhsanpham");
+			boolean phuongthucthanhtoan = rs.getBoolean("phuongthucthanhtoan");
+			boolean thanhtoan = rs.getBoolean("thanhtoan");
+			long tongdongia = rs.getLong("tongdongia");
+			String diachinhanhang = rs.getString("diachinhanhang");
 			
-//			dsSPDagiao.add(new DonMuaBean(masanpham, tensanpham, anh, giamoi, soluongmua, makhachhang1, matrangthai, ngaydat, mahoadon, mausanpham, sizesanpham, thanhtien, hoten));
+			dsSPDagiao.add(new DonMuaBean(masanpham, makhachhang1, matrangthai, ngaydat, mahoadon, soluongmua, mausanpham, sizesanpham, anhthietke, giasanpham, tensanpham, anhsanpham, phuongthucthanhtoan, thanhtoan, tongdongia, thanhtien, diachinhanhang));
 		}
 		return dsSPDagiao;
 	}
@@ -79,20 +87,24 @@ public class DonMuaDao {
 		ResultSet rs = cmd.executeQuery();
 		while(rs.next()) {
 			long masanpham = rs.getLong("masanpham");
-			String tensanpham = rs.getString("tensanpham");
-			String anh = rs.getString("anh");
-			long giamoi = rs.getLong("giamoi");
 			long soluongmua = rs.getLong("soluongmua");
 			long makhachhang1 = rs.getLong("makhachhang");
 			long matrangthai = rs.getLong("matrangthai");
 			Date ngaydat = rs.getDate("ngaydat");
-			long mahoadon1 = rs.getLong("mahoadon");
+			long mahoadon = rs.getLong("mahoadon");
 			long thanhtien = rs.getLong("thanhtien");
 			String mausanpham = rs.getString("mausanpham");
 			String sizesanpham = rs.getString("sizesanpham");
-			String hoten = rs.getString("hoten");
+			String anhthietke = rs.getString("anhthietke");
+			long giasanpham = rs.getLong("giasanpham");
+			String tensanpham = rs.getString("tensanpham");
+			String anhsanpham = rs.getString("anhsanpham");
+			boolean phuongthucthanhtoan = rs.getBoolean("phuongthucthanhtoan");
+			boolean thanhtoan = rs.getBoolean("thanhtoan");
+			long tongdongia = rs.getLong("tongdongia");
+			String diachinhanhang = rs.getString("diachinhanhang");
 			
-//			dsDonChuaXacNhan.add(new DonMuaBean(masanpham, tensanpham, anh, giamoi, soluongmua, makhachhang1, matrangthai, ngaydat, mahoadon1, mausanpham, sizesanpham, thanhtien, hoten));
+			dsDonChuaXacNhan.add(new DonMuaBean(masanpham, makhachhang1, matrangthai, ngaydat, mahoadon, soluongmua, mausanpham, sizesanpham, anhthietke, giasanpham, tensanpham, anhsanpham, phuongthucthanhtoan, thanhtoan, tongdongia, thanhtien, diachinhanhang));
 		}
 		return dsDonChuaXacNhan;
 	}
@@ -109,9 +121,6 @@ public class DonMuaDao {
 		ResultSet rs = cmd.executeQuery();
 		while(rs.next()) {
 			long masanpham = rs.getLong("masanpham");
-			String tensanpham = rs.getString("tensanpham");
-			String anh = rs.getString("anh");
-			long giamoi = rs.getLong("giamoi");
 			long soluongmua = rs.getLong("soluongmua");
 			long makhachhang1 = rs.getLong("makhachhang");
 			long matrangthai = rs.getLong("matrangthai");
@@ -120,9 +129,16 @@ public class DonMuaDao {
 			long thanhtien = rs.getLong("thanhtien");
 			String mausanpham = rs.getString("mausanpham");
 			String sizesanpham = rs.getString("sizesanpham");
-			String hoten = rs.getString("hoten");
+			String anhthietke = rs.getString("anhthietke");
+			long giasanpham = rs.getLong("giasanpham");
+			String tensanpham = rs.getString("tensanpham");
+			String anhsanpham = rs.getString("anhsanpham");
+			boolean phuongthucthanhtoan = rs.getBoolean("phuongthucthanhtoan");
+			boolean thanhtoan = rs.getBoolean("thanhtoan");
+			long tongdongia = rs.getLong("tongdongia");
+			String diachinhanhang = rs.getString("diachinhanhang");
 			
-//			dsDonChuaXacNhan.add(new DonMuaBean(masanpham, tensanpham, anh, giamoi, soluongmua, makhachhang1, matrangthai, ngaydat, mahoadon1, mausanpham, sizesanpham, thanhtien, hoten));
+			dsDonChuaXacNhan.add(new DonMuaBean(masanpham, makhachhang1, matrangthai, ngaydat, mahoadon1, soluongmua, mausanpham, sizesanpham, anhthietke, giasanpham, tensanpham, anhsanpham, phuongthucthanhtoan, thanhtoan, tongdongia, thanhtien, diachinhanhang));
 		}
 		return dsDonChuaXacNhan;
 	}

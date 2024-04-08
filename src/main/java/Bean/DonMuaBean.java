@@ -18,6 +18,7 @@ public class DonMuaBean {
 	private boolean phuongthucthanhtoan;
 	private boolean thanhtoan;
 	private long tongdongia;
+	private long thanhtien;
 	private String diachinhanhang;
 	
 	
@@ -29,7 +30,7 @@ public class DonMuaBean {
 
 	public DonMuaBean(long masanpham, long makhachhang, long matrangthai, Date ngaydat, long mahoadon, long soluongmua,
 			String mausanpham, String sizesanpham, String anhthietke, long giasanpham, String tensanpham,
-			String anhsanpham, boolean phuongthucthanhtoan, boolean thanhtoan, long tongdongia, String diachinhanhang) {
+			String anhsanpham, boolean phuongthucthanhtoan, boolean thanhtoan, long tongdongia, long thanhtien, String diachinhanhang) {
 		super();
 		this.masanpham = masanpham;
 		this.makhachhang = makhachhang;
@@ -46,6 +47,7 @@ public class DonMuaBean {
 		this.phuongthucthanhtoan = phuongthucthanhtoan;
 		this.thanhtoan = thanhtoan;
 		this.tongdongia = tongdongia;
+		this.thanhtien = thanhtien;
 		this.diachinhanhang = diachinhanhang;
 	}
 
@@ -197,6 +199,15 @@ public class DonMuaBean {
 
 	public void setTongdongia(long tongdongia) {
 		this.tongdongia = tongdongia;
+	}
+
+	public long getThanhtien() {
+		return thanhtien;
+	}
+
+
+	public void setThanhtien(long thanhtien) {
+		this.thanhtien = thanhtien;
 	}
 
 
