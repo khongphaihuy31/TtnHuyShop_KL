@@ -385,7 +385,7 @@ a:hover, a:focus {
 										class="header__cart-icon fa-sharp fa-solid fa-cart-shopping"></i></a>
 
 									<c:choose>
-										<c:when test="${giohang.size() ==0}">
+										<c:when test="${giohang.size() ==0 || giohang== null}">
 											<div class="header__cart-list">
 												<img src="./assets/img/no-cart.png" alt=""
 													class="header__cart-img">
@@ -410,16 +410,18 @@ a:hover, a:focus {
 																<c:when test="${gh.getGiagiam()==0}">
 																	<td width="100"
 																		style="font-size: 1.4rem; color: var(--primary-color);"><b>
-																			<fmt:setLocale value="vi_VN" /> <fmt:formatNumber
-																				value="${gh.getGiaban()}" type="currency" />
-																	</b></td>
+																			<fmt:setLocale value="vi_VN"/>
+																			<fmt:formatNumber value="${gh.getGiaban()}" type="currency"/>
+																		</b>
+																	</td>
 																</c:when>
 																<c:otherwise>
 																	<td width="100"
 																		style="font-size: 1.4rem; color: var(--primary-color);"><b>
-																			<fmt:setLocale value="vi_VN" /> <fmt:formatNumber
-																				value="${gh.getGiagiam()}" type="currency" />
-																	</b></td>
+																			<fmt:setLocale value="vi_VN"/>
+																			<fmt:formatNumber value="${gh.getGiagiam()}" type="currency"/>
+																		</b>
+																	</td>
 																</c:otherwise>
 															</c:choose>
 														</tr>

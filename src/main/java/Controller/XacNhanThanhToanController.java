@@ -16,6 +16,7 @@ import Bean.GioHangBean;
 import Bean.KhachHangBean;
 import Bean.NoiNhanBean;
 import Bean.TichDiemBean;
+import Bo.ChiTietSanPhamBo;
 import Bo.DonDatHangBo;
 import Bo.DonHangChiTietBo;
 import Bo.GioHangBo;
@@ -105,8 +106,12 @@ public class XacNhanThanhToanController extends HttpServlet {
 						dsgio.add(gh);
 					}
 				}
-
+				
+				ChiTietSanPhamBo ctspbo = new ChiTietSanPhamBo();
 				for (GioHangBean spbean : dsgio) {
+					long soluong = ctspbo.getSoluongTrongKho(spbean.getMasanpham(), spbean.getMausanpham(), spbean.getSize());
+					long soluongconlai = soluong - spbean.getSoluongmua();
+					ctspbo.suaSoHangTrongKho(spbean.getMasanpham(), spbean.getMausanpham(), spbean.getSize(), soluongconlai);
 					if (spbean.getGiagiam() == 0) {
 						dhctbo.themChiTietHD(madonvuathem, spbean.getMasanpham(), spbean.getSoluongmua(),
 								spbean.getMausanpham(), spbean.getSize(), null, spbean.getGiaban(),

@@ -16,4 +16,14 @@ public class ChiTietSanPhamBo {
 	public ArrayList<String> getdsChiTietSP(long masanpham)throws Exception{
 		return chiTietSanPhamDao.getdsChiTietSP(masanpham);
 	}
+	
+	//Xử lý cập nhật số lượng hàng trong kho
+	public int suaSoHangTrongKho(long masanpham, String mau, String size, long soluong) throws Exception{
+		return chiTietSanPhamDao.suaSoHangTrongKho(masanpham, mau, size, soluong);
+	}
+	
+	//xử lý lấy số lượng sản phẩm trong kho theo mã, màu và size
+	public long getSoluongTrongKho(long masanpham, String mau, String size) throws Exception{
+		return chiTietSanPhamDao.getSoluongTrongKho(masanpham, mau, size);
+	}
 }
