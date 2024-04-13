@@ -83,6 +83,7 @@ public class XacNhanThanhToanController extends HttpServlet {
 						if (tienthanhtoan >= tdbean.getDieukien()) {
 							long diemcong = khbo.getTichDiem(khbean.getMakhachhang()) + tdbean.getDiemcong();
 							khbo.capNhatDiem(khbean.getMakhachhang(), diemcong);
+							break;
 						}
 					}
 				}

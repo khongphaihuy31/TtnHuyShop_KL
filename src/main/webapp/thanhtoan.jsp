@@ -739,10 +739,9 @@ a:hover, a:focus {
 					</c:otherwise>
 				</c:choose>
 				
-				
 				<h3 style="margin-left: 15px; display: inline-block;"> <b>Phương thức thanh toán</b></h3>
 				<div class="row">
-					<div class="col l-5">
+					<div class="col l-5" id="ttOnline">
 						<input style="position: relative; top: -8px;" form="thanhtoan" id="nganhang" type="radio" name="thanhtoan" value="chuyenkhoan" required> 
 						<label style="font-weight: 500; width: 90%; font-size: 1.6rem;border-radius: 10px;" class="container__col--info-right-info nganhang" for="nganhang">
 							<b>Thanh toán online</b><br>
@@ -751,7 +750,7 @@ a:hover, a:focus {
 					</div>
 					<div class="col l-2">
 					</div>
-					<div class="col l-5">
+					<div class="col l-5" id="ttTiemMat">
 						<input style="position: relative; top: -8px; " form="thanhtoan" id="tienmat" type="radio" name="thanhtoan" value="tienmat" required> 
 						<label style="font-weight: 500; width: 90%; font-size: 1.6rem;border-radius: 10px;" class="container__col--info-right-info tienmat" for="tienmat">
 							<b>Trả tiền mặt</b><br>
@@ -759,6 +758,18 @@ a:hover, a:focus {
 						</label>
 					</div>
 				</div>
+				<p class="ms-ttOnline" style="display:none;font-size: 25px; color: red; margin: 10px 0 0 20px; font-weight: bold;">Chú ý: <span style="color: var(--primary-color); font-size: 20px;">Không thoát khỏi trang trong quá trình thanh toán đến khi thanh toán thành công.</span></p>
+				<script type="text/javascript">
+					var ttOn = document.querySelector('#ttOnline');
+					var msOn = document.querySelector('.ms-ttOnline');
+					var ttTiemMat = document.querySelector('#ttTiemMat');
+					ttOn.addEventListener('click',()=>{
+						msOn.style = "display: block;font-size: 25px; color: red; margin: 10px 0 0 20px; font-weight: bold;";
+					    })
+					ttTiemMat.addEventListener('click',()=>{
+						msOn.style = "display: none;";
+					    })
+				</script>
 				<c:if test="${giohang != null }">
 					<div class="row" style="margin-top: 30px; border-top: 1px solid var(--primary-color); padding-top: 20px; margin-left: 20px; margin-right: 20px;">
 						<div class="col l-2">

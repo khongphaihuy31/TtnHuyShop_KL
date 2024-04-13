@@ -35,4 +35,9 @@ public class SanPhamBo {
 	public ArrayList<SanPhamBean> getSanPhamUaThich()throws Exception{
 		return spdao.getSanPhamUaThich();
 	}
+	
+//	Lấy sản phẩm theo mã sản phẩm
+	public SanPhamBean getSanPham(long msp)throws Exception{
+		return spdao.getSanPham(msp);
+	}
 }

@@ -37,6 +37,37 @@ public class SanPhamDao {
 		return dsSanPhamHot;
 	}
 	
+//	Lấy sản phẩm theo mã sản phẩm
+	public SanPhamBean getSanPham(long msp)throws Exception{
+		SanPhamBean sp = new SanPhamBean();
+		KetNoiDao kn = new KetNoiDao();
+		kn.ketnoi();
+		
+		String sql = "select * from SanPham where masanpham = ?";
+		
+		PreparedStatement cmd = kn.cn.prepareStatement(sql);
+		cmd.setLong(1, msp);
+		ResultSet rs = cmd.executeQuery();
+		if(rs.next()) {
+			long masanpham = rs.getLong("masanpham");
+			String tensanpham = rs.getString("tensanpham");
+			String anh = rs.getString("anh");
+			long giaban = rs.getLong("giaban");
+			long giagiam = rs.getLong("giagiam");
+			String anhchonsize = rs.getString("anhchonsize");
+			long soluongdaban = rs.getLong("soluongdaban");
+			boolean sanphamhot = rs.getBoolean("sanphamhot");
+			String motasanpham = rs.getString("motasanpham");
+			long maloai = rs.getLong("maloai");
+			long mathuonghieu = rs.getLong("mathuonghieu");
+			long madanhmuc = rs.getLong("madanhmuc");
+			
+			sp = new SanPhamBean(masanpham, tensanpham, anh, giaban, giagiam, soluongdaban, sanphamhot, motasanpham, maloai, mathuonghieu, madanhmuc, anhchonsize);
+			
+		}
+		return sp;
+	}
+	
 // Lấy các sản phẩm theo mã loại và mã danh mục
 	public ArrayList<SanPhamBean> getSanPhamLoaiTrongDanhMuc(long maloai, long madanhmuc , long mathuonghieu)throws Exception{
 		ArrayList<SanPhamBean> dsSanPhamLoaiTrongDanhMuc = new ArrayList<SanPhamBean>();

@@ -2,6 +2,7 @@ package Bo;
 
 import java.util.ArrayList;
 
+import Bean.LoaiBean;
 import Bean.LoaiThuocDanhMucBean;
 import Bean.ThuongHieuBean;
 import Dao.LoaiDao;
@@ -31,5 +32,10 @@ public class LoaiBo {
 	//Lấy loại trong danh mục trẻ em
 	public ArrayList<LoaiThuocDanhMucBean> getTenLoaiDMTreEm() throws Exception{
 		return ldao.getTenLoaiDMTreEm();
+	}
+	
+	//Lấy danh sách loại
+	public ArrayList<LoaiBean> getDsLoai() throws Exception{
+		return ldao.getDsLoai();
 	}
 }

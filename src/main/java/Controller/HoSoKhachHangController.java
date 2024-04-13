@@ -16,8 +16,10 @@ import Bean.GioHangBean;
 import Bean.KhachHangBean;
 import Bean.NoiNhanBean;
 import Bo.DonMuaBo;
+import Bo.GioHangBo;
 //import Bo.GioHangBo;
 import Bo.HoSoKhachHangBo;
+import Bo.KhachHangBo;
 import Bo.LoaiBo;
 
 /**
@@ -101,7 +103,11 @@ public class HoSoKhachHangController extends HttpServlet {
 			
 			HttpSession session = request.getSession();
 			HoSoKhachHangBo hskhbo = new HoSoKhachHangBo();
-			KhachHangBean khbean = (KhachHangBean)session.getAttribute("dn");
+			KhachHangBean kh = (KhachHangBean)session.getAttribute("dn");
+			KhachHangBo khbo = new KhachHangBo();
+			KhachHangBean khbean = khbo.ktradangnhap(kh.getTendangnhap(),kh.getMatkhau());
+			session.removeAttribute("dn");
+			session.setAttribute("dn", khbean);
 			if(khbean != null) {
 				NoiNhanBean noiNhanBean= hskhbo.getNoiNhanHang(khbean.getMakhachhang());
 				if(noiNhanBean != null) {
@@ -117,6 +123,14 @@ public class HoSoKhachHangController extends HttpServlet {
 			ArrayList<DonMuaBean> dsSPDaGiao = dmbo.getSPDagiao(khbean.getMakhachhang());
 			request.setAttribute("dsSPDaGiao", dsSPDaGiao);
 			
+			
+			GioHangBo ghbo = new GioHangBo();
+			if(session.getAttribute("dn")!= null) {			
+				request.setAttribute("giohang", ghbo.getSanPhamTrongGio(khbean.getMakhachhang()));
+			}else {
+				ArrayList<GioHangBean> giohang = null;
+				request.setAttribute("giohang", giohang);
+			}
 			
 //			GioHangBo sp;
 //			ArrayList<GioHangBean> dsSP = null;

@@ -159,6 +159,246 @@ input:checked + label{
     border: 1px solid var(--primary-color);
 }
 
+/* Import Google font - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+.container1{
+  padding: 30px 35px 35px;
+  background: #9fdbe4;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.container2{
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px #9fdbe4;
+  padding: 30px 20px 20px;
+}
+/* .container1.disable .editor-panel,
+.container1.disable .controls .reset-filter, */
+.container1.disable .controls .save-img{
+  opacity: 0.5;
+  pointer-events: none;
+}
+.container1 h2{
+  margin-top: -8px;
+  font-size: 22px;
+  font-weight: 500;
+}
+.container1 .wrapper{
+  display: flex;
+  min-height: 335px;
+  width: 100%;
+}
+.wrapper .editor-panel{
+  padding: 15px 0 15px 20px;
+  width: 50%;
+  border-radius: 5px;
+}
+#white:checked ~ .white{
+  color: var(--text-color);
+  background-color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+}
+.editor-panel .title{
+  display: block;
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+.editor-panel .options, .controls{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.editor-panel button{
+  outline: none;
+  height: 40px;
+  font-size: 14px;
+  color: #6C757D;
+  background: #fff;
+  border-radius: 3px;
+  margin-bottom: 8px;
+  border: 1px solid #aaa;
+}
+.editor-panel .filter button{
+  width: calc(100% / 2 - 4px);
+}
+.editor-panel button:hover{
+  background: #f5f5f5;
+}
+.filter button.active{
+  color: #fff;
+  border-color: #5372F0;
+  background: #5372F0;
+}
+.filter .slider{
+  margin-top: 12px;
+}
+.filter .slider .filter-info{
+  display: flex;
+  color: #464646;
+  font-size: 14px;
+  justify-content: space-between;
+}
+.filter .slider input{
+  width: 100%;
+  height: 5px;
+  accent-color: #5372F0;
+}
+.editor-panel .rotate{
+  margin-top: 17px;
+}
+.editor-panel .rotate button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(100% / 4 - 3px);
+}
+.rotate .options button:nth-child(3),
+.rotate .options button:nth-child(4){
+  font-size: 18px;
+}
+.rotate .options button:active{
+  color: #fff;
+  background: #5372F0;
+  border-color: #5372F0;
+}
+.wrapper .preview-img{
+  /* flex-grow: 1;
+  display: flex; */
+  overflow: hidden;
+  /* margin-left: 20px; */
+  border-radius: 5px;
+  position: absolute;
+  top: 9%;
+    left: 10%;
+}
+.designImg{
+  width: 50%;
+}
+.img-ao{
+  width: 100%;
+  object-fit: contain;
+}
+.preview-img {
+  max-width: 160px;
+  max-height: 182px;
+  width: 160px;
+  height: 182px;
+  border: #ccc solid 1px;
+}
+.preview-img img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+@media (min-width: 1023px) and (max-width:1238px){
+  .preview-img{
+    max-width: 128px !important;
+    max-height: 145px !important;
+  }
+}
+
+@media (min-width:740px) and (max-width: 1023px){
+  .preview-img{
+    max-width: 128px !important;
+    max-height: 145px !important;
+  }
+  .container2{
+    margin-right: 10px ;
+    margin-bottom: 10px;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .preview-img{
+    max-width: 125px !important; 
+    max-height: 141px !important;
+  }
+  .container2{
+    margin-right: 10px ;
+    margin-bottom: 10px;
+  }
+}
+
+@media screen and (max-width: 655px) {
+  .preview-img{
+    max-width: 120px !important; 
+    max-height: 136px !important;
+  }
+}
+@media screen and (max-width: 555px) {
+  .preview-img{
+    max-width: 105px !important; 
+    max-height: 119px !important;
+  }
+}
+
+@media screen and (max-width: 455px) {
+  .preview-img{
+    max-width: 83px !important; 
+    max-height: 94px !important;
+  }
+}
+.controls button{
+  padding: 11px 20px;
+  font-size: 14px;
+  border-radius: 3px;
+  outline: none;
+  color: #fff;
+  cursor: pointer;
+  background: none;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+.controls .reset-filter{
+  color: #6C757D;
+  border: 1px solid #6C757D;
+}
+.controls .reset-filter:hover{
+  color: #fff;
+  background: #6C757D;
+}
+.controls .choose-img{
+  background: #6C757D;
+  border: 1px solid #6C757D;
+}
+.controls .save-img{
+  background: #5372F0;
+  border: 1px solid #5372F0;
+}
+
+@media screen and (max-width: 760px) {
+  .container1{
+    padding: 25px;
+  }
+  .container1 .wrapper{
+    flex-wrap: wrap;
+  }
+  .wrapper .editor-panel{
+    width: 100%;
+  }
+  .wrapper .preview-img{
+    margin: 0 0 15px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .controls button{
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .controls .row{
+    width: 100%;
+  }
+  .controls .row .save-img{
+    margin-left: 0px;
+  }
+}
+
 @media (max-width:739px){
 	.header-with-search span{
 		line-height: 20px;
@@ -666,323 +906,335 @@ input:checked + label{
 		</header>
 
 		<!-- Container -->
-		<div class="container">
-			<div class="grid wide">
+		<div style="width: 100%;" class="container">
+			<div class="grid">
 				<div class="row container__row">
-					<div class="container__col col l-5 c-12 m-12">
-						<img src="${anh }" alt="" class="container__col-img detail-img-js">
-					</div>
-					<div class="container__col container__col--info col l-7 c-12 m-12">
-						<h4
-							style="text-align: left; font-size: 2.4rem; margin: 15px 0 10px 0; line-height: 3rem; font-weight: 500; height: 6rem; overflow: hidden; display: block; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2;"
-							class="product-item__name detail-name-product-js">
-							<c:out value="${tensanpham }"></c:out>
-						</h4>
-						<div class="product-item__action-detail">
-							<span class="product-item__rating"> <i
-								class="product-item__start-gold fa-solid fa-star"></i> <i
-								class="product-item__start-gold fa-solid fa-star"></i> <i
-								class="product-item__start-gold fa-solid fa-star"></i> <i
-								class="product-item__start-gold fa-solid fa-star"></i> <i
-								class="fa-solid fa-star"></i>
-							</span> <span class="product-item__review-count">(20)</span>
-						</div>
-						<div class="product-sold">
-							<c:out value="${ soluongdaban}"></c:out>
-							<span class="product-sold-text">Đã bán</span>
-						</div>
-						<div class="product-item__price-detail" style="display: flex; align-items: center;">
-							<c:choose>
-								<c:when test="${giagiam ==0 }">
-									<span
-										class="product-item__price-current product-item__price-current-detail detail-price-current-js">
-										<fmt:setLocale value="vi_VN"/>
-										<fmt:formatNumber value="${giaban }" type="currency"/>
-										</span>
-								</c:when>
-								
-								<c:otherwise>
-									<span style="width: 25%; display: inline-block;margin: 0;"
-										class="product-item__price-current product-item__price-current-detail detail-price-current-js">
-										<fmt:setLocale value="vi_VN"/>
-										<fmt:formatNumber value="${giaban }" type="currency"/>
-										</span>
-									<span style="width: 40%;display: inline-block;margin: 0 0 0 20px; font-size: 30px;"
-										class="product-item__price-old product-item__price-old-detail detail-price-old-js">
-										<fmt:setLocale value="vi_VN"/>
-										<fmt:formatNumber value="${giagiam }" type="currency"/>
-										</span>
-								</c:otherwise>
-							</c:choose>
-						</div>
-
-						<div class="container__row-info row">
-							<div class="container__col--info-left col l-4 m-4 c-4">
-								<span class="container__col--info-left-text">Vận Chuyển</span>
-							</div>
-							<div class="container__col--info-right col l-8 m-8 c-8">
-								<img
-									src="https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/74f3e9ac01da8565c3baead996ed6e2a.png"
-									height="17" alt="" class="container__col--info-right-img">
-								<span class="container__col--info-right-info-text">Miễn
-									phí vận chuyển</span>
-							</div>
-						</div>
-
-						<div class="container__row-info row">
-							<div class="container__col--info-left col l-4 m-4 c-4">
-								<span class="container__col--info-left-text">Màu</span>
-							</div>
-							<div style="line-height: 2rem;"
-								class="container__col--info-right container__col--info-rightMau col l-8 m-8 c-8">
+					<div class="container__col col l-3 c-12 m-4">
+                        <div class="container2">
+                            <h2 style="font-size: 20px;margin-bottom: 10px;line-height: 25px;">Hướng dẫn mua áo tự thiết
+                                kế</h2>
+                            <p style="font-size: 15px;margin-left: 10px; margin-bottom: 5px;"><span
+                                    style="color: red;">B1:</span> Thiết kế ảnh(tự thiết kế)</p>
+                            <p style="font-size: 15px;margin-left: 10px;margin-bottom: 5px;"><span
+                                    style="color: red;">B2:</span> Up ảnh lên</p>
+                            <p style="font-size: 15px;margin-left: 10px;margin-bottom: 5px;"><span
+                                    style="color: red;">B3:</span> Chọn mua và thanh toán</p>
+                            <h3 style="font-size: 15px;color: var(--primary-color); margin-bottom: 5px;">Các lưu ý khi
+                                design áo <span style="color: red;">(*)</span>:</h3>
+                            <ul style="font-size: 14px;margin-left: 20px;margin-bottom: 5px;">
+                                <li style="margin-bottom: 5px;">Ảnh thiết kế có kích thước: 4500 x 5100 (px).</li>
+                                <li style="margin-bottom: 5px;">Up ảnh một cách rõ nét nhất.</li>
+                                <li style="margin-bottom: 5px;">Có thể vào canva để thiết kế ảnh dễ dàng và thuận tiện.
+                                </li>
+                                <li style="margin-bottom: 5px;">Nếu mua nhiều hơn 50 áo có thể liên hệ qua hotline:
+                                    0985243520 (để được tư vấn và đặt mua một cách dễ dàng).</li>
+                            </ul>
+                        </div>
+                    </div>
+					<div class="container__col container__col--info col l-9 c-12 m-8">
+						<div class="container1 disable container1__col">
+                            <div class="wrapper">
+                            	<div style="position: relative; height: fit-content;" class="designImg">
+                                    <img id="" class="img-ao detail-img-js" src="${spChon.getAnh() }" alt="preview-img">
+                                    <div style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%); display: flex; justify-content: center; align-items: center;"
+                                        class="preview-img">
+                                        <img style="display: none;" class="previewImgDesign" src="" alt="preview-img">
+                                        <span class="icon-upload" style="display: flex; text-align: center; font-size: 20px;color: var(--primary-color);font-weight: bold;width: 100%;flex-direction: column;height: 100%;justify-content: center; cursor: pointer;"><i style="font-size: 50px; margin-bottom: 20px;" class="fa-solid fa-upload"></i> <br>Tải ảnh lên</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="editor-panel">
+							<h4
+								style="text-align: left; font-size: 2.4rem; margin: 15px 0 10px 0; line-height: 3rem; font-weight: 500; height: 6rem; overflow: hidden; display: block; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2;"
+								class="product-item__name detail-name-product-js">
+								<c:out value="${spChon.getTensanpham() }"></c:out>
+							</h4>
+							<div class="product-item__price-detail" style="display: flex; align-items: center;">
 								<c:choose>
-									<c:when test="${listAnhVaMau.size() ==0 }">
-										<input hidden form="soluongmua" id="white" type="radio"
-											name="mau" value="Trắng" required> <label
-											style="font-weight: 500;"
-											class="container__col--info-right-info white" for="white">Trắng</label>
-										<input hidden form="soluongmua" id="black" type="radio"
-											name="mau" value="Đen"> <label
-											style="font-weight: 500;"
-											class="container__col--info-right-info black" for="black">Đen</label>
-										<input hidden form="soluongmua" id="kem" type="radio" name="mau"
-											value="Kem"> <label style="font-weight: 500;"
-											class="container__col--info-right-info kem" for="kem">Kem</label>
-										<input hidden form="soluongmua" id="grey" type="radio"
-											name="mau" value="Xám"> <label
-											style="font-weight: 500;"
-											class="container__col--info-right-info grey" for="grey">Xám</label>
-										<input hidden form="soluongmua" id="brown" type="radio"
-											name="mau" value="Nâu"> <label
-											style="font-weight: 500;"
-											class="container__col--info-right-info brown" for="brown">Nâu</label>
+									<c:when test="${spChon.getGiagiam() ==0 }">
+										<span
+											class="product-item__price-current product-item__price-current-detail detail-price-current-js">
+											<fmt:setLocale value="vi_VN"/>
+											<fmt:formatNumber value="${spChon.getGiaban() }" type="currency"/>
+											</span>
 									</c:when>
+									
 									<c:otherwise>
-										<c:forEach items="${listAnhVaMau }" var="m">
-											<input hidden form="soluongmua" id="mau${m.getMauString()}"
-								            type="radio" name="mau" value="${m.getMauString()}"required> <label
-								            style="font-weight: 500;"
-								            class="container__col--info-right-info mau${m.getMauString()}" for="mau${m.getMauString()}">${m.getMauString()}</label>
-										</c:forEach>
+										<span style="width: 25%; display: inline-block;margin: 0;"
+											class="product-item__price-current product-item__price-current-detail detail-price-current-js">
+											<fmt:setLocale value="vi_VN"/>
+											<fmt:formatNumber value="${spChon.getGiaban() }" type="currency"/>
+											</span>
+										<span style="width: 40%;display: inline-block;margin: 0 0 0 20px; font-size: 30px;"
+											class="product-item__price-old product-item__price-old-detail detail-price-old-js">
+											<fmt:setLocale value="vi_VN"/>
+											<fmt:formatNumber value="${spChon.getGiagiam() }" type="currency"/>
+											</span>
 									</c:otherwise>
 								</c:choose>
 							</div>
-						</div>
-
-						<div class="container__row-info row">
-							<div class="container__col--info-left col l-4 m-4 c-4">
-								<span class="container__col--info-left-text">Size</span>
-							</div>
-							<div style="line-height: 2rem;"
-								class="container__col--info-right col l-8 m-8 c-8">
-								<c:choose>
-									<c:when test="${listSize.size() ==0 }">
-										<input hidden form="soluongmua" id="M" type="radio" name="size"
-											value="M" required> <label style="font-weight: 500;"
-											class="container__col--info-right-info M" for="M">M</label> <input
-											hidden form="soluongmua" id="L" type="radio" name="size"
-											value="L"> <label style="font-weight: 500;"
-											class="container__col--info-right-info L" for="L">L</label> <input
-											hidden form="soluongmua" id="X" type="radio" name="size"
-											value="X"> <label style="font-weight: 500;"
-											class="container__col--info-right-info X" for="X">X</label> <input
-											hidden form="soluongmua" id="XL" type="radio" name="size"
-											value="XL"> <label style="font-weight: 500;"
-											class="container__col--info-right-info XL" for="XL">XL</label>
-										<input hidden form="soluongmua" id="XXL" type="radio"
-											name="size" value="XXL"> <label
-											style="font-weight: 500;"
-											class="container__col--info-right-info XXL" for="XXL">XXL</label>
-									</c:when>
-									<c:otherwise>
-										<c:forEach items="${listSize }" var="s">
-											<input hidden form="soluongmua" id="size${s}"
-								            type="radio" name="size" value="${s}"required> <label
-								            style="font-weight: 500;"
-								            class="container__col--info-right-info size${s}" for="size${s}">${s}</label>
-										</c:forEach>
-									</c:otherwise>
-								</c:choose>
-
-							</div>
-						</div>
-
-						<form id="soluongmua"
-							action="GioHangController?ht=1&msp=${masanpham }&tsp=${tensanpham }&anh=${anh }&gb=${giaban }&gg=${giagiam }&sldb=${soluongdaban }&mtsp=${motasanpham }&ml=${maloai }&mth=${mathuonghieu }&mdm=${madanhmuc}&acs=${anhchonsize}"
-							method="post"></form>
-						<div class="container__row-info row">
-							<div class="container__col--info-left col l-4 m-4 c-4">
-								<span class="container__col--info-left-text">Số lượng</span>
-							</div>
-							<div class="container__col--info-right col l-8 m-8 c-8">
-								<div class="input--quantity">
-									<button class="input--quantity__down down-js">
-										<i class="input--quantity__down-icon fa-solid fa-minus"></i>
-									</button>
-									<input form="soluongmua" type="text"
-										class="input--quantity__show input--quantity__show-js"
-										name="soluongmua" value="1" role="spinbutton"
-										aria-valuenow="1">
-									<button class="input--quantity__up up-js">
-										<i class="input--quantity__up-icon fa-solid fa-plus"></i>
-									</button>
-									<span style="color: var(--primary-color); margin-left: 10px" class="soluongsp"></span>
-									<p class="thongbaosp" style="color: red;font-size: 14px;line-height: 1.42857143"></p>
+							<div class="container__row-info row">
+								<div class="container__col--info-left col l-4 m-4 c-4">
+									<span class="container__col--info-left-text">Vận Chuyển</span>
+								</div>
+								<div class="container__col--info-right col l-8 m-8 c-8">
+									<img
+										src="https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/74f3e9ac01da8565c3baead996ed6e2a.png"
+										height="17" alt="" class="container__col--info-right-img">
+									<span class="container__col--info-right-info-text">Miễn
+										phí vận chuyển</span>
 								</div>
 							</div>
-						</div>
-						
-						<script type="text/javascript">
-							const listCT = ${listCT};
-						    var tongSpTrongKho = 0;
-							for(var i=0;i<listCT.length;i++){
-					            mang = listCT[i].split("/");
-					            tongSpTrongKho += parseInt(mang[2],10) 
-					        }
-					        const soluongsp =  document.querySelector('.soluongsp');
-					        soluongsp.innerHTML = tongSpTrongKho + ' sản phẩm sẵn có.'
-						</script>
-						<script type="text/javascript">
-							var thuoctinhmau = false;
-						    var thuoctinhsize = false;
-						    var mauchon;
-						    var sizechon;
-						    
-						    document.querySelectorAll('input[name="mau"]').forEach((e)=>{
-						        e.onclick = function(e){
-						        if (this.checked){
-						            thuoctinhmau = false
-						            if(thuoctinhmau == false){
-						                thuoctinhmau = true;
-						                mauchon = this.value;
-						                var listAnhVaMau = ${listAnhVaMauJs};
-						                for(var i=0;i<listAnhVaMau.length;i++){
-								            mang = listAnhVaMau[i].split("<");
-								            if(mauchon === mang[0]){
-								            	var detailImgJs =  document.querySelector('.detail-img-js');
-								            	detailImgJs.src = mang[1];
-								            }
-								        }
-						            }
-						            if(thuoctinhmau == true && thuoctinhsize == true){
-						                for(var i=0;i<listCT.length;i++){
-						                    mang = listCT[i].split("/");
-						                        if(mang[0]===mauchon && mang[1]=== sizechon){
-						                            tongSpTrongKho = parseInt(mang[2],10) 
-						                            break;
-						                        }else{
-						                            tongSpTrongKho = 0
-						                        }
-						                }
-						                const soluongsp =  document.querySelector('.soluongsp');
-						                if(tongSpTrongKho ==0){
+							<div class="container__row-info row">
+								<div class="container__col--info-left col l-4 m-4 c-4">
+									<span class="container__col--info-left-text">Màu</span>
+								</div>
+								<div style="line-height: 2rem;"
+									class="container__col--info-right container__col--info-rightMau col l-8 m-8 c-8">
+									<c:choose>
+										<c:when test="${listAnhVaMau.size() ==0 }">
+											<input hidden form="soluongmua" id="white" type="radio"
+												name="mau" value="Trắng" required> <label
+												style="font-weight: 500;"
+												class="container__col--info-right-info white" for="white">Trắng</label>
+											<input hidden form="soluongmua" id="black" type="radio"
+												name="mau" value="Đen"> <label
+												style="font-weight: 500;"
+												class="container__col--info-right-info black" for="black">Đen</label>
+											<input hidden form="soluongmua" id="kem" type="radio" name="mau"
+												value="Kem"> <label style="font-weight: 500;"
+												class="container__col--info-right-info kem" for="kem">Kem</label>
+											<input hidden form="soluongmua" id="grey" type="radio"
+												name="mau" value="Xám"> <label
+												style="font-weight: 500;"
+												class="container__col--info-right-info grey" for="grey">Xám</label>
+											<input hidden form="soluongmua" id="brown" type="radio"
+												name="mau" value="Nâu"> <label
+												style="font-weight: 500;"
+												class="container__col--info-right-info brown" for="brown">Nâu</label>
+										</c:when>
+										<c:otherwise>
+											<c:forEach items="${listAnhVaMau }" var="m">
+												<input hidden form="soluongmua" id="mau${m.getMauString()}"
+									            type="radio" name="mau" value="${m.getMauString()}"required> <label
+									            style="font-weight: 500;"
+									            class="container__col--info-right-info mau${m.getMauString()}" for="mau${m.getMauString()}">${m.getMauString()}</label>
+											</c:forEach>
+										</c:otherwise>
+									</c:choose>
+								</div>
+							</div>
 	
-						                    soluongsp.innerHTML = "Hết hàng"
-						                }else{
-						                    soluongsp.innerHTML = tongSpTrongKho + ' sản phẩm sẵn có.'
-						                    
-						                }
-						            }
+							<div class="container__row-info row">
+								<div class="container__col--info-left col l-4 m-4 c-4">
+									<span class="container__col--info-left-text">Size</span>
+								</div>
+								<div style="line-height: 2rem;"
+									class="container__col--info-right col l-8 m-8 c-8">
+									<c:choose>
+										<c:when test="${listSize.size() ==0 }">
+											<input hidden form="soluongmua" id="M" type="radio" name="size"
+												value="M" required> <label style="font-weight: 500;"
+												class="container__col--info-right-info M" for="M">M</label> <input
+												hidden form="soluongmua" id="L" type="radio" name="size"
+												value="L"> <label style="font-weight: 500;"
+												class="container__col--info-right-info L" for="L">L</label> <input
+												hidden form="soluongmua" id="X" type="radio" name="size"
+												value="X"> <label style="font-weight: 500;"
+												class="container__col--info-right-info X" for="X">X</label> <input
+												hidden form="soluongmua" id="XL" type="radio" name="size"
+												value="XL"> <label style="font-weight: 500;"
+												class="container__col--info-right-info XL" for="XL">XL</label>
+											<input hidden form="soluongmua" id="XXL" type="radio"
+												name="size" value="XXL"> <label
+												style="font-weight: 500;"
+												class="container__col--info-right-info XXL" for="XXL">XXL</label>
+										</c:when>
+										<c:otherwise>
+											<c:forEach items="${listSize }" var="s">
+												<input hidden form="soluongmua" id="size${s}"
+									            type="radio" name="size" value="${s}"required> <label
+									            style="font-weight: 500;"
+									            class="container__col--info-right-info size${s}" for="size${s}">${s}</label>
+											</c:forEach>
+										</c:otherwise>
+									</c:choose>
+	
+								</div>
+							</div>
+	
+							<form id="soluongmua"
+								action="GioHangController?ht=1&msp=${masanpham }&tsp=${tensanpham }&anh=${anh }&gb=${giaban }&gg=${giagiam }&sldb=${soluongdaban }&mtsp=${motasanpham }&ml=${maloai }&mth=${mathuonghieu }&mdm=${madanhmuc}&acs=${anhchonsize}"
+								method="post"></form>
+							<div class="container__row-info row">
+								<div class="container__col--info-left col l-4 m-4 c-4">
+									<span class="container__col--info-left-text">Số lượng</span>
+								</div>
+								<div class="container__col--info-right col l-8 m-8 c-8">
+									<div class="input--quantity">
+										<button class="input--quantity__down down-js">
+											<i class="input--quantity__down-icon fa-solid fa-minus"></i>
+										</button>
+										<input form="soluongmua" type="text"
+											class="input--quantity__show input--quantity__show-js"
+											name="soluongmua" value="1" role="spinbutton"
+											aria-valuenow="1">
+										<button class="input--quantity__up up-js">
+											<i class="input--quantity__up-icon fa-solid fa-plus"></i>
+										</button>
+										<span style="color: var(--primary-color); margin-left: 10px" class="soluongsp"></span>
+										<p class="thongbaosp" style="color: red;font-size: 14px;line-height: 1.42857143"></p>
+									</div>
+								</div>
+							</div>
+							
+							<script type="text/javascript">
+								const listCT = ${listCT};
+							    var tongSpTrongKho = 0;
+								for(var i=0;i<listCT.length;i++){
+						            mang = listCT[i].split("/");
+						            tongSpTrongKho += parseInt(mang[2],10) 
 						        }
-						    };
-						    })
-						    
-						    document.querySelectorAll('input[name="size"]').forEach((e)=>{
-						        e.onclick = function(e){
-						        if (this.checked){
-						            thuoctinhsize = false
-						            if(thuoctinhsize == false){
-						                thuoctinhsize = true;
-						                sizechon = this.value
-						            }
-						            if(thuoctinhmau == true && thuoctinhsize == true){
-						                for(var i=0;i<listCT.length;i++){
-						                    mang = listCT[i].split("/");
-						                        if(mang[0]===mauchon && mang[1]=== sizechon){
-						                            tongSpTrongKho = parseInt(mang[2],10) 
-						                            break;
-						                        }else{
-						                            tongSpTrongKho = 0
-						                        }
-						                }
-						                const soluongsp =  document.querySelector('.soluongsp');
-						                if(tongSpTrongKho ==0){
-	
-						                    soluongsp.innerHTML = "Hết hàng"
-						                }else{
-						                    soluongsp.innerHTML = tongSpTrongKho + ' sản phẩm sẵn có.'
-	
-						                }
-						            }
-						        }
-						    };
-						    })
-						    
-						    
-						    
-						     // tăng giảm số lượng sản phẩm mua
-								const down = document.querySelector(".down-js");
-								const up = document.querySelector(".up-js");
-								const showUpDown = document.querySelector(".input--quantity__show-js");
-								const thongbaosp =  document.querySelector('.thongbaosp');
-								
-								function Up(){
-								    var kq ;
-								    kq = Number(showUpDown.getAttribute("value"));
-								    kq++;
-								    if(tongSpTrongKho < kq){
-								    	thongbaosp.innerHTML = 'Số lượng bạn chọn đã đạt mức tối đa của sản phẩm này.'
-								    }else{
-								    	showUpDown.setAttribute('value', kq + '');
-								    	thongbaosp.innerHTML = ''
-								    }
-								}
-								up.addEventListener('click',Up);
-								
-								
-								function Down(){
-								    var kq;
-								    kq = Number(showUpDown.getAttribute("value"));
-								    if(tongSpTrongKho < kq){
-								    	thongbaosp.innerHTML = 'Số lượng bạn chọn đã đạt mức tối đa của sản phẩm này.'
-								    }else{
-									    if(kq > 1){
-									        kq--;
-									        showUpDown.setAttribute('value', kq + '');
+						        const soluongsp =  document.querySelector('.soluongsp');
+						        soluongsp.innerHTML = tongSpTrongKho + ' sản phẩm sẵn có.'
+							</script>
+							<script type="text/javascript">
+								var thuoctinhmau = false;
+							    var thuoctinhsize = false;
+							    var mauchon;
+							    var sizechon;
+							    
+							    document.querySelectorAll('input[name="mau"]').forEach((e)=>{
+							        e.onclick = function(e){
+							        if (this.checked){
+							            thuoctinhmau = false
+							            if(thuoctinhmau == false){
+							                thuoctinhmau = true;
+							                mauchon = this.value;
+							                var listAnhVaMau = ${listAnhVaMauJs};
+							                for(var i=0;i<listAnhVaMau.length;i++){
+									            mang = listAnhVaMau[i].split("<");
+									            if(mauchon === mang[0]){
+									            	var detailImgJs =  document.querySelector('.detail-img-js');
+									            	detailImgJs.src = mang[1];
+									            }
+									        }
+							            }
+							            if(thuoctinhmau == true && thuoctinhsize == true){
+							                for(var i=0;i<listCT.length;i++){
+							                    mang = listCT[i].split("/");
+							                        if(mang[0]===mauchon && mang[1]=== sizechon){
+							                            tongSpTrongKho = parseInt(mang[2],10) 
+							                            break;
+							                        }else{
+							                            tongSpTrongKho = 0
+							                        }
+							                }
+							                const soluongsp =  document.querySelector('.soluongsp');
+							                if(tongSpTrongKho ==0){
+		
+							                    soluongsp.innerHTML = "Hết hàng"
+							                }else{
+							                    soluongsp.innerHTML = tongSpTrongKho + ' sản phẩm sẵn có.'
+							                    
+							                }
+							            }
+							        }
+							    };
+							    })
+							    
+							    document.querySelectorAll('input[name="size"]').forEach((e)=>{
+							        e.onclick = function(e){
+							        if (this.checked){
+							            thuoctinhsize = false
+							            if(thuoctinhsize == false){
+							                thuoctinhsize = true;
+							                sizechon = this.value
+							            }
+							            if(thuoctinhmau == true && thuoctinhsize == true){
+							                for(var i=0;i<listCT.length;i++){
+							                    mang = listCT[i].split("/");
+							                        if(mang[0]===mauchon && mang[1]=== sizechon){
+							                            tongSpTrongKho = parseInt(mang[2],10) 
+							                            break;
+							                        }else{
+							                            tongSpTrongKho = 0
+							                        }
+							                }
+							                const soluongsp =  document.querySelector('.soluongsp');
+							                if(tongSpTrongKho ==0){
+		
+							                    soluongsp.innerHTML = "Hết hàng"
+							                }else{
+							                    soluongsp.innerHTML = tongSpTrongKho + ' sản phẩm sẵn có.'
+		
+							                }
+							            }
+							        }
+							    };
+							    })
+							    
+							    
+							    
+							     // tăng giảm số lượng sản phẩm mua
+									const down = document.querySelector(".down-js");
+									const up = document.querySelector(".up-js");
+									const showUpDown = document.querySelector(".input--quantity__show-js");
+									const thongbaosp =  document.querySelector('.thongbaosp');
+									
+									function Up(){
+									    var kq ;
+									    kq = Number(showUpDown.getAttribute("value"));
+									    kq++;
+									    if(tongSpTrongKho < kq){
+									    	thongbaosp.innerHTML = 'Số lượng bạn chọn đã đạt mức tối đa của sản phẩm này.'
 									    }else{
-									        showUpDown.setAttribute('value', kq + '');
+									    	showUpDown.setAttribute('value', kq + '');
+									    	thongbaosp.innerHTML = ''
 									    }
-									    thongbaosp.innerHTML = ''
-								    }
-								}
-								down.addEventListener('click' , Down);
-						</script>
-						<div class="container__buy">
-							<c:choose>
-								<c:when test="${dn != null }">
-									<button name="addCart" form="soluongmua"
-										class="container__buy-add" value="Thêm vào giỏ hàng">
-										<i class="container__buy-add-icon fa-solid fa-cart-plus"></i>
-										Thêm vào giỏ hàng
-									</button>
-		
-									<button name="buyNow" form="soluongmua"
-										class="container__buy-add-now" value="Mua ngay">Mua
-										ngay</button>
-								</c:when>
-								<c:otherwise>
-									<button name="addCart" data-toggle="modal"
-										data-target="#modalDangNhap" class="container__buy-add"
-										value="Thêm vào giỏ hàng">
-										<i class="container__buy-add-icon fa-solid fa-cart-plus"></i>
-										Thêm vào giỏ hàng
-									</button>
-		
-									<button name="buyNow" data-toggle="modal"
-										data-target="#modalDangNhap" class="container__buy-add-now"
-										value="Mua ngay">Mua ngay</button>
-								</c:otherwise>
-							</c:choose>
+									}
+									up.addEventListener('click',Up);
+									
+									
+									function Down(){
+									    var kq;
+									    kq = Number(showUpDown.getAttribute("value"));
+									    if(tongSpTrongKho < kq){
+									    	thongbaosp.innerHTML = 'Số lượng bạn chọn đã đạt mức tối đa của sản phẩm này.'
+									    }else{
+										    if(kq > 1){
+										        kq--;
+										        showUpDown.setAttribute('value', kq + '');
+										    }else{
+										        showUpDown.setAttribute('value', kq + '');
+										    }
+										    thongbaosp.innerHTML = ''
+									    }
+									}
+									down.addEventListener('click' , Down);
+							</script>
+							<div class="container__buy">
+								<c:choose>
+									<c:when test="${dn != null }">
+										<input style="display: none;" type="file" id="file-input" accept="image/*">
+                                        <button class="choose-img">Tải ảnh lên</button>
+			
+										<button name="buyNow" form="soluongmua"
+											class="container__buy-add-now save-img" value="Mua ngay">Mua
+											ngay</button>
+									</c:when>
+									<c:otherwise>
+										<input style="display: none;" type="file" id="file-input" accept="image/*">
+                                        <button class="choose-img">Tải ảnh lên</button>
+			
+										<button name="buyNow" data-toggle="modal"
+											data-target="#modalDangNhap" class="container__buy-add-now save-img"
+											value="Mua ngay">Mua ngay</button>
+									</c:otherwise>
+								</c:choose>
+							</div>
+						</div>
+                            </div>
 						</div>
 					</div>
 				</div>
@@ -1863,5 +2115,69 @@ input:checked + label{
 				showErrorToastDangKi();
 			</script>
 		</c:if>
+	
+	
+	<script type="text/javascript">
+	const fileInput = document.querySelector("#file-input"),
+	filterOptions = document.querySelectorAll(".filter button"),
+	filterName = document.querySelector(".filter-info .name"),
+	filterValue = document.querySelector(".filter-info .value"),
+	filterSlider = document.querySelector(".slider input"),
+	rotateOptions = document.querySelectorAll(".rotate button"),
+	previewImg = document.querySelector(".preview-img img"),
+	resetFilterBtn = document.querySelector(".reset-filter"),
+	chooseImgBtn = document.querySelector(".choose-img"),
+	saveImgBtn = document.querySelector(".save-img");
+	preview = document.querySelector(".preview-img");
+	const iconUpload = document.querySelector('.icon-upload');
+
+	let brightness = "100", saturation = "100", inversion = "0", grayscale = "0";
+	let rotate = 0, flipHorizontal = 1, flipVertical = 1;
+
+	const loadImage = () => {
+	    let file = fileInput.files[0];
+	    if(!file) return;
+	    previewImg.src = URL.createObjectURL(file);
+	    
+	    previewImg.addEventListener("load", () => {
+	        document.querySelector(".container1").classList.remove("disable");
+	    });
+	    const previewImgDesign = document.querySelector('.previewImgDesign');
+	    iconUpload.style.display = "none";
+	    previewImgDesign.style.display = "block";
+	    preview.style.border = "none"
+	}
+
+	iconUpload.addEventListener('click', ()=> fileInput.click() )
+
+
+	// Xử lý sự kiện khi người dùng chọn file ảnh
+	// const loadImage = ()=> {
+//	     document.getElementById('file-input').addEventListener('change', function(e) {
+//	         var file = e.target.files[0];
+//	         loadImgToCanvas(file);
+//	         console.log(file);
+//	     });
+	// };
+
+
+	// const saveImage = () => {
+//	     const canvas = document.createElement("canvas");
+//	     const ctx = canvas.getContext("2d");
+//	     canvas.width = previewImg.naturalWidth;
+//	     canvas.height = previewImg.naturalHeight;
+//	     ctx.drawImage(previewImg, 0, 0, canvas.width, canvas.height);
+	    
+//	     const link = document.createElement("a");
+//	     link.download = "image.jpg";
+//	     link.href = canvas.toDataURL();
+//	     console.log(link.href);
+//	     // link.click();
+	// }
+
+	// saveImgBtn.addEventListener("click", saveImage);
+	fileInput.addEventListener("change", loadImage);
+	chooseImgBtn.addEventListener("click", () => fileInput.click());
+	</script>
 </body>
 </html>

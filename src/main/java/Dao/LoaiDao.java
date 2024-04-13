@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import Bean.LoaiBean;
 import Bean.LoaiThuocDanhMucBean;
 import Bean.ThuongHieuBean;
 
@@ -107,4 +108,23 @@ public class LoaiDao {
 		}
 		return dsLoaiTreEm;
 	}
+	
+	//Lấy danh sách loại
+		public ArrayList<LoaiBean> getDsLoai() throws Exception{
+			ArrayList<LoaiBean> dsLoai = new ArrayList<LoaiBean>();
+			KetNoiDao kn = new KetNoiDao();
+			kn.ketnoi();
+			
+			String sql = "select * from Loai";
+			
+			PreparedStatement cmd = kn.cn.prepareStatement(sql);
+			ResultSet rs = cmd.executeQuery();
+			while(rs.next()) {
+				long maloai = rs.getLong("maloai");
+				String tenloai = rs.getString("tenloai"); 
+				
+				dsLoai.add(new LoaiBean(maloai, tenloai));
+			}
+			return dsLoai;
+		}
 }

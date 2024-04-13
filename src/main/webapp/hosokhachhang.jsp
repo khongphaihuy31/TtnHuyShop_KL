@@ -671,7 +671,7 @@ a:hover, a:focus {
 						</c:if>
 					</div>
 					<div class="col l-1"></div>
-					<div class="col l-9" style="padding: 5px 10px;">
+					<div class="col l-9" style="padding: 5px 10px;max-width: 70%">
 
 						<c:if test="${param.info != null }">
 							<div class="row"
@@ -688,7 +688,7 @@ a:hover, a:focus {
 							%>
 							<form id="suathongtin" action="HoSoKhachHangController"></form>
 							<div class="row" style="margin-top: 20px;">
-								<table class="table table-hover table-striped table-bordered">
+								<table style="margin: 0 12px;" class="table table-hover table-striped table-bordered">
 									<tr>
 										<td width="500">Tên đăng nhập</td>
 										<td width="500">${ dn.getTendangnhap()}</td>
@@ -714,10 +714,18 @@ a:hover, a:focus {
 											name="email" value="${ dn.getEmail()}"></td>
 									</tr>
 									<tr>
+										<td width="500">Điểm tích lũy</td>
+										<td width="500">${ dn.getTichdiem()} điểm</td>
+									</tr>
+									<tr>
 										<td width="500"></td>
-										<td width="500"><input
-											style="width: 80px; color: var(--text-color); background-color: var(--primary-color); height: 40px; line-height: 40px; border: none; font-size: 16px;"
-											form="suathongtin" type="submit" name="btnluu" value="Lưu"></td>
+										<td width="500" ><input
+											style="width: 30%; color: var(--text-color); background-color: var(--primary-color); height: 40px; line-height: 40px; border: none; font-size: 16px;"
+											form="suathongtin" type="submit" name="btnluu" value="Lưu">
+											<button
+											style="width: 50%; color: var(--primary-color); background-color: white; height: 40px; line-height: 40px; border: 1px solid var(--primary-color); font-size: 16px; float: right;"
+											 name="btnDoiMatKhau"> Đổi mật khẩu</button>
+										</td>
 									</tr>
 								</table>
 							</div>
@@ -737,7 +745,7 @@ a:hover, a:focus {
 							<c:choose>
 								<c:when test="${noinhan!= null }">
 									<div class="row" style="margin-top: 20px;">
-										<table class="table table-hover table-striped table-bordered">
+										<table style="margin: 0 12px;" class="table table-hover table-striped table-bordered">
 											<tr>
 												<td width="500">Thành phố</td>
 												<td width="500"><input form="noinhan" type="text"

@@ -205,19 +205,20 @@ a:hover, a:focus {
 							</div>
 							<!-- list đồ trẻ em -->
 							<div class="header-nav__item-children">
-								<li class="header-nav__item"><a href=""
-									class="header-nav__link"> Trẻ em <i
-										class="header-nav__icon fa-solid fa-caret-down"></i>
+								<li class="header-nav__item">
+									<a href="TrangChuController?maloai=${dsTenLoaiDMTreEm.get(0).getMaloai()}&madanhmuc=${dsTenLoaiDMTreEm.get(0).getMadanhmuc()}&mathuonghieu=0"
+									class="header-nav__link"> Design áo
+									<!--  <i class="header-nav__icon fa-solid fa-caret-down"></i>-->
 								</a></li>
 								<!-- list trong list đồ trẻ em -->
-								<ul class="header-nav-item-children__list">
+								<!--<ul class="header-nav-item-children__list">
 									<c:forEach items="${dsTenLoaiDMTreEm }" var="te">
 										<li class="header-nav-item-children__item"><a
 											href="TrangChuController?maloai=${te.getMaloai()}&madanhmuc=${te.getMadanhmuc()}&mathuonghieu=0"
 											class="header-nav-item-children__link">
 												${te.getTenloai()} </a></li>
 									</c:forEach>
-								</ul>
+								</ul>-->
 							</div>
 						</ul>
 					</div>
@@ -235,7 +236,7 @@ a:hover, a:focus {
 							class="header-nav-mobile-tablet__overlay"></label>
 
 						<div class="header-nav-mobile-tablet">
-							<span class="header-nav-mobile-tablet__heading">DANH MỤC
+							<span style="line-height: 95px" class="header-nav-mobile-tablet__heading">DANH MỤC
 								SẢN PHẨM <label for="header-nav-mobile-tablet__checkbox"
 								class="header-nav-mobile-tablet__icon-close"> <i
 									class="fa-solid fa-xmark"></i>
@@ -314,11 +315,11 @@ a:hover, a:focus {
 									</ul></li>
 								<li id="js-product-children-id"
 									class="dropdown header-nav-mobile-tablet__item-children js-product-children">
-									<a class="dropdown-toggle header-nav-mobile-tablet__link"
-									data-toggle="dropdown" href="#">Trẻ em <i
-										class="header-nav-mobile-tablet__icon fa-solid fa-caret-down"></i>
+									<a class="dropdown-toggle header-nav-mobile-tablet__link" href="TrangChuController?maloai=${dsTenLoaiDMTreEm.get(0).getMaloai()}&madanhmuc=${dsTenLoaiDMTreEm.get(0).getMadanhmuc()}&mathuonghieu=0">
+									Design áo
+									<!--<i class="header-nav-mobile-tablet__icon fa-solid fa-caret-down"></i>-->
 								</a>
-									<ul class="dropdown-menu"
+									<!-- <ul class="dropdown-menu"
 										style="position: relative; float: none; border: none; border-radius: 0; box-shadow: none; background-color: var(--primary-color); -webkit-box-shadow: 0;">
 
 										<c:forEach items="${dsTenLoaiDMTreEm }" var="te">
@@ -328,7 +329,7 @@ a:hover, a:focus {
 												class="header-nav-item-all-mobile-tablet__link">
 													${te.getTenloai()} </a></li>
 										</c:forEach>
-									</ul>
+									</ul>-->
 								</li>
 								<!-- </div> -->
 							</ul>
@@ -676,106 +677,126 @@ a:hover, a:focus {
 						<c:when test="${dsSanPhamLoaiTrongDanhMuc != null}">
 							<c:choose>
 								<c:when test="${param.mathuonghieu == 0}">
-									<c:if test="${param.maloai == 1}">
-										<h3 class="container__heading" style="font-weight: 600;">Áo
-											thun thời trang</h3>
-									</c:if>
-									<c:if test="${param.maloai == 2}">
-										<h3 class="container__heading" style="font-weight: 600;">Quần
-											jean thời trang</h3>
-									</c:if>
-									<c:if test="${param.maloai == 3}">
-										<h3 class="container__heading" style="font-weight: 600;">Áo
-											polo thời trang</h3>
-									</c:if>
-									<c:if test="${param.maloai == 4}">
-										<h3 class="container__heading" style="font-weight: 600;">Áo
-											sơ mi thời trang</h3>
-									</c:if>
-									<c:if test="${param.maloai == 5}">
-										<h3 class="container__heading" style="font-weight: 600;">Áo
-											khoác thời trang</h3>
-									</c:if>
-									<c:if test="${param.maloai == 6}">
-										<h3 class="container__heading" style="font-weight: 600;">Quần
-											shorts thời trang</h3>
-									</c:if>
-									<c:if test="${param.maloai == 7}">
-										<h3 class="container__heading" style="font-weight: 600;">Váy
-											đầm thời trang</h3>
-									</c:if>
-									<c:if test="${param.maloai == 8}">
-										<h3 class="container__heading" style="font-weight: 600;">Sản
-											phẩm bé gái thời trang</h3>
-									</c:if>
-									<c:if test="${param.maloai == 9}">
-										<h3 class="container__heading" style="font-weight: 600;">Sản
-											phẩm bé trai thời trang</h3>
-									</c:if>
+									<c:forEach items="${dsLoai }" var="l">
+										<c:if test="${param.maloai == l.getMaloai() && param.maloai == 8}">
+											<h3 class="container__heading" style="font-weight: 600;">
+											Sản phẩm tự thiết kế</h3>
+										</c:if>
+										<c:if test="${param.maloai == l.getMaloai() && param.maloai != 8}">
+											<h3 class="container__heading" style="font-weight: 600;">
+											${l.getTenloai() } thời trang</h3>
+										</c:if>
+									</c:forEach>
 								</c:when>
 								<c:otherwise>
-									<c:if test="${param.mathuonghieu == 1 }">
-										<h3 class="container__heading" style="font-weight: 600;">Sản
-											phẩm Kappa thời trang</h3>
-									</c:if>
-									<c:if test="${param.mathuonghieu == 3 }">
-										<h3 class="container__heading" style="font-weight: 600;">Sản
-											phẩm Ecko Unltd thời trang</h3>
-									</c:if>
-									<c:if test="${param.mathuonghieu == 4 }">
-										<h3 class="container__heading" style="font-weight: 600;">Sản
-											phẩm Staple thời trang</h3>
-									</c:if>
+									<c:forEach items="${dsTenLoaiDMThuongHieu }" var="th">
+										<c:if test="${param.mathuonghieu == th.getMathuonghieu()}">
+											<h3 class="container__heading" style="font-weight: 600;">
+											${th.getTenthuonghieu() } thời trang</h3>
+										</c:if>
+									</c:forEach>
 								</c:otherwise>
 							</c:choose>
 							<div class="row sm-gutter">
 								<c:forEach items="${dsSanPhamLoaiTrongDanhMuc }" var="sphot">
-									<div class="product-item-col col l-2 m-4 c-6">
-										<!-- product item -->
-										<a class="product-item"
-											href="ChiTietSanPhamController?msp=${sphot.getMasanpham()}&tsp=${sphot.getTensanpham()}&anh=${sphot.getAnh()}&gb=${sphot.getGiaban()}&gg=${sphot.getGiagiam()}&sldb=${sphot.getSoluongdaban()}&mtsp=${sphot.getMotasanpham()}&ml=${sphot.getMaloai()}&mth=${sphot.getMathuonghieu()}&mdm=${sphot.getMadanhmuc()}&acs=${sphot.getAnhchonsize()}">
-											<img src="${sphot.getAnh()}" alt="" class="product-item__img">
-											<h4 class="product-item__name">${sphot.getTensanpham()}</h4>
-											<div class="product-item__price">
-												<c:choose>
-													<c:when test="${sphot.getGiagiam() ==0}">
-														<span class="product-item__price-current"
-															style="font-weight: 600;"><fmt:setLocale value="vi_VN"/>
-                    										<fmt:formatNumber value="${sphot.getGiaban()}" type="currency"/></span>
-													</c:when>
-													<c:otherwise>
-														<span class="product-item__price-old"><fmt:setLocale value="vi_VN"/>
-                    										<fmt:formatNumber value="${sphot.getGiaban()}" type="currency"/></span>
-														<span class="product-item__price-current"
-															style="font-weight: 600;">
-															<fmt:setLocale value="vi_VN"/>
-                    										<fmt:formatNumber value="${sphot.getGiagiam()}" type="currency"/>
-															</span>
-													</c:otherwise>
-												</c:choose>
+									<c:choose>
+										<c:when test="${param.maloai != 8 }">
+											<div class="product-item-col col l-2 m-4 c-6">
+												<!-- product item -->
+												<a class="product-item"
+													href="ChiTietSanPhamController?msp=${sphot.getMasanpham()}&tsp=${sphot.getTensanpham()}&anh=${sphot.getAnh()}&gb=${sphot.getGiaban()}&gg=${sphot.getGiagiam()}&sldb=${sphot.getSoluongdaban()}&mtsp=${sphot.getMotasanpham()}&ml=${sphot.getMaloai()}&mth=${sphot.getMathuonghieu()}&mdm=${sphot.getMadanhmuc()}&acs=${sphot.getAnhchonsize()}">
+													<img src="${sphot.getAnh()}" alt="" class="product-item__img">
+													<h4 class="product-item__name">${sphot.getTensanpham()}</h4>
+													<div class="product-item__price">
+														<c:choose>
+															<c:when test="${sphot.getGiagiam() ==0}">
+																<span class="product-item__price-current"
+																	style="font-weight: 600;"><fmt:setLocale value="vi_VN"/>
+		                    										<fmt:formatNumber value="${sphot.getGiaban()}" type="currency"/></span>
+															</c:when>
+															<c:otherwise>
+																<span class="product-item__price-old"><fmt:setLocale value="vi_VN"/>
+		                    										<fmt:formatNumber value="${sphot.getGiaban()}" type="currency"/></span>
+																<span class="product-item__price-current"
+																	style="font-weight: 600;">
+																	<fmt:setLocale value="vi_VN"/>
+		                    										<fmt:formatNumber value="${sphot.getGiagiam()}" type="currency"/>
+																	</span>
+															</c:otherwise>
+														</c:choose>
+													</div>
+													<div class="product-item__action">
+														<span class="product-item__rating"> <i
+															class="product-item__start-gold fa-solid fa-star"></i> <i
+															class="product-item__start-gold fa-solid fa-star"></i> <i
+															class="product-item__start-gold fa-solid fa-star"></i> <i
+															class="product-item__start-gold fa-solid fa-star"></i> <i
+															class="fa-solid fa-star"></i>
+														</span> <span class="product-item__review-count">(20)</span>
+													</div> <span class="product-item__like"> <!-- product-item__liked -->
+														<input type="checkbox" hidden
+														id="like-checkbox${sphot.getMasanpham()}"
+														class="product-item__like-input"> <label
+														for="like-checkbox${sphot.getMasanpham()}"
+														class="product-item__like-empty"> <i
+															class="product-item__like-icon-empty fa-regular fa-heart"></i>
+													</label> <label for="like-checkbox${sphot.getMasanpham()}"
+														class="product-item__like-fill"> <i
+															class="product-item__like-icon-fill fa-solid fa-heart"></i>
+													</label>
+												</span>
+												</a>
 											</div>
-											<div class="product-item__action">
-												<span class="product-item__rating"> <i
-													class="product-item__start-gold fa-solid fa-star"></i> <i
-													class="product-item__start-gold fa-solid fa-star"></i> <i
-													class="product-item__start-gold fa-solid fa-star"></i> <i
-													class="product-item__start-gold fa-solid fa-star"></i> <i
-													class="fa-solid fa-star"></i>
-												</span> <span class="product-item__review-count">(20)</span>
-											</div> <span class="product-item__like"> <!-- product-item__liked -->
-												<input type="checkbox" hidden
-												id="like-checkbox${sphot.getMasanpham()}"
-												class="product-item__like-input"> <label
-												for="like-checkbox${sphot.getMasanpham()}"
-												class="product-item__like-empty"> <i
-													class="product-item__like-icon-empty fa-regular fa-heart"></i>
-											</label> <label for="like-checkbox${sphot.getMasanpham()}"
-												class="product-item__like-fill"> <i
-													class="product-item__like-icon-fill fa-solid fa-heart"></i>
-											</label>
-										</span>
-										</a>
-									</div>
+										</c:when>
+										<c:otherwise>
+											<div class="product-item-col col l-2 m-4 c-6">
+												<!-- product item -->
+												<a class="product-item"
+													href="ThietKeAoController?msp=${sphot.getMasanpham()}">
+													<img src="${sphot.getAnh()}" alt="" class="product-item__img">
+													<h4 class="product-item__name">${sphot.getTensanpham()}</h4>
+													<div class="product-item__price">
+														<c:choose>
+															<c:when test="${sphot.getGiagiam() ==0}">
+																<span class="product-item__price-current"
+																	style="font-weight: 600;"><fmt:setLocale value="vi_VN"/>
+		                    										<fmt:formatNumber value="${sphot.getGiaban()}" type="currency"/></span>
+															</c:when>
+															<c:otherwise>
+																<span class="product-item__price-old"><fmt:setLocale value="vi_VN"/>
+		                    										<fmt:formatNumber value="${sphot.getGiaban()}" type="currency"/></span>
+																<span class="product-item__price-current"
+																	style="font-weight: 600;">
+																	<fmt:setLocale value="vi_VN"/>
+		                    										<fmt:formatNumber value="${sphot.getGiagiam()}" type="currency"/>
+																	</span>
+															</c:otherwise>
+														</c:choose>
+													</div>
+													<div class="product-item__action">
+														<span class="product-item__rating"> <i
+															class="product-item__start-gold fa-solid fa-star"></i> <i
+															class="product-item__start-gold fa-solid fa-star"></i> <i
+															class="product-item__start-gold fa-solid fa-star"></i> <i
+															class="product-item__start-gold fa-solid fa-star"></i> <i
+															class="fa-solid fa-star"></i>
+														</span> <span class="product-item__review-count">(20)</span>
+													</div> <span class="product-item__like"> <!-- product-item__liked -->
+														<input type="checkbox" hidden
+														id="like-checkbox${sphot.getMasanpham()}"
+														class="product-item__like-input"> <label
+														for="like-checkbox${sphot.getMasanpham()}"
+														class="product-item__like-empty"> <i
+															class="product-item__like-icon-empty fa-regular fa-heart"></i>
+													</label> <label for="like-checkbox${sphot.getMasanpham()}"
+														class="product-item__like-fill"> <i
+															class="product-item__like-icon-fill fa-solid fa-heart"></i>
+													</label>
+												</span>
+												</a>
+											</div>
+										</c:otherwise>
+									</c:choose>
 								</c:forEach>
 						</c:when>
 						<c:otherwise>
