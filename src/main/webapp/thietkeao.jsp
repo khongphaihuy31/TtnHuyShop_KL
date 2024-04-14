@@ -179,7 +179,7 @@ input:checked + label{
 }
 /* .container1.disable .editor-panel,
 .container1.disable .controls .reset-filter, */
-.container1.disable .controls .save-img{
+.container1.disable .save-img{
   opacity: 0.5;
   pointer-events: none;
 }
@@ -213,20 +213,18 @@ input:checked + label{
   flex-wrap: wrap;
   justify-content: space-around;
 }
-.editor-panel button{
+.choose-img{
   outline: none;
-  height: 40px;
-  font-size: 14px;
-  color: #6C757D;
+  height: 44px;
+  font-size: 18px;
   background: #fff;
   border-radius: 3px;
-  margin-bottom: 8px;
-  border: 1px solid #aaa;
+  width: 30%;
 }
 .editor-panel .filter button{
   width: calc(100% / 2 - 4px);
 }
-.editor-panel button:hover{
+.choose-img:hover{
   background: #f5f5f5;
 }
 .filter button.active{
@@ -284,47 +282,45 @@ input:checked + label{
   object-fit: contain;
 }
 .preview-img {
-  max-width: 160px;
-  max-height: 182px;
-  width: 160px;
-  height: 182px;
-  border: #ccc solid 1px;
+  max-width: 37.51%;
+  max-height: 42.66%;
+  width: 37.51%;
+  height: 42.66%;
+  border: #000 dashed 2px;
 }
 .preview-img img{
   width: 100%;
   height: 100%;
   object-fit: contain;
 }
-@media (min-width: 1023px) and (max-width:1238px){
+/*@media (min-width: 1023px) and (max-width:1238px){
   .preview-img{
     max-width: 128px !important;
     max-height: 145px !important;
   }
-}
+}*/
 
 @media (min-width:740px) and (max-width: 1023px){
-  .preview-img{
+  /*.preview-img{
     max-width: 128px !important;
     max-height: 145px !important;
-  }
+  }*/
   .container2{
-    margin-right: 10px ;
     margin-bottom: 10px;
   }
 }
 
 @media screen and (max-width: 760px) {
-  .preview-img{
+  /*.preview-img{
     max-width: 125px !important; 
     max-height: 141px !important;
-  }
+  }*/
   .container2{
-    margin-right: 10px ;
     margin-bottom: 10px;
   }
 }
 
-@media screen and (max-width: 655px) {
+/*@media screen and (max-width: 655px) {
   .preview-img{
     max-width: 120px !important; 
     max-height: 136px !important;
@@ -342,7 +338,7 @@ input:checked + label{
     max-width: 83px !important; 
     max-height: 94px !important;
   }
-}
+}*/
 .controls button{
   padding: 11px 20px;
   font-size: 14px;
@@ -405,6 +401,10 @@ input:checked + label{
 		top: 20px !important;
     	right: 4px !important;
 	}
+}
+
+.container__col--info-left{
+	font-size: 2rem;
 }
 </style>
 </head>
@@ -909,9 +909,9 @@ input:checked + label{
 		<div style="width: 100%;" class="container">
 			<div class="grid">
 				<div class="row container__row">
-					<div class="container__col col l-3 c-12 m-4">
+					<div class="container__col col l-3 c-12 m-12">
                         <div class="container2">
-                            <h2 style="font-size: 20px;margin-bottom: 10px;line-height: 25px;">Hướng dẫn mua áo tự thiết
+                            <h2 style="font-size: 20px;margin-bottom: 10px;line-height: 25px; margin-top: 0; font-weight: bold;">Hướng dẫn mua áo tự thiết
                                 kế</h2>
                             <p style="font-size: 15px;margin-left: 10px; margin-bottom: 5px;"><span
                                     style="color: red;">B1:</span> Thiết kế ảnh(tự thiết kế)</p>
@@ -931,7 +931,7 @@ input:checked + label{
                             </ul>
                         </div>
                     </div>
-					<div class="container__col container__col--info col l-9 c-12 m-8">
+					<div class="container__col container__col--info col l-9 c-12 m-12">
 						<div class="container1 disable container1__col">
                             <div class="wrapper">
                             	<div style="position: relative; height: fit-content;" class="designImg">
@@ -945,11 +945,11 @@ input:checked + label{
                                 
                                 <div class="editor-panel">
 							<h4
-								style="text-align: left; font-size: 2.4rem; margin: 15px 0 10px 0; line-height: 3rem; font-weight: 500; height: 6rem; overflow: hidden; display: block; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2;"
+								style="text-align: left; font-size: 2.4rem; margin: 0 0 10px 0; line-height: 3rem; font-weight: 500; height: 6rem; overflow: hidden; display: block; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2;"
 								class="product-item__name detail-name-product-js">
 								<c:out value="${spChon.getTensanpham() }"></c:out>
 							</h4>
-							<div class="product-item__price-detail" style="display: flex; align-items: center;">
+							<div class="product-item__price-detail" style="display: flex; align-items: center; margin: 0; justify-content: space-between;">
 								<c:choose>
 									<c:when test="${spChon.getGiagiam() ==0 }">
 										<span
@@ -963,17 +963,17 @@ input:checked + label{
 										<span style="width: 25%; display: inline-block;margin: 0;"
 											class="product-item__price-current product-item__price-current-detail detail-price-current-js">
 											<fmt:setLocale value="vi_VN"/>
-											<fmt:formatNumber value="${spChon.getGiaban() }" type="currency"/>
-											</span>
-										<span style="width: 40%;display: inline-block;margin: 0 0 0 20px; font-size: 30px;"
+											<fmt:formatNumber value="${spChon.getGiagiam() }" type="currency"/>
+										</span>
+										<span style="width: 40%;display: inline-block;margin: 0 0 0 20px; font-size: 25px;"
 											class="product-item__price-old product-item__price-old-detail detail-price-old-js">
 											<fmt:setLocale value="vi_VN"/>
-											<fmt:formatNumber value="${spChon.getGiagiam() }" type="currency"/>
-											</span>
+											<fmt:formatNumber value="${spChon.getGiaban() }" type="currency"/>
+										</span>
 									</c:otherwise>
 								</c:choose>
 							</div>
-							<div class="container__row-info row">
+							<div class="container__row-info row" style="margin-top: 0">
 								<div class="container__col--info-left col l-4 m-4 c-4">
 									<span class="container__col--info-left-text">Vận Chuyển</span>
 								</div>
@@ -985,7 +985,7 @@ input:checked + label{
 										phí vận chuyển</span>
 								</div>
 							</div>
-							<div class="container__row-info row">
+							<div class="container__row-info row" style="margin-top: 0">
 								<div class="container__col--info-left col l-4 m-4 c-4">
 									<span class="container__col--info-left-text">Màu</span>
 								</div>
@@ -995,29 +995,22 @@ input:checked + label{
 										<c:when test="${listAnhVaMau.size() ==0 }">
 											<input hidden form="soluongmua" id="white" type="radio"
 												name="mau" value="Trắng" required> <label
-												style="font-weight: 500;"
+												style="font-weight: 500;margin-bottom: 5px"
 												class="container__col--info-right-info white" for="white">Trắng</label>
 											<input hidden form="soluongmua" id="black" type="radio"
 												name="mau" value="Đen"> <label
-												style="font-weight: 500;"
+												style="font-weight: 500; margin-bottom: 5px"
 												class="container__col--info-right-info black" for="black">Đen</label>
 											<input hidden form="soluongmua" id="kem" type="radio" name="mau"
-												value="Kem"> <label style="font-weight: 500;"
+												value="Kem"> <label style="font-weight: 500; margin-bottom: 5px"
 												class="container__col--info-right-info kem" for="kem">Kem</label>
-											<input hidden form="soluongmua" id="grey" type="radio"
-												name="mau" value="Xám"> <label
-												style="font-weight: 500;"
-												class="container__col--info-right-info grey" for="grey">Xám</label>
-											<input hidden form="soluongmua" id="brown" type="radio"
-												name="mau" value="Nâu"> <label
-												style="font-weight: 500;"
-												class="container__col--info-right-info brown" for="brown">Nâu</label>
+											
 										</c:when>
 										<c:otherwise>
 											<c:forEach items="${listAnhVaMau }" var="m">
 												<input hidden form="soluongmua" id="mau${m.getMauString()}"
 									            type="radio" name="mau" value="${m.getMauString()}"required> <label
-									            style="font-weight: 500;"
+									            style="font-weight: 500; margin-bottom: 5px"
 									            class="container__col--info-right-info mau${m.getMauString()}" for="mau${m.getMauString()}">${m.getMauString()}</label>
 											</c:forEach>
 										</c:otherwise>
@@ -1025,7 +1018,7 @@ input:checked + label{
 								</div>
 							</div>
 	
-							<div class="container__row-info row">
+							<div class="container__row-info row" style="margin-top: 0">
 								<div class="container__col--info-left col l-4 m-4 c-4">
 									<span class="container__col--info-left-text">Size</span>
 								</div>
@@ -1034,27 +1027,24 @@ input:checked + label{
 									<c:choose>
 										<c:when test="${listSize.size() ==0 }">
 											<input hidden form="soluongmua" id="M" type="radio" name="size"
-												value="M" required> <label style="font-weight: 500;"
+												value="M" required> <label style="font-weight: 500; margin-bottom: 5px"
 												class="container__col--info-right-info M" for="M">M</label> <input
 												hidden form="soluongmua" id="L" type="radio" name="size"
-												value="L"> <label style="font-weight: 500;"
+												value="L"> <label style="font-weight: 500; margin-bottom: 5px"
 												class="container__col--info-right-info L" for="L">L</label> <input
 												hidden form="soluongmua" id="X" type="radio" name="size"
-												value="X"> <label style="font-weight: 500;"
+												value="X"> <label style="font-weight: 500; margin-bottom: 5px"
 												class="container__col--info-right-info X" for="X">X</label> <input
 												hidden form="soluongmua" id="XL" type="radio" name="size"
-												value="XL"> <label style="font-weight: 500;"
+												value="XL"> <label style="font-weight: 500; margin-bottom: 5px"
 												class="container__col--info-right-info XL" for="XL">XL</label>
-											<input hidden form="soluongmua" id="XXL" type="radio"
-												name="size" value="XXL"> <label
-												style="font-weight: 500;"
-												class="container__col--info-right-info XXL" for="XXL">XXL</label>
+											
 										</c:when>
 										<c:otherwise>
 											<c:forEach items="${listSize }" var="s">
 												<input hidden form="soluongmua" id="size${s}"
 									            type="radio" name="size" value="${s}"required> <label
-									            style="font-weight: 500;"
+									            style="font-weight: 500; margin-bottom: 5px"
 									            class="container__col--info-right-info size${s}" for="size${s}">${s}</label>
 											</c:forEach>
 										</c:otherwise>
@@ -1066,7 +1056,7 @@ input:checked + label{
 							<form id="soluongmua"
 								action="GioHangController?ht=1&msp=${masanpham }&tsp=${tensanpham }&anh=${anh }&gb=${giaban }&gg=${giagiam }&sldb=${soluongdaban }&mtsp=${motasanpham }&ml=${maloai }&mth=${mathuonghieu }&mdm=${madanhmuc}&acs=${anhchonsize}"
 								method="post"></form>
-							<div class="container__row-info row">
+							<div class="container__row-info row" style="margin-top: 0">
 								<div class="container__col--info-left col l-4 m-4 c-4">
 									<span class="container__col--info-left-text">Số lượng</span>
 								</div>
@@ -1082,9 +1072,17 @@ input:checked + label{
 										<button class="input--quantity__up up-js">
 											<i class="input--quantity__up-icon fa-solid fa-plus"></i>
 										</button>
-										<span style="color: var(--primary-color); margin-left: 10px" class="soluongsp"></span>
-										<p class="thongbaosp" style="color: red;font-size: 14px;line-height: 1.42857143"></p>
 									</div>
+								</div>
+							</div>
+							
+							<div class="container__row-info row" style="margin-top: 0">
+								<div class="container__col--info-left col l-4 m-4 c-4">
+								</div>
+								<div class="container__col--info-right col l-8 m-8 c-8">
+										<span style="color: var(--primary-color);" class="soluongsp"></span>
+										<p class="thongbaosp" style="color: red;font-size: 14px;line-height: 1.42857143"></p>
+							
 								</div>
 							</div>
 							
@@ -1213,21 +1211,21 @@ input:checked + label{
 									}
 									down.addEventListener('click' , Down);
 							</script>
-							<div class="container__buy">
+							<div class="container__buy " style="margin-top: 0; justify-content: space-between; display: flex;">
 								<c:choose>
 									<c:when test="${dn != null }">
 										<input style="display: none;" type="file" id="file-input" accept="image/*">
-                                        <button class="choose-img">Tải ảnh lên</button>
+                                        <button class="choose-img">Tải ảnh</button>
 			
-										<button name="buyNow" form="soluongmua"
+										<button style="padding: 8px; width: 50%; min-width: 0;" name="buyNow" form="soluongmua"
 											class="container__buy-add-now save-img" value="Mua ngay">Mua
 											ngay</button>
 									</c:when>
 									<c:otherwise>
 										<input style="display: none;" type="file" id="file-input" accept="image/*">
-                                        <button class="choose-img">Tải ảnh lên</button>
+                                        <button class="choose-img">Tải ảnh</button>
 			
-										<button name="buyNow" data-toggle="modal"
+										<button style="padding: 8px; width: 50%;min-width: 0;" name="buyNow" data-toggle="modal"
 											data-target="#modalDangNhap" class="container__buy-add-now save-img"
 											value="Mua ngay">Mua ngay</button>
 									</c:otherwise>
@@ -1238,7 +1236,7 @@ input:checked + label{
 						</div>
 					</div>
 				</div>
-				<div class="container-bottom container-bottom__pc">
+				<div style="margin-left: 50px; margin-right: 50px;" class="container-bottom container-bottom__pc">
 					<h3 class="container-bottom__nav container-bottom__detail">Mô tả sản phẩm</h3>
 					<h3 class="container-bottom__nav container-bottom__describe">Hướng dẫn chọn size</h3>
 					<!-- container bottom boby detail -->
@@ -1348,7 +1346,7 @@ input:checked + label{
 				</div>
 
 				<!-- container bottom mobile -->
-				<div class="container-bottom container-bottom__mobile">
+				<div style="margin-left: 50px; margin-right: 50px;" class="container-bottom container-bottom__mobile">
 					<h3 class="container-bottom__nav container-bottom__detail">Chi
 						tiết sản phẩm</h3>
 
@@ -1477,8 +1475,8 @@ input:checked + label{
 				<!-- Hiển thị sản phẩm bạn có thể thích -->
 				<c:if test="${dsSPUaThich != null }">
 					<h3 class="container__heading"
-						style="font-weight: 600; margin-top: 30px;">SẢN PHẨM TƯƠNG TỰ</h3>
-					<div class="row sm-gutter">
+						style="font-weight: 600; margin-top: 30px; margin-left: 50px; margin-right: 50px;">SẢN PHẨM TƯƠNG TỰ</h3>
+					<div style="margin-left: 50px; margin-right: 50px;" class="row sm-gutter">
 						<c:forEach items="${dsSPUaThich }" var="sp">
 							<div class="product-item-col col l-2 m-4 c-6">
 								<!-- product item -->
@@ -1536,8 +1534,8 @@ input:checked + label{
 				</div>
 				<c:if test="${dsSPUaThich != null }">
 					<h3 class="container__heading"
-						style="font-weight: 600; margin-top: 30px;">SẢN PHẨM GIÁ TỐT</h3>
-					<div class="row sm-gutter">
+						style="font-weight: 600; margin-top: 30px; ">SẢN PHẨM GIÁ TỐT</h3>
+					<div style="margin-left: 50px; margin-right: 50px;" class="row sm-gutter">
 						<c:forEach items="${dsSPUaThich }" var="sp">
 							<div class="product-item-col col l-2 m-4 c-6">
 								<!-- product item -->

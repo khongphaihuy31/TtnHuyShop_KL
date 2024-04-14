@@ -623,7 +623,7 @@ a:hover, a:focus {
 										</div>
 										<form id="xoachon"action="GioHangController" method="get">
 				        				</form>
-				        				<c:forEach items="${giohang }" var="sp">
+				        				<c:forEach items="${dsHangMua }" var="sp">
 											<div style="margin-top: 10px; padding-bottom: 10px;border-bottom: 1px solid var(--primary-color);" class="row">
 												<div class="col l-6">
 													<div class="row">

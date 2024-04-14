@@ -705,12 +705,12 @@ input:checked + label{
 									<span style="width: 25%; display: inline-block;margin: 0;"
 										class="product-item__price-current product-item__price-current-detail detail-price-current-js">
 										<fmt:setLocale value="vi_VN"/>
-										<fmt:formatNumber value="${giaban }" type="currency"/>
+										<fmt:formatNumber value="${giagiam }" type="currency"/>
 										</span>
-									<span style="width: 40%;display: inline-block;margin: 0 0 0 20px; font-size: 30px;"
+									<span style="width: 40%;display: inline-block;margin: 0 0 0 20px; font-size: 25px;"
 										class="product-item__price-old product-item__price-old-detail detail-price-old-js">
 										<fmt:setLocale value="vi_VN"/>
-										<fmt:formatNumber value="${giagiam }" type="currency"/>
+										<fmt:formatNumber value="${giaban }" type="currency"/>
 										</span>
 								</c:otherwise>
 							</c:choose>
@@ -739,29 +739,29 @@ input:checked + label{
 									<c:when test="${listAnhVaMau.size() ==0 }">
 										<input hidden form="soluongmua" id="white" type="radio"
 											name="mau" value="Trắng" required> <label
-											style="font-weight: 500;"
+											style="font-weight: 500; margin-bottom: 5px"
 											class="container__col--info-right-info white" for="white">Trắng</label>
 										<input hidden form="soluongmua" id="black" type="radio"
 											name="mau" value="Đen"> <label
-											style="font-weight: 500;"
+											style="font-weight: 500; margin-bottom: 5px"
 											class="container__col--info-right-info black" for="black">Đen</label>
 										<input hidden form="soluongmua" id="kem" type="radio" name="mau"
-											value="Kem"> <label style="font-weight: 500;"
+											value="Kem"> <label style="font-weight: 500; margin-bottom: 5px"
 											class="container__col--info-right-info kem" for="kem">Kem</label>
 										<input hidden form="soluongmua" id="grey" type="radio"
 											name="mau" value="Xám"> <label
-											style="font-weight: 500;"
+											style="font-weight: 500; margin-bottom: 5px"
 											class="container__col--info-right-info grey" for="grey">Xám</label>
 										<input hidden form="soluongmua" id="brown" type="radio"
 											name="mau" value="Nâu"> <label
-											style="font-weight: 500;"
+											style="font-weight: 500; margin-bottom: 5px"
 											class="container__col--info-right-info brown" for="brown">Nâu</label>
 									</c:when>
 									<c:otherwise>
 										<c:forEach items="${listAnhVaMau }" var="m">
 											<input hidden form="soluongmua" id="mau${m.getMauString()}"
 								            type="radio" name="mau" value="${m.getMauString()}"required> <label
-								            style="font-weight: 500;"
+								            style="font-weight: 500; margin-bottom: 5px"
 								            class="container__col--info-right-info mau${m.getMauString()}" for="mau${m.getMauString()}">${m.getMauString()}</label>
 										</c:forEach>
 									</c:otherwise>
@@ -778,27 +778,27 @@ input:checked + label{
 								<c:choose>
 									<c:when test="${listSize.size() ==0 }">
 										<input hidden form="soluongmua" id="M" type="radio" name="size"
-											value="M" required> <label style="font-weight: 500;"
+											value="M" required> <label style="font-weight: 500; margin-bottom: 5px"
 											class="container__col--info-right-info M" for="M">M</label> <input
 											hidden form="soluongmua" id="L" type="radio" name="size"
-											value="L"> <label style="font-weight: 500;"
+											value="L"> <label style="font-weight: 500; margin-bottom: 5px"
 											class="container__col--info-right-info L" for="L">L</label> <input
 											hidden form="soluongmua" id="X" type="radio" name="size"
-											value="X"> <label style="font-weight: 500;"
+											value="X"> <label style="font-weight: 500; margin-bottom: 5px"
 											class="container__col--info-right-info X" for="X">X</label> <input
 											hidden form="soluongmua" id="XL" type="radio" name="size"
-											value="XL"> <label style="font-weight: 500;"
+											value="XL"> <label style="font-weight: 500; margin-bottom: 5px"
 											class="container__col--info-right-info XL" for="XL">XL</label>
 										<input hidden form="soluongmua" id="XXL" type="radio"
 											name="size" value="XXL"> <label
-											style="font-weight: 500;"
+											style="font-weight: 500; margin-bottom: 5px"
 											class="container__col--info-right-info XXL" for="XXL">XXL</label>
 									</c:when>
 									<c:otherwise>
 										<c:forEach items="${listSize }" var="s">
 											<input hidden form="soluongmua" id="size${s}"
 								            type="radio" name="size" value="${s}"required> <label
-								            style="font-weight: 500;"
+								            style="font-weight: 500; margin-bottom: 5px"
 								            class="container__col--info-right-info size${s}" for="size${s}">${s}</label>
 										</c:forEach>
 									</c:otherwise>

@@ -53,8 +53,8 @@ public class ThietKeAoController extends HttpServlet {
 			
 //			Xử lý chi tiết sản phẩm
 			SanPhamBo spbo =  new SanPhamBo();
-			long masanpham = Long.parseLong(request.getParameter("msp")) ;
-			request.setAttribute("spChon", (SanPhamBean)spbo.getSanPham(masanpham));
+				long masanpham = Long.parseLong(request.getParameter("msp")) ;
+				request.setAttribute("spChon", (SanPhamBean)spbo.getSanPham(masanpham));
 			
 			
 			//Xử lý lấy sản phẩm ưa thích

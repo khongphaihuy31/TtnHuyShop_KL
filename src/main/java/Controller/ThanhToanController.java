@@ -15,12 +15,14 @@ import Bean.GiamGiaBean;
 import Bean.GioHangBean;
 import Bean.KhachHangBean;
 import Bean.NoiNhanBean;
+import Bean.SanPhamBean;
 import Bo.GiamGiaBo;
 import Bo.GioHangBo;
 //import Bo.GioHangBo;
 import Bo.HoSoKhachHangBo;
 import Bo.KhachHangBo;
 import Bo.LoaiBo;
+import Bo.SanPhamBo;
 
 /**
  * Servlet implementation class ThanhToanController
@@ -65,7 +67,7 @@ public class ThanhToanController extends HttpServlet {
 			
 			
 			GioHangBo sp =  new GioHangBo();
-			if(session.getAttribute("dn")!= null) {
+			if(session.getAttribute("dn")!= null && request.getParameter("maaodesign") == null) {
 				String dsMaGioChon = request.getParameter("dsMaGioChon");
 				
 				ArrayList<GioHangBean> dsgio = new ArrayList<GioHangBean>();
@@ -77,8 +79,10 @@ public class ThanhToanController extends HttpServlet {
 						dsgio.add(gh);
 					}
 				}
-//				dsgio = sp.getSanPhamTrongGio(khbean.getMakhachhang());
-				request.setAttribute("giohang", dsgio);
+				ArrayList<GioHangBean> dsHangTrongGio = new ArrayList<GioHangBean>();
+				dsHangTrongGio = sp.getSanPhamTrongGio(khbean.getMakhachhang());
+				request.setAttribute("giohang", dsHangTrongGio);
+				request.setAttribute("dsHangMua", dsgio);
 				request.setAttribute("dsMaGioChon", dsMaGioChon);
 				long tongtien=0;
 				for(GioHangBean g : dsgio) {
@@ -119,6 +123,69 @@ public class ThanhToanController extends HttpServlet {
 				request.setAttribute("tiengiamdiem", tiengiamdiem);
 			}
 			
+			if(session.getAttribute("dn")!= null && request.getParameter("maaodesign") != null) {
+				String maaodesign = request.getParameter("maaodesign");
+				String anhdesign = request.getParameter("anhdesign");
+				long soluongmua = Long.parseLong(request.getParameter("soluongmua"));
+				
+				request.setAttribute("anhdesign", anhdesign);			
+//				ArrayList<GioHangBean> dsgio = new ArrayList<GioHangBean>();
+//				if(dsMaGioChon != null) {
+//					String dsMagiohang[] = dsMaGioChon.split("/");
+//					for(int i=0; i<dsMagiohang.length;i++) {
+//						long magiohang = Long.parseLong(dsMagiohang[i]);
+//						GioHangBean gh = sp.getSanPhamMua(khbean.getMakhachhang(), magiohang);
+//						dsgio.add(gh);
+//					}
+//				}
+				long mspDesign = Long.parseLong(maaodesign);
+				SanPhamBo spbo = new SanPhamBo();
+				SanPhamBean spDesign = spbo.getSanPham(mspDesign);
+				
+				ArrayList<GioHangBean> dsHangTrongGio = new ArrayList<GioHangBean>();
+				dsHangTrongGio = sp.getSanPhamTrongGio(khbean.getMakhachhang());
+				request.setAttribute("giohang", dsHangTrongGio);
+				
+				request.setAttribute("spDesign", spDesign);
+//				request.setAttribute("maaodesign", maaodesign);
+//				long tongtien=0;
+//				for(GioHangBean g : dsgio) {
+//					String a = g.getMasanpham()+"/"+g.getMausanpham()+"/"+g.getSize();
+//					System.out.print(a);
+					long thanhTien;
+					if(spDesign.getGiagiam() == 0) {
+						thanhTien = spDesign.getGiaban() * soluongmua;
+//						request.setAttribute(a, thanhTien);
+					}else {
+						thanhTien = spDesign.getGiagiam() * soluongmua;
+//						request.setAttribute(a, thanhTien);
+					}
+//					tongtien += thanhTien;
+//				}
+				request.setAttribute("tongtien", thanhTien);
+				
+				KhachHangBo khbo = new KhachHangBo();
+				long diemKhachHang = khbo.getTichDiem(khbean.getMakhachhang());
+				System.out.print(diemKhachHang);
+				request.setAttribute("diemKhachHang", diemKhachHang);
+				
+				GiamGiaBo ggbo = new GiamGiaBo();
+				ArrayList<GiamGiaBean> dsgg = new ArrayList<GiamGiaBean>();
+				dsgg = ggbo.getGiamGia();
+				for(GiamGiaBean gg: dsgg) {
+					if(thanhTien>= gg.getDieukien()) {
+						thanhTien = thanhTien - gg.getTiengiam();
+						request.setAttribute("giamgia", -gg.getTiengiam());
+						request.setAttribute("tiensaukhigiamgia", thanhTien);
+						long tiengiamdiem1 = thanhTien- (diemKhachHang *1000);
+						request.setAttribute("tiengiamdiem1", tiengiamdiem1);
+						break;
+					}
+				}
+				
+				long tiengiamdiem = thanhTien- (diemKhachHang*1000);
+				request.setAttribute("tiengiamdiem", tiengiamdiem);
+			}
 			
 			
 			
