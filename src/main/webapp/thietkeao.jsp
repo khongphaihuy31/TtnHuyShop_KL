@@ -935,6 +935,7 @@ input:checked + label{
 						<div class="container1 disable container1__col">
                             <div class="wrapper">
                             	<div style="position: relative; height: fit-content;" class="designImg">
+                            		<input class="anhTheoMauInput" type="text" name="anhTheoMau" hidden form="soluongmua">
                                     <img id="" class="img-ao detail-img-js" src="${spChon.getAnh() }" alt="preview-img">
                                     <div style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%); display: flex; justify-content: center; align-items: center;"
                                         class="preview-img">
@@ -1054,8 +1055,9 @@ input:checked + label{
 							</div>
 	
 							<form id="soluongmua"
-								action="GioHangController?ht=1&msp=${masanpham }&tsp=${tensanpham }&anh=${anh }&gb=${giaban }&gg=${giagiam }&sldb=${soluongdaban }&mtsp=${motasanpham }&ml=${maloai }&mth=${mathuonghieu }&mdm=${madanhmuc}&acs=${anhchonsize}"
-								method="post"></form>
+								action="MuaAoThietKeController"
+								enctype="multipart/form-data" method="post"></form>
+								<input form="soluongmua" type="text" style="display: none" name="maaodesign" value="${param.msp }">
 							<div class="container__row-info row" style="margin-top: 0">
 								<div class="container__col--info-left col l-4 m-4 c-4">
 									<span class="container__col--info-left-text">Số lượng</span>
@@ -1114,7 +1116,10 @@ input:checked + label{
 									            mang = listAnhVaMau[i].split("<");
 									            if(mauchon === mang[0]){
 									            	var detailImgJs =  document.querySelector('.detail-img-js');
+									            	var anhTheoMauInput =  document.querySelector('.anhTheoMauInput');
+									            	
 									            	detailImgJs.src = mang[1];
+									            	anhTheoMauInput.value = mang[1];
 									            }
 									        }
 							            }
@@ -1214,7 +1219,7 @@ input:checked + label{
 							<div class="container__buy " style="margin-top: 0; justify-content: space-between; display: flex;">
 								<c:choose>
 									<c:when test="${dn != null }">
-										<input style="display: none;" type="file" id="file-input" accept="image/*">
+										<input form="soluongmua" name="anhdesign" style="display: none;" type="file" id="file-input" accept="image/*">
                                         <button class="choose-img">Tải ảnh</button>
 			
 										<button style="padding: 8px; width: 50%; min-width: 0;" name="buyNow" form="soluongmua"

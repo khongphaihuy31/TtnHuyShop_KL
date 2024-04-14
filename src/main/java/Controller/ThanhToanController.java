@@ -123,12 +123,20 @@ public class ThanhToanController extends HttpServlet {
 				request.setAttribute("tiengiamdiem", tiengiamdiem);
 			}
 			
+			//Xử lý thanh toán cho áo design
 			if(session.getAttribute("dn")!= null && request.getParameter("maaodesign") != null) {
 				String maaodesign = request.getParameter("maaodesign");
 				String anhdesign = request.getParameter("anhdesign");
+				String maumua =  request.getParameter("maumua");
+				String sizemua =  request.getParameter("sizemua");
+				String anhTheoMau =  request.getParameter("anhTheoMau");
 				long soluongmua = Long.parseLong(request.getParameter("soluongmua"));
 				
-				request.setAttribute("anhdesign", anhdesign);			
+				request.setAttribute("anhdesign", anhdesign);		
+				request.setAttribute("maumua", maumua);
+				request.setAttribute("sizemua", sizemua);
+				request.setAttribute("soluongmua", soluongmua);
+				request.setAttribute("anhTheoMau", anhTheoMau);
 //				ArrayList<GioHangBean> dsgio = new ArrayList<GioHangBean>();
 //				if(dsMaGioChon != null) {
 //					String dsMagiohang[] = dsMaGioChon.split("/");

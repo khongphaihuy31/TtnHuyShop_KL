@@ -93,6 +93,18 @@ a:hover, a:focus {
     	right: 4px !important;
 	}
 }
+
+.preview-img {
+  max-width: 37.51%;
+  max-height: 42.66%;
+  width: 37.51%;
+  height: 42.66%;
+}
+.preview-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
 </style>
 </head>
 <body>
@@ -621,55 +633,110 @@ a:hover, a:focus {
 											<b style="font-size: 18px;">Thành tiền</b>
 											</div>
 										</div>
-										<form id="xoachon"action="GioHangController" method="get">
-				        				</form>
-				        				<c:forEach items="${dsHangMua }" var="sp">
-											<div style="margin-top: 10px; padding-bottom: 10px;border-bottom: 1px solid var(--primary-color);" class="row">
-												<div class="col l-6">
-													<div class="row">
-														<div class="col l-3">
-															<img style="width: 80px; display: inline-block;" alt="" src="${sp.getAnhTheoMau()}">
-														</div>
-														<div class="col l-9">
-															<h4 style="font-size: 2rem;line-height: 2.5rem;font-weight: 500;height: 5rem;overflow: hidden;display: block;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2;">${sp.getTensanpham()}</h4>
+										<c:choose>
+											<c:when test="${anhdesign ==null }">
+												<c:forEach items="${dsHangMua }" var="sp">
+													<div style="margin-top: 10px; padding-bottom: 10px;border-bottom: 1px solid var(--primary-color);" class="row">
+														<div class="col l-6">
 															<div class="row">
-																<div class="col l-4">
-																	<p style="font-size: 1.6rem;">Màu: <b style="font-size: 1.8rem; color: var(--primary-color); font-weight: bold;">${sp.getMausanpham()}</b></p>
+																<div class="col l-3">
+																	<img style="width: 80px; display: inline-block;" alt="" src="${sp.getAnhTheoMau()}">
 																</div>
-																<div class="col l-8">
-																	<p style="font-size: 1.6rem;">Size: <b style="font-size: 1.8rem; color: var(--primary-color); font-weight: bold;">${sp.getSize() }</b></p>
+																<div class="col l-9">
+																	<h4 style="font-size: 2rem;line-height: 2.5rem;font-weight: 500;height: 5rem;overflow: hidden;display: block;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2;">${sp.getTensanpham()}</h4>
+																	<div class="row">
+																		<div class="col l-4">
+																			<p style="font-size: 1.6rem;">Màu: <b style="font-size: 1.8rem; color: var(--primary-color); font-weight: bold;">${sp.getMausanpham()}</b></p>
+																		</div>
+																		<div class="col l-8">
+																			<p style="font-size: 1.6rem;">Size: <b style="font-size: 1.8rem; color: var(--primary-color); font-weight: bold;">${sp.getSize() }</b></p>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="col l-2 text-center">
+															<c:choose>
+																<c:when test="${sp.getGiagiam() == 0}">
+																	<h4 style="font-size: 20px; color: var(--primary-color); font-weight: bold;">
+																		<fmt:setLocale value="vi_VN"/>
+																		<fmt:formatNumber value="${sp.getGiaban()}" type="currency"/>
+																	</h4>
+																</c:when>
+																<c:otherwise>
+																	<h4 style="font-size: 20px; color: var(--primary-color); font-weight: bold;">
+																		<fmt:setLocale value="vi_VN"/>
+																		<fmt:formatNumber value="${sp.getGiagiam()}" type="currency"/>
+																	</h4>
+																</c:otherwise>
+															</c:choose>
+														</div>
+														<div class="col l-2 text-center">
+															<h4 style="font-size: 20px;">${sp.getSoluongmua()}</h4>
+														</div>
+														<div class="col l-2 text-center">
+															<h4 style="font-size: 20px; color: var(--primary-color); font-weight: bold;">
+																<fmt:setLocale value="vi_VN"/>
+																<fmt:formatNumber value="${sp.getThanhtien()}" type="currency"/>
+															</h4>
+														</div>
+													</div>
+						        				</c:forEach>
+											</c:when>
+											<c:otherwise>
+												<div style="margin-top: 10px; padding-bottom: 10px;border-bottom: 1px solid var(--primary-color);" class="row">
+													<div class="col l-6">
+														<div class="row">
+															<div class="col l-3" style="position: relative; height: fit-content;text-align: center;">
+																<!--  <img style="width: 80px; display: inline-block;" alt="" src="${anhTheoMau}">-->
+																<img style="width: 80px; display: inline-block;" alt="" src="img_aodesign/thunCoTron.png">
+																<div style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%); display: flex; justify-content: center; align-items: center;"
+							                                        class="preview-img">
+							                                        <img class="previewImgDesign" src="${anhdesign }" alt="preview-img">
+							                                    </div>
+															</div>
+															<div class="col l-9">
+																<h4 style="font-size: 2rem;line-height: 2.5rem;font-weight: 500;height: 5rem;overflow: hidden;display: block;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2;">${spDesign.getTensanpham()}</h4>
+																<div class="row">
+																	<div class="col l-4">
+																		<p style="font-size: 1.6rem;">Màu: <b style="font-size: 1.8rem; color: var(--primary-color); font-weight: bold;">${maumua}</b></p>
+																	</div>
+																	<div class="col l-8">
+																		<p style="font-size: 1.6rem;">Size: <b style="font-size: 1.8rem; color: var(--primary-color); font-weight: bold;">${sizemua }</b></p>
+																	</div>
 																</div>
 															</div>
 														</div>
 													</div>
+													<div class="col l-2 text-center">
+														<c:choose>
+															<c:when test="${spDesign.getGiagiam() == 0}">
+																<h4 style="font-size: 20px; color: var(--primary-color); font-weight: bold;">
+																	<fmt:setLocale value="vi_VN"/>
+																	<fmt:formatNumber value="${spDesign.getGiaban()}" type="currency"/>
+																</h4>
+															</c:when>
+															<c:otherwise>
+																<h4 style="font-size: 20px; color: var(--primary-color); font-weight: bold;">
+																	<fmt:setLocale value="vi_VN"/>
+																	<fmt:formatNumber value="${spDesign.getGiagiam()}" type="currency"/>
+																</h4>
+															</c:otherwise>
+														</c:choose>
+													</div>
+													<div class="col l-2 text-center">
+														<h4 style="font-size: 20px;">${soluongmua}</h4>
+													</div>
+													<div class="col l-2 text-center">
+														<h4 style="font-size: 20px; color: var(--primary-color); font-weight: bold;">
+															<fmt:setLocale value="vi_VN"/>
+															<fmt:formatNumber value="${tongtien}" type="currency"/>
+														</h4>
+													</div>
 												</div>
-												<div class="col l-2 text-center">
-													<c:choose>
-														<c:when test="${sp.getGiagiam() == 0}">
-															<h4 style="font-size: 20px; color: var(--primary-color); font-weight: bold;">
-																<fmt:setLocale value="vi_VN"/>
-																<fmt:formatNumber value="${sp.getGiaban()}" type="currency"/>
-															</h4>
-														</c:when>
-														<c:otherwise>
-															<h4 style="font-size: 20px; color: var(--primary-color); font-weight: bold;">
-																<fmt:setLocale value="vi_VN"/>
-																<fmt:formatNumber value="${sp.getGiagiam()}" type="currency"/>
-															</h4>
-														</c:otherwise>
-													</c:choose>
-												</div>
-												<div class="col l-2 text-center">
-													<h4 style="font-size: 20px;">${sp.getSoluongmua()}</h4>
-												</div>
-												<div class="col l-2 text-center">
-													<h4 style="font-size: 20px; color: var(--primary-color); font-weight: bold;">
-														<fmt:setLocale value="vi_VN"/>
-														<fmt:formatNumber value="${sp.getThanhtien()}" type="currency"/>
-													</h4>
-												</div>
-											</div>
-				        				</c:forEach>
+											</c:otherwise>
+										</c:choose>
+				        				
 									</div>
 								</div>
 							</c:when>

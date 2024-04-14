@@ -1,7 +1,9 @@
 package Controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,10 +13,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
+
 import Bean.AnhSanPham;
 import Bean.GioHangBean;
 import Bean.KhachHangBean;
 import Bean.SanPhamBean;
+import Bo.AdminSanPhamBo;
 import Bo.ChiTietSanPhamBo;
 import Bo.GioHangBo;
 import Bo.LoaiBo;
@@ -53,8 +60,8 @@ public class ThietKeAoController extends HttpServlet {
 			
 //			Xử lý chi tiết sản phẩm
 			SanPhamBo spbo =  new SanPhamBo();
-				long masanpham = Long.parseLong(request.getParameter("msp")) ;
-				request.setAttribute("spChon", (SanPhamBean)spbo.getSanPham(masanpham));
+			long masanpham = Long.parseLong(request.getParameter("msp")) ;
+			request.setAttribute("spChon", (SanPhamBean)spbo.getSanPham(masanpham));
 			
 			
 			//Xử lý lấy sản phẩm ưa thích
