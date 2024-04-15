@@ -688,8 +688,7 @@ a:hover, a:focus {
 													<div class="col l-6">
 														<div class="row">
 															<div class="col l-3" style="position: relative; height: fit-content;text-align: center;">
-																<!--  <img style="width: 80px; display: inline-block;" alt="" src="${anhTheoMau}">-->
-																<img style="width: 80px; display: inline-block;" alt="" src="img_aodesign/thunCoTron.png">
+																<img style="width: 80px; display: inline-block;" alt="" src="${anhTheoMau}">
 																<div style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%); display: flex; justify-content: center; align-items: center;"
 							                                        class="preview-img">
 							                                        <img class="previewImgDesign" src="${anhdesign }" alt="preview-img">
@@ -950,8 +949,22 @@ a:hover, a:focus {
 							</div>
 							<div class="col l-4 text-center">
 								<input form="thanhtoan" type="text" hidden="" name="donmua" value="1">
-								<input form="thanhtoan" type="text" hidden="" name="dsMaGioChon" value="${dsMaGioChon }">
-								<button form="thanhtoan" style="padding: 15px 5px; color: var(--text-color); background-color: var(--primary-color); width: 100%; display: block; font-size: 2rem; border: none;" ><b>Xác nhận thanh toán</b> </button>
+								<c:choose>
+									<c:when test="${spDesign ==null }">
+										<input form="thanhtoan" type="text" hidden="" name="dsMaGioChon" value="${dsMaGioChon }">
+										<button form="thanhtoan" style="padding: 15px 5px; color: var(--text-color); background-color: var(--primary-color); width: 100%; display: block; font-size: 2rem; border: none;" ><b>Xác nhận thanh toán</b> </button>
+									</c:when>
+									<c:otherwise>
+										<input form="thanhtoan" type="text" hidden="" name="spDesign" value="${spDesign }">
+										<input form="thanhtoan" type="text" hidden="" name="maaodesign" value="${maaodesign }">
+										<input form="thanhtoan" type="text" hidden="" name="anhdesign" value="${anhdesign }">
+										<input form="thanhtoan" type="text" hidden="" name="maumua" value="${maumua }">
+										<input form="thanhtoan" type="text" hidden="" name="sizemua" value="${sizemua }">
+										<input form="thanhtoan" type="text" hidden="" name="soluongmua" value="${soluongmua }">
+										<input form="thanhtoan" type="text" hidden="" name="anhTheoMau" value="${anhTheoMau }">
+										<button form="thanhtoan" style="padding: 15px 5px; color: var(--text-color); background-color: var(--primary-color); width: 100%; display: block; font-size: 2rem; border: none;" ><b>Xác nhận thanh toán</b> </button>
+									</c:otherwise>
+								</c:choose>
 							</div>
 							<div class="col l-4 text-center">
 							</div>

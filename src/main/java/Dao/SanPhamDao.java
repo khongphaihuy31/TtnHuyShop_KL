@@ -203,4 +203,20 @@ public class SanPhamDao {
 		}
 		return dsSanPhamUaThich;
 	}
+	
+	//xử lý cập nhật số lượng đã bán	
+		public int capNhatSoLuongDaBan(long masanpham, long soluongdaban) throws Exception{
+			KetNoiDao kn = new KetNoiDao();
+			kn.ketnoi();
+			
+			String sql = "update SanPham set soluongdaban = ? where masanpham = ?";
+			PreparedStatement cmd = kn.cn.prepareStatement(sql);
+			cmd.setLong(1, soluongdaban);
+			cmd.setLong(2, masanpham);
+			
+			int kq = cmd.executeUpdate();
+			cmd.close();
+			kn.cn.close();
+			return kq;
+		}
 }

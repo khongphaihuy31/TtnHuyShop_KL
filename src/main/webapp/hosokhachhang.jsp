@@ -83,6 +83,18 @@ a:hover, a:focus {
 		right: 4px !important;
 	}
 }
+
+.preview-img {
+  max-width: 37.51%;
+  max-height: 42.66%;
+  width: 37.51%;
+  height: 42.66%;
+}
+.preview-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
 </style>
 </head>
 <body>
@@ -877,12 +889,23 @@ a:hover, a:focus {
 													style="margin-top: 10px; padding-bottom: 10px; border-bottom: 1px solid var(--primary-color);">
 													<div class="col l-6">
 														<div class="row">
-	
-															<!-- Sửa design khi có ảnh thiết kế -->
-															<div class="col l-3">
-																<img style="width: 80px; display: inline-block;" alt=""
-																	src="${dm.Anhsanpham()}">
-															</div>
+															<c:choose>
+																<c:when test="${dm.getAnhthietke() == null }">
+																	<div class="col l-3">
+																		<img style="width: 80px; display: inline-block;" alt=""
+																			src="${dm.getAnhsanpham()}">
+																	</div>
+																</c:when>
+																<c:otherwise>
+																	<div class="col l-3" style="position: relative; height: fit-content;text-align: center;">
+																		<img style="width: 80px; display: inline-block;" alt="" src="${dm.getAnhsanpham()}">
+																		<div style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%); display: flex; justify-content: center; align-items: center;"
+									                                        class="preview-img">
+									                                        <img class="previewImgDesign" src="${dm.getAnhthietke() }" alt="preview-img">
+									                                    </div>
+																	</div>
+																</c:otherwise>
+															</c:choose>
 															<div class="col l-9">
 																<h4
 																	style="font-size: 2rem; line-height: 2.5rem; font-weight: 500; height: 5rem; overflow: hidden; display: block; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2;">${dm.getTensanpham() }</h4>
@@ -952,10 +975,23 @@ a:hover, a:focus {
 													style="margin-top: 10px; padding-bottom: 10px; border-bottom: 1px solid var(--primary-color);">
 													<div class="col l-6">
 														<div class="row">
-															<div class="col l-3">
-																<img style="width: 80px; display: inline-block;" alt=""
-																	src="${dm.getAnhsanpham()}">
-															</div>
+															<c:choose>
+																<c:when test="${dm.getAnhthietke() == null }">
+																	<div class="col l-3">
+																		<img style="width: 80px; display: inline-block;" alt=""
+																			src="${dm.getAnhsanpham()}">
+																	</div>
+																</c:when>
+																<c:otherwise>
+																	<div class="col l-3" style="position: relative; height: fit-content;text-align: center;">
+																		<img style="width: 80px; display: inline-block;" alt="" src="${dm.getAnhsanpham()}">
+																		<div style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%); display: flex; justify-content: center; align-items: center;"
+									                                        class="preview-img">
+									                                        <img class="previewImgDesign" src="${dm.getAnhthietke() }" alt="preview-img">
+									                                    </div>
+																	</div>
+																</c:otherwise>
+															</c:choose>
 															<div class="col l-9">
 																<h4
 																	style="font-size: 2rem; line-height: 2.5rem; font-weight: 500; height: 5rem; overflow: hidden; display: block; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2;">${dm.getTensanpham()}</h4>

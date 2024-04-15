@@ -137,6 +137,7 @@ public class ThanhToanController extends HttpServlet {
 				request.setAttribute("sizemua", sizemua);
 				request.setAttribute("soluongmua", soluongmua);
 				request.setAttribute("anhTheoMau", anhTheoMau);
+				request.setAttribute("maaodesign", maaodesign);
 //				ArrayList<GioHangBean> dsgio = new ArrayList<GioHangBean>();
 //				if(dsMaGioChon != null) {
 //					String dsMagiohang[] = dsMaGioChon.split("/");

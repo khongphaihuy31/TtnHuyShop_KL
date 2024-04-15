@@ -40,4 +40,9 @@ public class SanPhamBo {
 	public SanPhamBean getSanPham(long msp)throws Exception{
 		return spdao.getSanPham(msp);
 	}
+	
+	//xử lý cập nhật số lượng đã bán	
+	public int capNhatSoLuongDaBan(long masanpham, long soluongdaban) throws Exception{
+		return spdao.capNhatSoLuongDaBan(masanpham, soluongdaban);
+	}
 }

@@ -15,6 +15,7 @@ import javax.swing.ButtonGroup;
 import Bean.GioHangBean;
 import Bean.KhachHangBean;
 import Bean.NoiNhanBean;
+import Bean.SanPhamBean;
 import Bean.TichDiemBean;
 import Bo.ChiTietSanPhamBo;
 import Bo.DonDatHangBo;
@@ -23,6 +24,7 @@ import Bo.GioHangBo;
 //import Bo.GioHangBo;
 import Bo.HoSoKhachHangBo;
 import Bo.KhachHangBo;
+import Bo.SanPhamBo;
 import Bo.TichDiemBo;
 
 /**
@@ -95,43 +97,78 @@ public class XacNhanThanhToanController extends HttpServlet {
 				ddhbo.themDonDatHang(khbean.getMakhachhang(), false, false, tongdongia, diachinhanhang);
 				long madonvuathem = ddhbo.getMaxHD();
 				DonHangChiTietBo dhctbo = new DonHangChiTietBo();
-
-				String dsMaGioChon = request.getParameter("dsMaGioChon");
-				GioHangBo sp = new GioHangBo();
-				ArrayList<GioHangBean> dsgio = new ArrayList<GioHangBean>();
-				if (dsMaGioChon != null) {
-					String dsMagiohang[] = dsMaGioChon.split("/");
-					for (int i = 0; i < dsMagiohang.length; i++) {
-						long magiohang = Long.parseLong(dsMagiohang[i]);
-						GioHangBean gh = sp.getSanPhamMua(khbean.getMakhachhang(), magiohang);
-						dsgio.add(gh);
-					}
-				}
 				
-				ChiTietSanPhamBo ctspbo = new ChiTietSanPhamBo();
-				for (GioHangBean spbean : dsgio) {
-					long soluong = ctspbo.getSoluongTrongKho(spbean.getMasanpham(), spbean.getMausanpham(), spbean.getSize());
-					long soluongconlai = soluong - spbean.getSoluongmua();
-					ctspbo.suaSoHangTrongKho(spbean.getMasanpham(), spbean.getMausanpham(), spbean.getSize(), soluongconlai);
-					if (spbean.getGiagiam() == 0) {
-						dhctbo.themChiTietHD(madonvuathem, spbean.getMasanpham(), spbean.getSoluongmua(),
-								spbean.getMausanpham(), spbean.getSize(), null, spbean.getGiaban(),
-								spbean.getTensanpham(), spbean.getAnhTheoMau());
-					} else {
-						dhctbo.themChiTietHD(madonvuathem, spbean.getMasanpham(), spbean.getSoluongmua(),
-								spbean.getMausanpham(), spbean.getSize(), null, spbean.getGiagiam(),
-								spbean.getTensanpham(), spbean.getAnhTheoMau());
-					}
-				}
-
-				ArrayList<GioHangBean> giohang = sp.getSanPhamTrongGio(khbean.getMakhachhang());
-
-				for (GioHangBean gh : giohang) {
-					for (GioHangBean g : dsgio) {
-						if (gh.getMagiohang() == g.getMagiohang()) {
-							sp.xoaSpTrongGio(gh.getMagiohang());
+				if(request.getParameter("spDesign") == null) {
+					String dsMaGioChon = request.getParameter("dsMaGioChon");
+					GioHangBo sp = new GioHangBo();
+					ArrayList<GioHangBean> dsgio = new ArrayList<GioHangBean>();
+					if (dsMaGioChon != null) {
+						String dsMagiohang[] = dsMaGioChon.split("/");
+						for (int i = 0; i < dsMagiohang.length; i++) {
+							long magiohang = Long.parseLong(dsMagiohang[i]);
+							GioHangBean gh = sp.getSanPhamMua(khbean.getMakhachhang(), magiohang);
+							dsgio.add(gh);
 						}
 					}
+					
+					ChiTietSanPhamBo ctspbo = new ChiTietSanPhamBo();
+					for (GioHangBean spbean : dsgio) {
+						long soluong = ctspbo.getSoluongTrongKho(spbean.getMasanpham(), spbean.getMausanpham(), spbean.getSize());
+						long soluongconlai = soluong - spbean.getSoluongmua();
+						
+						SanPhamBo spbo = new SanPhamBo();
+						//Cập nhật số lượng đã bán
+						spbo.capNhatSoLuongDaBan(spbean.getMasanpham(), spbean.getSoluongmua()+spbean.getSoluongdaban());
+						
+						ctspbo.suaSoHangTrongKho(spbean.getMasanpham(), spbean.getMausanpham(), spbean.getSize(), soluongconlai);
+						if (spbean.getGiagiam() == 0) {
+							dhctbo.themChiTietHD(madonvuathem, spbean.getMasanpham(), spbean.getSoluongmua(),
+									spbean.getMausanpham(), spbean.getSize(), null, spbean.getGiaban(),
+									spbean.getTensanpham(), spbean.getAnhTheoMau());
+						} else {
+							dhctbo.themChiTietHD(madonvuathem, spbean.getMasanpham(), spbean.getSoluongmua(),
+									spbean.getMausanpham(), spbean.getSize(), null, spbean.getGiagiam(),
+									spbean.getTensanpham(), spbean.getAnhTheoMau());
+						}
+					}
+					
+					ArrayList<GioHangBean> giohang = sp.getSanPhamTrongGio(khbean.getMakhachhang());
+					
+					for (GioHangBean gh : giohang) {
+						for (GioHangBean g : dsgio) {
+							if (gh.getMagiohang() == g.getMagiohang()) {
+								sp.xoaSpTrongGio(gh.getMagiohang());
+							}
+						}
+					}
+				}else {
+					String maaodesign = request.getParameter("maaodesign");
+					long masanpham = Long.parseLong(maaodesign);
+					SanPhamBo spbo = new SanPhamBo();
+					SanPhamBean sp = spbo.getSanPham(masanpham);
+					ChiTietSanPhamBo ctspbo = new ChiTietSanPhamBo();
+					
+					String maumua = request.getParameter("maumua");
+					String sizemua = request.getParameter("sizemua");
+					String slm = request.getParameter("soluongmua");
+					String anhdesign = request.getParameter("anhdesign");
+					String anhTheoMau = request.getParameter("anhTheoMau");
+					long soluongmua = Long.parseLong(slm);
+						//Cập nhật số lượng đã bán
+						spbo.capNhatSoLuongDaBan(masanpham, soluongmua+sp.getSoluongdaban());
+						
+						long soluong = ctspbo.getSoluongTrongKho(masanpham, maumua, sizemua);
+						long soluongconlai = soluong - soluongmua;
+						ctspbo.suaSoHangTrongKho(masanpham, maumua, sizemua, soluongconlai);
+						if (sp.getGiagiam() == 0) {
+							dhctbo.themChiTietHD(madonvuathem, masanpham, soluongmua,
+									maumua, sizemua, anhdesign, sp.getGiaban(),
+									sp.getTensanpham(), anhTheoMau);
+						} else {
+							dhctbo.themChiTietHD(madonvuathem, masanpham, soluongmua,
+									maumua, sizemua, anhdesign, sp.getGiagiam(),
+									sp.getTensanpham(), anhTheoMau);
+						}
 				}
 				
 				if(khbean != null) {
