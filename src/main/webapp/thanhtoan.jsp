@@ -913,8 +913,8 @@ a:hover, a:focus {
 								document.querySelectorAll('input[id="diem"]').forEach((e)=>{
 							        e.onclick = function(e){
 							        if (this.checked){
-							        	td.innerHTML = "<fmt:setLocale value='vi_VN'/><fmt:formatNumber value='-${diemKhachHang}000' type='currency'/>"
-						        		tg.innerHTML = "<fmt:setLocale value='vi_VN'/><fmt:formatNumber value='${tiengiamdiem1}' type='currency'/>"
+							        	td.innerHTML = "<fmt:setLocale value='vi_VN'/><fmt:formatNumber value='-${soDiemTruCuaKhachHang}000' type='currency'/>"
+						        		tg.innerHTML = "<fmt:setLocale value='vi_VN'/><fmt:formatNumber value='${tiengiamdiem}' type='currency'/>"
 							        }else{
 							        	td.innerHTML = "<fmt:setLocale value='vi_VN'/><fmt:formatNumber value='0' type='currency'/>"
 							        	tg.innerHTML = "<fmt:setLocale value='vi_VN'/><fmt:formatNumber value='${tiensaukhigiamgia}' type='currency'/>"
@@ -930,7 +930,7 @@ a:hover, a:focus {
 								document.querySelectorAll('input[id="diem"]').forEach((e)=>{
 							        e.onclick = function(e){
 							        if (this.checked){
-							        	td.innerHTML = "<fmt:setLocale value='vi_VN'/><fmt:formatNumber value='-${diemKhachHang}000' type='currency'/>"
+							        	td.innerHTML = "<fmt:setLocale value='vi_VN'/><fmt:formatNumber value='-${soDiemTruCuaKhachHang}000' type='currency'/>"
 						        		tg.innerHTML = "<fmt:setLocale value='vi_VN'/><fmt:formatNumber value='${tiengiamdiem}' type='currency'/>"
 							        }else{
 							        	td.innerHTML = "<fmt:setLocale value='vi_VN'/><fmt:formatNumber value='0' type='currency'/>"

@@ -113,14 +113,22 @@ public class ThanhToanController extends HttpServlet {
 						tongtien = tongtien - gg.getTiengiam();
 						request.setAttribute("giamgia", -gg.getTiengiam());
 						request.setAttribute("tiensaukhigiamgia", tongtien);
-						long tiengiamdiem1 = tongtien- (diemKhachHang *1000);
-						request.setAttribute("tiengiamdiem1", tiengiamdiem1);
+//						long tiengiamdiem1 = tongtien- (diemKhachHang *1000);
+//						request.setAttribute("tiengiamdiem1", tiengiamdiem1);
 						break;
 					}
 				}
-				
-				long tiengiamdiem = tongtien- (diemKhachHang*1000);
-				request.setAttribute("tiengiamdiem", tiengiamdiem);
+				//kiểm tra tổng tiền nhỏ hơn điểm tích lũy khách hàng
+				System.out.println(tongtien);
+				if(tongtien<(diemKhachHang*1000)) {
+					request.setAttribute("tiengiamdiem", 0);
+					request.setAttribute("soDiemTruCuaKhachHang", tongtien/1000);
+				}else {
+					request.setAttribute("soDiemTruCuaKhachHang", diemKhachHang);
+					//tiền giảm điểm này là tiền sau khi đổi điểm tích lũy
+					long tiengiamdiem = tongtien- (diemKhachHang*1000);
+					request.setAttribute("tiengiamdiem", tiengiamdiem);
+				}
 			}
 			
 			//Xử lý thanh toán cho áo design
@@ -186,14 +194,22 @@ public class ThanhToanController extends HttpServlet {
 						thanhTien = thanhTien - gg.getTiengiam();
 						request.setAttribute("giamgia", -gg.getTiengiam());
 						request.setAttribute("tiensaukhigiamgia", thanhTien);
-						long tiengiamdiem1 = thanhTien- (diemKhachHang *1000);
-						request.setAttribute("tiengiamdiem1", tiengiamdiem1);
+//						long tiengiamdiem1 = thanhTien- (diemKhachHang *1000);
+//						request.setAttribute("tiengiamdiem1", tiengiamdiem1);
 						break;
 					}
 				}
 				
-				long tiengiamdiem = thanhTien- (diemKhachHang*1000);
-				request.setAttribute("tiengiamdiem", tiengiamdiem);
+				System.out.println(thanhTien);
+				if(thanhTien<(diemKhachHang*1000)) {
+					request.setAttribute("tiengiamdiem", 0);
+					request.setAttribute("soDiemTruCuaKhachHang", thanhTien/1000);
+				}else {
+					request.setAttribute("soDiemTruCuaKhachHang", diemKhachHang);
+					//tiền giảm điểm này là tiền sau khi đổi điểm tích lũy
+					long tiengiamdiem = thanhTien- (diemKhachHang*1000);
+					request.setAttribute("tiengiamdiem", tiengiamdiem);
+				}
 			}
 			
 			

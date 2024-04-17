@@ -898,7 +898,7 @@ a:hover, a:focus {
 																</c:when>
 																<c:otherwise>
 																	<div class="col l-3" style="position: relative; height: fit-content;text-align: center;">
-																		<img style="width: 80px; display: inline-block;" alt="" src="${dm.getAnhsanpham()}">
+																		<img style="width: 100%; display: inline-block;" alt="" src="${dm.getAnhsanpham()}">
 																		<div style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%); display: flex; justify-content: center; align-items: center;"
 									                                        class="preview-img">
 									                                        <img class="previewImgDesign" src="${dm.getAnhthietke() }" alt="preview-img">
@@ -984,7 +984,7 @@ a:hover, a:focus {
 																</c:when>
 																<c:otherwise>
 																	<div class="col l-3" style="position: relative; height: fit-content;text-align: center;">
-																		<img style="width: 80px; display: inline-block;" alt="" src="${dm.getAnhsanpham()}">
+																		<img style="width: 100%; display: inline-block;" alt="" src="${dm.getAnhsanpham()}">
 																		<div style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%); display: flex; justify-content: center; align-items: center;"
 									                                        class="preview-img">
 									                                        <img class="previewImgDesign" src="${dm.getAnhthietke() }" alt="preview-img">
