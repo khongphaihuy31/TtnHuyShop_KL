@@ -9,16 +9,17 @@ import Bean.NoiNhanBean;
 
 public class HoSoKhachHangDao {
 	//xử lý sửa thông tin khách hàng
-	public int suaThongTinKh(long makhachhang, String hoten, String diachi, String sodienthoai, String email) throws Exception{
+	public int suaThongTinKh(long makhachhang, String hoten, String diachi, String sodienthoai, String email, String anhdaidien) throws Exception{
 		KetNoiDao kn = new KetNoiDao();
 		kn.ketnoi();
-		String sql = "update KhachHang set hoten = ?, diachi = ?, sodienthoai= ?, email= ? where makhachhang = ?";
+		String sql = "update KhachHang set hoten = ?, diachi = ?, sodienthoai= ?, email= ?, avatar = ? where makhachhang = ?";
 		PreparedStatement cmd = kn.cn.prepareStatement(sql);
 		cmd.setString(1, hoten);
 		cmd.setString(2, diachi);
 		cmd.setString(3, sodienthoai);
 		cmd.setString(4, email);
-		cmd.setLong(5, makhachhang);
+		cmd.setString(5, anhdaidien);
+		cmd.setLong(6, makhachhang);
 		int kq = cmd.executeUpdate();
 		cmd.close();
 		kn.cn.close();

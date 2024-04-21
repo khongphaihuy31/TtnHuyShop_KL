@@ -25,12 +25,13 @@ public class KhachHangDao {
 			String diachi= rs.getString("diachi"); 
 			String sodienthoai= rs.getString("sodienthoai"); 
 			String email= rs.getString("email"); 
+			String avatar= rs.getString("avatar");
 			String tendn= rs.getString("tendangnhap"); 
 			String mk= rs.getString("matkhau");
 			Boolean quyen = rs.getBoolean("quyen");
 			long tichdiem = rs.getLong("tichdiem");
 			String sothich = rs.getString("sothich");					
-			kh = new KhachHangBean(makhachhang, hoten, diachi, sodienthoai, email, tendn, mk, quyen, tichdiem, sothich);
+			kh = new KhachHangBean(makhachhang, hoten, diachi, sodienthoai, email, avatar, tendn, mk, quyen, tichdiem, sothich);
 		}
 		return kh;
 	}

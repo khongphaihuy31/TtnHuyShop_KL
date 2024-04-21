@@ -6,6 +6,7 @@ public class KhachHangBean {
 	private String diachi;
 	private String sodienthoai;
 	private String email;
+	private String avatar;
 	private String tendangnhap;
 	private String matkhau;
 	private boolean quyen;
@@ -17,7 +18,7 @@ public class KhachHangBean {
 		// TODO Auto-generated constructor stub
 	}
 
-	public KhachHangBean(long makhachhang, String hoten, String diachi, String sodienthoai, String email,
+	public KhachHangBean(long makhachhang, String hoten, String diachi, String sodienthoai, String email, String avatar,
 			String tendangnhap, String matkhau, boolean quyen, long tichdiem, String sothich) {
 		super();
 		this.makhachhang = makhachhang;
@@ -25,6 +26,7 @@ public class KhachHangBean {
 		this.diachi = diachi;
 		this.sodienthoai = sodienthoai;
 		this.email = email;
+		this.avatar = avatar;
 		this.tendangnhap = tendangnhap;
 		this.matkhau = matkhau;
 		this.quyen = quyen;
@@ -110,5 +112,13 @@ public class KhachHangBean {
 
 	public void setSothich(String sothich) {
 		this.sothich = sothich;
+	}
+
+	public String getAvatar() {
+		return avatar;
+	}
+
+	public void setAvatar(String avatar) {
+		this.avatar = avatar;
 	}
 }

@@ -6,8 +6,8 @@ import Dao.HoSoKhachHangDao;
 public class HoSoKhachHangBo {
 	HoSoKhachHangDao hskhdao = new HoSoKhachHangDao();
 	//xử lý sửa thông tin khách hàng
-	public int suaThongTinKh(long makhachhang, String hoten, String diachi, String sodienthoai, String email) throws Exception{
-		return hskhdao.suaThongTinKh(makhachhang, hoten, diachi, sodienthoai, email);
+	public int suaThongTinKh(long makhachhang, String hoten, String diachi, String sodienthoai, String email, String anhdaidien) throws Exception{
+		return hskhdao.suaThongTinKh(makhachhang, hoten, diachi, sodienthoai, email, anhdaidien);
 	}
 	
 	//xử lý thêm nơi nhận hàng

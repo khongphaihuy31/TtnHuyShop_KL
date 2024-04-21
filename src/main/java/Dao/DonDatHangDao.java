@@ -35,12 +35,13 @@ public class DonDatHangDao {
 	}
 	
 	//xử lý lấy mã đặt hàng vừa thêm
-	public long getMaxHD() throws Exception{
+	public long getMaxHD(long makhachhang) throws Exception{
 		KetNoiDao kn = new KetNoiDao();
 		kn.ketnoi();
 		
-		String sql = "select max(mahoadon) as MaxHD from DonDatHang";
+		String sql = "select max(mahoadon) as MaxHD from DonDatHang where makhachhang = ?";
 		PreparedStatement cmd = kn.cn.prepareStatement(sql);
+		cmd.setLong(1, makhachhang);
 		ResultSet rs = cmd.executeQuery();
 		long max = 0;
 		if(rs.next()) {
@@ -49,6 +50,21 @@ public class DonDatHangDao {
 		cmd.close();
 		kn.cn.close();
 		return max;
+	}
+	
+	//xử lý cập nhật đơn hàng đã thanh toán
+	public int capNhatDaThanhToan(long mahoadon, long makhachhang) throws Exception{
+		KetNoiDao kn = new KetNoiDao();
+		kn.ketnoi();
+		
+		String sql = "update DonDatHang set thanhtoan = 1 where mahoadon = ? and makhachhang = ?";
+		PreparedStatement cmd = kn.cn.prepareStatement(sql);
+		cmd.setLong(1, mahoadon);
+		cmd.setLong(2, makhachhang);
+		int kq = cmd.executeUpdate();
+		cmd.close();
+		kn.cn.close();
+		return kq;
 	}
 	
 	//xử lý cập nhật trạng thái chuẩn bị đơn cho đơn đặt hàng	

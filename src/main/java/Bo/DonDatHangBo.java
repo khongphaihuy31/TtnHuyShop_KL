@@ -12,8 +12,13 @@ public class DonDatHangBo {
 	}
 	
 	// lấy mã đơn đặt hàng vừa thêm
-	public long getMaxHD() throws Exception{
-		return ddhdao.getMaxHD();
+	public long getMaxHD(long makhachhang) throws Exception{
+		return ddhdao.getMaxHD(makhachhang);
+	}
+	
+	//xử lý cập nhật đơn hàng đã thanh toán
+	public int capNhatDaThanhToan(long mahoadon, long makhachhang) throws Exception{
+		return ddhdao.capNhatDaThanhToan(mahoadon, makhachhang);
 	}
 	
 	//xử lý lấy danh sách mã hóa đơn chờ xác nhận

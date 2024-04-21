@@ -82,6 +82,20 @@ a:hover, a:focus {
     	right: 4px !important;
 	}
 }
+
+#toast h3{
+	margin: 0;
+}
+
+#toast .toast{
+	width: 400px;
+	max-width: 400px;
+	min-width: 350px;
+}
+
+#toast{
+	top: 90px;
+}
 </style>
 </head>
 <body>
@@ -614,7 +628,7 @@ a:hover, a:focus {
 		</div>
 
 		<!-- Container -->
-		<div class="container">
+		<div class="container1">
 			<div class="grid wide">
 				<!-- sản phẩm bán chạy -->
 				<div class="container__top-selling">
