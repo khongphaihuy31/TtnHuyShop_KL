@@ -1348,14 +1348,248 @@ p {
 												        <table class="table table-bordered" style="width: 100%; margin-top: 10px;"  cellpadding="2" cellspacing="2">
 												            <thead>
 												                <tr>
-												                   <th colspan="3">Tên SP</th>
-												                   <th>Giá</th>
-												                   <th>SL</th>
-												                   <th>Thành tiền</th>
+												                   <th style="text-align: center;" colspan="3">Tên sản phẩm</th>
+												                   <th style="text-align: center;">Giá</th>
+												                   <th style="text-align: center;">SL</th>
+												                   <th style="text-align: center;">Thành tiền</th>
 												                </tr>
 												            </thead>
 												            <tbody>
 												            	<c:forEach items="${dsSPChuanBi }" var="dm">
+													                <c:if test="${dm.getMahoadon() == hdcb.getMahoadon() }">
+														                <tr>
+														                    <td rowspan="2" style="width: 80px;">
+														                    	<c:choose>
+																					<c:when test="${dm.getAnhthietke() == null }">
+																						<div>
+																							<img style="width: 100%; display: inline-block;"
+																								alt="" src="${dm.getAnhsanpham()}">
+																						</div>
+																					</c:when>
+																					<c:otherwise>
+																						<div 
+																							style="position: relative; height: fit-content; text-align: center;">
+																							<img style="width: 100%; display: inline-block;"
+																								alt="" src="${dm.getAnhsanpham()}">
+																							<div
+																								style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: flex; justify-content: center; align-items: center;"
+																								class="preview-img">
+																								<img class="previewImgDesign"
+																									src="${dm.getAnhthietke() }" alt="preview-img">
+																							</div>
+																						</div>
+																					</c:otherwise>
+																				</c:choose>
+														                    </td>
+														                    <td colspan="2">
+														                    	<h4
+																		style="font-size: 2rem; line-height: 2.5rem; font-weight: 500; height: 5rem; overflow: hidden; display: block; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2;">${dm.getTensanpham() }</h4>
+														                    </td>
+														                   <td rowspan="2">
+																		   		<h4 style="font-size: 20px;">
+																					<fmt:setLocale value="vi_VN" />
+																					<fmt:formatNumber value="${dm.getGiasanpham()}"
+																						type="currency" />
+																				</h4>
+																		   </td>
+														                   <td rowspan="2">
+														                   		<h4 style="font-size: 20px;">${dm.getSoluongmua() }</h4>
+														                   </td>
+														                   <td rowspan="2">
+														                   		<h4 style="font-size: 20px;">
+																					<fmt:setLocale value="vi_VN" />
+																					<fmt:formatNumber value="${dm.getThanhtien()}"
+																						type="currency" />
+																				</h4>
+														                   </td>
+														                </tr>
+														                <tr >
+														                    <td> 
+														                    	<p style="font-size: 1.6rem;">
+																				Màu: <b style="font-size: 1.8rem;">${dm.getMausanpham()}</b>
+																				</p>
+														                    </td>
+														                   <td>
+															                   	<p style="font-size: 1.6rem;">
+																					Size: <b style="font-size: 1.8rem;">${dm.getSizesanpham() }</b>
+																				</p>
+														                   </td>
+														                </tr>
+													                </c:if>
+												            	</c:forEach>
+												            </tbody>
+												        </table>
+												    </div>
+												</c:forEach>
+											</c:when>
+											<c:otherwise>
+												<div class="row" style="margin-top: 10px;">
+													<h3>Chưa có đơn hàng</h3>
+												</div>
+											</c:otherwise>
+										</c:choose>
+									</c:when>
+									<c:when test="${param.btndanggiao != null }">
+										<c:choose>
+											<c:when test="${dsSPDangGiao.size() != 0 }">
+												<c:forEach items="${dshddanggiao }" var="hdcb">
+													<div style="border: 2px solid #4dcdcf; border-radius: 10px;width: 100%; padding: 10px 20px; margin-top: 20px;">
+												        <div style="display: flex; width: 100%; justify-content: space-around;">
+												            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold;">Mã hóa đơn: <span style="color: black; font-weight: 500;">${hdcb.getMahoadon() }</span></span> 
+												            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold;">Tổng tiền: <span style="color: black; font-weight: 500;">${hdcb.getTongdongia() } VND</span></span>
+												            <div>
+													            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold;">Thanh toán: </span> 
+													            <c:choose>
+													            	<c:when test="${hdcb.isPhuongthucthanhtoan() == true }">
+															            <span style="color: black; font-weight: 500;">Thanh toán online </span>
+													            	</c:when>
+													            	<c:otherwise>
+													            		<span style="color: black; font-weight: 500;">Thanh toán tiền mặt </span>
+													            	</c:otherwise>
+													            </c:choose>
+													            <c:choose>
+													            	<c:when test="${hdcb.isThanhtoan() == true }">
+															            <span style=" color: rgb(65, 200, 65);">(Đã thanh toán)</span>
+													            	</c:when>
+													            	<c:otherwise>
+													            		<span style=" color: red;">(Chưa thanh toán)</span>
+													            	</c:otherwise>
+													            </c:choose>
+													            
+												            </div>
+												        </div>
+												        <div style="display: flex; width: 100%; justify-content: space-around;">
+												            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold; ">Địa chỉ nhận hàng: <span style="color: black; font-weight: 500;">${hdcb.getDiachinhanhang() }</span></span> 
+												            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold; width: 30%;">Ngày đặt: <span style="color: black; font-weight: 500;">${hdcb.getNgaydat() }</span></span> 
+												        </div>
+												        <table class="table table-bordered" style="width: 100%; margin-top: 10px;"  cellpadding="2" cellspacing="2">
+												            <thead>
+												                <tr>
+												                   <th style="text-align: center;" colspan="3">Tên sản phẩm</th>
+												                   <th style="text-align: center;">Giá</th>
+												                   <th style="text-align: center;">SL</th>
+												                   <th style="text-align: center;">Thành tiền</th>
+												                </tr>
+												            </thead>
+												            <tbody>
+												            	<c:forEach items="${dsSPDangGiao }" var="dm">
+													                <c:if test="${dm.getMahoadon() == hdcb.getMahoadon() }">
+														                <tr>
+														                    <td rowspan="2" style="width: 80px;">
+														                    	<c:choose>
+																					<c:when test="${dm.getAnhthietke() == null }">
+																						<div>
+																							<img style="width: 100%; display: inline-block;"
+																								alt="" src="${dm.getAnhsanpham()}">
+																						</div>
+																					</c:when>
+																					<c:otherwise>
+																						<div 
+																							style="position: relative; height: fit-content; text-align: center;">
+																							<img style="width: 100%; display: inline-block;"
+																								alt="" src="${dm.getAnhsanpham()}">
+																							<div
+																								style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: flex; justify-content: center; align-items: center;"
+																								class="preview-img">
+																								<img class="previewImgDesign"
+																									src="${dm.getAnhthietke() }" alt="preview-img">
+																							</div>
+																						</div>
+																					</c:otherwise>
+																				</c:choose>
+														                    </td>
+														                    <td colspan="2">
+														                    	<h4
+																		style="font-size: 2rem; line-height: 2.5rem; font-weight: 500; height: 5rem; overflow: hidden; display: block; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2;">${dm.getTensanpham() }</h4>
+														                    </td>
+														                   <td rowspan="2">
+																		   		<h4 style="font-size: 20px;">
+																					<fmt:setLocale value="vi_VN" />
+																					<fmt:formatNumber value="${dm.getGiasanpham()}"
+																						type="currency" />
+																				</h4>
+																		   </td>
+														                   <td rowspan="2">
+														                   		<h4 style="font-size: 20px;">${dm.getSoluongmua() }</h4>
+														                   </td>
+														                   <td rowspan="2">
+														                   		<h4 style="font-size: 20px;">
+																					<fmt:setLocale value="vi_VN" />
+																					<fmt:formatNumber value="${dm.getThanhtien()}"
+																						type="currency" />
+																				</h4>
+														                   </td>
+														                </tr>
+														                <tr >
+														                    <td> 
+														                    	<p style="font-size: 1.6rem;">
+																				Màu: <b style="font-size: 1.8rem;">${dm.getMausanpham()}</b>
+																				</p>
+														                    </td>
+														                   <td>
+															                   	<p style="font-size: 1.6rem;">
+																					Size: <b style="font-size: 1.8rem;">${dm.getSizesanpham() }</b>
+																				</p>
+														                   </td>
+														                </tr>
+													                </c:if>
+												            	</c:forEach>
+												            </tbody>
+												        </table>
+												    </div>
+												</c:forEach>
+											</c:when>
+											<c:otherwise>
+												<div class="row" style="margin-top: 10px;">
+													<h3>Chưa có đơn hàng</h3>
+												</div>
+											</c:otherwise>
+										</c:choose>
+									</c:when>
+									<c:when test="${param.btndagiao != null }">
+										<c:choose>
+											<c:when test="${dsSPDaGiao.size() != 0 }">
+												<c:forEach items="${dshddagiao }" var="hdcb">
+													<div style="border: 2px solid #4dcdcf; border-radius: 10px;width: 100%; padding: 10px 20px; margin-top: 20px;">
+												        <div style="display: flex; width: 100%; justify-content: space-around;">
+												            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold;">Mã hóa đơn: <span style="color: black; font-weight: 500;">${hdcb.getMahoadon() }</span></span> 
+												            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold;">Tổng tiền: <span style="color: black; font-weight: 500;">${hdcb.getTongdongia() } VND</span></span>
+												            <div>
+													            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold;">Thanh toán: </span> 
+													            <c:choose>
+													            	<c:when test="${hdcb.isPhuongthucthanhtoan() == true }">
+															            <span style="color: black; font-weight: 500;">Thanh toán online </span>
+													            	</c:when>
+													            	<c:otherwise>
+													            		<span style="color: black; font-weight: 500;">Thanh toán tiền mặt </span>
+													            	</c:otherwise>
+													            </c:choose>
+													            <c:choose>
+													            	<c:when test="${hdcb.isThanhtoan() == true }">
+															            <span style=" color: rgb(65, 200, 65);">(Đã thanh toán)</span>
+													            	</c:when>
+													            	<c:otherwise>
+													            		<span style=" color: red;">(Chưa thanh toán)</span>
+													            	</c:otherwise>
+													            </c:choose>
+													            
+												            </div>
+												        </div>
+												        <div style="display: flex; width: 100%; justify-content: space-around;">
+												            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold; ">Địa chỉ nhận hàng: <span style="color: black; font-weight: 500;">${hdcb.getDiachinhanhang() }</span></span> 
+												            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold; width: 30%;">Ngày đặt: <span style="color: black; font-weight: 500;">${hdcb.getNgaydat() }</span></span> 
+												        </div>
+												        <table class="table table-bordered" style="width: 100%; margin-top: 10px;"  cellpadding="2" cellspacing="2">
+												            <thead>
+												                <tr>
+												                   <th style="text-align: center;" colspan="3">Tên sản phẩm</th>
+												                   <th style="text-align: center;">Giá</th>
+												                   <th style="text-align: center;">SL</th>
+												                   <th style="text-align: center;">Thành tiền</th>
+												                </tr>
+												            </thead>
+												            <tbody>
+												            	<c:forEach items="${dsSPDaGiao }" var="dm">
 													                <c:if test="${dm.getMahoadon() == hdcb.getMahoadon() }">
 														                <tr>
 														                    <td rowspan="2" style="width: 80px;">
@@ -1465,10 +1699,10 @@ p {
 												        <table class="table table-bordered" style="width: 100%; margin-top: 10px;"  cellpadding="2" cellspacing="2">
 												            <thead>
 												                <tr>
-												                   <th colspan="3">Tên SP</th>
-												                   <th>Giá</th>
-												                   <th>SL</th>
-												                   <th>Thành tiền</th>
+												                   <th style="text-align: center;" colspan="3">Tên sản phẩm</th>
+												                   <th style="text-align: center;">Giá</th>
+												                   <th style="text-align: center;">SL</th>
+												                   <th style="text-align: center;">Thành tiền</th>
 												                </tr>
 												            </thead>
 												            <tbody>

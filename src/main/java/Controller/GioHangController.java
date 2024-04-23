@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import Bean.GioHangBean;
 import Bean.KhachHangBean;
+import Bo.ChiTietSanPhamBo;
 import Bo.GioHangBo;
 import Bo.LoaiBo;
 import Bo.SanPhamBo;
@@ -70,6 +71,13 @@ public class GioHangController extends HttpServlet {
 				String mausanpham = request.getParameter("mau");
 				String size = request.getParameter("size");
 				
+				ChiTietSanPhamBo ctspbo = new ChiTietSanPhamBo();
+				long soluongSpTrongKho = ctspbo.getSoluongTrongKho(masanpham, mausanpham, size);
+				if(soluongmua> soluongSpTrongKho) {
+					response.sendRedirect("ChiTietSanPhamController?msp="+masanpham+"&khongdu=1");
+					return;
+				}
+				
 				HttpSession session = request.getSession();
 				GioHangBo sp =  new GioHangBo();
 				if(session.getAttribute("dn")!= null) {
@@ -87,13 +95,20 @@ public class GioHangController extends HttpServlet {
 				String mausanpham = request.getParameter("mau");
 				String size = request.getParameter("size");
 				
+				ChiTietSanPhamBo ctspbo = new ChiTietSanPhamBo();
+				long soluongSpTrongKho = ctspbo.getSoluongTrongKho(masanpham, mausanpham, size);
+				if(soluongmua> soluongSpTrongKho) {
+					response.sendRedirect("ChiTietSanPhamController?msp="+masanpham+"&khongdu=1");
+					return;
+				}
+				
 				HttpSession session = request.getSession();
 				GioHangBo sp =  new GioHangBo();
 				if(session.getAttribute("dn")!= null) {
 					KhachHangBean khbean = (KhachHangBean)session.getAttribute("dn");
 					sp.themSanPhamVaoGio(masanpham, khbean.getMakhachhang(), soluongmua, mausanpham, size);
 				}
-				response.sendRedirect("TrangChuController?themsp=1");
+				response.sendRedirect("ChiTietSanPhamController?themsp=1&msp="+masanpham);
 				return;
 			}
 			

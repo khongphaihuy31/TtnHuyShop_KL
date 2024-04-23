@@ -12,9 +12,18 @@ public class DonMuaBo {
 		return dmdao.getSPChoXacNhan(makhachhang);
 	}
 	
+	//xử lý lấy sản phẩm chuẩn bị
+	public ArrayList<DonMuaBean> getSPChuanBi(long makhachhang)throws Exception{
+		return dmdao.getSPChuanBi(makhachhang);
+	}
+	
+	//xử lý lấy sản phẩm đang giao
+	public ArrayList<DonMuaBean> getSPDangGiao(long makhachhang)throws Exception{
+		return dmdao.getSPDangGiao(makhachhang);
+	}
 	//xử lý lấy sản phẩm đã giao
-	public ArrayList<DonMuaBean> getSPDagiao(long makhachhang)throws Exception{
-		return dmdao.getSPDagiao(makhachhang);
+	public ArrayList<DonMuaBean> getSPDaGiao(long makhachhang)throws Exception{
+		return dmdao.getSPDaGiao(makhachhang);
 	}
 	
 	//lấy danh sách đơn mua chưa xác nhận (Admin)

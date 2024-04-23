@@ -14,6 +14,8 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
+import Bo.ChiTietSanPhamBo;
+
 /**
  * Servlet implementation class MuaAoThietKeController
  */
@@ -94,13 +96,21 @@ public class MuaAoThietKeController extends HttpServlet {
 						}
 					}
 				}
-//				long giacu1 = Long.parseLong(giacu);
-//				long giamoi1 = Long.parseLong(giamoi);
+				long masanpham = Long.parseLong(maaodesign);
+				String mausanpham = maumua;
+				String size = sizemua;
+				long soluongmua1 = Long.parseLong(soluongmua);
 //				long soluongdaban1 = Long.parseLong(soluongdaban);
 //				long maloai1 = Long.parseLong(maloai);
 //				long mathuonghieu1 = Long.parseLong(mathuonghieu);
 //				long madanhmuc1 = Long.parseLong(madanhmuc);
 //				
+				ChiTietSanPhamBo ctspbo = new ChiTietSanPhamBo();
+				long soluongSpTrongKho = ctspbo.getSoluongTrongKho(masanpham, mausanpham, size);
+				if(soluongmua1> soluongSpTrongKho) {
+					response.sendRedirect("ThietKeAoController?msp="+masanpham+"&khongdu=1");
+					return;
+				}
 //				AdminSanPhamBo spbo = new AdminSanPhamBo();
 //				spbo.themSanPham(tensanpham, anh, giacu1, giamoi1, soluongdaban1, motasanpham, chitietsanpham, maloai1, mathuonghieu1, madanhmuc1);
 				response.sendRedirect("ThanhToanController?maumua="+maumua+"&sizemua="+sizemua+"&maaodesign="+maaodesign+"&soluongmua="+soluongmua+"&anhdesign="+anhdesign+"&anhTheoMau="+anhTheoMau);

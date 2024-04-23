@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import Bean.AnhSanPham;
 import Bean.GioHangBean;
 import Bean.KhachHangBean;
+import Bean.SanPhamBean;
 import Bo.ChiTietSanPhamBo;
 import Bo.GioHangBo;
 //import Bo.GioHangBo;
@@ -52,17 +53,36 @@ public class ChiTietSanPhamController extends HttpServlet {
 			request.setAttribute("dsTenLoaiDMTreEm", lbo.getTenLoaiDMTreEm());
 			
 //			Xử lý chi tiết sản phẩm
-			request.setAttribute("masanpham", request.getParameter("msp"));
-			request.setAttribute("tensanpham", request.getParameter("tsp"));
-			request.setAttribute("anh", request.getParameter("anh"));
-			request.setAttribute("giaban", request.getParameter("gb"));
-			request.setAttribute("giagiam", request.getParameter("gg"));
-			request.setAttribute("soluongdaban", request.getParameter("sldb"));
-			request.setAttribute("motasanpham", request.getParameter("mtsp"));
-			request.setAttribute("maloai", request.getParameter("ml"));
-			request.setAttribute("mathuonghieu", request.getParameter("mth"));
-			request.setAttribute("madanhmuc", request.getParameter("mdm"));
-			request.setAttribute("anhchonsize", request.getParameter("acs"));
+			if(request.getParameter("tsp")!= null) {
+				request.setAttribute("masanpham", request.getParameter("msp"));
+				request.setAttribute("tensanpham", request.getParameter("tsp"));
+				request.setAttribute("anh", request.getParameter("anh"));
+				request.setAttribute("giaban", request.getParameter("gb"));
+				request.setAttribute("giagiam", request.getParameter("gg"));
+				request.setAttribute("soluongdaban", request.getParameter("sldb"));
+				request.setAttribute("motasanpham", request.getParameter("mtsp"));
+				request.setAttribute("maloai", request.getParameter("ml"));
+				request.setAttribute("mathuonghieu", request.getParameter("mth"));
+				request.setAttribute("madanhmuc", request.getParameter("mdm"));
+				request.setAttribute("anhchonsize", request.getParameter("acs"));
+			}else {
+				String msp = request.getParameter("msp");
+				long masanpham = Long.parseLong(msp);
+				SanPhamBo spbo = new SanPhamBo();
+				SanPhamBean spbean = spbo.getSanPham(masanpham);
+				
+				request.setAttribute("masanpham", request.getParameter("msp"));
+				request.setAttribute("tensanpham", spbean.getTensanpham());
+				request.setAttribute("anh", spbean.getAnh());
+				request.setAttribute("giaban", spbean.getGiaban());
+				request.setAttribute("giagiam", spbean.getGiagiam());
+				request.setAttribute("soluongdaban", spbean.getSoluongdaban());
+				request.setAttribute("motasanpham", spbean.getMotasanpham());
+				request.setAttribute("maloai", spbean.getMaloai());
+				request.setAttribute("mathuonghieu", spbean.getMathuonghieu());
+				request.setAttribute("madanhmuc", spbean.getMadanhmuc());
+				request.setAttribute("anhchonsize", spbean.getAnhchonsize());
+			}
 			
 			//Xử lý lấy sản phẩm ưa thích
 			SanPhamBo spbo =  new SanPhamBo();
@@ -73,7 +93,13 @@ public class ChiTietSanPhamController extends HttpServlet {
 			long masanpham = Long.parseLong(request.getParameter("msp")) ;
 			request.setAttribute("listSize", ctspbo.dsSize(masanpham));
 			request.setAttribute("listAnhVaMau", ctspbo.getdsAnhVaMau(masanpham));
-			request.setAttribute("listCT", (ArrayList<String>)ctspbo.getdsChiTietSP(masanpham));	
+			request.setAttribute("listCT", (ArrayList<String>)ctspbo.getdsChiTietSP(masanpham));
+			
+//			ArrayList<String> listCT = (ArrayList<String>)ctspbo.getdsChiTietSP(masanpham);
+//			for(int i=0; i<listCT.size();i++) {
+//				
+//			}
+			
 			ArrayList<AnhSanPham> listAnhVaMau = new ArrayList<AnhSanPham>();
 			listAnhVaMau = ctspbo.getdsAnhVaMau(masanpham);
 			ArrayList<String> listAnhVaMauJs = new ArrayList<String>();

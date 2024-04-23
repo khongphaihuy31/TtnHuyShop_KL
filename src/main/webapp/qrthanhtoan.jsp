@@ -277,7 +277,7 @@
 			var startTime = Date.now();
 
 			// Thiết lập thời gian hết hạn là 10 phút sau thời điểm hiện tại
-			var expirationTime = startTime + (0.2 * 60 * 1000); // 10 phút * 60 giây * 1000 milliseconds
+			var expirationTime = startTime + (10 * 60 * 1000); // 10 phút * 60 giây * 1000 milliseconds
 
 			// Cập nhật giao diện
 			updateUI();

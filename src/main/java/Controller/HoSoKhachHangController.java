@@ -119,23 +119,42 @@ public class HoSoKhachHangController extends HttpServlet {
 					request.setAttribute("noinhan", noiNhanBean);
 				}
 			}
+			DonDatHangBo ddhbo = new DonDatHangBo();
+			if(request.getParameter("thanhtoan")!= null) {
+				if(request.getParameter("thanhtoan").equals("thanhcong")) {
+					long madonvuathem = ddhbo.getMaxHD(khbean.getMakhachhang());
+					ddhbo.capNhatDaThanhToan(madonvuathem, khbean.getMakhachhang());
+				}
+			}
 			
 			//lấy sản phẩm chờ xác nhận
 			DonMuaBo dmbo = new DonMuaBo();
 			ArrayList<DonMuaBean> dsSPChoXacNhan = dmbo.getSPChoXacNhan(khbean.getMakhachhang());
 			request.setAttribute("dsSPChoXacNhan", dsSPChoXacNhan);
 			//lấy sản phẩm chuẩn bị đơn
-			ArrayList<DonMuaBean> dsSPChuanBi = dmbo.getSPDagiao(khbean.getMakhachhang());
+			ArrayList<DonMuaBean> dsSPChuanBi = dmbo.getSPChuanBi(khbean.getMakhachhang());
 			request.setAttribute("dsSPChuanBi", dsSPChuanBi);
+			//lấy sản phẩm đang giao
+			ArrayList<DonMuaBean> dsSPDangGiao = dmbo.getSPDangGiao(khbean.getMakhachhang());
+			request.setAttribute("dsSPDangGiao", dsSPDangGiao);
+			//lấy sản phẩm đã giao
+			ArrayList<DonMuaBean> dsSPDaGiao = dmbo.getSPDaGiao(khbean.getMakhachhang());
+			request.setAttribute("dsSPDaGiao", dsSPDaGiao);
 			
 			
 			// xử lý lấy danh sách hóa đơn chờ xác nhận
-			DonDatHangBo ddhbo = new DonDatHangBo();
+			
 			ArrayList<DonDatHangBean> dshdchoxacnhan = ddhbo.dsdonchoxacnhan(khbean.getMakhachhang());
 			request.setAttribute("dshdchoxacnhan", dshdchoxacnhan);
 			// xử lý lấy danh sách hóa đơn đang chuẩn bị
 			ArrayList<DonDatHangBean> dshddangchuanbi = ddhbo.dsdonchuanbi(khbean.getMakhachhang());
 			request.setAttribute("dshddangchuanbi", dshddangchuanbi);
+			// xử lý lấy danh sách hóa đơn đang giao
+			ArrayList<DonDatHangBean> dshddanggiao = ddhbo.dsdondanggiao(khbean.getMakhachhang());
+			request.setAttribute("dshddanggiao", dshddanggiao);
+			// xử lý lấy danh sách hóa đơn đang giao
+			ArrayList<DonDatHangBean> dshddagiao = ddhbo.dsdondagiao(khbean.getMakhachhang());
+			request.setAttribute("dshddagiao", dshddagiao);
 			
 			GioHangBo ghbo = new GioHangBo();
 			if(session.getAttribute("dn")!= null) {			
@@ -152,12 +171,7 @@ public class HoSoKhachHangController extends HttpServlet {
 //				dsSP = sp.dsSP;
 //			}
 //			request.setAttribute("dsSP", dsSP);
-			if(request.getParameter("thanhtoan")!= null) {
-				if(request.getParameter("thanhtoan").equals("thanhcong")) {
-					long madonvuathem = ddhbo.getMaxHD(khbean.getMakhachhang());
-					ddhbo.capNhatDaThanhToan(madonvuathem, khbean.getMakhachhang());
-				}
-			}
+			
 			
 			
 			

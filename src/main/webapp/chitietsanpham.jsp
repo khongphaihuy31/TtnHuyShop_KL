@@ -166,6 +166,20 @@ input:checked + label{
     	right: 4px !important;
 	}
 }
+
+#toast h3 {
+	margin: 0;
+}
+
+#toast .toast {
+	width: 400px;
+	max-width: 400px;
+	min-width: 350px;
+}
+
+#toast {
+	top: 90px;
+}
 </style>
 </head>
 <body>
@@ -890,6 +904,7 @@ input:checked + label{
 						    document.querySelectorAll('input[name="size"]').forEach((e)=>{
 						        e.onclick = function(e){
 						        if (this.checked){
+						        	console.log(this.checked);
 						            thuoctinhsize = false
 						            if(thuoctinhsize == false){
 						                thuoctinhsize = true;
@@ -956,17 +971,54 @@ input:checked + label{
 								    }
 								}
 								down.addEventListener('click' , Down);
+								
+								//Kiểm tra đã chọn màu và size chưa, chưa thì hiện ra thông báo
+								function validateInput() {
+									if (thuoctinhmau== false && thuoctinhsize == false) {
+							        	function showErrorToastChuaChonSizeHoacMau() {
+											toast({
+												title : 'Thêm vào giỏ thất bại',
+												message : 'Vui lòng chọn đầy đủ màu và size.',
+												type : 'error',
+												duration : 5000
+											})
+										}
+							        	showErrorToastChuaChonSizeHoacMau();
+							        }
+									if (thuoctinhmau== true && thuoctinhsize == false) {
+							        	function showErrorToastChuaChonSizeHoacMau() {
+											toast({
+												title : 'Thêm vào giỏ thất bại',
+												message : 'Vui lòng chọn đầy đủ màu và size.',
+												type : 'error',
+												duration : 5000
+											})
+										}
+							        	showErrorToastChuaChonSizeHoacMau();
+							        }
+									if (thuoctinhmau== false && thuoctinhsize == true) {
+							        	function showErrorToastChuaChonSizeHoacMau() {
+											toast({
+												title : 'Thêm vào giỏ thất bại',
+												message : 'Vui lòng chọn đầy đủ màu và size.',
+												type : 'error',
+												duration : 5000
+											})
+										}
+							        	showErrorToastChuaChonSizeHoacMau();
+							        }
+							    }
 						</script>
 						<div class="container__buy">
 							<c:choose>
 								<c:when test="${dn != null }">
-									<button name="addCart" form="soluongmua"
+									<button onclick="validateInput()" name="addCart" form="soluongmua"
 										class="container__buy-add" value="Thêm vào giỏ hàng">
 										<i class="container__buy-add-icon fa-solid fa-cart-plus"></i>
 										Thêm vào giỏ hàng
 									</button>
 		
-									<button name="buyNow" form="soluongmua"
+									<button onclick="validateInput()" name="buyNow" form="soluongmua"
 										class="container__buy-add-now" value="Mua ngay">Mua
 										ngay</button>
 								</c:when>
@@ -1863,5 +1915,36 @@ input:checked + label{
 				showErrorToastDangKi();
 			</script>
 		</c:if>
+		
+		<c:if test="${param.khongdu != null }">
+			<script type="text/javascript">
+				//window.alert("Đăng kí không thành công!");
+				//var el = document.querySelector("#dkweb");
+				//el.click();
+				function showErrorToastDangKi() {
+					toast({
+						title : 'Thêm vào giỏ thất bại',
+						message : 'Số lượng mua vượt quá số lượng còn trong kho.',
+						type : 'error',
+						duration : 5000
+					})
+				}
+				showErrorToastDangKi();
+			</script>
+		</c:if>
+		<c:if test="${param.themsp != null}">
+		<script type="text/javascript">
+			//window.alert("Tài khoản hoặc mật khẩu chưa đúng!");
+			function showSuccessToastThemSp() {
+				toast({
+			        title :'Thành công',
+			        message : 'Thêm sản phẩm vào giỏ thành công.',
+			        type  : 'success',
+			        duration : 5000
+			    })
+			}
+			showSuccessToastThemSp();
+		</script>
+	</c:if>
 </body>
 </html>

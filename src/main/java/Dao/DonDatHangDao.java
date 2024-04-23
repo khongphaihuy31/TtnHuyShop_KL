@@ -134,13 +134,60 @@ public class DonDatHangDao {
 			}
 			return dshoadon;
 		}
-		//xử lý lấy danh sách đơn đặt hàng chuẩn bị đơn
+		//xử lý lấy danh sách đơn đặt hàng chờ xác nhận
 		public ArrayList<DonDatHangBean> dsdonchoxacnhan(long makhachhang)throws Exception{
 			ArrayList<DonDatHangBean> dshoadon = new ArrayList<DonDatHangBean>();
 			KetNoiDao kn = new KetNoiDao();
 			kn.ketnoi();
 			
 			String sql = "select * from DonDatHang where matrangthai = 1 and makhachhang=? order by mahoadon DESC";
+			
+			PreparedStatement cmd = kn.cn.prepareStatement(sql);
+			cmd.setLong(1, makhachhang);
+			ResultSet rs = cmd.executeQuery();
+			while(rs.next()) {
+				Date ngaydat = rs.getDate("ngaydat");
+				long mahoadon = rs.getLong("mahoadon");
+				boolean phuongthucthanhtoan = rs.getBoolean("phuongthucthanhtoan");
+				boolean thanhtoan = rs.getBoolean("thanhtoan");	
+				long tongdongia = rs.getLong("tongdongia");
+				String diachinhanhang = rs.getString("diachinhanhang");
+				
+				dshoadon.add( new DonDatHangBean(mahoadon, ngaydat, phuongthucthanhtoan, thanhtoan, tongdongia, diachinhanhang));
+			}
+			return dshoadon;
+		}
+		
+		//xử lý lấy danh sách đơn đặt hàng đang giao
+		public ArrayList<DonDatHangBean> dsdondanggiao(long makhachhang)throws Exception{
+			ArrayList<DonDatHangBean> dshoadon = new ArrayList<DonDatHangBean>();
+			KetNoiDao kn = new KetNoiDao();
+			kn.ketnoi();
+			
+			String sql = "select * from DonDatHang where matrangthai = 3 and makhachhang=? order by mahoadon DESC";
+			
+			PreparedStatement cmd = kn.cn.prepareStatement(sql);
+			cmd.setLong(1, makhachhang);
+			ResultSet rs = cmd.executeQuery();
+			while(rs.next()) {
+				Date ngaydat = rs.getDate("ngaydat");
+				long mahoadon = rs.getLong("mahoadon");
+				boolean phuongthucthanhtoan = rs.getBoolean("phuongthucthanhtoan");
+				boolean thanhtoan = rs.getBoolean("thanhtoan");	
+				long tongdongia = rs.getLong("tongdongia");
+				String diachinhanhang = rs.getString("diachinhanhang");
+				
+				dshoadon.add( new DonDatHangBean(mahoadon, ngaydat, phuongthucthanhtoan, thanhtoan, tongdongia, diachinhanhang));
+			}
+			return dshoadon;
+		}
+		//xử lý lấy danh sách đơn đặt hàng đã giao
+		public ArrayList<DonDatHangBean> dsdondagiao(long makhachhang)throws Exception{
+			ArrayList<DonDatHangBean> dshoadon = new ArrayList<DonDatHangBean>();
+			KetNoiDao kn = new KetNoiDao();
+			kn.ketnoi();
+			
+			String sql = "select * from DonDatHang where matrangthai = 4 and makhachhang=? order by mahoadon DESC";
 			
 			PreparedStatement cmd = kn.cn.prepareStatement(sql);
 			cmd.setLong(1, makhachhang);

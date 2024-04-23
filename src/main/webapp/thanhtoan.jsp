@@ -24,11 +24,13 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<script src="assets/script/toast.js"></script>
 <link rel="stylesheet" href="assets/css/base.css">
 <link rel="stylesheet" href="assets/css/grid.css">
 <link rel="stylesheet" href="assets/css/main.css">
 <link rel="stylesheet" href="assets/css/chi-tiet.css">
 <link rel="stylesheet" href="assets/css/responsive.css">
+<link rel="stylesheet" href="assets/css/toast.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -105,14 +107,24 @@ a:hover, a:focus {
     height: 100%;
     object-fit: contain;
 }
+
+#toast h3 {
+	margin: 0;
+}
+
+#toast .toast {
+	width: 400px;
+	max-width: 400px;
+	min-width: 350px;
+}
+
+#toast {
+	top: 90px;
+}
 </style>
 </head>
 <body>
-<%if(request.getParameter("nn")!=null){ %>
-	<script type="text/javascript">
-		window.alert("Thông tin nơi nhận của bạn đang trống! Vui lòng click vào (Thay đổi nơi nhận để điền nơi nhận). Cảm ơn!");
-	</script>
-<%} %>
+<div style="z-index: 9999999999999999" id="toast"></div>
 	<div class="app">
 		<header class="header">
 			<div class="grid wide">
@@ -808,8 +820,8 @@ a:hover, a:focus {
 				<h3 style="margin-left: 15px; display: inline-block;"> <b>Phương thức thanh toán</b></h3>
 				<div class="row">
 					<div class="col l-5" id="ttOnline">
-						<input style="position: relative; top: -8px;" form="thanhtoan" id="nganhang" type="radio" name="thanhtoan" value="chuyenkhoan" required> 
-						<label style="font-weight: 500; width: 90%; font-size: 1.6rem;border-radius: 10px;" class="container__col--info-right-info nganhang" for="nganhang">
+						<input style="position: relative; top: -8px;display: none;" form="thanhtoan" id="nganhang" type="radio" name="thanhtoan" value="chuyenkhoan" required> 
+						<label style="margin-left: 40px;;font-weight: 500; width: 90%; font-size: 1.6rem;border-radius: 10px;" class="container__col--info-right-info nganhang" for="nganhang">
 							<b>Thanh toán online</b><br>
 							Thanh toán chuyển khoản qua QRCODE
 						</label>
@@ -817,7 +829,7 @@ a:hover, a:focus {
 					<div class="col l-2">
 					</div>
 					<div class="col l-5" id="ttTiemMat">
-						<input style="position: relative; top: -8px; " form="thanhtoan" id="tienmat" type="radio" name="thanhtoan" value="tienmat" required> 
+						<input style="position: relative; top: -8px; display: none;" form="thanhtoan" id="tienmat" type="radio" name="thanhtoan" value="tienmat" required> 
 						<label style="font-weight: 500; width: 90%; font-size: 1.6rem;border-radius: 10px;" class="container__col--info-right-info tienmat" for="tienmat">
 							<b>Trả tiền mặt</b><br>
 							Thanh toán khi nhận hàng
@@ -829,12 +841,31 @@ a:hover, a:focus {
 					var ttOn = document.querySelector('#ttOnline');
 					var msOn = document.querySelector('.ms-ttOnline');
 					var ttTiemMat = document.querySelector('#ttTiemMat');
+					
+					var chonPhuongThucThanhToan = false;
 					ttOn.addEventListener('click',()=>{
 						msOn.style = "display: block;font-size: 25px; color: red; margin: 10px 0 0 20px; font-weight: bold;";
-					    })
+						chonPhuongThucThanhToan = true;
+					})
 					ttTiemMat.addEventListener('click',()=>{
 						msOn.style = "display: none;";
-					    })
+						chonPhuongThucThanhToan = true;
+					})
+					
+					//Kiểm tra đã chọn màu và size chưa, chưa thì hiện ra thông báo
+					function validateInput() {
+						if (chonPhuongThucThanhToan== false ) {
+				        	function showErrorToastChuaChonPhuongThucThanhToan() {
+								toast({
+									title : 'Thanh toán thất bại',
+									message : 'Vui lòng chọn phương thức thanh toán.',
+									type : 'error',
+									duration : 5000
+								})
+							}
+				        	showErrorToastChuaChonPhuongThucThanhToan();
+				        }
+				    }
 				</script>
 				<c:if test="${giohang != null }">
 					<div class="row" style="margin-top: 30px; border-top: 1px solid var(--primary-color); padding-top: 20px; margin-left: 20px; margin-right: 20px;">
@@ -952,7 +983,7 @@ a:hover, a:focus {
 								<c:choose>
 									<c:when test="${spDesign ==null }">
 										<input form="thanhtoan" type="text" hidden="" name="dsMaGioChon" value="${dsMaGioChon }">
-										<button form="thanhtoan" style="padding: 15px 5px; color: var(--text-color); background-color: var(--primary-color); width: 100%; display: block; font-size: 2rem; border: none;" ><b>Xác nhận thanh toán</b> </button>
+										<button onclick="validateInput()" form="thanhtoan" style="padding: 15px 5px; color: var(--text-color); background-color: var(--primary-color); width: 100%; display: block; font-size: 2rem; border: none;" ><b>Xác nhận thanh toán</b> </button>
 									</c:when>
 									<c:otherwise>
 										<input form="thanhtoan" type="text" hidden="" name="spDesign" value="${spDesign }">
@@ -962,7 +993,7 @@ a:hover, a:focus {
 										<input form="thanhtoan" type="text" hidden="" name="sizemua" value="${sizemua }">
 										<input form="thanhtoan" type="text" hidden="" name="soluongmua" value="${soluongmua }">
 										<input form="thanhtoan" type="text" hidden="" name="anhTheoMau" value="${anhTheoMau }">
-										<button form="thanhtoan" style="padding: 15px 5px; color: var(--text-color); background-color: var(--primary-color); width: 100%; display: block; font-size: 2rem; border: none;" ><b>Xác nhận thanh toán</b> </button>
+										<button onclick="validateInput()" form="thanhtoan" style="padding: 15px 5px; color: var(--text-color); background-color: var(--primary-color); width: 100%; display: block; font-size: 2rem; border: none;" ><b>Xác nhận thanh toán</b> </button>
 									</c:otherwise>
 								</c:choose>
 							</div>
@@ -1066,5 +1097,22 @@ a:hover, a:focus {
 			</div>
 		</footer>
 	</div>
+	
+	<c:if test="${param.nn != null }">
+		<script type="text/javascript">
+			//window.alert("Đăng kí không thành công!");
+			//var el = document.querySelector("#dkweb");
+			//el.click();
+			function showErrorToastKhongCoNoiNhan() {
+				toast({
+					title : 'Thanh toán thất bại',
+					message : 'Vui lòng thêm địa chỉ nhận hàng.',
+					type : 'error',
+					duration : 5000
+				})
+			}
+			showErrorToastKhongCoNoiNhan();
+		</script>
+	</c:if>
 </body>
 </html>

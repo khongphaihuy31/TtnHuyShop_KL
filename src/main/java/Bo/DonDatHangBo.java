@@ -51,4 +51,14 @@ public class DonDatHangBo {
 	public ArrayList<DonDatHangBean> dsdonchoxacnhan(long makhachhang)throws Exception{
 		return ddhdao.dsdonchoxacnhan(makhachhang);
 	}
+	
+	//xử lý lấy danh sách đơn đặt hàng đang giao
+	public ArrayList<DonDatHangBean> dsdondanggiao(long makhachhang)throws Exception{
+		return ddhdao.dsdondanggiao(makhachhang);
+	}
+	
+	//xử lý lấy danh sách đơn đặt hàng đã giao
+	public ArrayList<DonDatHangBean> dsdondagiao(long makhachhang)throws Exception{
+		return ddhdao.dsdondagiao(makhachhang);
+	}
 }

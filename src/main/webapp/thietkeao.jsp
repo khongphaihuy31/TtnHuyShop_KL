@@ -406,6 +406,20 @@ input:checked + label{
 .container__col--info-left{
 	font-size: 2rem;
 }
+
+#toast h3 {
+	margin: 0;
+}
+
+#toast .toast {
+	width: 400px;
+	max-width: 400px;
+	min-width: 350px;
+}
+
+#toast {
+	top: 90px;
+}
 </style>
 </head>
 <body>
@@ -2182,5 +2196,22 @@ input:checked + label{
 	fileInput.addEventListener("change", loadImage);
 	chooseImgBtn.addEventListener("click", () => fileInput.click());
 	</script>
+	
+	<c:if test="${param.khongdu != null }">
+			<script type="text/javascript">
+				//window.alert("Đăng kí không thành công!");
+				//var el = document.querySelector("#dkweb");
+				//el.click();
+				function showErrorToastDangKi() {
+					toast({
+						title : 'Mua thất bại',
+						message : 'Số lượng mua vượt quá số lượng còn trong kho.',
+						type : 'error',
+						duration : 5000
+					})
+				}
+				showErrorToastDangKi();
+			</script>
+		</c:if>
 </body>
 </html>

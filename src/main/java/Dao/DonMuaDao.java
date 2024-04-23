@@ -43,7 +43,7 @@ public class DonMuaDao {
 	}
 	
 	//xử lý lấy sản phẩm chuẩn bị đơn
-	public ArrayList<DonMuaBean> getSPDagiao(long makhachhang)throws Exception{
+	public ArrayList<DonMuaBean> getSPChuanBi(long makhachhang)throws Exception{
 		ArrayList<DonMuaBean> dsSPDagiao = new ArrayList<DonMuaBean>();
 		KetNoiDao kn = new KetNoiDao();
 		kn.ketnoi();
@@ -75,6 +75,74 @@ public class DonMuaDao {
 		}
 		return dsSPDagiao;
 	}
+	
+	//xử lý lấy sản phẩm đang giao
+		public ArrayList<DonMuaBean> getSPDangGiao(long makhachhang)throws Exception{
+			ArrayList<DonMuaBean> dsSPDagiao = new ArrayList<DonMuaBean>();
+			KetNoiDao kn = new KetNoiDao();
+			kn.ketnoi();
+			
+			String sql = "select * from tb_DonMua where makhachhang=? and matrangthai=3 order by mahoadon DESC";
+			PreparedStatement cmd = kn.cn.prepareStatement(sql);
+			cmd.setLong(1, makhachhang);
+			ResultSet rs = cmd.executeQuery();
+			while(rs.next()) {
+				long masanpham = rs.getLong("masanpham");
+				long soluongmua = rs.getLong("soluongmua");
+				long makhachhang1 = rs.getLong("makhachhang");
+				long matrangthai = rs.getLong("matrangthai");
+				Date ngaydat = rs.getDate("ngaydat");
+				long mahoadon = rs.getLong("mahoadon");
+				long thanhtien = rs.getLong("thanhtien");
+				String mausanpham = rs.getString("mausanpham");
+				String sizesanpham = rs.getString("sizesanpham");
+				String anhthietke = rs.getString("anhthietke");
+				long giasanpham = rs.getLong("giasanpham");
+				String tensanpham = rs.getString("tensanpham");
+				String anhsanpham = rs.getString("anhsanpham");
+				boolean phuongthucthanhtoan = rs.getBoolean("phuongthucthanhtoan");
+				boolean thanhtoan = rs.getBoolean("thanhtoan");
+				long tongdongia = rs.getLong("tongdongia");
+				String diachinhanhang = rs.getString("diachinhanhang");
+				
+				dsSPDagiao.add(new DonMuaBean(masanpham, makhachhang1, matrangthai, ngaydat, mahoadon, soluongmua, mausanpham, sizesanpham, anhthietke, giasanpham, tensanpham, anhsanpham, phuongthucthanhtoan, thanhtoan, tongdongia, thanhtien, diachinhanhang));
+			}
+			return dsSPDagiao;
+		}
+		
+		//xử lý lấy sản phẩm đã giao
+				public ArrayList<DonMuaBean> getSPDaGiao(long makhachhang)throws Exception{
+					ArrayList<DonMuaBean> dsSPDagiao = new ArrayList<DonMuaBean>();
+					KetNoiDao kn = new KetNoiDao();
+					kn.ketnoi();
+					
+					String sql = "select * from tb_DonMua where makhachhang=? and matrangthai=4 order by mahoadon DESC";
+					PreparedStatement cmd = kn.cn.prepareStatement(sql);
+					cmd.setLong(1, makhachhang);
+					ResultSet rs = cmd.executeQuery();
+					while(rs.next()) {
+						long masanpham = rs.getLong("masanpham");
+						long soluongmua = rs.getLong("soluongmua");
+						long makhachhang1 = rs.getLong("makhachhang");
+						long matrangthai = rs.getLong("matrangthai");
+						Date ngaydat = rs.getDate("ngaydat");
+						long mahoadon = rs.getLong("mahoadon");
+						long thanhtien = rs.getLong("thanhtien");
+						String mausanpham = rs.getString("mausanpham");
+						String sizesanpham = rs.getString("sizesanpham");
+						String anhthietke = rs.getString("anhthietke");
+						long giasanpham = rs.getLong("giasanpham");
+						String tensanpham = rs.getString("tensanpham");
+						String anhsanpham = rs.getString("anhsanpham");
+						boolean phuongthucthanhtoan = rs.getBoolean("phuongthucthanhtoan");
+						boolean thanhtoan = rs.getBoolean("thanhtoan");
+						long tongdongia = rs.getLong("tongdongia");
+						String diachinhanhang = rs.getString("diachinhanhang");
+						
+						dsSPDagiao.add(new DonMuaBean(masanpham, makhachhang1, matrangthai, ngaydat, mahoadon, soluongmua, mausanpham, sizesanpham, anhthietke, giasanpham, tensanpham, anhsanpham, phuongthucthanhtoan, thanhtoan, tongdongia, thanhtien, diachinhanhang));
+					}
+					return dsSPDagiao;
+				}
 	
 	//lấy danh sách đơn mua chưa xác nhận (Admin)
 	public ArrayList<DonMuaBean> dsDonChuaXacNhan()throws Exception{
