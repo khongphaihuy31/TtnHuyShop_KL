@@ -24,4 +24,9 @@ public class HoSoKhachHangBo {
 	public int suaNoiNhanHang(long makhachhang, String thanhpho, String quan, String phuong, String sonha) throws Exception{
 		return hskhdao.suaNoiNhanHang(makhachhang, thanhpho, quan, phuong, sonha);
 	}
+	
+	//xử lý cập nhật địa chỉ cho khách hàng	
+	public int capNhatDiaChi(long makhachhang, String diachi) throws Exception{
+		return hskhdao.capNhatDiaChi(makhachhang, diachi);
+	}
 }

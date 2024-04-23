@@ -6,6 +6,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import Bean.DonDatHangBean;
+
 
 public class DonDatHangDao {
 	//xử lý thêm đơn đặt hàng
@@ -107,6 +109,53 @@ public class DonDatHangDao {
 			cmd.close();
 			kn.cn.close();
 			return kq;
+		}
+		
+		//xử lý lấy danh sách đơn đặt hàng chuẩn bị đơn
+		public ArrayList<DonDatHangBean> dsdonchuanbi(long makhachhang)throws Exception{
+			ArrayList<DonDatHangBean> dshoadon = new ArrayList<DonDatHangBean>();
+			KetNoiDao kn = new KetNoiDao();
+			kn.ketnoi();
+			
+			String sql = "select * from DonDatHang where matrangthai = 2 and makhachhang=? order by mahoadon DESC";
+			
+			PreparedStatement cmd = kn.cn.prepareStatement(sql);
+			cmd.setLong(1, makhachhang);
+			ResultSet rs = cmd.executeQuery();
+			while(rs.next()) {
+				Date ngaydat = rs.getDate("ngaydat");
+				long mahoadon = rs.getLong("mahoadon");
+				boolean phuongthucthanhtoan = rs.getBoolean("phuongthucthanhtoan");
+				boolean thanhtoan = rs.getBoolean("thanhtoan");	
+				long tongdongia = rs.getLong("tongdongia");
+				String diachinhanhang = rs.getString("diachinhanhang");
+				
+				dshoadon.add( new DonDatHangBean(mahoadon, ngaydat, phuongthucthanhtoan, thanhtoan, tongdongia, diachinhanhang));
+			}
+			return dshoadon;
+		}
+		//xử lý lấy danh sách đơn đặt hàng chuẩn bị đơn
+		public ArrayList<DonDatHangBean> dsdonchoxacnhan(long makhachhang)throws Exception{
+			ArrayList<DonDatHangBean> dshoadon = new ArrayList<DonDatHangBean>();
+			KetNoiDao kn = new KetNoiDao();
+			kn.ketnoi();
+			
+			String sql = "select * from DonDatHang where matrangthai = 1 and makhachhang=? order by mahoadon DESC";
+			
+			PreparedStatement cmd = kn.cn.prepareStatement(sql);
+			cmd.setLong(1, makhachhang);
+			ResultSet rs = cmd.executeQuery();
+			while(rs.next()) {
+				Date ngaydat = rs.getDate("ngaydat");
+				long mahoadon = rs.getLong("mahoadon");
+				boolean phuongthucthanhtoan = rs.getBoolean("phuongthucthanhtoan");
+				boolean thanhtoan = rs.getBoolean("thanhtoan");	
+				long tongdongia = rs.getLong("tongdongia");
+				String diachinhanhang = rs.getString("diachinhanhang");
+				
+				dshoadon.add( new DonDatHangBean(mahoadon, ngaydat, phuongthucthanhtoan, thanhtoan, tongdongia, diachinhanhang));
+			}
+			return dshoadon;
 		}
 	
 	//xử lý lấy danh sách mã hóa đơn chờ xác nhận

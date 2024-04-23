@@ -2,6 +2,7 @@ package Bo;
 
 import java.util.ArrayList;
 
+import Bean.DonDatHangBean;
 import Dao.DonDatHangDao;
 
 public class DonDatHangBo {
@@ -39,5 +40,15 @@ public class DonDatHangBo {
 	//xử lý lấy danh sách mã hóa đơn đã giao
 	public ArrayList<Long> dshoadondagiao()throws Exception{
 		return ddhdao.dshoadondagiao();
+	}
+	
+	//xử lý lấy danh sách đơn đặt hàng chuẩn bị đơn
+	public ArrayList<DonDatHangBean> dsdonchuanbi(long makhachhang)throws Exception{
+		return ddhdao.dsdonchuanbi(makhachhang);
+	}
+	
+	//xử lý lấy danh sách đơn đặt hàng chờ xác nhận
+	public ArrayList<DonDatHangBean> dsdonchoxacnhan(long makhachhang)throws Exception{
+		return ddhdao.dsdonchoxacnhan(makhachhang);
 	}
 }

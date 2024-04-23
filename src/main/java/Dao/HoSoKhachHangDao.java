@@ -85,4 +85,20 @@ public class HoSoKhachHangDao {
 		return kq;
 	}
 	
+	
+	//xử lý cập nhật địa chỉ cho khách hàng	
+	public int capNhatDiaChi(long makhachhang, String diachi) throws Exception{
+		KetNoiDao kn = new KetNoiDao();
+		kn.ketnoi();
+		
+		String sql = "update KhachHang set diachi = ? where makhachhang = ?";
+		PreparedStatement cmd = kn.cn.prepareStatement(sql);
+		cmd.setString(1, diachi);
+		cmd.setLong(2, makhachhang);
+		
+		int kq = cmd.executeUpdate();
+		cmd.close();
+		kn.cn.close();
+		return kq;
+	}
 }

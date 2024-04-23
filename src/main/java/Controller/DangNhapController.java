@@ -59,7 +59,7 @@ public class DangNhapController extends HttpServlet {
 								session.setAttribute("dn", kHangBean);
 								session.setAttribute("taikhoan", taikhoan);
 								if(request.getParameter("suathongtin") != null) {
-									response.sendRedirect("HoSoKhachHangController?info=1");
+									response.sendRedirect("HoSoKhachHangController?info=1&suathongtin=1");
 								}else {
 									response.sendRedirect("TrangChuController");
 								}

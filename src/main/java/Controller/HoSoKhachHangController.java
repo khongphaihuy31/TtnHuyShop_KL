@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import Bean.DonDatHangBean;
 import Bean.DonMuaBean;
 import Bean.GioHangBean;
 import Bean.KhachHangBean;
@@ -71,35 +72,37 @@ public class HoSoKhachHangController extends HttpServlet {
 //				}
 //			}
 			
-			String btnlocationthem = request.getParameter("btnlocationthem");
-			if(btnlocationthem != null) {
-				String thanhpho = request.getParameter("thanhpho");
-				String quan = request.getParameter("quan");
-				String phuong = request.getParameter("phuong");
-				String sonha = request.getParameter("sonha");
+			if(request.getParameter("btnThemLocation") != null) {
+				String tenTinhThanh = request.getParameter("tenTinhThanh");
+				String tenQuanHuyen = request.getParameter("tenQuanHuyen");
+				String tenPhuongXa = request.getParameter("tenPhuongXa");
+				String sonha = request.getParameter("locationDetail");
+				String diachi = sonha+", "+tenPhuongXa+", "+tenQuanHuyen+", "+tenTinhThanh+".";
+				;
 				HttpSession session = request.getSession();
 				KhachHangBean khbean = (KhachHangBean)session.getAttribute("dn");	
 				HoSoKhachHangBo hskhbo = new HoSoKhachHangBo();
-				int nn = hskhbo.themNoiNhanHang(khbean.getMakhachhang(), thanhpho, quan, phuong, sonha);
+				int nn = hskhbo.themNoiNhanHang(khbean.getMakhachhang(), tenTinhThanh, tenQuanHuyen, tenPhuongXa, sonha);
+				hskhbo.capNhatDiaChi(khbean.getMakhachhang(), diachi);
 				if(nn == 1) {
-					NoiNhanBean noiNhanBean= hskhbo.getNoiNhanHang(khbean.getMakhachhang());
-					session.setAttribute("noinhan", noiNhanBean);
-					response.sendRedirect("HoSoKhachHangController?location=1");
+					response.sendRedirect("HoSoKhachHangController?location=1&themlocation=1");
 					return;
 				}
 			}
 			
-			String btnlocationluu = request.getParameter("btnlocationluu");
-			if(btnlocationluu != null) {
-				String thanhpho = request.getParameter("thanhpho");
-				String quan = request.getParameter("quan");
-				String phuong = request.getParameter("phuong");
-				String sonha = request.getParameter("sonha");
+			if(request.getParameter("btnLuuLocation") != null) {
+				String tenTinhThanh = request.getParameter("tenTinhThanh");
+				String tenQuanHuyen = request.getParameter("tenQuanHuyen");
+				String tenPhuongXa = request.getParameter("tenPhuongXa");
+				String sonha = request.getParameter("locationDetail");
+				String diachi = sonha+", "+tenPhuongXa+", "+tenQuanHuyen+", "+tenTinhThanh+".";
+				System.out.print(diachi);
 				HttpSession session = request.getSession();
 				KhachHangBean khbean = (KhachHangBean)session.getAttribute("dn");	
 				HoSoKhachHangBo hskhbo = new HoSoKhachHangBo();
-				hskhbo.suaNoiNhanHang(khbean.getMakhachhang(), thanhpho, quan, phuong, sonha);
-				response.sendRedirect("HoSoKhachHangController?location=1");
+				hskhbo.suaNoiNhanHang(khbean.getMakhachhang(), tenTinhThanh, tenQuanHuyen, tenPhuongXa, sonha);
+				hskhbo.capNhatDiaChi(khbean.getMakhachhang(), diachi);
+				response.sendRedirect("HoSoKhachHangController?location=1&capnhatlocation=1");
 				return;
 			}
 			
@@ -113,18 +116,26 @@ public class HoSoKhachHangController extends HttpServlet {
 			if(khbean != null) {
 				NoiNhanBean noiNhanBean= hskhbo.getNoiNhanHang(khbean.getMakhachhang());
 				if(noiNhanBean != null) {
-					session.setAttribute("noinhan", noiNhanBean);
+					request.setAttribute("noinhan", noiNhanBean);
 				}
 			}
 			
-			//lấy sản phẩm chờ xác nhận và sản phẩm đã giao
+			//lấy sản phẩm chờ xác nhận
 			DonMuaBo dmbo = new DonMuaBo();
 			ArrayList<DonMuaBean> dsSPChoXacNhan = dmbo.getSPChoXacNhan(khbean.getMakhachhang());
 			request.setAttribute("dsSPChoXacNhan", dsSPChoXacNhan);
+			//lấy sản phẩm chuẩn bị đơn
+			ArrayList<DonMuaBean> dsSPChuanBi = dmbo.getSPDagiao(khbean.getMakhachhang());
+			request.setAttribute("dsSPChuanBi", dsSPChuanBi);
 			
-			ArrayList<DonMuaBean> dsSPDaGiao = dmbo.getSPDagiao(khbean.getMakhachhang());
-			request.setAttribute("dsSPDaGiao", dsSPDaGiao);
 			
+			// xử lý lấy danh sách hóa đơn chờ xác nhận
+			DonDatHangBo ddhbo = new DonDatHangBo();
+			ArrayList<DonDatHangBean> dshdchoxacnhan = ddhbo.dsdonchoxacnhan(khbean.getMakhachhang());
+			request.setAttribute("dshdchoxacnhan", dshdchoxacnhan);
+			// xử lý lấy danh sách hóa đơn đang chuẩn bị
+			ArrayList<DonDatHangBean> dshddangchuanbi = ddhbo.dsdonchuanbi(khbean.getMakhachhang());
+			request.setAttribute("dshddangchuanbi", dshddangchuanbi);
 			
 			GioHangBo ghbo = new GioHangBo();
 			if(session.getAttribute("dn")!= null) {			
@@ -143,11 +154,13 @@ public class HoSoKhachHangController extends HttpServlet {
 //			request.setAttribute("dsSP", dsSP);
 			if(request.getParameter("thanhtoan")!= null) {
 				if(request.getParameter("thanhtoan").equals("thanhcong")) {
-					DonDatHangBo ddhbo = new DonDatHangBo();
 					long madonvuathem = ddhbo.getMaxHD(khbean.getMakhachhang());
 					ddhbo.capNhatDaThanhToan(madonvuathem, khbean.getMakhachhang());
 				}
 			}
+			
+			
+			
 					
 			RequestDispatcher rd = request.getRequestDispatcher("hosokhachhang.jsp");
 			rd.forward(request, response);

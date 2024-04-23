@@ -14,7 +14,7 @@ public class DonMuaDao {
 		KetNoiDao kn = new KetNoiDao();
 		kn.ketnoi();
 		
-		String sql = "select * from tb_DonMua where makhachhang=? and matrangthai=1";
+		String sql = "select * from tb_DonMua where makhachhang=? and matrangthai=1 order by mahoadon DESC";
 		PreparedStatement cmd = kn.cn.prepareStatement(sql);
 		cmd.setLong(1, makhachhang);
 		ResultSet rs = cmd.executeQuery();
@@ -42,13 +42,13 @@ public class DonMuaDao {
 		return dsSPChoXacNhan;
 	}
 	
-	//xử lý lấy sản phẩm đã giao
+	//xử lý lấy sản phẩm chuẩn bị đơn
 	public ArrayList<DonMuaBean> getSPDagiao(long makhachhang)throws Exception{
 		ArrayList<DonMuaBean> dsSPDagiao = new ArrayList<DonMuaBean>();
 		KetNoiDao kn = new KetNoiDao();
 		kn.ketnoi();
 		
-		String sql = "select * from tb_DonMua where makhachhang=? and matrangthai=2";
+		String sql = "select * from tb_DonMua where makhachhang=? and matrangthai=2 order by mahoadon DESC";
 		PreparedStatement cmd = kn.cn.prepareStatement(sql);
 		cmd.setLong(1, makhachhang);
 		ResultSet rs = cmd.executeQuery();

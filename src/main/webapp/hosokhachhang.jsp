@@ -26,6 +26,8 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script src="assets/script/toast.js"></script>
+<script src="assets/script/validator.js"></script>
+<link rel="stylesheet" href="assets/css/validation.css">
 <link rel="stylesheet" href="assets/css/base.css">
 <link rel="stylesheet" href="assets/css/grid.css">
 <link rel="stylesheet" href="assets/css/main.css">
@@ -87,34 +89,42 @@ a:hover, a:focus {
 }
 
 .preview-img {
-  max-width: 37.51%;
-  max-height: 42.66%;
-  width: 37.51%;
-  height: 42.66%;
-}
-.preview-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+	max-width: 37.51%;
+	max-height: 42.66%;
+	width: 37.51%;
+	height: 42.66%;
 }
 
-#toast h3{
+.preview-img img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
+#toast h3 {
 	margin: 0;
 }
 
-#toast .toast{
+#toast .toast {
 	width: 400px;
 	max-width: 400px;
 	min-width: 350px;
 }
 
-#toast{
+#toast {
 	top: 90px;
+}
+
+h4{
+	margin: 0;
+}
+p {
+	margin: 0;
 }
 </style>
 </head>
 <body>
-<div style="z-index: 9999999999999999;" id="toast"></div>
+	<div style="z-index: 9999999999999999;" id="toast"></div>
 	<div class="app">
 		<header class="header">
 			<div class="grid wide">
@@ -234,10 +244,9 @@ a:hover, a:focus {
 							</div>
 							<!-- list đồ trẻ em -->
 							<div class="header-nav__item-children">
-								<li class="header-nav__item">
-									<a href="TrangChuController?maloai=${dsTenLoaiDMTreEm.get(0).getMaloai()}&madanhmuc=${dsTenLoaiDMTreEm.get(0).getMadanhmuc()}&mathuonghieu=0"
-									class="header-nav__link"> Design áo
-									<!--  <i class="header-nav__icon fa-solid fa-caret-down"></i>-->
+								<li class="header-nav__item"><a
+									href="TrangChuController?maloai=${dsTenLoaiDMTreEm.get(0).getMaloai()}&madanhmuc=${dsTenLoaiDMTreEm.get(0).getMadanhmuc()}&mathuonghieu=0"
+									class="header-nav__link"> Design áo <!--  <i class="header-nav__icon fa-solid fa-caret-down"></i>-->
 								</a></li>
 								<!-- list trong list đồ trẻ em -->
 								<!--<ul class="header-nav-item-children__list">
@@ -265,8 +274,9 @@ a:hover, a:focus {
 							class="header-nav-mobile-tablet__overlay"></label>
 
 						<div class="header-nav-mobile-tablet">
-							<span style="line-height: 95px" class="header-nav-mobile-tablet__heading">DANH MỤC
-								SẢN PHẨM <label for="header-nav-mobile-tablet__checkbox"
+							<span style="line-height: 95px"
+								class="header-nav-mobile-tablet__heading">DANH MỤC SẢN
+								PHẨM <label for="header-nav-mobile-tablet__checkbox"
 								class="header-nav-mobile-tablet__icon-close"> <i
 									class="fa-solid fa-xmark"></i>
 							</label>
@@ -344,11 +354,10 @@ a:hover, a:focus {
 									</ul></li>
 								<li id="js-product-children-id"
 									class="dropdown header-nav-mobile-tablet__item-children js-product-children">
-									<a class="dropdown-toggle header-nav-mobile-tablet__link" href="TrangChuController?maloai=${dsTenLoaiDMTreEm.get(0).getMaloai()}&madanhmuc=${dsTenLoaiDMTreEm.get(0).getMadanhmuc()}&mathuonghieu=0">
-									Design áo
-									<!--<i class="header-nav-mobile-tablet__icon fa-solid fa-caret-down"></i>-->
-								</a>
-									<!-- <ul class="dropdown-menu"
+									<a class="dropdown-toggle header-nav-mobile-tablet__link"
+									href="TrangChuController?maloai=${dsTenLoaiDMTreEm.get(0).getMaloai()}&madanhmuc=${dsTenLoaiDMTreEm.get(0).getMadanhmuc()}&mathuonghieu=0">
+										Design áo <!--<i class="header-nav-mobile-tablet__icon fa-solid fa-caret-down"></i>-->
+								</a> <!-- <ul class="dropdown-menu"
 										style="position: relative; float: none; border: none; border-radius: 0; box-shadow: none; background-color: var(--primary-color); -webkit-box-shadow: 0;">
 
 										<c:forEach items="${dsTenLoaiDMTreEm }" var="te">
@@ -440,18 +449,16 @@ a:hover, a:focus {
 																<c:when test="${gh.getGiagiam()==0}">
 																	<td width="100"
 																		style="font-size: 1.4rem; color: var(--primary-color);"><b>
-																			<fmt:setLocale value="vi_VN"/>
-																			<fmt:formatNumber value="${gh.getGiaban()}" type="currency"/>
-																		</b>
-																	</td>
+																			<fmt:setLocale value="vi_VN" /> <fmt:formatNumber
+																				value="${gh.getGiaban()}" type="currency" />
+																	</b></td>
 																</c:when>
 																<c:otherwise>
 																	<td width="100"
 																		style="font-size: 1.4rem; color: var(--primary-color);"><b>
-																			<fmt:setLocale value="vi_VN"/>
-																			<fmt:formatNumber value="${gh.getGiagiam()}" type="currency"/>
-																		</b>
-																	</td>
+																			<fmt:setLocale value="vi_VN" /> <fmt:formatNumber
+																				value="${gh.getGiagiam()}" type="currency" />
+																	</b></td>
 																</c:otherwise>
 															</c:choose>
 														</tr>
@@ -613,7 +620,8 @@ a:hover, a:focus {
 		<div class="container" style="margin-top: var(--header-height);">
 			<div class="grid wide">
 				<div class="row" style="margin-top: 30px;">
-					<div class="col l-3" style="background-color: #9fdbe4; height: 100%; padding-top: 10px; margin-right: 20px; border-radius: 20px; padding-left: 20px; padding-bottom: 20px;">
+					<div class="col l-3"
+						style="background-color: #9fdbe4; height: 100%; padding-top: 10px; margin-right: 20px; border-radius: 10px; padding-left: 20px; padding-bottom: 20px; margin-top: 54px;">
 						<!--  <div class="row"
 							style="padding-bottom: 15px; padding-top: 15px; border-bottom: 1px solid var(--primary-color);">
 							<div class="col l-4">
@@ -627,19 +635,20 @@ a:hover, a:focus {
 
 						<c:choose>
 							<c:when test="${param.info != null }">
-								<a href="HoSoKhachHangController" class="row"
+								<!--<a href="HoSoKhachHangController" class="row"
 									style="margin-top: 10px; cursor: pointer; color: black; padding: 5px 0;">
 									<div class="col l-12">
-										<span style="font-size: 2rem; font-weight: bold;">
-											<i style="margin-right: 5px;" class="fa-solid fa-gear"></i>
-											Tài khoản của tôi
+										<span style="font-size: 2rem; font-weight: bold;"> <i
+											style="margin-right: 5px;" class="fa-solid fa-gear"></i> Tài
+											khoản của tôi
 										</span>
 									</div>
-								</a>
+								</a>-->
 								<a href="HoSoKhachHangController?info=1" class="row"
 									style="margin-top: 10px; cursor: pointer; padding: 5px 0;">
 									<div class="col l-12">
-										<span style="font-size: 2rem; font-weight: bold; color: var(--primary-color);">
+										<span
+											style="font-size: 2rem; font-weight: bold; color: var(--primary-color);">
 											<i style="margin-right: 5px;" class="fa-solid fa-user"></i>
 											Thông tin
 										</span>
@@ -648,34 +657,37 @@ a:hover, a:focus {
 								<a href="HoSoKhachHangController?location=1" class="row"
 									style="margin-top: 10px; cursor: pointer; color: black; padding: 5px 0;">
 									<div class="col l-12">
-										<span style="font-size: 2rem; font-weight: bold;">
-										<i style="margin-right: 5px;"	class="fa-solid fa-location-dot"></i> Địa chỉ nhận hàng</span>
+										<span style="font-size: 2rem; font-weight: bold;"> <i
+											style="margin-right: 5px;" class="fa-solid fa-location-dot"></i>
+											Địa chỉ nhận hàng
+										</span>
 									</div>
 								</a>
 								<a href="HoSoKhachHangController?donmua=1" class="row"
 									style="margin-top: 10px; cursor: pointer; color: black; padding: 5px 0;">
 									<div class="col l-12">
-										<span style="font-size: 2rem; font-weight: bold;">
-											<i style="margin-right: 5px;" class="fa-solid fa-box"></i> Đơn hàng
+										<span style="font-size: 2rem; font-weight: bold;"> <i
+											style="margin-right: 5px;" class="fa-solid fa-box"></i> Đơn
+											hàng
 										</span>
 									</div>
 								</a>
 							</c:when>
 							<c:when test="${param.location != null }">
-								<a href="HoSoKhachHangController" class="row"
+								<!--<a href="HoSoKhachHangController" class="row"
 									style="margin-top: 10px; cursor: pointer; color: black; padding: 5px 0;">
 									<div class="col l-12">
-										<span style="font-size: 2rem; font-weight: bold;">
-											<i style="margin-right: 5px;" class="fa-solid fa-gear"></i>
-											Tài khoản của tôi
+										<span style="font-size: 2rem; font-weight: bold;"> <i
+											style="margin-right: 5px;" class="fa-solid fa-gear"></i> Tài
+											khoản của tôi
 										</span>
 									</div>
-								</a>
+								</a>-->
 								<a href="HoSoKhachHangController?info=1" class="row"
 									style="margin-top: 10px; cursor: pointer; color: black; padding: 5px 0;">
 									<div class="col l-12">
-										<span style="font-size: 2rem; font-weight: bold;">
-											<i style="margin-right: 5px;" class="fa-solid fa-user"></i>
+										<span style="font-size: 2rem; font-weight: bold;"> <i
+											style="margin-right: 5px;" class="fa-solid fa-user"></i>
 											Thông tin
 										</span>
 									</div>
@@ -683,34 +695,38 @@ a:hover, a:focus {
 								<a href="HoSoKhachHangController?location=1" class="row"
 									style="margin-top: 10px; cursor: pointer; color: black; padding: 5px 0;">
 									<div class="col l-12">
-										<span style="font-size: 2rem; font-weight: bold; color: var(--primary-color);">
-										<i style="margin-right: 5px;"	class="fa-solid fa-location-dot"></i> Địa chỉ nhận hàng</span>
+										<span
+											style="font-size: 2rem; font-weight: bold; color: var(--primary-color);">
+											<i style="margin-right: 5px;"
+											class="fa-solid fa-location-dot"></i> Địa chỉ nhận hàng
+										</span>
 									</div>
 								</a>
 								<a href="HoSoKhachHangController?donmua=1" class="row"
 									style="margin-top: 10px; cursor: pointer; color: black; padding: 5px 0;">
 									<div class="col l-12">
-										<span style="font-size: 2rem; font-weight: bold;">
-											<i style="margin-right: 5px;" class="fa-solid fa-box"></i> Đơn hàng
+										<span style="font-size: 2rem; font-weight: bold;"> <i
+											style="margin-right: 5px;" class="fa-solid fa-box"></i> Đơn
+											hàng
 										</span>
 									</div>
 								</a>
 							</c:when>
 							<c:when test="${param.donmua != null }">
-								<a href="HoSoKhachHangController" class="row"
+								<!--  <a href="HoSoKhachHangController" class="row"
 									style="margin-top: 10px; cursor: pointer; color: black; padding: 5px 0;">
 									<div class="col l-12">
-										<span style="font-size: 2rem; font-weight: bold;">
-											<i style="margin-right: 5px;" class="fa-solid fa-gear"></i>
-											Tài khoản của tôi
+										<span style="font-size: 2rem; font-weight: bold;"> <i
+											style="margin-right: 5px;" class="fa-solid fa-gear"></i> Tài
+											khoản của tôi
 										</span>
 									</div>
-								</a>
+								</a>-->
 								<a href="HoSoKhachHangController?info=1" class="row"
 									style="margin-top: 10px; cursor: pointer; color: black; padding: 5px 0;">
 									<div class="col l-12">
-										<span style="font-size: 2rem; font-weight: bold;">
-											<i style="margin-right: 5px;" class="fa-solid fa-user"></i>
+										<span style="font-size: 2rem; font-weight: bold;"> <i
+											style="margin-right: 5px;" class="fa-solid fa-user"></i>
 											Thông tin
 										</span>
 									</div>
@@ -718,413 +734,821 @@ a:hover, a:focus {
 								<a href="HoSoKhachHangController?location=1" class="row"
 									style="margin-top: 10px; cursor: pointer; color: black; padding: 5px 0;">
 									<div class="col l-12">
-										<span style="font-size: 2rem; font-weight: bold;">
-										<i style="margin-right: 5px;"	class="fa-solid fa-location-dot"></i> Địa chỉ nhận hàng</span>
+										<span style="font-size: 2rem; font-weight: bold;"> <i
+											style="margin-right: 5px;" class="fa-solid fa-location-dot"></i>
+											Địa chỉ nhận hàng
+										</span>
 									</div>
 								</a>
 								<a href="HoSoKhachHangController?donmua=1" class="row"
 									style="margin-top: 10px; cursor: pointer; color: black; padding: 5px 0;">
 									<div class="col l-12">
-										<span style="font-size: 2rem; font-weight: bold; color: var(--primary-color);">
-											<i style="margin-right: 5px;" class="fa-solid fa-box"></i> Đơn hàng
+										<span
+											style="font-size: 2rem; font-weight: bold; color: var(--primary-color);">
+											<i style="margin-right: 5px;" class="fa-solid fa-box"></i>
+											Đơn hàng
 										</span>
 									</div>
 								</a>
 							</c:when>
-							<c:otherwise>
-								<a href="HoSoKhachHangController" class="row"
-									style="margin-top: 10px; cursor: pointer; color: black; padding: 5px 0;">
-									<div class="col l-12">
-										<span style="font-size: 2rem; font-weight: bold; color: var(--primary-color);">
-											<i style="margin-right: 5px;" class="fa-solid fa-gear"></i>
-											Tài khoản của tôi
-										</span>
-									</div>
-								</a>
-								<a href="HoSoKhachHangController?info=1" class="row"
-									style="margin-top: 10px; cursor: pointer; color: black; padding: 5px 0;">
-									<div class="col l-12">
-										<span style="font-size: 2rem; font-weight: bold;">
-											<i style="margin-right: 5px;" class="fa-solid fa-user"></i>
-											Thông tin
-										</span>
-									</div>
-								</a>
-								<a href="HoSoKhachHangController?location=1" class="row"
-									style="margin-top: 10px; cursor: pointer; color: black; padding: 5px 0;">
-									<div class="col l-12">
-										<span style="font-size: 2rem; font-weight: bold;">
-										<i style="margin-right: 5px;"	class="fa-solid fa-location-dot"></i> Địa chỉ nhận hàng</span>
-									</div>
-								</a>
-								<a href="HoSoKhachHangController?donmua=1" class="row"
-									style="margin-top: 10px; cursor: pointer; color: black; padding: 5px 0;">
-									<div class="col l-12">
-										<span style="font-size: 2rem; font-weight: bold;">
-											<i style="margin-right: 5px;" class="fa-solid fa-box"></i> Đơn hàng
-										</span>
-									</div>
-								</a>
-							</c:otherwise>
 						</c:choose>
 					</div>
-					<div class="col l-9" style="padding: 5px 10px;max-width: 70%">
-
-						<c:if test="${param.info != null }">
-							<div class="row"
-								style="padding-bottom: 15px;">
-								<div class="col l-12">
-									<h2
-										style="margin: 0; padding-bottom: 1px; color: var(--primary-color);">
-										<b>Thông tin của tôi</b>
-									</h2>
-								</div>
-							</div>
-							<div class="row" style="padding:10px 30px 20px 20px; border: 2px solid var(--primary-color); border-radius: 10px;">
-	                            <form id="formInfo" action="SuaThongTinKhachHangController" enctype="multipart/form-data" method="post"></form>
-	                            <div class="col l-3">
-	                                <input form="formInfo" name="anhDaiDien" type="file" id="file-input" accept="image/*" style="display: none;">
-	                                <c:choose>
-	                                	<c:when test="${dn.getAvatar() == null }">
-			                                <img class="choose-img" style="width: 100%;cursor: pointer;" src="https://hoang-phuc.com/static/version1713256568/frontend/Hpi/default/vi_VN/Magenest_CustomerAvatar/images/no-profile-photo.svg" alt="preview-img">
-			                                <img style="display: none;width: 100%;cursor: pointer;" class="previewImgDesign choose-img2" src="" alt="preview-img">
-	                                	</c:when>
-	                                	<c:otherwise>
-	                                		<img class="choose-img" style="width: 100%;cursor: pointer;" src="${dn.getAvatar() }" alt="preview-img">
-	                                		<img style="display: none;width: 100%;cursor: pointer;" class="previewImgDesign choose-img2" src="${dn.getAvatar() }" alt="preview-img">
-	                                	</c:otherwise>
-	                                </c:choose>
-	                            </div>
-	                            <div class="col l-9">
-	                                <div style="margin-top: 20px;" class="field field-name-firstname">
-	                                    <label style="font-size: 20px;"  for="firstname">Họ và tên<span style="color: red;">*</span></label> 
-	                                    <div style="margin-top: 10px;" class="control">
-	                                        <input form="formInfo" style="width: 100%; height: 20px;font-size: 18px;padding: 25px 15px; border-radius: 10px; border: 1px solid #ccc;" type="text" id="firstname" name="hoten" value="${dn.getHoten() }" placeholder="Nhập họ và tên" class="input-text required-entry">
-	                                    </div>
-	                                </div>
-	                                <div style="margin-top: 30px;"  class="field field-phone">
-	                                    <label style="font-size: 20px;" for="phone">Số điện thoại<span style="color: red;">*</span></label> 
-	                                    <div style="margin-top: 10px;" class="control">
-	                                        <input form="formInfo" style="width: 100%; height: 20px;font-size: 18px;padding: 25px 15px; border-radius: 10px; border: 1px solid #ccc;" type="text" id="phone" name="sodienthoai" value="${dn.getSodienthoai() }" placeholder="Số điện thoại" class="input-text required-entry">
-	                                    </div>
-	                                </div>
-	                                <div style="margin-top: 30px;"  class="field field-email">
-	                                    <label style="font-size: 20px;" for="email">Email<span style="color: red;">*</span></label> 
-	                                    <div style="margin-top: 10px;" class="control">
-	                                        <input form="formInfo" style="width: 100%; height: 20px;font-size: 18px;padding: 25px 15px; border-radius: 10px; border: 1px solid #ccc;" type="text" id="email" name="email" value="${dn.getEmail() }" placeholder="email" class="input-text required-entry">
-	                                    </div>
-	                                </div>
-	                                <div style="margin-top: 30px;"  class="field field-location">
-	                                    <label style="font-size: 20px;"  for="location">Địa chị<span style="color: red;">*</span> <span style="margin-left: 15px;"><a style="color: #3aa8d0;" href="HoSoKhachHangController?location=1">Sửa địa chỉ</a></span></label> 
-	                                    <div style="margin-top: 10px;" class="control">
-	                                        <input form="formInfo" style="width: 100%; height: 20px;font-size: 18px;padding: 25px 15px; border-radius: 10px; border: 1px solid #ccc;" type="text" id="location" name="diachi" value="${dn.getDiachi() }" placeholder="Địa chỉ" class="input-text required-entry" disabled>
-	                                    </div>
-	                                </div>
-	                                <div style="margin-top: 30px;"  class="formLuu">
-	                                    <div style="margin-top: 10px;" class="control">
-	                                        <input form="formInfo" style="width: 30%; font-size: 20px;padding: 14px 5px; border-radius: 10px; border: 1px solid #3aa8d0; float: right; background-color: #3aa8d0; color: #fff; font-weight: bold;" type="submit" name="btnLuu" value="Lưu thông tin" class="input-btnLuu">
-	                                    </div>
-	                                </div>
-	                            </div>
-	                        </div>
-						</c:if>
-						<c:if test="${param.location != null }">
-							<div class="row"
-								style="padding-bottom: 15px; border-bottom: 1px solid var(--primary-color);">
-								<div class="col l-12">
-									<h2
-										style="margin: 0; padding-bottom: 1px; color: var(--primary-color);">
-										<b>Địa chỉ nhận hàng</b>
-									</h2>
-								</div>
-							</div>
-							<form id="noinhan" action="HoSoKhachHangController"></form>
-
-							<c:choose>
-								<c:when test="${noinhan!= null }">
-									<div class="row" style="margin-top: 20px;">
-										<table style="margin: 0 12px;" class="table table-hover table-striped table-bordered">
-											<tr>
-												<td width="500">Thành phố</td>
-												<td width="500"><input form="noinhan" type="text"
-													name="thanhpho" value="${noinhan.getThanhpho()}"></td>
-											</tr>
-											<tr>
-												<td width="500">Quận</td>
-												<td width="500"><input form="noinhan" type="text"
-													name="quan" value="${noinhan.getQuan()}"></td>
-											</tr>
-											<tr>
-												<td width="500">Phường</td>
-												<td width="500"><input form="noinhan" type="text"
-													name="phuong" value="${noinhan.getPhuong()}"></td>
-											</tr>
-											<tr>
-												<td width="500">Địa chỉ chi tiết</td>
-												<td width="500"><input form="noinhan" type="text"
-													name="sonha" value="${noinhan.getSonha()}"></td>
-											</tr>
-											<tr>
-												<td width="500"></td>
-												<td width="500"><input
-													style="width: 80px; color: black; background-color: #ccc; height: 40px; line-height: 40px; border: none; font-size: 16px;"
-													type="submit" name="btnlocationthem" value="Thêm">
-													<input
-													style="width: 80px; color: var(--text-color); background-color: var(--primary-color); height: 40px; line-height: 40px; border: none; font-size: 16px; margin-left: 10px;"
-													form="noinhan" type="submit" name="btnlocationluu"
-													value="Lưu"></td>
-											</tr>
-										</table>
+					<div class="col l-9" style="padding: 5px 10px; max-width: 70%">
+						<c:choose>
+							<c:when test="${param.info != null }">
+								<div class="row" style="padding-bottom: 15px;">
+									<div class="col l-12">
+										<h2
+											style="margin: 0; padding-bottom: 1px; color: var(--primary-color);">
+											<b>Thông tin của tôi</b>
+										</h2>
 									</div>
-								</c:when>
-								<c:otherwise>
-									<div class="row" style="margin-top: 20px;">
-										<table class="table table-hover table-striped table-bordered">
-											<tr>
-												<td width="500">Thành phố</td>
-												<td width="500"><input form="noinhan" type="text"
-													name="thanhpho" value=""></td>
-											</tr>
-											<tr>
-												<td width="500">Quận</td>
-												<td width="500"><input form="noinhan" type="text"
-													name="quan" value=""></td>
-											</tr>
-											<tr>
-												<td width="500">Phường</td>
-												<td width="500"><input form="noinhan" type="text"
-													name="phuong" value=""></td>
-											</tr>
-											<tr>
-												<td width="500">Địa chỉ chi tiết</td>
-												<td width="500"><input form="noinhan" type="text"
-													name="sonha" value=""></td>
-											</tr>
-											<tr>
-												<td width="500"></td>
-												<td width="500"><input
-													style="width: 80px; color: var(--text-color); background-color: var(--primary-color); height: 40px; line-height: 40px; border: none; font-size: 16px;"
-													form="noinhan" type="submit" name="btnlocationthem"
-													value="Thêm"> <input
-													style="width: 80px; color: var(--text-color); background-color: var(--primary-color); height: 40px; line-height: 40px; border: none; font-size: 16px; margin-left: 10px;"
-													form="noinhan" type="submit" name="btnlocationluu"
-													value="Lưu"></td>
-											</tr>
-										</table>
+								</div>
+								<div class="row"
+									style="padding: 10px 30px 20px 20px; border: 2px solid var(--primary-color); border-radius: 10px;">
+									
+									<div class="col l-3">
+										<input form="formInfo" name="anhDaiDien" type="file"
+											id="file-input" accept="image/*" style="display: none;">
+										<c:choose>
+											<c:when test="${dn.getAvatar() == null }">
+												<img class="choose-img" style="width: 100%; cursor: pointer;"
+													src="https://hoang-phuc.com/static/version1713256568/frontend/Hpi/default/vi_VN/Magenest_CustomerAvatar/images/no-profile-photo.svg"
+													alt="preview-img">
+												<img style="display: none; width: 100%; cursor: pointer;"
+													class="previewImgDesign choose-img2" src=""
+													alt="preview-img">
+											</c:when>
+											<c:otherwise>
+												<img class="choose-img" style="width: 100%; cursor: pointer;"
+													src="${dn.getAvatar() }" alt="preview-img">
+												<img style="display: none; width: 100%; cursor: pointer;"
+													class="previewImgDesign choose-img2"
+													src="${dn.getAvatar() }" alt="preview-img">
+											</c:otherwise>
+										</c:choose>
 									</div>
-								</c:otherwise>
-							</c:choose>
-						</c:if>
-
-						<c:if test="${param.donmua != null }">
-							<div class="row"
-								style="padding-bottom: 15px; border-bottom: 1px solid var(--primary-color);">
+									<div class="col l-9">
+									<form id="formInfo" action="SuaThongTinKhachHangController"
+										enctype="multipart/form-data" method="post">
+										<div style="margin-top: 20px;"
+											class="field field-name-firstname form-group">
+											<label style="font-size: 20px;" for="firstname">Họ và
+												tên <span style="color: red;">*</span>
+											</label>
+											<div style="margin-top: 10px;" class="control">
+												<input form="formInfo"
+													style="width: 100%; height: 20px; font-size: 18px; padding: 25px 15px; border-radius: 10px; border: 1px solid #ccc;"
+													type="text" id="firstname" name="hoten"
+													value="${dn.getHoten() }" placeholder="Nhập họ và tên"
+													class="input-text required-entry form-control">
+													<span class="form-message"></span> 
+											</div>
+										</div>
+										<div style="margin-top: 30px;" class="field field-phone form-group">
+											<label style="font-size: 20px;" for="phone">Số điện
+												thoại <span style="color: red;">*</span>
+											</label>
+											<div style="margin-top: 10px;" class="control">
+												<input form="formInfo"
+													style="width: 100%; height: 20px; font-size: 18px; padding: 25px 15px; border-radius: 10px; border: 1px solid #ccc;"
+													type="text" id="phone" name="sodienthoai"
+													value="${dn.getSodienthoai() }" placeholder="Số điện thoại"
+													class="input-text required-entry form-control">
+													<span class="form-message"></span>
+											</div>
+										</div>
+										<div style="margin-top: 30px;" class="field field-email form-group">
+											<label style="font-size: 20px;" for="email">Email <span
+												style="color: red;">*</span></label>
+											<div style="margin-top: 10px;" class="control">
+												<input form="formInfo"
+													style="width: 100%; height: 20px; font-size: 18px; padding: 25px 15px; border-radius: 10px; border: 1px solid #ccc;"
+													type="text" id="email" name="email"
+													value="${dn.getEmail() }" placeholder="email"
+													class="input-text required-entry form-control">
+												<span class="form-message"></span>
+											</div>
+										</div>
+										<div style="margin-top: 30px;" class="field field-location">
+											<label style="font-size: 20px;" for="location">Địa chị
+												<span style="color: red;">*</span> <span
+												style="margin-left: 15px;"> <c:choose>
+														<c:when test="${noinhan!=null }">
+															<a style="color: #3aa8d0;"
+																href="HoSoKhachHangController?location=1&capnhatdc=sua">Sửa
+																địa chỉ</a>
+														</c:when>
+														<c:otherwise>
+															<a style="color: #3aa8d0;"
+																href="HoSoKhachHangController?location=1&capnhatdc=them">Thêm
+																địa chỉ</a>
+														</c:otherwise>
+													</c:choose>
+											</span>
+											</label>
+											<div style="margin-top: 10px;" class="control">
+												<input form="formInfo"
+													style="width: 100%; height: 20px; font-size: 18px; padding: 25px 15px; border-radius: 10px; border: 1px solid #ccc;"
+													type="text" id="location" name="diachi"
+													value="${dn.getDiachi() }" placeholder="Địa chỉ"
+													class="input-text required-entry" disabled>
+											</div>
+										</div>
+										<div style="margin-top: 30px;" class="formLuu">
+											<div style="margin-top: 10px;" class="control">
+												<input form="formInfo"
+													style="width: 30%; font-size: 20px; padding: 14px 5px; border-radius: 10px; border: 1px solid #3aa8d0; float: right; background-color: var(--primary-color); color: #fff; font-weight: bold;"
+													type="submit" name="btnLuu" value="Lưu thông tin"
+													class="input-btnLuu">
+											</div>
+										</div>
+										</form>
+									</div>
+									
+								</div>
+								<script lang="javascript" type="text/javascript">
+									Validator({
+										form : '#formInfo',
+										formGroupSelector : '.form-group',
+										errorElement : '.form-message',
+										rules : [ 
+												Validator.isRequired('#firstname','Bạn vui lòng nhập họ tên.'),
+												Validator.isRequired('#email','Bạn vui lòng nhập email.'),
+												Validator.isRequired('#phone','Bạn vui lòng nhập số điện thoại.'),
+										],
+									});
+								</script>
+								
+								<script type="text/javascript">
+									const chooseImgBtn = document.querySelector(".choose-img");
+									const chooseImgBtn2 = document.querySelector(".choose-img2");
+								    const fileInput = document.querySelector("#file-input");
+								    const previewImgDesign = document.querySelector('.previewImgDesign');
+								
+								    const loadImage = () => {
+								        let file = fileInput.files[0];
+								        if(!file) return;
+								        previewImgDesign.src = URL.createObjectURL(file);
+								        previewImgDesign.style.display = "block";
+								        chooseImgBtn.style.display = "none";
+								    }
+								
+								    fileInput.addEventListener("change", loadImage);
+								    chooseImgBtn.addEventListener("click", () => fileInput.click());
+								    chooseImgBtn2.addEventListener("click", () => fileInput.click());
+								</script>
+							</c:when>
+							<c:when test="${param.location != null }">
 								<c:choose>
-									<c:when test="${param.btndagiao != null }">
-										<div class="col l-4">
-											<a href="HoSoKhachHangController?donmua=1&btnchoxacnhan=1"
-												style="margin: 0; padding-bottom: 1px; color: black; font-size: 25px;">
-												<b>Chờ xác nhận</b>
-											</a>
+									<c:when test="${param.capnhatdc != null }">
+										<c:choose>
+											<c:when test="${param.capnhatdc.equals('sua') }">
+												<div class="row" style="padding-bottom: 15px;">
+													<div class="col l-12">
+														<h2
+															style="margin: 0; padding-bottom: 1px; color: var(--primary-color);">
+															<b>Cập nhật địa chỉ</b>
+														</h2>
+													</div>
+												</div>
+											</c:when>
+											<c:when test="${param.capnhatdc.equals('them') }">
+												<div class="row" style="padding-bottom: 15px;">
+													<div class="col l-12">
+														<h2
+															style="margin: 0; padding-bottom: 1px; color: var(--primary-color);">
+															<b>Thêm địa chỉ</b>
+														</h2>
+													</div>
+												</div>
+											</c:when>
+										</c:choose>
+										<div class="row"
+											style="padding: 10px 30px 20px 20px; border: 2px solid var(--primary-color); border-radius: 10px;">
+											<form id="formLocation" action="HoSoKhachHangController"
+												method="get" style="width: 100%;">
+											<div class="col l-12">
+												<div style="margin-top: 20px;"
+													class="field field-name-firstname">
+													<label style="font-size: 20px;" for="firstname">Họ
+														và tên <span style="color: red;">*</span>
+													</label>
+													<div style="margin-top: 10px;" class="control">
+														<input form="formLocation"
+															style="width: 100%; height: 20px; font-size: 18px; padding: 25px 15px; border-radius: 10px; border: 1px solid #ccc;"
+															type="text" id="firstname" name="firstname"
+															value="${dn.getHoten() }" placeholder="Nhập họ và tên"
+															class="input-text required-entry" disabled>
+													</div>
+												</div>
+												<div style="margin-top: 30px;" class="field field-phone">
+													<label style="font-size: 20px;" for="phone">Số điện
+														thoại <span style="color: red;">*</span>
+													</label>
+													<div style="margin-top: 10px;" class="control">
+														<input form="formLocation"
+															style="width: 100%; height: 20px; font-size: 18px; padding: 25px 15px; border-radius: 10px; border: 1px solid #ccc;"
+															type="text" id="phone" name="phone"
+															value="${dn.getSodienthoai() }"
+															placeholder="Số điện thoại"
+															class="input-text required-entry" disabled>
+													</div>
+												</div>
+												<div class="row">
+													<div style="margin-top: 30px;" class="col l-4 form-group">
+														<label style="font-size: 20px;">Tỉnh/Thành phố <span
+															style="color: red;">*</span></label> 
+															<input id="tenTinhThanh"
+															type="text" form="formLocation" name="tenTinhThanh"
+															style="display: none;"> 
+															<select
+																style="margin-top: 10px; width: 100%; font-size: 18px; padding: 12px 15px; border-radius: 10px; border: 1px solid #ccc; height: 50px;"
+																form="formLocation" name="tinhThanh"
+																class="form-select form-select-sm mb-3 form-control" id="city"
+																aria-label=".form-select-sm">
+																<option value="" selected>Chọn Tỉnh/Thành phố</option>
+															</select>
+														<span class="form-message"></span>
+													</div>
+													<div style="margin-top: 30px;" class="col l-4 form-group">
+														<label style="font-size: 20px;">Quận/Huyện <span
+															style="color: red;">*</span></label> <input id="tenQuanHuyen"
+															type="text" form="formLocation" name="tenQuanHuyen"
+															style="display: none;"> <select
+															style="margin-top: 10px; width: 100%;height: 50px; font-size: 18px; padding: 12px 15px; border-radius: 10px; border: 1px solid #ccc;"
+															form="formLocation" name="quanHuyen"
+															class="form-select form-select-sm mb-3 form-control" id="district"
+															aria-label=".form-select-sm">
+															<option value="" selected>Chọn Quận/Huyện</option>
+														</select>
+															<span class="form-message"></span>
+													</div>
+													<div style="margin-top: 30px;" class="col l-4 form-group">
+														<label style="font-size: 20px;">Phường/Xã <span
+															style="color: red;">*</span></label> <input id="tenPhuongXa"
+															type="text" form="formLocation" name="tenPhuongXa"
+															style="display: none;"> <select
+															style="margin-top: 10px; width: 100%;height: 50px; font-size: 18px; padding: 12px 15px; border-radius: 10px; border: 1px solid #ccc;"
+															form="formLocation" name="phuongXa"
+															class="form-select form-select-sm form-control" id="ward"
+															aria-label=".form-select-sm">
+															<option value="" selected>Chọn Phường/Xã</option>
+														</select>
+														<span class="form-message"></span>
+													</div>
+												</div>
+												<div style="margin-top: 20px;"
+													class="field field-name-locationDetail form-group">
+													<label style="font-size: 20px;" for="locationDetail">Số
+														nhà <span style="color: red;">*</span>
+													</label>
+													<div style="margin-top: 10px;" class="control">
+														<input id="soNha" form="formLocation"
+															style="width: 100%; height: 20px; font-size: 18px; padding: 25px 15px; border-radius: 10px;"
+															type="text" id="locationDetail" name="locationDetail"
+															value="" placeholder="Địa chỉ chi tiết"
+															class="input-text required-entry form-control">
+															<span class="form-message"></span>
+													</div>
+												</div>
+												<script lang="javascript" type="text/javascript">
+													Validator({
+														form : '#formLocation',
+														formGroupSelector : '.form-group',
+														errorElement : '.form-message',
+														rules : [ 
+																Validator.isRequired('#soNha','Bạn vui lòng nhập đại chỉ nhà.'),
+																Validator.isRequired('#ward','Bạn vui lòng chọn Phường/Xã.'),
+																Validator.isRequired('#district','Bạn vui lòng chọn Quận/Huyện.'),
+																Validator.isRequired('#city','Bạn vui lòng chọn Tỉnh/Thành phố.'),
+														],
+													});
+												</script>
+												<c:choose>
+													<c:when test="${param.capnhatdc.equals('sua') }">
+														<div class="col l-12">
+															<div style="margin-top: 30px;" class="formLuu">
+																<div
+																	style="width: 30%; font-size: 20px; border-radius: 10px; border: 1px solid var(--primary-color); float: left; background-color: #fff; font-weight: bold; text-align: center; cursor: pointer;"
+																	class="control">
+																	<a href="HoSoKhachHangController?location=1"
+																		style="display: block; color: var(--primary-color); padding: 10px 5px;">Trở
+																		lại</a>
+																</div>
+															</div>
+															<input style="display: none;" form="formLocation" name="btnLuuLocation" type="text" value="1">
+															<div style="margin-top: 30px;" class="formLuu">
+																<div style="margin-top: 10px;" class="control">
+																	<input form="formLocation"
+																		style="width: 30%; font-size: 20px; padding: 12px 5px; border-radius: 10px; border: 1px solid #3aa8d0; float: right; background-color: var(--primary-color); color: #fff; font-weight: bold;"
+																		type="submit" name="btnLuuLocation" value="Lưu địa chỉ"
+																		class="input-btnLuu">
+																</div>
+															</div>
+														</div>
+													</c:when>
+													<c:when test="${param.capnhatdc.equals('them') }">
+														<div class="col l-12">
+															<div style="margin-top: 30px;" class="formLuu">
+																<div
+																	style="width: 30%; font-size: 20px; border-radius: 10px; border: 1px solid var(--primary-color); float: left; background-color: #fff; font-weight: bold; text-align: center; cursor: pointer;"
+																	class="control">
+																	<a href="HoSoKhachHangController?location=1"
+																		style="display: block; color: var(--primary-color); padding: 10px 5px;">Trở
+																		lại</a>
+																</div>
+															</div>
+															<div style="margin-top: 30px;" class="formLuu">
+																<div style="margin-top: 10px;" class="control">
+																	<input form="formLocation"
+																		style="width: 30%; font-size: 20px; padding: 14px 5px; border-radius: 10px; border: 1px solid #3aa8d0; float: right; background-color: var(--primary-color); color: #fff; font-weight: bold;"
+																		type="submit" name="btnThemLocation"
+																		value="Thêm địa chỉ" class="input-btnLuu">
+																</div>
+															</div>
+														</div>
+													</c:when>
+												</c:choose>
+											</div>
+										</form>
 										</div>
-										<div class="col l-5">
-											<a href="HoSoKhachHangController?donmua=1&btndagiao=1"
-												style="margin: 0; padding-bottom: 1px; color: var(--primary-color); font-size: 25px;">
-												<b>Đã giao</b>
-											</a>
-										</div>
+										<script
+											src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+										<script>
+						                    var citis = document.getElementById("city");
+						                    var districts = document.getElementById("district");
+						                    var wards = document.getElementById("ward");
+						
+						                    var tenTinhThanh = document.getElementById("tenTinhThanh");
+						                    var tenQuanHuyen = document.getElementById("tenQuanHuyen");
+						                    var tenPhuongXa = document.getElementById("tenPhuongXa");
+						                    
+						                    var Parameter = {
+						                        url: "https://raw.githubusercontent.com/kenzouno1/DiaGioiHanhChinhVN/master/data.json",
+						                        method: "GET",
+						                        responseType: "application/json",
+						                    };
+						                    var promise = axios(Parameter);
+						                    promise.then(function (result) {
+						                        renderCity(result.data);
+						                    });
+						
+						                    function renderCity(data) {
+						                        for (const x of data) {
+						                            citis.options[citis.options.length] = new Option(x.Name, x.Id);
+						                        }
+						                        citis.onchange = function () {
+						                            ward.length = 1;
+						                            if (this.value != "") {
+						                                const result = data.filter(n => n.Id === this.value);
+						                                //console.log(this);
+						                                tenTinhThanh.value = result[0].Name;
+						                                console.log(result[0].Name); //tên thành phố
+						                                //console.log(result[0].Id);// mã thành phố
+						                                tenTinhThanh.value = result[0].Name;
+						                                for (const k of result[0].Districts) {
+						                                    district.options[district.options.length] = new Option(k.Name, k.Id);
+						                                }
+						                            }
+						                        };
+						                        district.onchange = function () {
+						                            ward.length = 1;
+						                            const dataCity = data.filter((n) => n.Id === citis.value);
+						                            // console.log(dataCity);
+						                            if (this.value != "") {
+						                                const quanHuyen = dataCity[0].Districts.filter(n => n.Id === this.value);
+						                                const dataWards = dataCity[0].Districts.filter(n => n.Id === this.value)[0].Wards;
+						                                tenQuanHuyen.value = quanHuyen[0].Name;
+						                                console.log(quanHuyen[0].Name);// tên quận huyện
+						                                //console.log(quanHuyen[0].Id);// mã quận huyện
+						                                tenQuanHuyen.value = quanHuyen[0].Name;
+						                                for (const w of dataWards) {
+						                                    wards.options[wards.options.length] = new Option(w.Name, w.Id);
+						                                }
+						                            }
+						                        };
+						                        wards.onchange = function () {
+						                            const dataCity = data.filter((n) => n.Id === citis.value);
+						                            const quanHuyen = dataCity[0].Districts.filter(n => n.Id === district.value);
+						                            const dataPhuongXa = quanHuyen[0].Wards.filter(n => n.Id === wards.value);
+						                            tenPhuongXa.value = dataPhuongXa[0].Name;
+						                            console.log(dataPhuongXa[0].Name);// tên phường xã
+						                            //console.log(dataPhuongXa[0].Id);// mã phường xã
+						                        }
+						                    }
+						                </script>
 									</c:when>
 									<c:otherwise>
-										<div class="col l-4">
-											<a href="HoSoKhachHangController?donmua=1&btnchoxacnhan=1"
-												style="margin: 0; padding-bottom: 1px; color: var(--primary-color); font-size: 25px;">
-												<b>Chờ xác nhận</b>
-											</a>
+										<div class="row" style="padding-bottom: 15px;">
+											<div class="col l-12">
+												<h2
+													style="margin: 0; padding-bottom: 1px; color: var(--primary-color);">
+													<b>Địa chỉ nhận hàng</b>
+												</h2>
+											</div>
 										</div>
-										<div class="col l-5">
-											<a href="HoSoKhachHangController?donmua=1&btndagiao=1"
-												style="margin: 0; padding-bottom: 1px; color: black; font-size: 25px;">
-												<b>Đã giao</b>
-											</a>
-										</div>
+	
+										<c:choose>
+											<c:when test="${noinhan!= null }">
+												<div class="row"
+													style="padding: 10px 30px 20px 20px; border: 2px solid var(--primary-color); border-radius: 10px;">
+													<div class="col l-12">
+														<div style="margin-top: 20px;">
+															<span style="font-size: 20px;">${dn.getHoten() }</span> <span
+																style="font-size: 20px;"> - </span> <span
+																style="font-size: 20px;">${dn.getSodienthoai() }</span>
+														</div>
+														<div style="margin-top: 20px;">
+															<span style="font-size: 20px; font-weight: bold;">Địa
+																chỉ: </span> <span style="font-size: 20px;">${dn.getDiachi() }</span>
+														</div>
+														<div style="margin-top: 30px;" class="formLuu">
+															<div style="margin-top: 10px;" class="control">
+																<a
+																	href="HoSoKhachHangController?location=1&capnhatdc=sua"
+																	style="width: 40%; font-size: 20px; padding: 14px 5px; border-radius: 10px; border: 1px solid #3aa8d0; float: left; background-color: var(--primary-color); color: #fff; font-weight: bold; text-align: center;">
+																	<i style="margin-right: 10px;" class="fa-solid fa-pen"></i>Sửa
+																	địa chỉ
+																</a>
+															</div>
+														</div>
+													</div>
+												</div>
+											</c:when>
+											<c:otherwise>
+												<div class="row"
+													style="padding: 10px 30px 20px 20px; border: 2px solid var(--primary-color); border-radius: 10px;">
+													<div class="col l-12">
+														<div style="margin-top: 20px;">
+															<span style="font-size: 20px;">Chưa có địa chỉ nhận
+																hàng, vui lòng thêm địa chỉ nhận.</span>
+														</div>
+														<div style="margin-top: 30px;" class="formLuu">
+															<div style="margin-top: 10px;" class="control">
+																<a
+																	href="HoSoKhachHangController?location=1&capnhatdc=them"
+																	style="width: 30%; font-size: 20px; padding: 14px 5px; border-radius: 10px; border: 1px solid #3aa8d0; float: left; background-color: var(--primary-color); color: #fff; font-weight: bold; text-align: center;">
+																	<i style="margin-right: 10px;"
+																	class="fa-solid fa-circle-plus"></i>Thêm địa chỉ
+																</a>
+															</div>
+														</div>
+													</div>
+												</div>
+											</c:otherwise>
+										</c:choose>
 									</c:otherwise>
 								</c:choose>
-							</div>
-							<c:choose>
-								<c:when test="${param.btndagiao != null }">
+							</c:when>
+							<c:when test="${param.donmua != null }">
+								<div class="row"
+									style="padding-bottom: 15px; border-bottom: 1px solid var(--primary-color);">
 									<c:choose>
-										<c:when test="${dsSPDaGiao.size() != 0 }">
-											<div class="row text-center"
-												style="border-radius: 10px; padding: 10px 0; background-color: var(--primary-color); color: var(--text-color); margin-top: 20px;">
-												<div class="col l-6">
-													<b style="font-size: 18px;">Sản phẩm</b>
-												</div>
-												<div class="col l-2">
-													<b style="font-size: 18px;">Đơn giá</b>
-												</div>
-												<div class="col l-2">
-													<b style="font-size: 18px;">Số lượng</b>
-												</div>
-												<div class="col l-2">
-													<b style="font-size: 18px;">Thành tiền</b>
-												</div>
+										<c:when test="${param.btnchuanbi != null }">
+											<div class="col l-3">
+												<a href="HoSoKhachHangController?donmua=1&btnchoxacnhan=1"
+													style="margin: 0; padding-bottom: 1px; color: black; font-size: 25px;">
+													<b>Chờ xác nhận</b>
+												</a>
 											</div>
-	
-											<c:forEach items="${dsSPDaGiao }" var="dm">
-												<div class="row"
-													style="margin-top: 10px; padding-bottom: 10px; border-bottom: 1px solid var(--primary-color);">
-													<div class="col l-6">
-														<div class="row">
-															<c:choose>
-																<c:when test="${dm.getAnhthietke() == null }">
-																	<div class="col l-3">
-																		<img style="width: 80px; display: inline-block;" alt=""
-																			src="${dm.getAnhsanpham()}">
-																	</div>
-																</c:when>
-																<c:otherwise>
-																	<div class="col l-3" style="position: relative; height: fit-content;text-align: center;">
-																		<img style="width: 100%; display: inline-block;" alt="" src="${dm.getAnhsanpham()}">
-																		<div style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%); display: flex; justify-content: center; align-items: center;"
-									                                        class="preview-img">
-									                                        <img class="previewImgDesign" src="${dm.getAnhthietke() }" alt="preview-img">
-									                                    </div>
-																	</div>
-																</c:otherwise>
-															</c:choose>
-															<div class="col l-9">
-																<h4
-																	style="font-size: 2rem; line-height: 2.5rem; font-weight: 500; height: 5rem; overflow: hidden; display: block; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2;">${dm.getTensanpham() }</h4>
-																<div class="row">
-																	<div class="col l-4">
-																		<p style="font-size: 1.6rem;">
-																			Màu: <b style="font-size: 1.8rem;">${dm.getMausanpham()}</b>
-																		</p>
-																	</div>
-																	<div class="col l-8">
-																		<p style="font-size: 1.6rem;">
-																			Size: <b style="font-size: 1.8rem;">${dm.getSizesanpham() }</b>
-																		</p>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-													<div class="col l-2 text-center">
-														<h4 style="font-size: 20px;">
-															<fmt:setLocale value="vi_VN" />
-															<fmt:formatNumber value="${dm.getGiasanpham()}"
-																type="currency" />
-														</h4>
-													</div>
-													<div class="col l-2 text-center">
-														<h4 style="font-size: 20px;">${dm.getSoluongmua() }</h4>
-													</div>
-													<div class="col l-2 text-center">
-														<h4 style="font-size: 20px;">
-															<fmt:setLocale value="vi_VN" />
-															<fmt:formatNumber value="${dm.getThanhtien()}"
-																type="currency" />
-														</h4>
-													</div>
-												</div>
-											</c:forEach>
+											<div class="col l-3">
+												<a href="HoSoKhachHangController?donmua=1&btnchuanbi=1"
+													style="margin: 0; padding-bottom: 1px; color: var(--primary-color); font-size: 25px;">
+													<b>Chuẩn bị đơn</b>
+												</a>
+											</div>
+											<div class="col l-3">
+												<a href="HoSoKhachHangController?donmua=1&btndanggiao=1"
+													style="margin: 0; padding-bottom: 1px; color: black; font-size: 25px;">
+													<b>Đang giao</b>
+												</a>
+											</div>
+											<div class="col l-3">
+												<a href="HoSoKhachHangController?donmua=1&btndagiao=1"
+													style="margin: 0; padding-bottom: 1px; color: black; font-size: 25px;">
+													<b>Đã giao</b>
+												</a>
+											</div>
+										</c:when>
+										<c:when test="${param.btndanggiao != null }">
+											<div class="col l-3">
+												<a href="HoSoKhachHangController?donmua=1&btnchoxacnhan=1"
+													style="margin: 0; padding-bottom: 1px; color: black; font-size: 25px;">
+													<b>Chờ xác nhận</b>
+												</a>
+											</div>
+											<div class="col l-3">
+												<a href="HoSoKhachHangController?donmua=1&btnchuanbi=1"
+													style="margin: 0; padding-bottom: 1px; color: black; font-size: 25px;">
+													<b>Chuẩn bị đơn</b>
+												</a>
+											</div>
+											<div class="col l-3">
+												<a href="HoSoKhachHangController?donmua=1&btndanggiao=1"
+													style="margin: 0; padding-bottom: 1px; color: var(--primary-color); font-size: 25px;">
+													<b>Đang giao</b>
+												</a>
+											</div>
+											<div class="col l-3">
+												<a href="HoSoKhachHangController?donmua=1&btndagiao=1"
+													style="margin: 0; padding-bottom: 1px; color: black; font-size: 25px;">
+													<b>Đã giao</b>
+												</a>
+											</div>
+										</c:when>
+										<c:when test="${param.btndagiao != null }">
+											<div class="col l-3">
+												<a href="HoSoKhachHangController?donmua=1&btnchoxacnhan=1"
+													style="margin: 0; padding-bottom: 1px; color: black; font-size: 25px;">
+													<b>Chờ xác nhận</b>
+												</a>
+											</div>
+											<div class="col l-3">
+												<a href="HoSoKhachHangController?donmua=1&btnchuanbi=1"
+													style="margin: 0; padding-bottom: 1px; color: black; font-size: 25px;">
+													<b>Chuẩn bị đơn</b>
+												</a>
+											</div>
+											<div class="col l-3">
+												<a href="HoSoKhachHangController?donmua=1&btndanggiao=1"
+													style="margin: 0; padding-bottom: 1px; color: black; font-size: 25px;">
+													<b>Đang giao</b>
+												</a>
+											</div>
+											<div class="col l-3">
+												<a href="HoSoKhachHangController?donmua=1&btndagiao=1"
+													style="margin: 0; padding-bottom: 1px; color: var(--primary-color); font-size: 25px;">
+													<b>Đã giao</b>
+												</a>
+											</div>
 										</c:when>
 										<c:otherwise>
-											<div class="row" style="margin-top: 10px;">
-												<h3>Chưa có đơn hàng</h3>
+											<div class="col l-3">
+												<a href="HoSoKhachHangController?donmua=1&btnchoxacnhan=1"
+													style="margin: 0; padding-bottom: 1px; color: var(--primary-color); font-size: 25px;">
+													<b>Chờ xác nhận</b>
+												</a>
+											</div>
+											<div class="col l-3">
+												<a href="HoSoKhachHangController?donmua=1&btnchuanbi=1"
+													style="margin: 0; padding-bottom: 1px; color: black; font-size: 25px;">
+													<b>Chuẩn bị đơn</b>
+												</a>
+											</div>
+											<div class="col l-3">
+												<a href="HoSoKhachHangController?donmua=1&btndanggiao=1"
+													style="margin: 0; padding-bottom: 1px; color: black; font-size: 25px;">
+													<b>Đang giao</b>
+												</a>
+											</div>
+											<div class="col l-3">
+												<a href="HoSoKhachHangController?donmua=1&btndagiao=1"
+													style="margin: 0; padding-bottom: 1px; color: black; font-size: 25px;">
+													<b>Đã giao</b>
+												</a>
 											</div>
 										</c:otherwise>
 									</c:choose>
-								</c:when>
-								<c:otherwise>
-									<c:choose>
-										<c:when test="${dsSPChoXacNhan.size()!=0 }">
-											<div class="row text-center"
-												style="border-radius: 10px; padding: 10px 0; background-color: var(--primary-color); color: var(--text-color); margin-top: 20px;">
-												<div class="col l-6">
-													<b style="font-size: 18px;">Sản phẩm</b>
+								</div>
+								<c:choose>
+									<c:when test="${param.btnchuanbi != null }">
+										<c:choose>
+											<c:when test="${dsSPChuanBi.size() != 0 }">
+												<c:forEach items="${dshddangchuanbi }" var="hdcb">
+													<div style="border: 2px solid #4dcdcf; border-radius: 10px;width: 100%; padding: 10px 20px; margin-top: 20px;">
+												        <div style="display: flex; width: 100%; justify-content: space-around;">
+												            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold;">Mã hóa đơn: <span style="color: black; font-weight: 500;">${hdcb.getMahoadon() }</span></span> 
+												            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold;">Tổng tiền: <span style="color: black; font-weight: 500;">${hdcb.getTongdongia() } VND</span></span>
+												            <div>
+													            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold;">Thanh toán: </span> 
+													            <c:choose>
+													            	<c:when test="${hdcb.isPhuongthucthanhtoan() == true }">
+															            <span style="color: black; font-weight: 500;">Thanh toán online </span>
+													            	</c:when>
+													            	<c:otherwise>
+													            		<span style="color: black; font-weight: 500;">Thanh toán tiền mặt </span>
+													            	</c:otherwise>
+													            </c:choose>
+													            <c:choose>
+													            	<c:when test="${hdcb.isThanhtoan() == true }">
+															            <span style=" color: rgb(65, 200, 65);">(Đã thanh toán)</span>
+													            	</c:when>
+													            	<c:otherwise>
+													            		<span style=" color: red;">(Chưa thanh toán)</span>
+													            	</c:otherwise>
+													            </c:choose>
+													            
+												            </div>
+												        </div>
+												        <div style="display: flex; width: 100%; justify-content: space-around;">
+												            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold; ">Địa chỉ nhận hàng: <span style="color: black; font-weight: 500;">${hdcb.getDiachinhanhang() }</span></span> 
+												            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold; width: 30%;">Ngày đặt: <span style="color: black; font-weight: 500;">${hdcb.getNgaydat() }</span></span> 
+												        </div>
+												        <table class="table table-bordered" style="width: 100%; margin-top: 10px;"  cellpadding="2" cellspacing="2">
+												            <thead>
+												                <tr>
+												                   <th colspan="3">Tên SP</th>
+												                   <th>Giá</th>
+												                   <th>SL</th>
+												                   <th>Thành tiền</th>
+												                </tr>
+												            </thead>
+												            <tbody>
+												            	<c:forEach items="${dsSPChuanBi }" var="dm">
+													                <c:if test="${dm.getMahoadon() == hdcb.getMahoadon() }">
+														                <tr>
+														                    <td rowspan="2" style="width: 80px;">
+														                    	<c:choose>
+																					<c:when test="${dm.getAnhthietke() == null }">
+																						<div>
+																							<img style="width: 100%; display: inline-block;"
+																								alt="" src="${dm.getAnhsanpham()}">
+																						</div>
+																					</c:when>
+																					<c:otherwise>
+																						<div 
+																							style="position: relative; height: fit-content; text-align: center;">
+																							<img style="width: 100%; display: inline-block;"
+																								alt="" src="${dm.getAnhsanpham()}">
+																							<div
+																								style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: flex; justify-content: center; align-items: center;"
+																								class="preview-img">
+																								<img class="previewImgDesign"
+																									src="${dm.getAnhthietke() }" alt="preview-img">
+																							</div>
+																						</div>
+																					</c:otherwise>
+																				</c:choose>
+														                    </td>
+														                    <td colspan="2">
+														                    	<h4
+																		style="font-size: 2rem; line-height: 2.5rem; font-weight: 500; height: 5rem; overflow: hidden; display: block; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2;">${dm.getTensanpham() }</h4>
+														                    </td>
+														                   <td rowspan="2">
+																		   		<h4 style="font-size: 20px;">
+																					<fmt:setLocale value="vi_VN" />
+																					<fmt:formatNumber value="${dm.getGiasanpham()}"
+																						type="currency" />
+																				</h4>
+																		   </td>
+														                   <td rowspan="2">
+														                   		<h4 style="font-size: 20px;">${dm.getSoluongmua() }</h4>
+														                   </td>
+														                   <td rowspan="2">
+														                   		<h4 style="font-size: 20px;">
+																					<fmt:setLocale value="vi_VN" />
+																					<fmt:formatNumber value="${dm.getThanhtien()}"
+																						type="currency" />
+																				</h4>
+														                   </td>
+														                </tr>
+														                <tr >
+														                    <td> 
+														                    	<p style="font-size: 1.6rem;">
+																				Màu: <b style="font-size: 1.8rem;">${dm.getMausanpham()}</b>
+																				</p>
+														                    </td>
+														                   <td>
+															                   	<p style="font-size: 1.6rem;">
+																					Size: <b style="font-size: 1.8rem;">${dm.getSizesanpham() }</b>
+																				</p>
+														                   </td>
+														                </tr>
+													                </c:if>
+												            	</c:forEach>
+												            </tbody>
+												        </table>
+												    </div>
+												</c:forEach>
+											</c:when>
+											<c:otherwise>
+												<div class="row" style="margin-top: 10px;">
+													<h3>Chưa có đơn hàng</h3>
 												</div>
-												<div class="col l-2">
-													<b style="font-size: 18px;">Đơn giá</b>
+											</c:otherwise>
+										</c:choose>
+									</c:when>
+									<c:otherwise>
+										<c:choose>
+											<c:when test="${dsSPChoXacNhan.size()!=0 }">
+												<c:forEach items="${dshdchoxacnhan }" var="hdcb">
+													<div style="border: 2px solid #4dcdcf; border-radius: 10px;width: 100%; padding: 10px 20px; margin-top: 20px;">
+												        <div style="display: flex; width: 100%; justify-content: space-around;">
+												            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold;">Mã hóa đơn: <span style="color: black; font-weight: 500;">${hdcb.getMahoadon() }</span></span> 
+												            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold;">Tổng tiền: <span style="color: black; font-weight: 500;">${hdcb.getTongdongia() } VND</span></span>
+												            <div>
+													            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold;">Thanh toán: </span> 
+													            <c:choose>
+													            	<c:when test="${hdcb.isPhuongthucthanhtoan() == true }">
+															            <span style="color: black; font-weight: 500;">Thanh toán online </span>
+													            	</c:when>
+													            	<c:otherwise>
+													            		<span style="color: black; font-weight: 500;">Thanh toán tiền mặt </span>
+													            	</c:otherwise>
+													            </c:choose>
+													            <c:choose>
+													            	<c:when test="${hdcb.isThanhtoan() == true }">
+															            <span style=" color: rgb(65, 200, 65);">(Đã thanh toán)</span>
+													            	</c:when>
+													            	<c:otherwise>
+													            		<span style=" color: red;">(Chưa thanh toán)</span>
+													            	</c:otherwise>
+													            </c:choose>
+													            
+												            </div>
+												        </div>
+												        <div style="display: flex; width: 100%; justify-content: space-around;">
+												            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold; ">Địa chỉ nhận hàng: <span style="color: black; font-weight: 500;">${hdcb.getDiachinhanhang() }</span></span> 
+												            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold; width: 30%;">Ngày đặt: <span style="color: black; font-weight: 500;">${hdcb.getNgaydat() }</span></span> 
+												        </div>
+												        <table class="table table-bordered" style="width: 100%; margin-top: 10px;"  cellpadding="2" cellspacing="2">
+												            <thead>
+												                <tr>
+												                   <th colspan="3">Tên SP</th>
+												                   <th>Giá</th>
+												                   <th>SL</th>
+												                   <th>Thành tiền</th>
+												                </tr>
+												            </thead>
+												            <tbody>
+												            	<c:forEach items="${dsSPChoXacNhan }" var="dm">
+													                <c:if test="${dm.getMahoadon() == hdcb.getMahoadon() }">
+														                <tr>
+														                    <td rowspan="2" style="width: 80px;">
+														                    	<c:choose>
+																					<c:when test="${dm.getAnhthietke() == null }">
+																						<div>
+																							<img style="width: 100%; display: inline-block;"
+																								alt="" src="${dm.getAnhsanpham()}">
+																						</div>
+																					</c:when>
+																					<c:otherwise>
+																						<div 
+																							style="position: relative; height: fit-content; text-align: center;">
+																							<img style="width: 100%; display: inline-block;"
+																								alt="" src="${dm.getAnhsanpham()}">
+																							<div
+																								style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: flex; justify-content: center; align-items: center;"
+																								class="preview-img">
+																								<img class="previewImgDesign"
+																									src="${dm.getAnhthietke() }" alt="preview-img">
+																							</div>
+																						</div>
+																					</c:otherwise>
+																				</c:choose>
+														                    </td>
+														                    <td colspan="2">
+														                    	<h4
+																		style="font-size: 2rem; line-height: 2.5rem; font-weight: 500; height: 5rem; overflow: hidden; display: block; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2;">${dm.getTensanpham() }</h4>
+														                    </td>
+														                   <td rowspan="2">
+																		   		<h4 style="font-size: 20px;">
+																					<fmt:setLocale value="vi_VN" />
+																					<fmt:formatNumber value="${dm.getGiasanpham()}"
+																						type="currency" />
+																				</h4>
+																		   </td>
+														                   <td rowspan="2">
+														                   		<h4 style="font-size: 20px;">${dm.getSoluongmua() }</h4>
+														                   </td>
+														                   <td rowspan="2">
+														                   		<h4 style="font-size: 20px;">
+																					<fmt:setLocale value="vi_VN" />
+																					<fmt:formatNumber value="${dm.getThanhtien()}"
+																						type="currency" />
+																				</h4>
+														                   </td>
+														                </tr>
+														                <tr >
+														                    <td> 
+														                    	<p style="font-size: 1.6rem;">
+																				Màu: <b style="font-size: 1.8rem;">${dm.getMausanpham()}</b>
+																				</p>
+														                    </td>
+														                   <td>
+															                   	<p style="font-size: 1.6rem;">
+																					Size: <b style="font-size: 1.8rem;">${dm.getSizesanpham() }</b>
+																				</p>
+														                   </td>
+														                </tr>
+													                </c:if>
+												            	</c:forEach>
+												            </tbody>
+												        </table>
+												    </div>
+												</c:forEach>
+											</c:when>
+											<c:otherwise>
+												<div class="row" style="margin-top: 10px;">
+													<h3>Chưa có đơn hàng</h3>
 												</div>
-												<div class="col l-2">
-													<b style="font-size: 18px;">Số lượng</b>
-												</div>
-												<div class="col l-2">
-													<b style="font-size: 18px;">Thành tiền</b>
-												</div>
-											</div>
-
-											<c:forEach items="${dsSPChoXacNhan }" var="dm">
-												<div class="row"
-													style="margin-top: 10px; padding-bottom: 10px; border-bottom: 1px solid var(--primary-color);">
-													<div class="col l-6">
-														<div class="row">
-															<c:choose>
-																<c:when test="${dm.getAnhthietke() == null }">
-																	<div class="col l-3">
-																		<img style="width: 80px; display: inline-block;" alt=""
-																			src="${dm.getAnhsanpham()}">
-																	</div>
-																</c:when>
-																<c:otherwise>
-																	<div class="col l-3" style="position: relative; height: fit-content;text-align: center;">
-																		<img style="width: 100%; display: inline-block;" alt="" src="${dm.getAnhsanpham()}">
-																		<div style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%); display: flex; justify-content: center; align-items: center;"
-									                                        class="preview-img">
-									                                        <img class="previewImgDesign" src="${dm.getAnhthietke() }" alt="preview-img">
-									                                    </div>
-																	</div>
-																</c:otherwise>
-															</c:choose>
-															<div class="col l-9">
-																<h4
-																	style="font-size: 2rem; line-height: 2.5rem; font-weight: 500; height: 5rem; overflow: hidden; display: block; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2;">${dm.getTensanpham()}</h4>
-																<div class="row">
-																	<div class="col l-4">
-																		<p style="font-size: 1.6rem;">
-																			Màu: <b style="font-size: 1.8rem;">${dm.getMausanpham()}</b>
-																		</p>
-																	</div>
-																	<div class="col l-8">
-																		<p style="font-size: 1.6rem;">
-																			Size: <b style="font-size: 1.8rem;">${dm.getSizesanpham() }</b>
-																		</p>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-													<div class="col l-2 text-center">
-														<h4 style="font-size: 20px;">
-															<fmt:setLocale value="vi_VN" />
-															<fmt:formatNumber value="${dm.getGiasanpham()}"
-																type="currency" />
-														</h4>
-													</div>
-													<div class="col l-2 text-center">
-														<h4 style="font-size: 20px;">${dm.getSoluongmua() }</h4>
-													</div>
-													<div class="col l-2 text-center">
-														<h4 style="font-size: 20px;">
-															<fmt:setLocale value="vi_VN" />
-															<fmt:formatNumber value="${dm.getThanhtien()}"
-																type="currency" />
-														</h4>
-													</div>
-												</div>
-											</c:forEach>
-										</c:when>
-										<c:otherwise>
-											<div class="row" style="margin-top: 10px;">
-												<h3>Chưa có đơn hàng</h3>
-											</div>
-										</c:otherwise>
-									</c:choose>
-								</c:otherwise>
-							</c:choose>
-						</c:if>
+											</c:otherwise>
+										</c:choose>
+									</c:otherwise>
+								</c:choose>
+							</c:when>
+						</c:choose>
 					</div>
 				</div>
 			</div>
@@ -1209,6 +1633,7 @@ a:hover, a:focus {
 			</div>
 		</footer>
 	</div>
+
 	<c:if test="${param.thanhtoan.equals('thatbai')}">
 		<script type="text/javascript">
 			//window.alert("Đăng kí không thành công!");
@@ -1223,7 +1648,7 @@ a:hover, a:focus {
 			showErrorToastDangKi();
 		</script>
 	</c:if>
-	
+
 	<c:if test="${param.thanhtoan.equals('thanhcong')}">
 		<script type="text/javascript">
 			//window.alert("Tài khoản hoặc mật khẩu chưa đúng!");
@@ -1238,24 +1663,50 @@ a:hover, a:focus {
 			showSuccessToastThemSp();
 		</script>
 	</c:if>
+
+	<c:if test="${param.suathongtin != null}">
+		<script type="text/javascript">
+			//window.alert("Tài khoản hoặc mật khẩu chưa đúng!");
+			function showSuccessToastCapNhatThongTin() {
+				toast({
+			        title :'Thành công',
+			        message : 'Cập nhật thông tin thành công.',
+			        type  : 'success',
+			        duration : 5000
+			    })
+			}
+			showSuccessToastCapNhatThongTin();
+		</script>
+	</c:if>
+	<c:if test="${param.capnhatlocation != null}">
+		<script type="text/javascript">
+			//window.alert("Tài khoản hoặc mật khẩu chưa đúng!");
+			function showSuccessToastCapNhatThongTin() {
+				toast({
+			        title :'Thành công',
+			        message : 'Cập nhật địa chỉ thành công.',
+			        type  : 'success',
+			        duration : 5000
+			    })
+			}
+			showSuccessToastCapNhatThongTin();
+		</script>
+	</c:if>
+	<c:if test="${param.themlocation != null}">
+		<script type="text/javascript">
+			//window.alert("Tài khoản hoặc mật khẩu chưa đúng!");
+			function showSuccessToastCapNhatThongTin() {
+				toast({
+			        title :'Thành công',
+			        message : 'Thêm địa chỉ thành công.',
+			        type  : 'success',
+			        duration : 5000
+			    })
+			}
+			showSuccessToastCapNhatThongTin();
+		</script>
+	</c:if>
+
 	
-	<script type="text/javascript">
-		const chooseImgBtn = document.querySelector(".choose-img");
-		const chooseImgBtn2 = document.querySelector(".choose-img2");
-	    const fileInput = document.querySelector("#file-input");
-	    const previewImgDesign = document.querySelector('.previewImgDesign');
-	
-	    const loadImage = () => {
-	        let file = fileInput.files[0];
-	        if(!file) return;
-	        previewImgDesign.src = URL.createObjectURL(file);
-	        previewImgDesign.style.display = "block";
-	        chooseImgBtn.style.display = "none";
-	    }
-	
-	    fileInput.addEventListener("change", loadImage);
-	    chooseImgBtn.addEventListener("click", () => fileInput.click());
-	    chooseImgBtn2.addEventListener("click", () => fileInput.click());
-	</script>
 </body>
 </html>
