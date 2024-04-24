@@ -83,17 +83,17 @@ a:hover, a:focus {
 	}
 }
 
-#toast h3{
+#toast h3 {
 	margin: 0;
 }
 
-#toast .toast{
+#toast .toast {
 	width: 400px;
 	max-width: 400px;
 	min-width: 350px;
 }
 
-#toast{
+#toast {
 	top: 90px;
 }
 </style>

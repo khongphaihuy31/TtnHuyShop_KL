@@ -98,12 +98,26 @@ a:hover, a:focus {
     	right: 4px !important;
 	}
 }
+
+#toast h3 {
+	margin: 0;
+}
+
+#toast .toast {
+	width: 400px;
+	max-width: 400px;
+	min-width: 350px;
+}
+
+#toast {
+	top: 90px;
+}
 </style>
 </head>
 <body>
 <div style="z-index: 9999999999999999" id="toast"></div>
 	<div class="app">
-				<header class="header">
+		<header class="header">
 			<div class="grid wide">
 				<div class="header__welcome hide-on-mobile-tablet">
 					<h3 class="header__welcome-text">Chào mừng các bạn đã đến với
@@ -221,19 +235,20 @@ a:hover, a:focus {
 							</div>
 							<!-- list đồ trẻ em -->
 							<div class="header-nav__item-children">
-								<li class="header-nav__item"><a href=""
-									class="header-nav__link"> Trẻ em <i
-										class="header-nav__icon fa-solid fa-caret-down"></i>
+								<li class="header-nav__item">
+									<a href="TrangChuController?maloai=${dsTenLoaiDMTreEm.get(0).getMaloai()}&madanhmuc=${dsTenLoaiDMTreEm.get(0).getMadanhmuc()}&mathuonghieu=0"
+									class="header-nav__link"> Design áo
+									<!--  <i class="header-nav__icon fa-solid fa-caret-down"></i>-->
 								</a></li>
 								<!-- list trong list đồ trẻ em -->
-								<ul class="header-nav-item-children__list">
+								<!--<ul class="header-nav-item-children__list">
 									<c:forEach items="${dsTenLoaiDMTreEm }" var="te">
 										<li class="header-nav-item-children__item"><a
 											href="TrangChuController?maloai=${te.getMaloai()}&madanhmuc=${te.getMadanhmuc()}&mathuonghieu=0"
 											class="header-nav-item-children__link">
 												${te.getTenloai()} </a></li>
 									</c:forEach>
-								</ul>
+								</ul>-->
 							</div>
 						</ul>
 					</div>
@@ -251,7 +266,7 @@ a:hover, a:focus {
 							class="header-nav-mobile-tablet__overlay"></label>
 
 						<div class="header-nav-mobile-tablet">
-							<span class="header-nav-mobile-tablet__heading">DANH MỤC
+							<span style="line-height: 95px" class="header-nav-mobile-tablet__heading">DANH MỤC
 								SẢN PHẨM <label for="header-nav-mobile-tablet__checkbox"
 								class="header-nav-mobile-tablet__icon-close"> <i
 									class="fa-solid fa-xmark"></i>
@@ -330,11 +345,11 @@ a:hover, a:focus {
 									</ul></li>
 								<li id="js-product-children-id"
 									class="dropdown header-nav-mobile-tablet__item-children js-product-children">
-									<a class="dropdown-toggle header-nav-mobile-tablet__link"
-									data-toggle="dropdown" href="#">Trẻ em <i
-										class="header-nav-mobile-tablet__icon fa-solid fa-caret-down"></i>
+									<a class="dropdown-toggle header-nav-mobile-tablet__link" href="TrangChuController?maloai=${dsTenLoaiDMTreEm.get(0).getMaloai()}&madanhmuc=${dsTenLoaiDMTreEm.get(0).getMadanhmuc()}&mathuonghieu=0">
+									Design áo
+									<!--<i class="header-nav-mobile-tablet__icon fa-solid fa-caret-down"></i>-->
 								</a>
-									<ul class="dropdown-menu"
+									<!-- <ul class="dropdown-menu"
 										style="position: relative; float: none; border: none; border-radius: 0; box-shadow: none; background-color: var(--primary-color); -webkit-box-shadow: 0;">
 
 										<c:forEach items="${dsTenLoaiDMTreEm }" var="te">
@@ -344,7 +359,7 @@ a:hover, a:focus {
 												class="header-nav-item-all-mobile-tablet__link">
 													${te.getTenloai()} </a></li>
 										</c:forEach>
-									</ul>
+									</ul>-->
 								</li>
 								<!-- </div> -->
 							</ul>
@@ -420,11 +435,26 @@ a:hover, a:focus {
 														<tr style="border-bottom: 1px solid #ccc;">
 															<td width="60"><img
 																style="display: block; width: 100%;" alt=""
-																src="${gh.getAnh()}"></td>
+																src="${gh.getAnhTheoMau()}"></td>
 															<td style="font-size: 1.4rem;" class="">${gh.getTensanpham()}</td>
-															<td width="100"
-																style="font-size: 1.4rem; color: var(--primary-color);"><b>${gh.getGiaban()}
-																	VNĐ</b></td>
+															<c:choose>
+																<c:when test="${gh.getGiagiam()==0}">
+																	<td width="100"
+																		style="font-size: 1.4rem; color: var(--primary-color);"><b>
+																			<fmt:setLocale value="vi_VN"/>
+																			<fmt:formatNumber value="${gh.getGiaban()}" type="currency"/>
+																		</b>
+																	</td>
+																</c:when>
+																<c:otherwise>
+																	<td width="100"
+																		style="font-size: 1.4rem; color: var(--primary-color);"><b>
+																			<fmt:setLocale value="vi_VN"/>
+																			<fmt:formatNumber value="${gh.getGiagiam()}" type="currency"/>
+																		</b>
+																	</td>
+																</c:otherwise>
+															</c:choose>
 														</tr>
 													</c:forEach>
 												</table>
@@ -596,7 +626,7 @@ a:hover, a:focus {
 								<div class="row">
 									<div class="col l-12">
 										<div class="row text-center" style="border-radius: 10px; padding: 10px 0; background-color: var(--primary-color); color: var(--text-color);">
-											<div class="col l-6">
+											<div class="col l-5">
 											<b style="font-size: 18px;">Sản phẩm</b>
 											</div>
 											<div class="col l-2">
@@ -606,7 +636,10 @@ a:hover, a:focus {
 											<b style="font-size: 18px;">Số lượng</b>
 											</div>
 											<div class="col l-2">
-											<b style="font-size: 18px;">Thao tác</b>
+											<b style="font-size: 18px;">Thành tiền</b>
+											</div>
+											<div class="col l-1">
+											<b style="font-size: 18px;">Xóa</b>
 											</div>
 										</div>
 										<form id="xoachon"action="GioHangController" method="get">
@@ -614,7 +647,7 @@ a:hover, a:focus {
 				        				<c:forEach items="${giohang }" var="sp">
 				        					<h1 style="display: none;" class="huy${sp.getMagiohang() }">${sp.getThanhtien() }</h1>
 				        					<div style="margin-top: 10px; padding-bottom: 10px;border-bottom: 1px solid var(--primary-color);" class="row">
-												<div class="col l-6">
+												<div class="col l-5">
 													<div class="row">
 														<div class="col l-3">
 															<input id="chonmua" style="display: inline-block;" form="xoachon" type="checkbox" name="${sp.getMagiohang()}">
@@ -659,6 +692,12 @@ a:hover, a:focus {
 														</button>
 												</div>
 												<div class="col l-2 text-center">
+													<h4 style="font-size: 20px; color: var(--primary-color); font-weight: bold;">
+														<fmt:setLocale value="vi_VN"/>
+														<fmt:formatNumber value="${sp.getThanhtien()}" type="currency"/>
+													</h4>
+												</div>
+												<div class="col l-1 text-center">
 													<form id="xoa-${sp.getMasanpham()}-${sp.getMausanpham()}-${sp.getSize()}" action="GioHangController"></form>
 														<input hidden="" form="xoa-${sp.getMasanpham()}-${sp.getMausanpham()}-${sp.getSize()}" type="text" name="mausp" value="${sp.getMausanpham()}">
 														<input hidden="" form="xoa-${sp.getMasanpham()}-${sp.getMausanpham()}-${sp.getSize()}" type="text" name="size" value="${sp.getSize()}">

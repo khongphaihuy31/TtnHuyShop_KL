@@ -244,19 +244,20 @@ a:hover, a:focus {
 							</div>
 							<!-- list đồ trẻ em -->
 							<div class="header-nav__item-children">
-								<li class="header-nav__item"><a href=""
-									class="header-nav__link"> Trẻ em <i
-										class="header-nav__icon fa-solid fa-caret-down"></i>
+								<li class="header-nav__item">
+									<a href="TrangChuController?maloai=${dsTenLoaiDMTreEm.get(0).getMaloai()}&madanhmuc=${dsTenLoaiDMTreEm.get(0).getMadanhmuc()}&mathuonghieu=0"
+									class="header-nav__link"> Design áo
+									<!--  <i class="header-nav__icon fa-solid fa-caret-down"></i>-->
 								</a></li>
 								<!-- list trong list đồ trẻ em -->
-								<ul class="header-nav-item-children__list">
+								<!--<ul class="header-nav-item-children__list">
 									<c:forEach items="${dsTenLoaiDMTreEm }" var="te">
 										<li class="header-nav-item-children__item"><a
 											href="TrangChuController?maloai=${te.getMaloai()}&madanhmuc=${te.getMadanhmuc()}&mathuonghieu=0"
 											class="header-nav-item-children__link">
 												${te.getTenloai()} </a></li>
 									</c:forEach>
-								</ul>
+								</ul>-->
 							</div>
 						</ul>
 					</div>
@@ -274,7 +275,7 @@ a:hover, a:focus {
 							class="header-nav-mobile-tablet__overlay"></label>
 
 						<div class="header-nav-mobile-tablet">
-							<span class="header-nav-mobile-tablet__heading">DANH MỤC
+							<span style="line-height: 95px" class="header-nav-mobile-tablet__heading">DANH MỤC
 								SẢN PHẨM <label for="header-nav-mobile-tablet__checkbox"
 								class="header-nav-mobile-tablet__icon-close"> <i
 									class="fa-solid fa-xmark"></i>
@@ -353,11 +354,11 @@ a:hover, a:focus {
 									</ul></li>
 								<li id="js-product-children-id"
 									class="dropdown header-nav-mobile-tablet__item-children js-product-children">
-									<a class="dropdown-toggle header-nav-mobile-tablet__link"
-									data-toggle="dropdown" href="#">Trẻ em <i
-										class="header-nav-mobile-tablet__icon fa-solid fa-caret-down"></i>
+									<a class="dropdown-toggle header-nav-mobile-tablet__link" href="TrangChuController?maloai=${dsTenLoaiDMTreEm.get(0).getMaloai()}&madanhmuc=${dsTenLoaiDMTreEm.get(0).getMadanhmuc()}&mathuonghieu=0">
+									Design áo
+									<!--<i class="header-nav-mobile-tablet__icon fa-solid fa-caret-down"></i>-->
 								</a>
-									<ul class="dropdown-menu"
+									<!-- <ul class="dropdown-menu"
 										style="position: relative; float: none; border: none; border-radius: 0; box-shadow: none; background-color: var(--primary-color); -webkit-box-shadow: 0;">
 
 										<c:forEach items="${dsTenLoaiDMTreEm }" var="te">
@@ -367,7 +368,7 @@ a:hover, a:focus {
 												class="header-nav-item-all-mobile-tablet__link">
 													${te.getTenloai()} </a></li>
 										</c:forEach>
-									</ul>
+									</ul>-->
 								</li>
 								<!-- </div> -->
 							</ul>
@@ -767,7 +768,7 @@ a:hover, a:focus {
 				<h3 style="margin-top: 10px;border-bottom: 1px solid var(--primary-color); padding-bottom: 25px; font-weight: bold; color: var(--primary-color);">THÔNG TIN GIAO HÀNG & THANH TOÁN</h3>
 				<form id="thanhtoan" action="XacNhanThanhToanController" method="get"></form>
 				<h3 style="margin-left: 15px; display: inline-block;"> <b>Thông tin khách hàng</b></h3> <a href="HoSoKhachHangController?info=1" style="display: inline-block; cursor: pointer; margin-left: 20px; font-size: 1.4rem;"> <b>Thay đổi thông tin</b> </a>
-				<div class="row">
+				<!--<div class="row">
 					<div class="col l-6" style="width: 50%;">
 						<h4 style="font-size: 20px;">Họ tên:</h4>
 						<input form="thanhtoan" style="width: 100%; margin-bottom: 10px; height: 35px; padding-left: 10px; font-size: 1.6rem;border-radius: 5px;"  type="text" name="hoten" value="${dn.getHoten()}" disabled>
@@ -780,11 +781,17 @@ a:hover, a:focus {
 						<h4 style="font-size: 20px;">Email:</h4>
 						<input form="thanhtoan" style="width: 100%; margin-bottom: 10px; height: 35px; padding-left: 10px; font-size: 1.6rem; border-radius: 5px;"  type="text" name="email" value="${dn.getEmail()}" disabled>
 					</div>
+				</div>-->
+				<div class="row" style="margin-left: 5px;">
+					<div class="col l-12" style="width: 100%;">
+						<h4 style="font-size: 20px;">${dn.getHoten()} - ${dn.getSodienthoai()}</h4>
+						<h4 style="font-size: 20px;">${dn.getEmail()}</h4>
+					</div>
 				</div>
 				<h3 style="margin-left: 15px; display: inline-block;"> <b>Địa chỉ giao hàng</b></h3> <a href="HoSoKhachHangController?location=1" style="display: inline-block; cursor: pointer; margin-left: 20px; font-size: 1.4rem;"> <b>Thêm / Thay đổi nơi giao hàng</b> </a>
 				<c:choose>
 					<c:when test="${noinhan == null}">
-						<div class="row">
+						<!--<div class="row">
 							<div class="col l-6" style="width: 50%;">
 								<h4 style="font-size: 20px;">Thành phố:</h4>
 								<input form="thanhtoan" style="width: 100%; margin-bottom: 10px; height: 35px; padding-left: 10px; font-size: 1.6rem;border-radius: 5px;"  type="text" name="thanhpho" value="" disabled required>
@@ -797,10 +804,16 @@ a:hover, a:focus {
 								<h4 style="font-size: 20px;">Địa chỉ cụ thể:</h4>
 								<input form="thanhtoan" style="width: 100%; margin-bottom: 10px; height: 35px; padding-left: 10px; font-size: 1.6rem;border-radius: 5px;"  type="text" name="sonha" value="" disabled required>
 							</div>
+						</div>-->
+						<div class="row" style="margin-left: 15px;margin-right: 15px; padding: 10px; border: 2px solid var(--primary-color); border-radius: 10px;">
+							<div class="col l-12" style="width: 100%;">
+									<span style="font-size: 20px;">Chưa có địa chỉ nhận
+										hàng, vui lòng thêm địa chỉ nhận.</span>
+							</div>
 						</div>
 					</c:when>
 					<c:otherwise>
-						<div class="row">
+						<!--<div class="row">
 							<div class="col l-6" style="width: 50%;">
 								<h4 style="font-size: 20px;">Thành phố:</h4>
 								<input form="thanhtoan" style="width: 100%; margin-bottom: 10px; height: 35px; padding-left: 10px; font-size: 1.6rem;border-radius: 5px;"  type="text" name="thanhpho" value="${ noinhan.getThanhpho() }" disabled required>
@@ -813,6 +826,12 @@ a:hover, a:focus {
 								<h4 style="font-size: 20px;">Địa chỉ cụ thể:</h4>
 								<input form="thanhtoan" style="width: 100%; margin-bottom: 10px; height: 35px; padding-left: 10px; font-size: 1.6rem;border-radius: 5px;"  type="text" name="sonha" value="${ noinhan.getSonha() }" disabled required>
 							</div>
+						</div>-->
+						<div class="row" style="margin-left: 15px;margin-right: 15px; padding: 10px; border: 2px solid var(--primary-color); border-radius: 10px;">
+							<div class="col l-12" style="width: 100%;">
+								<h4 style="font-size: 20px;">${dn.getHoten()} - ${dn.getSodienthoai()}</h4>
+								<h4 style="font-size: 20px;">${dn.getDiachi()}</h4>
+							</div>
 						</div>
 					</c:otherwise>
 				</c:choose>
@@ -821,7 +840,7 @@ a:hover, a:focus {
 				<div class="row">
 					<div class="col l-5" id="ttOnline">
 						<input style="position: relative; top: -8px;display: none;" form="thanhtoan" id="nganhang" type="radio" name="thanhtoan" value="chuyenkhoan" required> 
-						<label style="margin-left: 40px;;font-weight: 500; width: 90%; font-size: 1.6rem;border-radius: 10px;" class="container__col--info-right-info nganhang" for="nganhang">
+						<label style="margin-left: 40px;;font-weight: 500; width: 90%; font-size: 1.6rem;border-radius: 10px;border: 2px solid var(--primary-color);" class="container__col--info-right-info nganhang" for="nganhang">
 							<b>Thanh toán online</b><br>
 							Thanh toán chuyển khoản qua QRCODE
 						</label>
@@ -830,7 +849,7 @@ a:hover, a:focus {
 					</div>
 					<div class="col l-5" id="ttTiemMat">
 						<input style="position: relative; top: -8px; display: none;" form="thanhtoan" id="tienmat" type="radio" name="thanhtoan" value="tienmat" required> 
-						<label style="font-weight: 500; width: 90%; font-size: 1.6rem;border-radius: 10px;" class="container__col--info-right-info tienmat" for="tienmat">
+						<label style="font-weight: 500; width: 90%; font-size: 1.6rem;border-radius: 10px; border: 2px solid var(--primary-color);" class="container__col--info-right-info tienmat" for="tienmat">
 							<b>Trả tiền mặt</b><br>
 							Thanh toán khi nhận hàng
 						</label>

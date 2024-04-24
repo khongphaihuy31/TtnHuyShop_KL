@@ -74,7 +74,7 @@ public class AdminTrangChuController extends HttpServlet {
 				
 			
 					
-			RequestDispatcher rd = request.getRequestDispatcher("Admin.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("AdminTrangChu.jsp");
 			rd.forward(request, response);
 		} catch (Exception e) {
 			// TODO: handle exception
