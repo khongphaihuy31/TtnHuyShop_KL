@@ -26,8 +26,11 @@ public class AdminKhachHangDao {
 			String tendn= rs.getString("tendangnhap"); 
 			String mk= rs.getString("matkhau");
 			Boolean quyen = rs.getBoolean("quyen");
+			long tichdiem = rs.getLong("tichdiem");
+			String sothich = rs.getString("sothich"); 
+			String avatar= rs.getString("avatar");
 					
-//			dskhachhang.add(new KhachHangBean(makhachhang, hoten, diachi, sodienthoai, email, tendn, mk, quyen));
+			dskhachhang.add(new KhachHangBean(makhachhang, hoten, diachi, sodienthoai, email, avatar, tendn, mk, quyen, tichdiem, sothich));
 		}
 		return dskhachhang;
 	}

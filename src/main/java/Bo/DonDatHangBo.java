@@ -61,4 +61,9 @@ public class DonDatHangBo {
 	public ArrayList<DonDatHangBean> dsdondagiao(long makhachhang)throws Exception{
 		return ddhdao.dsdondagiao(makhachhang);
 	}
+	
+	// xử lý lấy doanh thu trong ngày
+	public long getDoanhThuTrongNgay(String ngayhientai) throws Exception {
+		return ddhdao.getDoanhThuTrongNgay(ngayhientai);
+	}
 }

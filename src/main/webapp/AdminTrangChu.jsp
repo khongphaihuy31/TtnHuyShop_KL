@@ -28,50 +28,50 @@ html, body, h1, h2, h3, h4, h5 {
 </head>
 <body class="w3-light-grey">
 	<!-- Top container -->
-    <div class="w3-bar w3-top w3-large" style="z-index:4; background-color: var(--primary-color); color: white; height: 72px;">
+    <div class="w3-bar w3-top w3-large" style="z-index:4;background: linear-gradient(169.68deg, #086a87 19.53%, #75dbd9 128.18%); color: white; height: 72px; padding: 0 20px;">
         <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey"
             onclick="w3_open();"><i class="fa fa-bars"></i></button>
         <span class="w3-bar-item w3-left" style="line-height: 56px;">Website Admin Ttn-Huy Fashion</span>
-        <span class="w3-bar-item w3-right" style="padding: 0 !important;">
-            <img alt="" src="assets/img/huy-removebg-preview.png" style="height: 72px;">
-        </span>
+        <a href="AdminTrangChuController" class="w3-bar-item w3-right" style="padding: 0 !important;">
+            <img alt="" src="assets/img/huy-removebg-preview.png" style="height: 70px;">
+        </a>
     </div>
 
     <!-- Sidebar/menu -->
     <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;margin-top: 10px;" id="mySidebar"><br>
         <div class="w3-container w3-row">
-            <div class="w3-col s4">
+            <div class="w3-col s3">
                 <img src="https://www.w3schools.com/w3images/avatar2.png" class="w3-circle w3-margin-right" style="width:46px">
             </div>
-            <div class="w3-col s8 w3-bar">
+            <div class="w3-col s9 w3-bar">
                 <!-- <ul class="header__welcome-list" style="margin: 0px;">
                     <li class="header__welcome-item" style="display: inline-block;"><a href="#"
                             class="js-login header__welcome-link"> <span
                                 style="display: inline-block; width: 25px;  background-color: green; color: white; border-radius: 50%; text-align: center; margin-right: 5px; font-weight: 500;">hình</span>
                             tên</a>
                 </ul> -->
-                <span>Xin chào, <strong>Mike</strong></span><br>
-                    <a href="dangXuatController" class="js-register header__welcome-link w3-bar-item w3-button"> <span class="glyphicon glyphicon-log-out"></span> Đăng
-                    xuất
+                <span>Xin chào, <strong>${dn.getHoten() }</strong></span><br>
+                    <a style="color: red;margin-left: 25px; font-size: 18px;" href="dangXuatController" class="js-register header__welcome-link"> <span class="glyphicon glyphicon-log-out"></span> Đăng
+                    xuất <i class="fa-solid fa-right-from-bracket"></i>
                     </a>
             </div>
         </div>
         <hr>
         <div class="w3-container">
-            <h5>DANH MỤC QUẢN LÝ</h5>
+            <h5 style="text-align: center; font-weight: bold; margin-top: 0;">DANH MỤC QUẢN LÝ</h5>
         </div>
         <div class="w3-bar-block">
             <!--<a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black"
                 onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>-->
             <a href="#" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa-solid fa-house"></i>  Trang chủ</a>
-            <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Xác nhận đơn hàng</a>
-            <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Quản lý loại sản phẩm</a>
-            <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bullseye fa-fw"></i>  Quản lý loại trong danh mục</a>
-            <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-diamond fa-fw"></i>  Quản lý sản phẩm</a>
-            <!--<a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bell fa-fw"></i>  News</a>
-            <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bank fa-fw"></i>  General</a>
-            <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-history fa-fw"></i>  History</a>
-            <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>  Settings</a>--><br><br>
+            <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-truck-ramp-box"></i>  Xác nhận đơn hàng</a>
+            <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-layer-group"></i>  Quản lý loại sản phẩm</a>
+            <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa-brands fa-docker"></i>  Quản lý loại trong danh mục</a>
+            <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-boxes-stacked"></i>  Quản lý sản phẩm</a>
+            <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users"></i>  Quản lý khách hàng</a>
+            <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-image"></i>  Quản lý banner</a>
+            <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-gift"></i>  Quản lý khuyến mãi</a>
+            <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-chart-pie"></i>  Thống kê doanh thu</a><br><br>
         </div>
     </nav>
 
@@ -84,26 +84,26 @@ html, body, h1, h2, h3, h4, h5 {
     <div class="w3-main" style="margin-left:300px;margin-top:63px;">
 
         <!-- Header -->
-        <header class="w3-container" style="padding-top:22px">
+        <header class="w3-container" style="padding-top:22px;color:var(--primary-color); margin-bottom: 16px;">
             <h2><b><i class="fa-solid fa-house"></i>  Trang chủ</b></h2>
         </header>
 
         <div class="w3-row-padding w3-margin-bottom">
             <div class="w3-quarter">
                 <div class="w3-container w3-red w3-padding-16">
-                    <div class="w3-left"><i class="fa fa-comment w3-xxxlarge"></i></div>
+                    <div class="w3-left"><i style="font-size: 50px;" class="fa-solid fa-boxes-stacked"></i></div>
                     <div class="w3-right">
-                        <h3>52</h3>
+                        <h3>${soluongsanpham }</h3>
                     </div>
                     <div class="w3-clear"></div>
-                    <h4 style="height: 60px;">Sản phẩm</h4>
+                    <h4 style="height: 60px;">Tổng số sản phẩm</h4>
                 </div>
             </div>
             <div class="w3-quarter">
                 <div class="w3-container w3-blue w3-padding-16">
-                    <div class="w3-left"><i class="fa fa-eye w3-xxxlarge"></i></div>
+                    <div class="w3-left"><i style="font-size: 50px;" class="fa-solid fa-box"></i></div>
                     <div class="w3-right">
-                        <h3>99</h3>
+                        <h3>${dsSPChuaXacNhan.size() }</h3>
                     </div>
                     <div class="w3-clear"></div>
                     <h4 style="height: 60px;">Số đơn hàng mới</h4>
@@ -111,9 +111,12 @@ html, body, h1, h2, h3, h4, h5 {
             </div>
             <div class="w3-quarter">
                 <div class="w3-container w3-teal w3-padding-16">
-                    <div class="w3-left"><i class="fa fa-share-alt w3-xxxlarge"></i></div>
+                    <div class="w3-left"><i style="font-size: 50px;" class="fa-solid fa-chart-pie"></i></div>
                     <div class="w3-right">
-                        <h3>23</h3>
+                        <h3>
+                        	<fmt:setLocale value="vi_VN"/>
+     						<fmt:formatNumber value="${tongdoanhthutrongngay}" type="currency"/>
+                        </h3>
                     </div>
                     <div class="w3-clear"></div>
                     <h4 style="height: 60px;">Doanh thu hôm nay</h4>
@@ -123,7 +126,7 @@ html, body, h1, h2, h3, h4, h5 {
                 <div class="w3-container w3-orange w3-text-white w3-padding-16">
                     <div class="w3-left"><i class="fa fa-users w3-xxxlarge"></i></div>
                     <div class="w3-right">
-                        <h3>50</h3>
+                        <h3>${dskhachhang.size() }</h3>
                     </div>
                     <div class="w3-clear"></div>
                     <h4 style="height: 60px;">Số lượng khách hàng</h4>

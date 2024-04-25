@@ -106,11 +106,48 @@ public class HoSoKhachHangController extends HttpServlet {
 				return;
 			}
 			
+			if(request.getParameter("btnDoiPass") != null) {
+				String passHienTai = request.getParameter("matkhau");
+				String passMoi = request.getParameter("matkhau1");
+				String nhapLaiPassMoi = request.getParameter("matkhau2");
+				HttpSession session = request.getSession();
+				KhachHangBo khbo = new KhachHangBo();
+				KhachHangBean kHangBean ;
+				if(passMoi.equals(nhapLaiPassMoi)) {
+					KhachHangBean khachHangBean = (KhachHangBean)session.getAttribute("dn");
+					kHangBean = khbo.ktradangnhap(khachHangBean.getEmail(), passHienTai);
+					if(kHangBean!=null) {
+						khbo.doiPass(khachHangBean.getMakhachhang(), passMoi);
+						kHangBean = khbo.getKhachHang(khachHangBean.getMakhachhang());
+						session.removeAttribute("dn");
+						session.setAttribute("dn", kHangBean);
+						response.sendRedirect("HoSoKhachHangController?info=1&doipass=thanhcong");
+						return;
+					}else {
+						kHangBean = khbo.ktradangnhap(khachHangBean.getSodienthoai(), passHienTai);
+						if(kHangBean!=null) {
+							khbo.doiPass(khachHangBean.getMakhachhang(), passMoi);
+							kHangBean = khbo.getKhachHang(khachHangBean.getMakhachhang());
+							session.removeAttribute("dn");
+							session.setAttribute("dn", kHangBean);
+							response.sendRedirect("HoSoKhachHangController?info=1&doipass=thanhcong");
+							return;
+						}else {
+							response.sendRedirect("HoSoKhachHangController?info=1&doipass=kodung");
+							return;
+						}
+					}
+				}else {
+					response.sendRedirect("HoSoKhachHangController?info=1&doipass=kokhop");
+					return;
+				}
+			}
+			
 			HttpSession session = request.getSession();
 			HoSoKhachHangBo hskhbo = new HoSoKhachHangBo();
 			KhachHangBean kh = (KhachHangBean)session.getAttribute("dn");
 			KhachHangBo khbo = new KhachHangBo();
-			KhachHangBean khbean = khbo.ktradangnhap(kh.getTendangnhap(),kh.getMatkhau());
+			KhachHangBean khbean = khbo.ktradangnhap(kh.getSodienthoai(),kh.getMatkhau());
 			session.removeAttribute("dn");
 			session.setAttribute("dn", khbean);
 			if(khbean != null) {

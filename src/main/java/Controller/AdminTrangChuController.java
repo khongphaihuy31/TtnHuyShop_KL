@@ -1,7 +1,9 @@
 package Controller;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,6 +17,7 @@ import Bean.KhachHangBean;
 import Bo.AdminKhachHangBo;
 import Bo.DonDatHangBo;
 import Bo.DonMuaBo;
+import Bo.SanPhamBo;
 
 /**
  * Servlet implementation class AdminTrangChuController
@@ -39,14 +42,24 @@ public class AdminTrangChuController extends HttpServlet {
 			request.setCharacterEncoding("utf-8");
 			response.setCharacterEncoding("utf-8");
 			
+			Date n1 = new Date();
+			SimpleDateFormat dd = new SimpleDateFormat("yyyy-MM-dd");
+			String tam  = dd.format(n1);
+			//lấy tổng doanh thu trong ngày
+			DonDatHangBo ddhbo = new DonDatHangBo();
+			request.setAttribute("tongdoanhthutrongngay", ddhbo.getDoanhThuTrongNgay(tam));
+			
 			//lấy danh sách khách hàng
 			AdminKhachHangBo adkhbo = new AdminKhachHangBo();
 			ArrayList<KhachHangBean> dskh;
 			dskh = adkhbo.dskhachhang();
 			request.setAttribute("dskhachhang", dskh);
 			
+			//lấy số lượng sản phẩm mà cửa hàng có
+			SanPhamBo spbo = new SanPhamBo();
+			request.setAttribute("soluongsanpham", spbo.getSLSanPham());
+			
 			//lấy danh sách hóa đơn
-			DonDatHangBo ddhbo = new DonDatHangBo();
 			ArrayList<Long> dshoadon;
 			dshoadon = ddhbo.dshoadonchoxacnhan();
 			request.setAttribute("dshoadon", dshoadon);

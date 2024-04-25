@@ -861,6 +861,9 @@ p {
 													style="width: 30%; font-size: 20px; padding: 14px 5px; border-radius: 10px; border: 1px solid #3aa8d0; float: right; background-color: var(--primary-color); color: #fff; font-weight: bold;"
 													type="submit" name="btnLuu" value="Lưu thông tin"
 													class="input-btnLuu">
+												<a data-dismiss="modal" data-toggle="modal" data-target="#modalDoiPass" style="width: 30%; font-size: 20px; padding: 11px 5px; border-radius: 10px; border: 1px solid #3aa8d0; background-color: var(--text-color); color: var(--primary-color); font-weight: bold;display: inline-block; text-align: center;cursor: pointer;">
+													Đổi mật khẩu
+												</a>
 											</div>
 										</div>
 										</form>
@@ -1867,6 +1870,114 @@ p {
 			</div>
 		</footer>
 	</div>
+	
+	<!-- Modal đổi mật khẩu -->
+	<div class="modal fade" id="modalDoiPass" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h3 style="color: var(--primary-color); font-weight: bold;"
+						class="modal-title">Đổi mật khẩu</h3>
+				</div>
+				<div style="display: flex; justify-content: center;"
+					class="modal-body">
+
+					<form style="width: 90%; position: relative;"
+						action="HoSoKhachHangController" method="get" id="form-1">
+
+						<div style="position: relative;" class="form-group">
+							<h1 for="password1" style="font-size: 18px; margin-bottom: 5px; margin-top: 0;">Mật
+								khẩu hiện tại <span style="color: red;">*</span>
+								</h1>
+							<input id="password1" style="margin-bottom: 4px;"
+								class="auth-form__input form-control" type="password"
+								name="matkhau" placeholder="Nhập mật khẩu"> <input
+								hidden="" id="input-eye-show" type="checkbox"> <label
+								for="input-eye-show" id="eye-show"
+								style="position: absolute; top: 36px; right: 28px; color: var(--primary-color); cursor: pointer;"
+								class="eye-show-btn3"><i class="fa-solid fa-eye"></i></label> <span
+								class="form-message"></span>
+						</div>
+						<script type="text/javascript">
+							const input = document.getElementById("password1");
+							const show = document
+									.getElementById("input-eye-show");
+
+							show.onchange = function(e) {
+								input.type = show.checked ? "text" : "password";
+							};
+						</script>
+						
+						<div style="position: relative;" class="form-group">
+							<h1 style="font-size: 18px; margin-bottom: 5px; margin-top: 0;">Nhập
+								mật khẩu <span style="color: red;">*</span></h1>
+							<input id="password2" style="margin-bottom: 4px;"
+								class="auth-form__input form-control" type="password"
+								name="matkhau1" placeholder="Nhập mật khẩu"> <input
+								hidden="" id="input-eye-show1" type="checkbox"> <label
+								for="input-eye-show1" id="eye-show"
+								style="position: absolute; top: 36px; right: 28px; color: var(--primary-color); cursor: pointer;"
+								class="eye-show-btn3"><i class="fa-solid fa-eye"></i></label> <span
+								class="form-message"></span>
+						</div>
+						<script type="text/javascript">
+							const input2 = document.getElementById("password2");
+							const show2 = document
+									.getElementById("input-eye-show1");
+
+							show2.onchange = function(e) {
+								input2.type = show2.checked ? "text"
+										: "password";
+							};
+						</script>
+						
+						<div style="position: relative;" class="form-group">
+							<h1 style="font-size: 18px; margin-bottom: 5px; margin-top: 0;">Nhập
+								lại mật khẩu <span style="color: red;">*</span></h1>
+							<input id="password3" style="margin-bottom: 4px;"
+								class="auth-form__input form-control" type="password"
+								name="matkhau2" placeholder="Nhập lại mật khẩu"> <input
+								hidden="" id="input-eye-show2" type="checkbox"> <label
+								for="input-eye-show2" id="eye-show"
+								style="position: absolute; top: 36px; right: 28px; color: var(--primary-color); cursor: pointer;"
+								class="eye-show-btn3"><i class="fa-solid fa-eye"></i></label> <span
+								class="form-message"></span>
+						</div>
+
+						<script type="text/javascript">
+							const input3 = document.getElementById("password3");
+							const show3 = document
+									.getElementById("input-eye-show2");
+
+							show3.onchange = function(e) {
+								input3.type = show3.checked ? "text"
+										: "password";
+							};
+						</script>
+						<input style="display: none;" name="btnDoiPass" type="text" value="doimatkhau">
+						<input class="auth-form__btn" style="border: none; margin-top: 0px;" type="submit"
+							name="btnDoiPass" value="Đổi mật khẩu">
+					</form>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<script lang="javascript" type="text/javascript">
+		Validator({
+			form : '#form-1',
+			formGroupSelector : '.form-group',
+			errorElement : '.form-message',
+			rules : [
+					Validator.isRequired('#password1','Bạn vui lòng nhập trường này.'),
+					Validator.isRequired('#password2','Bạn vui lòng nhập trường này.'),
+					Validator.isRequired('#password3','Bạn vui lòng nhập trường này.')
+			],
+		});
+	</script>
 
 	<c:if test="${param.thanhtoan.equals('thatbai')}">
 		<script type="text/javascript">

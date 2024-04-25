@@ -45,4 +45,9 @@ public class SanPhamBo {
 	public int capNhatSoLuongDaBan(long masanpham, long soluongdaban) throws Exception{
 		return spdao.capNhatSoLuongDaBan(masanpham, soluongdaban);
 	}
+	
+//	Lấy số lượng sản phẩm (Admin)
+	public long getSLSanPham()throws Exception{
+		return spdao.getSLSanPham();
+	}
 }

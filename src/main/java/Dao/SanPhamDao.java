@@ -219,4 +219,22 @@ public class SanPhamDao {
 			kn.cn.close();
 			return kq;
 		}
+		
+		
+//	Lấy số lượng sản phẩm (Admin)
+	public long getSLSanPham()throws Exception{
+		KetNoiDao kn = new KetNoiDao();
+		kn.ketnoi();
+		
+		String sql = "select COUNT(masanpham)as soluongsanpham from SanPham";
+		
+		PreparedStatement cmd = kn.cn.prepareStatement(sql);
+		ResultSet rs = cmd.executeQuery();
+		long slsanpham = 0;
+		if(rs.next()) {
+			long soluongsanpham = rs.getLong("soluongsanpham");
+			slsanpham = soluongsanpham;
+		}
+		return slsanpham;
+	}
 }

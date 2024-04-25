@@ -26,4 +26,13 @@ public class KhachHangBo {
 	public long getTichDiem(long makhachhang)throws Exception {
 		return khdao.getTichDiem(makhachhang);
 	}
+	//xử lý đổi mật khẩu	
+	public int doiPass(long makhachhang, String pass) throws Exception{
+		return khdao.doiPass(makhachhang, pass);
+	}
+	
+	//Lấy khách hàng theo mã khách hàng
+	public KhachHangBean getKhachHang(long mkh) throws Exception{
+		return khdao.getKhachHang(mkh);
+	}
 }
