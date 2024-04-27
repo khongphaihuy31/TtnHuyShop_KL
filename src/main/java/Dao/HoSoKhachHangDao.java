@@ -3,6 +3,7 @@ package Dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import Bean.KhachHangBean;
 import Bean.NoiNhanBean;
 
 
@@ -24,6 +25,24 @@ public class HoSoKhachHangDao {
 		cmd.close();
 		kn.cn.close();
 		return kq;
+	}
+	
+	//Kiểm tra sửa thông tin khách hàng
+	public int ktraSuaThongTinKh(String email, String sodienthoai, long makhachhang)throws Exception {
+		KetNoiDao kn= new KetNoiDao();
+		kn.ketnoi();
+		
+		String sql = "select * from KhachHang where sodienthoai=? and makhachhang!= ? or email=? and makhachhang!=?";
+		PreparedStatement cdm = kn.cn.prepareStatement(sql);
+		cdm.setString(1, sodienthoai);
+		cdm.setLong(2, makhachhang);
+		cdm.setString(3, email);
+		cdm.setLong(4, makhachhang);
+		ResultSet rs = cdm.executeQuery();
+		if(rs.next()) {
+			return 1;
+		}
+		return 0;
 	}
 	
 	//xử lý lấy nơi nhận hàng

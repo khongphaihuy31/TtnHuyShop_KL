@@ -67,19 +67,46 @@ public class KhachHangDao {
 		return rs;
 	}
 	
-	public int ktradangki(String tendangnhap, String sodienthoai)throws Exception {
+	public int ktradangki(String email, String sodienthoai)throws Exception {
 		KetNoiDao kn= new KetNoiDao();
 		kn.ketnoi();
 		
-		String sql = "select * from KhachHang where tendangnhap= ? or sodienthoai = ?";
+		String sql = "select * from KhachHang where email= ? or sodienthoai = ?";
 		PreparedStatement cdm = kn.cn.prepareStatement(sql);
-		cdm.setString(1, tendangnhap);
+		cdm.setString(1, email);
 		cdm.setString(2, sodienthoai);
 		ResultSet rs = cdm.executeQuery();
 		if(rs.next()) {
 			return 1;
 		}
 		return 0;
+	}
+	
+	public KhachHangBean ktraQuenPass(String email1, String sodienthoai1)throws Exception {
+		KetNoiDao kn= new KetNoiDao();
+		kn.ketnoi();
+		
+		String sql = "select * from KhachHang where email= ? and sodienthoai = ?";
+		PreparedStatement cdm = kn.cn.prepareStatement(sql);
+		cdm.setString(1, email1);
+		cdm.setString(2, sodienthoai1);
+		ResultSet rs = cdm.executeQuery();
+		KhachHangBean kh = null;
+		if(rs.next()) {
+			long makhachhang = rs.getLong("makhachhang");
+			String hoten = rs.getString("hoten"); 
+			String diachi= rs.getString("diachi"); 
+			String sodienthoai= rs.getString("sodienthoai"); 
+			String email= rs.getString("email"); 
+			String avatar= rs.getString("avatar");
+			String tendn= rs.getString("tendangnhap"); 
+			String mk= rs.getString("matkhau");
+			Boolean quyen = rs.getBoolean("quyen");
+			long tichdiem = rs.getLong("tichdiem");
+			String sothich = rs.getString("sothich");					
+			kh = new KhachHangBean(makhachhang, hoten, diachi, sodienthoai, email, avatar, tendn, mk, quyen, tichdiem, sothich);
+		}
+		return kh;
 	}
 	
 	//xử lý điểm tích lũy cho khách hàng	

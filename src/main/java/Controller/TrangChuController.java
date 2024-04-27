@@ -16,6 +16,7 @@ import Bean.KhachHangBean;
 import Bean.LoaiThuocDanhMucBean;
 import Bean.SanPhamBean;
 import Bo.GioHangBo;
+import Bo.KhachHangBo;
 //import Bo.GioHangBo;
 import Bo.LoaiBo;
 import Bo.SanPhamBo;

@@ -10,6 +10,11 @@ public class HoSoKhachHangBo {
 		return hskhdao.suaThongTinKh(makhachhang, hoten, diachi, sodienthoai, email, anhdaidien);
 	}
 	
+	//Kiểm tra sửa thông tin khách hàng
+	public int ktraSuaThongTinKh(String email, String sodienthoai, long makhachhang)throws Exception {
+		return hskhdao.ktraSuaThongTinKh(email, sodienthoai, makhachhang);
+	}
+	
 	//xử lý thêm nơi nhận hàng
 	public int themNoiNhanHang(long makhachhang, String thanhpho, String quan, String phuong, String sonha) throws Exception{
 		return hskhdao.themNoiNhanHang(makhachhang, thanhpho, quan, phuong, sonha);

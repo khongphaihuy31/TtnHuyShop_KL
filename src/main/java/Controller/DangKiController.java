@@ -31,21 +31,21 @@ public class DangKiController extends HttpServlet {
 			response.setCharacterEncoding("utf-8");
 			
 			String hoten = request.getParameter("hoten");
-			String diachi = request.getParameter("diachi");
+//			String diachi = request.getParameter("diachi");
 			String sodienthoai = request.getParameter("sodienthoai");
 			String email = request.getParameter("email");
-			String taikhoan = request.getParameter("taikhoan");
+//			String taikhoan = request.getParameter("taikhoan");
 			String matkhau1 = request.getParameter("matkhau1");
 			String matkhau2 = request.getParameter("matkhau2");
 			
-			if(hoten != null && diachi != null && sodienthoai!=null && email!= null && taikhoan != null && matkhau1!= null && matkhau2 != null) {
+			if(hoten != null && sodienthoai!=null && email!= null && matkhau1!= null && matkhau2 != null) {
 				Bo.KhachHangBo khbo = new Bo.KhachHangBo();
-				int ktrataikhoan = khbo.ktradangki(taikhoan, sodienthoai);
+				int ktrataikhoan = khbo.ktradangki(email, sodienthoai);
 				if(ktrataikhoan == 0) {
 					if(matkhau1.equals(matkhau2)) {
-						int ktdk = khbo.dangkikhachhang(hoten, diachi, sodienthoai, email, taikhoan, matkhau1);
+						int ktdk = khbo.dangkikhachhang(hoten, null, sodienthoai, email, null, matkhau1);
 						if(ktdk == 1) {
-							response.sendRedirect("DangNhapController?taikhoan=" + taikhoan+"&matkhau="+ matkhau1);
+							response.sendRedirect("DangNhapController?taikhoan=" + sodienthoai+"&matkhau="+ matkhau1);
 						}else {
 							response.sendRedirect("TrangChuController?loidangki=1");
 						}
@@ -53,7 +53,7 @@ public class DangKiController extends HttpServlet {
 						response.sendRedirect("TrangChuController?loidangki=1");
 					}
 				}else {
-					response.sendRedirect("TrangChuController?loidangki=1");
+					response.sendRedirect("TrangChuController?loidangki=1&hotendk="+hoten+"&sodienthoaidk="+sodienthoai+"&emaildk="+email+"&matkhau1dk="+matkhau1+"&matkhau2dk="+matkhau2);
 				}
 			}else {
 				response.sendRedirect("TrangChuController?loidangki=1");

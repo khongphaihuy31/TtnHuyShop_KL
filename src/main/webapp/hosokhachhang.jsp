@@ -851,7 +851,7 @@ p {
 												<input form="formInfo"
 													style="width: 100%; height: 20px; font-size: 18px; padding: 25px 15px; border-radius: 10px; border: 1px solid #ccc;"
 													type="text" id="location" name="diachi"
-													value="${dn.getDiachi() }" placeholder="Địa chỉ"
+													value="${dn.getDiachi() }" placeholder="Chưa có địa chỉ"
 													class="input-text required-entry" disabled>
 											</div>
 										</div>
@@ -2023,6 +2023,22 @@ p {
 			showSuccessToastCapNhatThongTin();
 		</script>
 	</c:if>
+	
+	<c:if test="${param.suainfo != null}">
+		<script type="text/javascript">
+			//window.alert("Đăng kí không thành công!");
+			function showErrorToastKtraSuaThongTinKh() {
+				toast({
+					title : 'Thất bại',
+					message : 'Thông tin sửa đã bị trùng với tài khoản khác.',
+					type : 'error',
+					duration : 5000
+				})
+			}
+			showErrorToastKtraSuaThongTinKh();
+		</script>
+	</c:if>
+	
 	<c:if test="${param.capnhatlocation != null}">
 		<script type="text/javascript">
 			//window.alert("Tài khoản hoặc mật khẩu chưa đúng!");

@@ -87,11 +87,16 @@ public class SuaThongTinKhachHangController extends HttpServlet {
 						}
 					}
 				}
-				
-				int n = hskhbo.suaThongTinKh(khbean.getMakhachhang(), hoten, khbean.getDiachi(), sodienthoai, email, anhDaiDien);
-				if(n ==1) {
-					response.sendRedirect("DangNhapController?suathongtin=1&taikhoan="+khbean.getTendangnhap()+"&matkhau="+khbean.getMatkhau());
+				int a = hskhbo.ktraSuaThongTinKh(email, sodienthoai, khbean.getMakhachhang());
+				if(a==1) {
+					response.sendRedirect("HoSoKhachHangController?info=1&suainfo=thatbai");
 					return;
+				}else {
+					int n = hskhbo.suaThongTinKh(khbean.getMakhachhang(), hoten, khbean.getDiachi(), sodienthoai, email, anhDaiDien);
+					if(n ==1) {
+						response.sendRedirect("DangNhapController?suathongtin=1&taikhoan="+sodienthoai+"&matkhau="+khbean.getMatkhau());
+						return;
+					}
 				}
 			
 		} catch (Exception e) {

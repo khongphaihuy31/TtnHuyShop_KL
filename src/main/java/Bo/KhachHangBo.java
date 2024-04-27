@@ -35,4 +35,9 @@ public class KhachHangBo {
 	public KhachHangBean getKhachHang(long mkh) throws Exception{
 		return khdao.getKhachHang(mkh);
 	}
+	
+	//Kiểm tra quên mật khẩu
+	public KhachHangBean ktraQuenPass(String email, String sodienthoai)throws Exception {
+		return khdao.ktraQuenPass(email, sodienthoai);
+	}
 }

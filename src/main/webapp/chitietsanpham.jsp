@@ -1475,307 +1475,336 @@ input:checked + label{
 		</footer>
 
 
-		<!-- Modal đăng nhập -->
-		<div class="modal fade" id="modalDangNhap" role="dialog">
-			<div class="modal-dialog">
+			<!-- Modal đăng nhập -->
+	<div class="modal fade" id="modalDangNhap" role="dialog">
+		<div class="modal-dialog">
 
-				<!-- Modal content-->
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h3 style="color: var(--primary-color); font-weight: bold;"
-							class="modal-title">Đăng nhập</h3>
-					</div>
-					<div style="display: flex; justify-content: center;"
-						class="modal-body">
-
-						<form style="width: 90%; position: relative;"
-							action="DangNhapController" method="post" id="form-1">
-							<div class="form-group">
-								<h1 style="font-size: 18px; margin-bottom: 5px; margin-top: 0;">Tài
-									khoản</h1>
-								<input id="auth-form__input-taikhoan"
-									style="margin-bottom: 4px;"
-									class="auth-form__input form-control" type="text"
-									name="taikhoan" placeholder="Nhập tài khoản"> <span
-									class="form-message"></span>
-							</div>
-
-							<div style="position: relative;" class="form-group">
-								<h1 style="font-size: 18px; margin-bottom: 5px; margin-top: 0;">Mật
-									khẩu</h1>
-								<input id="password1" style="margin-bottom: 4px;"
-									class="auth-form__input form-control" type="password"
-									name="matkhau" placeholder="Nhập mật khẩu"> <input
-									hidden="" id="input-eye-show" type="checkbox"> <label
-									for="input-eye-show" id="eye-show"
-									style="position: absolute; top: 36px; right: 28px; color: var(--primary-color); cursor: pointer;"
-									class="eye-show-btn3"><i class="fa-solid fa-eye"></i></label> <span
-									class="form-message"></span>
-							</div>
-
-							<script type="text/javascript">
-								const input = document
-										.getElementById("password1");
-								const show = document
-										.getElementById("input-eye-show");
-
-								show.onchange = function(e) {
-									input.type = show.checked ? "text"
-											: "password";
-								};
-							</script>
-
-							<%
-							if (session.getAttribute("solanloi") != null) {
-								if ((int) session.getAttribute("solanloi") >= 3) {
-							%>
-
-							<div style="margin: 0" class="form-group">
-								<h1 style="font-size: 18px; margin-bottom: 5px; margin-top: 0;">Nhập
-									mã:</h1>
-								<div class="auth-form__input-wrap"
-									style="margin-bottom: 4px; display: flex;">
-									<input id="auth-form__input-capcha"
-										class="auth-form__input form-control" type="text"
-										name="answer" placeholder="Nhập mã capcha"
-										style="margin-right: 20px; margin-bottom: 0px;"> <img
-										style="display: block; height: 42px" src="simpleCaptcha.jpg">
-								</div>
-								<span style="margin-bottom: 5px" class="form-message"></span> <br>
-
-							</div>
-
-							<%
-							}
-							}
-							%>
-							<input class="auth-form__btn"
-								style="border: none; margin-top: 0px;" type="submit"
-								name="btnDangNhap" value="Đăng nhập"> <a href=""
-								class="auth-form__forget-pass">Quên mật khẩu?</a>
-							<div style="display: none" class="auth-form__or">
-								<div class="auth-form__or-line"></div>
-								<span class="auth-form__or-text">HOẶC</span>
-								<div class="auth-form__or-line"></div>
-							</div>
-							<div style="display: none" class="auth-form__socials">
-								<a href="" class="auth-form__socials-facebook"> <i
-									class="fa-brands fa-facebook"></i> Facebook
-								</a> <a href="" class="auth-form__socials-google"> <i
-									class="fa-brands fa-google"></i> Google
-								</a>
-							</div>
-							<div style="display: none" class="auth-form__aside">
-								<p class="auth-form__policy-text">Bằng việc đăng kí, bạn đã
-									đồng ý với Shop về</p>
-								<div class="auth-form__policy-links">
-									<a href="" class="auth-form__policy-link">Điều khoản dịch
-										vụ </a>& <a href="" class="auth-form__policy-link">Chính sách
-										bảo mật </a>
-								</div>
-							</div>
-							<div style="margin-top: 20px;" class="auth-form__footer">
-								<p class="auth-form__footer-text">
-									Bạn mới biết đến Shop TtnHuy? <a href="#"
-										class="auth-form__footer-link js-registerInLogin"
-										data-dismiss="modal" data-toggle="modal"
-										data-target="#modalDangKi">Đăng kí</a>
-								</p>
-							</div>
-						</form>
-					</div>
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h3 style="color: var(--primary-color); font-weight: bold;"
+						class="modal-title">Đăng nhập</h3>
 				</div>
+				<div style="display: flex; justify-content: center;"
+					class="modal-body">
 
+					<form style="width: 90%; position: relative;"
+						action="DangNhapController" method="post" id="form-1">
+						<div class="form-group">
+							<h1 style="font-size: 18px; margin-bottom: 5px; margin-top: 0;">Số điện thoại / Email</h1>
+							<input id="auth-form__input-taikhoan" style="margin-bottom: 4px;"
+								class="auth-form__input form-control" type="text"
+								name="taikhoan" placeholder="Nhập tài khoản"> <span
+								class="form-message"></span>
+						</div>
+
+						<div style="position: relative;" class="form-group">
+							<h1 style="font-size: 18px; margin-bottom: 5px; margin-top: 0;">Mật
+								khẩu</h1>
+							<input id="password1" style="margin-bottom: 4px;"
+								class="auth-form__input form-control" type="password"
+								name="matkhau" placeholder="Nhập mật khẩu"> <input
+								hidden="" id="input-eye-show" type="checkbox"> <label
+								for="input-eye-show" id="eye-show"
+								style="position: absolute; top: 36px; right: 28px; color: var(--primary-color); cursor: pointer;"
+								class="eye-show-btn3"><i class="fa-solid fa-eye"></i></label> <span
+								class="form-message"></span>
+						</div>
+
+						<script type="text/javascript">
+							const input = document.getElementById("password1");
+							const show = document
+									.getElementById("input-eye-show");
+
+							show.onchange = function(e) {
+								input.type = show.checked ? "text" : "password";
+							};
+						</script>
+						<c:if test="${solanloi !=null }">
+							<c:if test="${solanloi >=3 }">
+								<div style="margin: 0" class="form-group">
+									<h1 style="font-size: 18px; margin-bottom: 5px; margin-top: 0;">Nhập
+										mã:</h1>
+									<div class="auth-form__input-wrap"
+										style="margin-bottom: 4px; display: flex;">
+										<input id="auth-form__input-capcha"
+											class="auth-form__input form-control" type="text"
+											name="answer" placeholder="Nhập mã capcha"
+											style="margin-right: 20px; margin-bottom: 0px;"> <img
+											style="display: block; height: 42px" src="simpleCaptcha.jpg">
+									</div>
+									<span style="margin-bottom: 5px" class="form-message"></span> <br>
+
+								</div>
+							</c:if>
+						</c:if>
+						<input class="auth-form__btn"
+							style="border: none; margin-top: 0px;" type="submit"
+							name="btnDangNhap" value="Đăng nhập"> <a href=""
+							class="auth-form__forget-pass">Quên mật khẩu?</a>
+						<div style="display: none" class="auth-form__or">
+							<div class="auth-form__or-line"></div>
+							<span class="auth-form__or-text">HOẶC</span>
+							<div class="auth-form__or-line"></div>
+						</div>
+						<div style="display: none" class="auth-form__socials">
+							<a href="" class="auth-form__socials-facebook"> <i
+								class="fa-brands fa-facebook"></i> Facebook
+							</a> <a href="" class="auth-form__socials-google"> <i
+								class="fa-brands fa-google"></i> Google
+							</a>
+						</div>
+						<div style="display: none" class="auth-form__aside">
+							<p class="auth-form__policy-text">Bằng việc đăng kí, bạn đã
+								đồng ý với Shop về</p>
+							<div class="auth-form__policy-links">
+								<a href="" class="auth-form__policy-link">Điều khoản dịch vụ
+								</a>& <a href="" class="auth-form__policy-link">Chính sách bảo
+									mật </a>
+							</div>
+						</div>
+						<div style="margin-top: 20px;" class="auth-form__footer">
+							<p class="auth-form__footer-text">
+								Bạn mới biết đến Shop TtnHuy? <a href="#"
+									class="auth-form__footer-link js-registerInLogin"
+									data-dismiss="modal" data-toggle="modal"
+									data-target="#modalDangKi">Đăng kí</a>
+							</p>
+						</div>
+					</form>
+				</div>
 			</div>
+
 		</div>
-		<script src="assets/script/validator.js"></script>
-		<c:choose>
-			<c:when test="${solanloi != null }">
-				<c:choose>
-					<c:when test="${solanloi >= 3 }">
-						<script lang="javascript" type="text/javascript">
-							Validator({
-								form : '#form-1',
-								formGroupSelector : '.form-group',
-								errorElement : '.form-message',
-								rules : [
-										Validator.isRequired(
-												'#auth-form__input-taikhoan',
-												'Bạn vui lòng nhập tài khoản.'),
-										Validator.isRequired('#password1',
-												'Bạn vui lòng nhập mật khẩu.'),
-										Validator
-												.isRequired('#auth-form__input-capcha')
-								//Validator.minLength('#auth-form__input-capcha', 4,'Capcha chưa đúng.')
-								// Validator.isEmail('#email'),
-								//Validator.isRequired('#avata'),
-								// Validator.isRequired('#password'),
-								// Validator.minLength('#password', 6),
-								// Validator.isRequired('#password_confirmation'),
-								// Validator.isConFirmed('#password_confirmation', function() {
-								//      return document.querySelector('#form-1 #password').value
-								//     }, 'Vui lòng nhập lại mật khẩu.'),
-								// Validator.isRequired('input[name="gender"]'),
-								// Validator.isRequired('#province')
-								],
-							});
-						</script>
-					</c:when>
-					<c:otherwise>
-						<script lang="javascript" type="text/javascript">
-							Validator({
-								form : '#form-1',
-								formGroupSelector : '.form-group',
-								errorElement : '.form-message',
-								rules : [
-										Validator.isRequired(
-												'#auth-form__input-taikhoan',
-												'Bạn vui lòng nhập tài khoản.'),
-										Validator.isRequired('#password1',
-												'Bạn vui lòng nhập mật khẩu.')
-								//Validator.isRequired('#auth-form__input-capcha')
-								//Validator.minLength('#auth-form__input-capcha', 4,'Capcha chưa đúng.')
-								// Validator.isEmail('#email'),
-								//Validator.isRequired('#avata'),
-								// Validator.isRequired('#password'),
-								// Validator.minLength('#password', 6),
-								// Validator.isRequired('#password_confirmation'),
-								// Validator.isConFirmed('#password_confirmation', function() {
-								//      return document.querySelector('#form-1 #password').value
-								//     }, 'Vui lòng nhập lại mật khẩu.'),
-								// Validator.isRequired('input[name="gender"]'),
-								// Validator.isRequired('#province')
-								],
-							});
-						</script>
-					</c:otherwise>
-				</c:choose>
-			</c:when>
-			<c:otherwise>
-				<script lang="javascript" type="text/javascript">
-					Validator({
-						form : '#form-1',
-						formGroupSelector : '.form-group',
-						errorElement : '.form-message',
-						rules : [
-								Validator.isRequired('#auth-form__input-taikhoan',
-										'Bạn vui lòng nhập tài khoản.'),
-								Validator.isRequired('#password1',
-										'Bạn vui lòng nhập mật khẩu.')
-						//Validator.isRequired('#auth-form__input-capcha')
-						//Validator.minLength('#auth-form__input-capcha', 4,'Capcha chưa đúng.')
-						// Validator.isEmail('#email'),
-						//Validator.isRequired('#avata'),
-						// Validator.isRequired('#password'),
-						// Validator.minLength('#password', 6),
-						// Validator.isRequired('#password_confirmation'),
-						// Validator.isConFirmed('#password_confirmation', function() {
-						//      return document.querySelector('#form-1 #password').value
-						//     }, 'Vui lòng nhập lại mật khẩu.'),
-						// Validator.isRequired('input[name="gender"]'),
-						// Validator.isRequired('#province')
-						],
-					});
-				</script>
-			</c:otherwise>
-		</c:choose>
+	</div>
+	<script src="assets/script/validator.js"></script>
+
+	<c:choose>
+		<c:when test="${solanloi != null }">
+			<c:choose>
+				<c:when test="${solanloi >= 3 }">
+					<script lang="javascript" type="text/javascript">
+						Validator({
+							form : '#form-1',
+							formGroupSelector : '.form-group',
+							errorElement : '.form-message',
+							rules : [
+									Validator.isRequired(
+											'#auth-form__input-taikhoan',
+											'Bạn vui lòng số điện thoại/email.'),
+									Validator.isRequired('#password1',
+											'Bạn vui lòng nhập mật khẩu.'),
+									Validator
+											.isRequired('#auth-form__input-capcha')
+							//Validator.minLength('#auth-form__input-capcha', 4,'Capcha chưa đúng.')
+							// Validator.isEmail('#email'),
+							//Validator.isRequired('#avata'),
+							// Validator.isRequired('#password'),
+							// Validator.minLength('#password', 6),
+							// Validator.isRequired('#password_confirmation'),
+							// Validator.isConFirmed('#password_confirmation', function() {
+							//      return document.querySelector('#form-1 #password').value
+							//     }, 'Vui lòng nhập lại mật khẩu.'),
+							// Validator.isRequired('input[name="gender"]'),
+							// Validator.isRequired('#province')
+							],
+						});
+					</script>
+				</c:when>
+				<c:otherwise>
+					<script lang="javascript" type="text/javascript">
+						Validator({
+							form : '#form-1',
+							formGroupSelector : '.form-group',
+							errorElement : '.form-message',
+							rules : [
+									Validator.isRequired(
+											'#auth-form__input-taikhoan',
+											'Bạn vui lòng nhập số điện thoại/email.'),
+									Validator.isRequired('#password1',
+											'Bạn vui lòng nhập mật khẩu.')
+							//Validator.isRequired('#auth-form__input-capcha')
+							//Validator.minLength('#auth-form__input-capcha', 4,'Capcha chưa đúng.')
+							// Validator.isEmail('#email'),
+							//Validator.isRequired('#avata'),
+							// Validator.isRequired('#password'),
+							// Validator.minLength('#password', 6),
+							// Validator.isRequired('#password_confirmation'),
+							// Validator.isConFirmed('#password_confirmation', function() {
+							//      return document.querySelector('#form-1 #password').value
+							//     }, 'Vui lòng nhập lại mật khẩu.'),
+							// Validator.isRequired('input[name="gender"]'),
+							// Validator.isRequired('#province')
+							],
+						});
+					</script>
+				</c:otherwise>
+			</c:choose>
+		</c:when>
+		<c:otherwise>
+			<script lang="javascript" type="text/javascript">
+				Validator({
+					form : '#form-1',
+					formGroupSelector : '.form-group',
+					errorElement : '.form-message',
+					rules : [
+							Validator.isRequired('#auth-form__input-taikhoan',
+									'Bạn vui lòng nhập số điện thoại/email.'),
+							Validator.isRequired('#password1',
+									'Bạn vui lòng nhập mật khẩu.')
+					//Validator.isRequired('#auth-form__input-capcha')
+					//Validator.minLength('#auth-form__input-capcha', 4,'Capcha chưa đúng.')
+					// Validator.isEmail('#email'),
+					//Validator.isRequired('#avata'),
+					// Validator.isRequired('#password'),
+					// Validator.minLength('#password', 6),
+					// Validator.isRequired('#password_confirmation'),
+					// Validator.isConFirmed('#password_confirmation', function() {
+					//      return document.querySelector('#form-1 #password').value
+					//     }, 'Vui lòng nhập lại mật khẩu.'),
+					// Validator.isRequired('input[name="gender"]'),
+					// Validator.isRequired('#province')
+					],
+				});
+			</script>
+		</c:otherwise>
+	</c:choose>
 
 
 		<!-- Modal đăng kí -->
-		<div class="modal fade" id="modalDangKi" role="dialog">
-			<div class="modal-dialog">
+	<div class="modal fade" id="modalDangKi" role="dialog">
+		<div class="modal-dialog">
 
-				<!-- Modal content-->
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h3 style="color: var(--primary-color); font-weight: bold;"
-							class="modal-title">Đăng kí</h3>
-					</div>
-					<div style="display: flex; justify-content: center;"
-						class="modal-body">
-						<form id="form-2" style="width: 90%; position: relative;"
-							action="DangKiController" method="post">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h3 style="color: var(--primary-color); font-weight: bold;"
+						class="modal-title">Đăng kí</h3>
+				</div>
+				<div style="display: flex; justify-content: center;"
+					class="modal-body">
+					<form id="form-2" style="width: 90%; position: relative;"
+						action="DangKiController" method="post">
 
-							<div style="display: flex; justify-content: space-between;">
-								<div class="form-group" style="width: 48%">
-									<h1 style="font-size: 18px; margin-bottom: 5px; margin-top: 0;">Nhập
-										họ tên:</h1>
-									<input id="auth-form__input-ht"
+						<div style="display: flex; justify-content: space-between;">
+							<div class="form-group" style="width: 48%">
+								<h1 style="font-size: 18px; margin-bottom: 5px; margin-top: 0;">Nhập
+									họ tên:</h1>
+									<c:if test="${param.hotendk !=null }">
+										<input id="auth-form__input-ht"
 										style="width: 100%; margin-bottom: 4px"
 										class="auth-form__input form-control" type="text" name="hoten"
-										placeholder="Nhập họ tên (*)"> <span
+										placeholder="Nhập họ tên (*)" value="${param.hotendk }"> <span
 										class="form-message"></span>
-								</div>
-								<div class="form-group" style="width: 48%">
-									<h1 style="font-size: 18px; margin-bottom: 5px; margin-top: 0;">Nhập
-										số điện thoại:</h1>
+									</c:if>
+									<c:if test="${param.hotendk ==null }">
+										<input id="auth-form__input-ht"
+											style="width: 100%; margin-bottom: 4px"
+											class="auth-form__input form-control" type="text" name="hoten"
+											placeholder="Nhập họ tên (*)"> <span
+											class="form-message"></span>
+									</c:if>
+							</div>
+							<div class="form-group" style="width: 48%">
+								<h1 style="font-size: 18px; margin-bottom: 5px; margin-top: 0;">Nhập
+									số điện thoại:</h1>
+								<c:if test="${param.hotendk ==null }">
 									<input id="auth-form__input-sdt"
 										style="width: 100%; margin-bottom: 4px"
 										class="auth-form__input form-control" type="text"
 										name="sodienthoai" placeholder="Nhập số điện thoại (*)">
 									<span class="form-message"></span>
-								</div>
-
-							</div>
-							<div style="display: flex; justify-content: space-between;">
-								<div class="form-group" style="width: 48%">
-									<h1 style="font-size: 18px; margin-bottom: 5px; margin-top: 0;">Nhập
-										địa chỉ:</h1>
-									<input id="auth-form__input-dc"
+								</c:if>
+								<c:if test="${param.hotendk !=null }">
+									<input id="auth-form__input-sdt"
 										style="width: 100%; margin-bottom: 4px"
 										class="auth-form__input form-control" type="text"
-										name="diachi" placeholder="Nhập địa chỉ (*)"> <span
-										class="form-message"></span>
-								</div>
-								<div class="form-group" style="width: 48%">
-									<h1 style="font-size: 18px; margin-bottom: 5px; margin-top: 0;">Nhập
-										email:</h1>
+										name="sodienthoai" placeholder="Nhập số điện thoại (*)" value="${param.sodienthoaidk }">
+									<span class="form-message"></span>
+								</c:if>
+							</div>
+
+						</div>
+						<!--<div style="display: flex; justify-content: space-between;">
+							<div class="form-group" style="width: 48%">
+								<h1 style="font-size: 18px; margin-bottom: 5px; margin-top: 0;">Nhập
+									địa chỉ:</h1>
+								<input id="auth-form__input-dc"
+									style="width: 100%; margin-bottom: 4px"
+									class="auth-form__input form-control" type="text" name="diachi"
+									placeholder="Nhập địa chỉ (*)"> <span
+									class="form-message"></span>
+							</div>-->
+							<div class="form-group" >
+								<h1 style="font-size: 18px; margin-bottom: 5px; margin-top: 0;">Nhập
+									email:</h1>
+								<c:if test="${param.hotendk !=null }">
 									<input id="auth-form__input-email"
 										style="width: 100%; margin-bottom: 4px"
-										class="auth-form__input form-control" type="email"
-										name="email" placeholder="Nhập email (*)"> <span
+										class="auth-form__input form-control" type="email" name="email"
+										placeholder="Nhập email (*)" value="${param.emaildk }"> <span
 										class="form-message"></span>
-								</div>
+								</c:if>
+								<c:if test="${param.hotendk ==null }">
+									<input id="auth-form__input-email"
+										style="width: 100%; margin-bottom: 4px"
+										class="auth-form__input form-control" type="email" name="email"
+										placeholder="Nhập email (*)"> <span
+										class="form-message"></span>
+								</c:if>
 							</div>
-							<div class="form-group" style="width: 100%">
-								<h1 style="font-size: 18px; margin-bottom: 5px; margin-top: 0;">Nhập
-									tài khoản:</h1>
-								<input id="auth-form__input-tk"
-									style="width: 100%; margin-bottom: 4px"
-									class="auth-form__input form-control" type="text"
-									name="taikhoan" placeholder="Nhập tài khoản (*)"> <span
-									class="form-message"></span>
-							</div>
+						<!--</div>
+						<div class="form-group" style="width: 100%">
+							<h1 style="font-size: 18px; margin-bottom: 5px; margin-top: 0;">Nhập
+								tài khoản:</h1>
+							<input id="auth-form__input-tk"
+								style="width: 100%; margin-bottom: 4px"
+								class="auth-form__input form-control" type="text"
+								name="taikhoan" placeholder="Nhập tài khoản (*)"> <span
+								class="form-message"></span>
+						</div>-->
 
-							<div style="position: relative;" class="form-group">
-								<h1 style="font-size: 18px; margin-bottom: 5px; margin-top: 0;">Nhập
-									mật khẩu:</h1>
-								<input id="password2" style="margin-bottom: 4px;"
-									class="auth-form__input form-control" type="password"
-									name="matkhau1" placeholder="Nhập mật khẩu (*)"> <input
-									hidden="" id="input-eye-show1" type="checkbox"> <label
-									for="input-eye-show1" id="eye-show"
-									style="position: absolute; top: 36px; right: 28px; color: var(--primary-color); cursor: pointer;"
-									class="eye-show-btn3"><i class="fa-solid fa-eye"></i></label> <span
-									class="form-message"></span>
-							</div>
-							<script type="text/javascript">
-								const input2 = document
-										.getElementById("password2");
-								const show2 = document
-										.getElementById("input-eye-show1");
+						<div style="position: relative;" class="form-group">
+							<h1 style="font-size: 18px; margin-bottom: 5px; margin-top: 0;">Nhập
+								mật khẩu:</h1>
+								<c:if test="${param.hotendk ==null }">
+									<input id="password2" style="margin-bottom: 4px;"
+										class="auth-form__input form-control" type="password"
+										name="matkhau1" placeholder="Nhập mật khẩu (*)"> <input
+										hidden="" id="input-eye-show1" type="checkbox"> <label
+										for="input-eye-show1" id="eye-show"
+										style="position: absolute; top: 36px; right: 28px; color: var(--primary-color); cursor: pointer;"
+										class="eye-show-btn3"><i class="fa-solid fa-eye"></i></label> <span
+										class="form-message"></span>
+								</c:if>
+								<c:if test="${param.hotendk !=null }">
+									<input id="password2" style="margin-bottom: 4px;"
+										class="auth-form__input form-control" type="password"
+										name="matkhau1" placeholder="Nhập mật khẩu (*)" value="${param.matkhau1dk }"> <input
+										hidden="" id="input-eye-show1" type="checkbox"> <label
+										for="input-eye-show1" id="eye-show"
+										style="position: absolute; top: 36px; right: 28px; color: var(--primary-color); cursor: pointer;"
+										class="eye-show-btn3"><i class="fa-solid fa-eye"></i></label> <span
+										class="form-message"></span>
+								</c:if>
+						</div>
+						<script type="text/javascript">
+							const input2 = document.getElementById("password2");
+							const show2 = document
+									.getElementById("input-eye-show1");
 
-								show2.onchange = function(e) {
-									input2.type = show2.checked ? "text"
-											: "password";
-								};
-							</script>
+							show2.onchange = function(e) {
+								input2.type = show2.checked ? "text"
+										: "password";
+							};
+						</script>
 
-							<div style="position: relative;" class="form-group">
-								<h1 style="font-size: 18px; margin-bottom: 5px; margin-top: 0;">Nhập
-									lại mật khẩu:</h1>
+						<div style="position: relative;" class="form-group">
+							<h1 style="font-size: 18px; margin-bottom: 5px; margin-top: 0;">Nhập
+								lại mật khẩu:</h1>
+							<c:if test="${param.hotendk ==null }">
 								<input id="password3" style="margin-bottom: 4px;"
 									class="auth-form__input form-control" type="password"
 									name="matkhau2" placeholder="Nhập lại mật khẩu (*)"> <input
@@ -1784,102 +1813,112 @@ input:checked + label{
 									style="position: absolute; top: 36px; right: 28px; color: var(--primary-color); cursor: pointer;"
 									class="eye-show-btn3"><i class="fa-solid fa-eye"></i></label> <span
 									class="form-message"></span>
-							</div>
+							</c:if>
+							<c:if test="${param.hotendk !=null }">
+								<input id="password3" style="margin-bottom: 4px;"
+									class="auth-form__input form-control" type="password"
+									name="matkhau2" placeholder="Nhập lại mật khẩu (*)" value="${param.matkhau2dk}"> <input
+									hidden="" id="input-eye-show2" type="checkbox"> <label
+									for="input-eye-show2" id="eye-show"
+									style="position: absolute; top: 36px; right: 28px; color: var(--primary-color); cursor: pointer;"
+									class="eye-show-btn3"><i class="fa-solid fa-eye"></i></label> <span
+									class="form-message"></span>
+							</c:if>
+						</div>
 
-							<script type="text/javascript">
-								const input3 = document
-										.getElementById("password3");
-								const show3 = document
-										.getElementById("input-eye-show2");
+						<script type="text/javascript">
+							const input3 = document.getElementById("password3");
+							const show3 = document
+									.getElementById("input-eye-show2");
 
-								show3.onchange = function(e) {
-									input3.type = show3.checked ? "text"
-											: "password";
-								};
-							</script>
+							show3.onchange = function(e) {
+								input3.type = show3.checked ? "text"
+										: "password";
+							};
+						</script>
 
-							<input class="auth-form__btn" style="border: none;" type="submit"
-								name="btnDangNhap" value="Đăng kí"> <a
-								style="display: none" href="" class="auth-form__forget-pass">Quên
-								mật khẩu?</a>
-							<div style="display: none" class="auth-form__or">
-								<div class="auth-form__or-line"></div>
-								<span class="auth-form__or-text">HOẶC</span>
-								<div class="auth-form__or-line"></div>
+						<input class="auth-form__btn" style="border: none;" type="submit"
+							name="btnDangNhap" value="Đăng kí"> <a
+							style="display: none" href="" class="auth-form__forget-pass">Quên
+							mật khẩu?</a>
+						<div style="display: none" class="auth-form__or">
+							<div class="auth-form__or-line"></div>
+							<span class="auth-form__or-text">HOẶC</span>
+							<div class="auth-form__or-line"></div>
+						</div>
+						<div style="display: none" class="auth-form__socials">
+							<a href="" class="auth-form__socials-facebook"> <i
+								class="fa-brands fa-facebook"></i> Facebook
+							</a> <a href="" class="auth-form__socials-google"> <i
+								class="fa-brands fa-google"></i> Google
+							</a>
+						</div>
+						<div style="display: none" class="auth-form__aside">
+							<p class="auth-form__policy-text">Bằng việc đăng kí, bạn đã
+								đồng ý với Shop về</p>
+							<div class="auth-form__policy-links">
+								<a href="" class="auth-form__policy-link">Điều khoản dịch vụ
+								</a>& <a href="" class="auth-form__policy-link">Chính sách bảo
+									mật </a>
 							</div>
-							<div style="display: none" class="auth-form__socials">
-								<a href="" class="auth-form__socials-facebook"> <i
-									class="fa-brands fa-facebook"></i> Facebook
-								</a> <a href="" class="auth-form__socials-google"> <i
-									class="fa-brands fa-google"></i> Google
-								</a>
-							</div>
-							<div style="display: none" class="auth-form__aside">
-								<p class="auth-form__policy-text">Bằng việc đăng kí, bạn đã
-									đồng ý với Shop về</p>
-								<div class="auth-form__policy-links">
-									<a href="" class="auth-form__policy-link">Điều khoản dịch
-										vụ </a>& <a href="" class="auth-form__policy-link">Chính sách
-										bảo mật </a>
-								</div>
-							</div>
-							<div style="margin-top: 16px" class="auth-form__footer">
-								<p class="auth-form__footer-text">
-									Bạn đã có tài khoản? <a href="#"
-										class="auth-form__footer-link js-registerInLogin"
-										data-dismiss="modal" data-toggle="modal"
-										data-target="#modalDangNhap">Đăng nhập</a>
-								</p>
-							</div>
-						</form>
-					</div>
+						</div>
+						<div style="margin-top: 16px" class="auth-form__footer">
+							<p class="auth-form__footer-text">
+								Bạn đã có tài khoản? <a href="#"
+									class="auth-form__footer-link js-registerInLogin"
+									data-dismiss="modal" data-toggle="modal"
+									data-target="#modalDangNhap">Đăng nhập</a>
+							</p>
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>
+	</div>
 
-		<script type="text/javascript">
-			Validator({
-				form : '#form-2',
-				formGroupSelector : '.form-group',
-				errorElement : '.form-message',
-				rules : [
-						Validator.isRequired('#auth-form__input-ht',
-								'Bạn vui lòng nhập họ tên.'),
-						Validator.isRequired('#auth-form__input-sdt',
-								'Bạn vui lòng nhập số điện thoại.'),
-						Validator.isRequired('#auth-form__input-dc',
-								'Bạn vui lòng nhập địa chỉ.'),
-						Validator.isRequired('#auth-form__input-email',
-								'Bạn vui lòng nhập email.'),
-						Validator.isEmail('#auth-form__input-email',
-								'Email không hợp lệ.'),
-						Validator.isRequired('#password2',
-								'Bạn vui lòng nhập mật khẩu.'),
-						Validator.isRequired('#password3',
-								'Bạn vui lòng nhập mật khẩu.'),
-						Validator
-								.isConFirmed(
-										'#password3',
-										function() {
-											return document
-													.querySelector('#form-2 #password2').value
-										}, 'Nhập lại mật khẩu chưa chính xác.'),
-						Validator.isRequired('#auth-form__input-tk',
-								'Bạn vui lòng nhập tài khoản.'),
-				//Validator.minLength('#auth-form__input-sdt', 10, 'Vui lòng nhập đúng 10 số.')
-				// Validator.isEmail('#email'),
-				//Validator.isRequired('#avata'),
-				// Validator.isRequired('#password'),
-				// Validator.minLength('#password', 6),
-				// Validator.isRequired('#password_confirmation'),
-				// Validator.isConFirmed('#password_confirmation', function() {
-				//      return document.querySelector('#form-1 #password').value
-				//     }, 'Vui lòng nhập lại mật khẩu.'),
-				// Validator.isRequired('input[name="gender"]'),
-				// Validator.isRequired('#province')
-				],
-			});
-		</script>
+	<script type="text/javascript">
+		Validator({
+			form : '#form-2',
+			formGroupSelector : '.form-group',
+			errorElement : '.form-message',
+			rules : [
+					Validator.isRequired('#auth-form__input-ht',
+							'Bạn vui lòng nhập họ tên.'),
+					Validator.isRequired('#auth-form__input-sdt',
+							'Bạn vui lòng nhập số điện thoại.'),
+					//Validator.isRequired('#auth-form__input-dc','Bạn vui lòng nhập địa chỉ.'),
+					Validator.isRequired('#auth-form__input-email',
+							'Bạn vui lòng nhập email.'),
+					Validator.isEmail('#auth-form__input-email',
+							'Email không hợp lệ.'),
+					Validator.isRequired('#password2',
+							'Bạn vui lòng nhập mật khẩu.'),
+					Validator.isRequired('#password3',
+							'Bạn vui lòng nhập mật khẩu.'),
+					Validator
+							.isConFirmed(
+									'#password3',
+									function() {
+										return document
+												.querySelector('#form-2 #password2').value
+									}, 'Nhập lại mật khẩu chưa chính xác.'),
+					//Validator.isRequired('#auth-form__input-tk','Bạn vui lòng nhập tài khoản.'),
+					
+					
+			//Validator.minLength('#auth-form__input-sdt', 10, 'Vui lòng nhập đúng 10 số.')
+			// Validator.isEmail('#email'),
+			//Validator.isRequired('#avata'),
+			// Validator.isRequired('#password'),
+			// Validator.minLength('#password', 6),
+			// Validator.isRequired('#password_confirmation'),
+			// Validator.isConFirmed('#password_confirmation', function() {
+			//      return document.querySelector('#form-1 #password').value
+			//     }, 'Vui lòng nhập lại mật khẩu.'),
+			// Validator.isRequired('input[name="gender"]'),
+			// Validator.isRequired('#province')
+			],
+		});
+	</script>
 
 		<script type="text/javascript" src="assets/script/chi-tiet.js"></script>
 		
