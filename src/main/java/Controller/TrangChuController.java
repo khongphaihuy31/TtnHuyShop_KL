@@ -99,6 +99,10 @@ public class TrangChuController extends HttpServlet {
 //			}
 //			request.setAttribute("dsSP", dsSP);
 			
+			if(request.getParameter("btnQuenPass")!= null) {
+				request.setAttribute("email", request.getParameter("email"));
+			}
+			
 			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
 			rd.forward(request, response);
 		} catch (Exception e) {

@@ -1974,7 +1974,13 @@ p {
 			rules : [
 					Validator.isRequired('#password1','Bạn vui lòng nhập trường này.'),
 					Validator.isRequired('#password2','Bạn vui lòng nhập trường này.'),
-					Validator.isRequired('#password3','Bạn vui lòng nhập trường này.')
+					Validator.isRequired('#password3','Bạn vui lòng nhập trường này.'),
+					Validator.isConFirmed(
+							'#password3',
+							function() {
+								return document
+										.querySelector('#form-1 #password2').value
+							}, 'Nhập lại mật khẩu chưa chính xác.'),
 			],
 		});
 	</script>

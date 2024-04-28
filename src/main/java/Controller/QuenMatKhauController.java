@@ -41,10 +41,10 @@ public class QuenMatKhauController extends HttpServlet {
 				KhachHangBo khbo = new KhachHangBo();
 				KhachHangBean kh = khbo.ktraQuenPass(email, sodienthoai);
 				if(kh != null) {
-					response.sendRedirect("TrangChuController?btnQuenPass = 1&sodienthoai="+sodienthoai+"&email="+email+"&matkhau="+kh.getMatkhau());
+					response.sendRedirect("TrangChuController?btnQuenPass=1&email="+email);
 					return;
 				}else {
-					response.sendRedirect("TrangChuController?loiQuenPass = 1");
+					response.sendRedirect("TrangChuController?loiQuenPass=1");
 					return;
 				}
 			}
