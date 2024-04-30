@@ -1,5 +1,7 @@
 package Bo;
 
+import java.util.ArrayList;
+
 import Bean.NoiNhanBean;
 import Dao.HoSoKhachHangDao;
 
@@ -33,5 +35,13 @@ public class HoSoKhachHangBo {
 	//xử lý cập nhật địa chỉ cho khách hàng	
 	public int capNhatDiaChi(long makhachhang, String diachi) throws Exception{
 		return hskhdao.capNhatDiaChi(makhachhang, diachi);
+	}
+	//Xử lý lấy danh sách email của các khách hàng khác
+	public ArrayList<String> getdsEmail(long makhachhang)throws Exception{
+		return hskhdao.getdsEmail(makhachhang);
+	}
+	//xử lý đổi email theo mã khách hàng 
+	public int doiEmailTheoMakhachhang(String email, long makhachhang) throws Exception{
+		return hskhdao.doiEmailTheoMakhachhang(email, makhachhang);
 	}
 }

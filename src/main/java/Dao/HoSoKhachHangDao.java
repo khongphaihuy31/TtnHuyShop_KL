@@ -2,6 +2,7 @@ package Dao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import Bean.KhachHangBean;
 import Bean.NoiNhanBean;
@@ -113,6 +114,40 @@ public class HoSoKhachHangDao {
 		String sql = "update KhachHang set diachi = ? where makhachhang = ?";
 		PreparedStatement cmd = kn.cn.prepareStatement(sql);
 		cmd.setString(1, diachi);
+		cmd.setLong(2, makhachhang);
+		
+		int kq = cmd.executeUpdate();
+		cmd.close();
+		kn.cn.close();
+		return kq;
+	}
+	
+	//Xử lý lấy danh sách email của các khách hàng khác
+	public ArrayList<String> getdsEmail(long makhachhang)throws Exception{
+		ArrayList<String> dsEmail = new ArrayList<String>();
+		KetNoiDao kn = new KetNoiDao();
+		kn.ketnoi();
+		
+		String sql = "select email from KhachHang where makhachhang != ?";
+		PreparedStatement cmd = kn.cn.prepareStatement(sql);
+		cmd.setLong(1, makhachhang);
+		ResultSet rs = cmd.executeQuery();
+		while(rs.next()) {
+			String email = rs.getString("email");
+			
+			dsEmail.add(email);
+		}
+		return dsEmail;
+	}
+	
+	//xử lý đổi email theo mã khách hàng 
+	public int doiEmailTheoMakhachhang(String email, long makhachhang) throws Exception{
+		KetNoiDao kn = new KetNoiDao();
+		kn.ketnoi();
+		
+		String sql = "update KhachHang set email = ? where makhachhang = ?";
+		PreparedStatement cmd = kn.cn.prepareStatement(sql);
+		cmd.setString(1, email);
 		cmd.setLong(2, makhachhang);
 		
 		int kq = cmd.executeUpdate();

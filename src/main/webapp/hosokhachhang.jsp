@@ -768,10 +768,11 @@ p {
 									style="padding: 10px 30px 20px 20px; border: 2px solid var(--primary-color); border-radius: 10px;">
 									
 									<div class="col l-3">
-										<input form="formInfo" name="anhDaiDien" type="file"
-											id="file-input" accept="image/*" style="display: none;">
+										
 										<c:choose>
 											<c:when test="${dn.getAvatar() == null }">
+												<input form="formInfo" name="anhDaiDien" type="file"
+												id="file-input" accept="image/*" style="display: none;">
 												<img class="choose-img" style="width: 100%; cursor: pointer;"
 													src="https://hoang-phuc.com/static/version1713256568/frontend/Hpi/default/vi_VN/Magenest_CustomerAvatar/images/no-profile-photo.svg"
 													alt="preview-img">
@@ -780,6 +781,9 @@ p {
 													alt="preview-img">
 											</c:when>
 											<c:otherwise>
+												<input form="formInfo" name="anhDaiDien" type="file"
+												id="file-input" accept="image/*" style="display: none;">
+												<input form="formInfo" type="text" name="anhDaiDien1" value="${dn.getAvatar() }" style="display: none;">
 												<img class="choose-img" style="width: 100%; cursor: pointer;"
 													src="${dn.getAvatar() }" alt="preview-img">
 												<img style="display: none; width: 100%; cursor: pointer;"
@@ -820,13 +824,20 @@ p {
 										</div>
 										<div style="margin-top: 30px;" class="field field-email form-group">
 											<label style="font-size: 20px;" for="email">Email <span
-												style="color: red;">*</span></label>
+												style="color: red;">*</span>
+												<a data-dismiss="modal" data-toggle="modal" data-target="#modalDoiEmail" style="color: #3aa8d0;margin-left: 15px;cursor: pointer;">Đổi email</a>
+												</label>
 											<div style="margin-top: 10px;" class="control">
+												<input form="formInfo"
+													style="width: 100%; height: 20px; font-size: 18px; padding: 25px 15px; border-radius: 10px; border: 1px solid #ccc;display: none;"
+													type="text" id="emailTruyen" name="email"
+													value="${dn.getEmail() }" placeholder="email"
+													class="input-text required-entry form-control">
 												<input form="formInfo"
 													style="width: 100%; height: 20px; font-size: 18px; padding: 25px 15px; border-radius: 10px; border: 1px solid #ccc;"
 													type="text" id="email" name="email"
 													value="${dn.getEmail() }" placeholder="email"
-													class="input-text required-entry form-control">
+													class="input-text required-entry form-control" disabled>
 												<span class="form-message"></span>
 											</div>
 										</div>
@@ -852,7 +863,7 @@ p {
 													style="width: 100%; height: 20px; font-size: 18px; padding: 25px 15px; border-radius: 10px; border: 1px solid #ccc;"
 													type="text" id="location" name="diachi"
 													value="${dn.getDiachi() }" placeholder="Chưa có địa chỉ"
-													class="input-text required-entry" disabled>
+													class="input-text required-entry form-control" disabled>
 											</div>
 										</div>
 										<div style="margin-top: 30px;" class="formLuu">
@@ -1981,6 +1992,143 @@ p {
 								return document
 										.querySelector('#form-1 #password2').value
 							}, 'Nhập lại mật khẩu chưa chính xác.'),
+			],
+		});
+	</script>
+	
+	<!-- Modal đổi email -->
+	<div class="modal fade" id="modalDoiEmail" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h3 style="color: var(--primary-color); font-weight: bold;"
+						class="modal-title">Thay đổi email</h3>
+				</div>
+				<div style="display: flex; justify-content: center;"
+					class="modal-body">
+
+					<form style="width: 90%; position: relative;"
+						action="HoSoKhachHangController" method="get" id="form-2">
+
+						<div class="form-group">
+							<h1 style="font-size: 18px; margin-bottom: 5px; margin-top: 0;">Nhập
+								email <span style="color: red;">*</span>
+								</h1>
+							<input id="auth-form__input-emailDoi"
+								style="width: 100%; margin-bottom: 4px"
+								class="auth-form__input form-control" type="email" name="email"
+								placeholder="Nhập email (*)"> <span
+								class="form-message"></span>
+						</div>
+						<div class="form-group" >
+							<input id="auth-form__input-codeDoiEmail"
+								style="width: 100%; margin-bottom: 4px; display: none;"
+								class="auth-form__input form-control" type="text"
+								name="codeDoiEmail">
+						</div>
+						<div style="position: relative;" class="form-group">
+							<h1 style="font-size: 18px; margin-bottom: 5px; margin-top: 0;">Mã xác nhận
+								<span style="color: red;">*</span>
+								<a onclick="clickBtnDangKi()" style="cursor: pointer; margin-left: 10px; font-size: 15px; font-weight: bold;">
+									Gửi mã</a>
+							</h1>
+							<input id="auth-form__input-codeDoi"
+								style="width: 100%; margin-bottom: 4px"
+								class="auth-form__input form-control" type="text"
+								name="code" placeholder="Nhập mã xác nhận (*)">
+							<span class="form-message"></span>
+						</div>
+						<input style="display: none;" name="btnDoiEmail" type="text" value="doimatkhau">
+						<input class="auth-form__btn" style="border: none; margin-top: 0px;" type="submit"
+							name="btnDoiEmail" value="Thay đổi email">
+					</form>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<script type="text/javascript">
+		function clickBtnDangKi() {
+				var inputEmail = document.getElementById('auth-form__input-emailDoi');
+				var dsEmail =`${dsEmail}`;
+				var coEmail = false;
+				var listEmail = dsEmail.split('>');
+				
+				for(let i =0; i<listEmail.length; i++){
+					if(inputEmail.value === listEmail[i]){
+						coSdt = true;
+						break;
+					}
+				}
+				
+				
+				if(coEmail){
+					function showErrorToastKtraEmailSdt() {
+						toast({
+							title : 'Thất bại',
+							message : 'Email đã được đăng kí ở tài khoản khác.',
+							type : 'error',
+							duration : 5000
+						})
+					}
+					showErrorToastKtraEmailSdt();
+				}else{
+					var emaildk1 = inputEmail.value;
+					sendEmailDangKi(emaildk1);
+					async function sendEmailDangKi(emaildk) {
+				      const response = await fetch(
+				        "https://script.google.com/macros/s/AKfycbynR90KY5lHgJee2iEip-lAr6Xk05JzFmNKwrFNI71KlNHI6QWP0cgJrzkNvDDqlBduKg/exec?email="+emaildk
+				      );
+				      const data = await response.json();
+				      //console.log(data.data.status);
+				      if(data.data.status ==='true'){
+						//var el = document.getElementById('btnDangKi');
+						//el.click();
+			    	  function showInfoToastKiemTraEmail(){
+			    		    toast({
+			    		        title :'Đã gửi mã xác nhận',
+			    		        message : 'Vui lòng kiểm tra email.',
+			    		        type  : 'info',
+			    		        duration : 5000
+			    		    })
+			    		}
+			    	  showInfoToastKiemTraEmail();
+						var codeDkiEmail = document.getElementById('auth-form__input-codeDoiEmail');
+						codeDkiEmail.value = data.data.code;
+				      }else{
+				    	  function showErrorToastKtraGuiEmailThatBai() {
+								toast({
+									title : 'Thất bại',
+									message : 'Email không tồn tại.',
+									type : 'error',
+									duration : 5000
+								})
+							}
+				    	  showErrorToastKtraGuiEmailThatBai();
+				      }
+				    }
+				}
+			}
+		</script>
+	<script type="text/javascript">
+		Validator({
+			form : '#form-2',
+			formGroupSelector : '.form-group',
+			errorElement : '.form-message',
+			rules : [
+					Validator.isRequired('#auth-form__input-emailDoi','Bạn vui lòng nhập trường này.'),
+					Validator.isEmail('#auth-form__input-emailDoi','Email không hợp lệ.'),
+					Validator.isRequired('#auth-form__input-codeDoi','Bạn vui lòng nhập trường này.'),
+					Validator.minLength('#auth-form__input-codeDoi',6),
+					Validator.isConFirmed(
+							'#auth-form__input-codeDoi',
+							function() {
+								return document
+										.querySelector('#form-2 #auth-form__input-codeDoiEmail').value
+							}, 'Mã xác nhận không chính xác.'),
 			],
 		});
 	</script>

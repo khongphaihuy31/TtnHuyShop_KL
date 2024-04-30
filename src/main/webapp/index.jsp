@@ -1500,6 +1500,7 @@ a:hover, a:focus {
 									}, 'Nhập lại mật khẩu chưa chính xác.'),
 					Validator.isRequired('#auth-form__input-codeDki',
 					'Bạn vui lòng nhập mã xác nhận.'),
+					Validator.minLength('#auth-form__input-codeDki',6),
 					Validator.isConFirmed(
 							'#auth-form__input-codeDki',
 							function() {

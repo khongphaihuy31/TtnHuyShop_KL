@@ -53,7 +53,35 @@ public class HoSoKhachHangController extends HttpServlet {
 			request.setAttribute("dsTenLoaiDMThuongHieu", lbo.getTenLoaiDMThuongHieu());
 			request.setAttribute("dsTenLoaiDMDoNam", lbo.getTenLoaiDMDoNam());
 			request.setAttribute("dsTenLoaiDMDoNu", lbo.getTenLoaiDMDoNu());
-			request.setAttribute("dsTenLoaiDMTreEm", lbo.getTenLoaiDMTreEm());			
+			request.setAttribute("dsTenLoaiDMTreEm", lbo.getTenLoaiDMTreEm());
+			
+			//Xử lý lấy danh sách email của các khách hàng khác
+			HttpSession session1 = request.getSession();
+			KhachHangBean khbean1 = (KhachHangBean)session1.getAttribute("dn");	
+			HoSoKhachHangBo hskhbo1 = new HoSoKhachHangBo();
+			long makhachhang= khbean1.getMakhachhang();
+			ArrayList<String> dsemail = hskhbo1.getdsEmail(makhachhang);
+			String dsEmail = "";
+			for(int i=0; i<dsemail.size(); i++) {
+				if(i==0) {
+					dsEmail += dsemail.get(0);
+				}else {
+					dsEmail += ">"+dsemail.get(i);
+				}
+			}
+			request.setAttribute("dsEmail", dsEmail);
+			
+			//Xử lý đổi email theo mã khách hàng
+			if(request.getParameter("btnDoiEmail")!= null) {
+				String emailDoi = request.getParameter("email");
+				String codeDoiEmail = request.getParameter("codeDoiEmail");
+				String code = request.getParameter("code");
+				if(code.equals(codeDoiEmail)) {
+					hskhbo1.doiEmailTheoMakhachhang(emailDoi, makhachhang);
+					response.sendRedirect("HoSoKhachHangController?info=1");
+					return;
+				}
+			}
 			
 //			String btnluu = request.getParameter("btnluu");
 //			if(btnluu != null) {
