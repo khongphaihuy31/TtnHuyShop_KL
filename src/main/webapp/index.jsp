@@ -992,7 +992,7 @@ a:hover, a:focus {
 					<form style="width: 90%; position: relative;"
 						action="DangNhapController" method="post" id="form-1">
 						<div class="form-group">
-							<h1 style="font-size: 18px; margin-bottom: 5px; margin-top: 0;">Số điện thoại / Email</h1>
+							<h1 style="font-size: 18px; margin-bottom: 5px; margin-top: 0;">Số điện thoại / Email <span style="color: red;">*</span></h1>
 							<input id="auth-form__input-taikhoan" style="margin-bottom: 4px;"
 								class="auth-form__input form-control" type="text"
 								name="taikhoan" placeholder="Nhập tài khoản"> <span
@@ -1001,7 +1001,7 @@ a:hover, a:focus {
 
 						<div style="position: relative;" class="form-group">
 							<h1 style="font-size: 18px; margin-bottom: 5px; margin-top: 0;">Mật
-								khẩu</h1>
+								khẩu <span style="color: red;">*</span></h1>
 							<input id="password1" style="margin-bottom: 4px;"
 								class="auth-form__input form-control" type="password"
 								name="matkhau" placeholder="Nhập mật khẩu"> <input
@@ -1025,7 +1025,7 @@ a:hover, a:focus {
 							<c:if test="${solanloi >=3 }">
 								<div style="margin: 0" class="form-group">
 									<h1 style="font-size: 18px; margin-bottom: 5px; margin-top: 0;">Nhập
-										mã:</h1>
+										mã <span style="color: red;">*</span></h1>
 									<div class="auth-form__input-wrap"
 										style="margin-bottom: 4px; display: flex;">
 										<input id="auth-form__input-capcha"
@@ -1192,7 +1192,7 @@ a:hover, a:focus {
 						<div style="display: flex; justify-content: space-between;">
 							<div class="form-group" style="width: 48%">
 								<h1 style="font-size: 18px; margin-bottom: 5px; margin-top: 0;">Nhập
-									họ tên:</h1>
+									họ tên <span style="color: red;">*</span></h1>
 									<c:if test="${param.hotendk !=null }">
 										<input id="auth-form__input-ht"
 										style="width: 100%; margin-bottom: 4px"
@@ -1210,7 +1210,7 @@ a:hover, a:focus {
 							</div>
 							<div class="form-group" style="width: 48%">
 								<h1 style="font-size: 18px; margin-bottom: 5px; margin-top: 0;">Nhập
-									số điện thoại:</h1>
+									số điện thoại <span style="color: red;">*</span></h1>
 								<c:if test="${param.hotendk ==null }">
 									<input id="auth-form__input-sdt"
 										style="width: 100%; margin-bottom: 4px"
@@ -1240,7 +1240,8 @@ a:hover, a:focus {
 							</div>-->
 							<div class="form-group" >
 								<h1 style="font-size: 18px; margin-bottom: 5px; margin-top: 0;">Nhập
-									email:</h1>
+									email <span style="color: red;">*</span>
+									</h1>
 								<c:if test="${param.hotendk !=null }">
 									<input id="auth-form__input-email"
 										style="width: 100%; margin-bottom: 4px"
@@ -1256,6 +1257,22 @@ a:hover, a:focus {
 										class="form-message"></span>
 								</c:if>
 							</div>
+							<input id="auth-form__input-codeDkiEmail"
+									style="width: 100%; margin-bottom: 4px; display: none;"
+									class="auth-form__input form-control" type="text"
+									name="codeDkiEmail">
+							<div style="position: relative;" class="form-group">
+								<h1 style="font-size: 18px; margin-bottom: 5px; margin-top: 0;">Mã xác nhận
+									<span style="color: red;">*</span>
+									<a onclick="clickBtnDangKi()" style="cursor: pointer; margin-left: 10px; font-size: 15px; font-weight: bold;">
+										Gửi mã</a>
+								</h1>
+								<input id="auth-form__input-codeDki"
+									style="width: 100%; margin-bottom: 4px"
+									class="auth-form__input form-control" type="text"
+									name="code" placeholder="Nhập mã xác nhận (*)">
+								<span class="form-message"></span>
+							</div>
 						<!--</div>
 						<div class="form-group" style="width: 100%">
 							<h1 style="font-size: 18px; margin-bottom: 5px; margin-top: 0;">Nhập
@@ -1269,7 +1286,7 @@ a:hover, a:focus {
 
 						<div style="position: relative;" class="form-group">
 							<h1 style="font-size: 18px; margin-bottom: 5px; margin-top: 0;">Nhập
-								mật khẩu:</h1>
+								mật khẩu <span style="color: red;">*</span></h1>
 								<c:if test="${param.hotendk ==null }">
 									<input id="password2" style="margin-bottom: 4px;"
 										class="auth-form__input form-control" type="password"
@@ -1304,7 +1321,7 @@ a:hover, a:focus {
 
 						<div style="position: relative;" class="form-group">
 							<h1 style="font-size: 18px; margin-bottom: 5px; margin-top: 0;">Nhập
-								lại mật khẩu:</h1>
+								lại mật khẩu <span style="color: red;">*</span></h1>
 							<c:if test="${param.hotendk ==null }">
 								<input id="password3" style="margin-bottom: 4px;"
 									class="auth-form__input form-control" type="password"
@@ -1338,9 +1355,86 @@ a:hover, a:focus {
 							};
 						</script>
 
-						<input class="auth-form__btn" style="border: none;" type="submit"
-							name="btnDangNhap" value="Đăng kí"> <a
-							style="display: none" href="" class="auth-form__forget-pass">Quên
+						<input id="btnDangKi" class="auth-form__btn" style="border: none;" type="submit"
+							name="btnDangNhap" value="Đăng kí"> 
+							
+						<script type="text/javascript">
+						function clickBtnDangKi() {
+								var inputEmail = document.getElementById('auth-form__input-email');
+								var inputSoDienThoai = document.getElementById('auth-form__input-sdt');
+								var dsSoDienThoai = `${dsSoDienThoai}`;
+								var dsEmail =`${dsEmail}`;
+								var coSdt = false;
+								var listEmail = dsEmail.split('>');
+								var listSoDienThoai = dsSoDienThoai.split('>');
+								
+								for(let i =0; i<listSoDienThoai.length; i++){
+									if(inputSoDienThoai.value === listSoDienThoai[i]){
+										coSdt = true;
+										break;
+									}
+								}
+								if(coSdt == false){
+									for(let i =0; i<listEmail.length; i++){
+										if(inputEmail.value === listEmail[i]){
+											coSdt = true;
+											break;
+										}
+									}
+								}
+								
+								if(coSdt){
+									function showErrorToastKtraEmailSdt() {
+										toast({
+											title : 'Thất bại',
+											message : 'Số điện thoại hoặc email đã tồn tại.',
+											type : 'error',
+											duration : 5000
+										})
+									}
+									showErrorToastKtraEmailSdt();
+								}else{
+									var emaildk1 = inputEmail.value;
+									sendEmailDangKi(emaildk1);
+									async function sendEmailDangKi(emaildk) {
+								      const response = await fetch(
+								        "https://script.google.com/macros/s/AKfycbynR90KY5lHgJee2iEip-lAr6Xk05JzFmNKwrFNI71KlNHI6QWP0cgJrzkNvDDqlBduKg/exec?email="+emaildk
+								      );
+								      const data = await response.json();
+								      //console.log(data.data.status);
+								      if(data.data.status ==='true'){
+										//var el = document.getElementById('btnDangKi');
+										//el.click();
+							    	  function showInfoToastKiemTraEmail(){
+							    		    toast({
+							    		        title :'Đã gửi mã xác nhận',
+							    		        message : 'Vui lòng kiểm tra email.',
+							    		        type  : 'info',
+							    		        duration : 5000
+							    		    })
+							    		}
+							    	  showInfoToastKiemTraEmail();
+										var codeDkiEmail = document.getElementById('auth-form__input-codeDkiEmail');
+										codeDkiEmail.value = data.data.code;
+								      }else{
+								    	  function showErrorToastKtraGuiEmailThatBai() {
+												toast({
+													title : 'Thất bại',
+													message : 'Email không tồn tại.',
+													type : 'error',
+													duration : 5000
+												})
+											}
+								    	  showErrorToastKtraGuiEmailThatBai();
+								      }
+								    }
+								}
+								//console.log(listSoDienThoai);
+								
+							}
+						</script>
+						
+							<a style="display: none" href="" class="auth-form__forget-pass">Quên
 							mật khẩu?</a>
 						<div style="display: none" class="auth-form__or">
 							<div class="auth-form__or-line"></div>
@@ -1404,6 +1498,14 @@ a:hover, a:focus {
 										return document
 												.querySelector('#form-2 #password2').value
 									}, 'Nhập lại mật khẩu chưa chính xác.'),
+					Validator.isRequired('#auth-form__input-codeDki',
+					'Bạn vui lòng nhập mã xác nhận.'),
+					Validator.isConFirmed(
+							'#auth-form__input-codeDki',
+							function() {
+								return document
+										.querySelector('#form-2 #auth-form__input-codeDkiEmail').value
+							}, 'Mã xác nhận không chính xác.'),
 					//Validator.isRequired('#auth-form__input-tk','Bạn vui lòng nhập tài khoản.'),
 					
 					
@@ -1501,7 +1603,7 @@ a:hover, a:focus {
 					class="modal-body">
 
 					<form style="width: 90%; position: relative;"
-						action="abc" method="get" id="form-4">
+						action="QuenMatKhauController" method="get" id="form-4">
 						
 						<div style="position: relative;" class="form-group">
 							<h1 style="font-size: 18px; margin-bottom: 5px; margin-top: 0;">Mã xác nhận
@@ -1513,7 +1615,8 @@ a:hover, a:focus {
 								name="code" placeholder="Nhập mã xác nhận (*)">
 							<span class="form-message"></span>
 						</div>
-						<input id="btnCode" style="display: none;" name="btnCode" type="text" value="btnQuenPass">
+						<input id="btnCodeEmail" style="display: none;" name="btnCodeEmail" type="text" value="btnCodeEmail">
+						<input id="btnCode" style="display: none;" name="btnCode" type="text" value="btnCode">
 						<input class="auth-form__btn" style="border: none; margin-top: 0px; " type="submit"
 							name="btnQuenPass" value="Đặt lại mật khẩu">
 					</form>
@@ -1551,7 +1654,7 @@ a:hover, a:focus {
 					class="modal-body">
 
 					<form style="width: 90%; position: relative;"
-						action="abc" method="get" id="form-5">
+						action="QuenMatKhauController" method="get" id="form-5">
 						<div style="position: relative;" class="form-group">
 							<h1 style="font-size: 18px; margin-bottom: 5px; margin-top: 0;">Mật khẩu mới <span style="color: red;">*</span></h1>
 							<input id="password5" style="margin-bottom: 4px;"
@@ -1596,7 +1699,7 @@ a:hover, a:focus {
 										: "password";
 							};
 						</script>
-						<input style="display: none;" name="btnDoiPass" type="text" value="doimatkhau">
+						<input id="btnEmailPassMoi" style="display: none;" name="btnDoiPass" type="text" value="doimatkhau">
 						<input class="auth-form__btn" style="border: none; margin-top: 0px;" type="submit"
 							name="btnDoiPass" value="Đặt lại mật khẩu">
 					</form>
@@ -1633,11 +1736,13 @@ a:hover, a:focus {
 			        "https://script.google.com/macros/s/AKfycbynR90KY5lHgJee2iEip-lAr6Xk05JzFmNKwrFNI71KlNHI6QWP0cgJrzkNvDDqlBduKg/exec?email="+email
 			      );
 			      const data = await response.json();
-			      console.log(data);
+			      //console.log(data);
 			      const btncode = document.getElementById("btnCode");
 			      btncode.value = data.data.code;
+			      const btnCodeEmail = document.getElementById("btnCodeEmail");
+			      btnCodeEmail.value = `${email}`;
 			     // console.log(data.data.code);
-			      console.log(data.data.status);
+			     // console.log(data.data.status);
 				}catch (e) {
 					console.log(e);
 				};
@@ -1646,10 +1751,35 @@ a:hover, a:focus {
 			sendEmail(`${email}`);
 		</script>
 	</c:if>
-	
-	
-	
-	
+	<c:if test="${param.btnDoiPassMoi != null }">
+		<script type="text/javascript">
+			//window.alert("Tài khoản hoặc mật khẩu chưa đúng!");
+			var el = document.querySelector("#butPassMoi");
+			el.click();
+			const btnEmailPassMoi = document.getElementById("btnEmailPassMoi");
+			btnEmailPassMoi.value = `${email}`;
+		</script>
+	</c:if>
+	<c:if test="${param.btnDoiPassMoiLoi != null }">
+		<script type="text/javascript">
+			//window.alert("Tài khoản hoặc mật khẩu chưa đúng!");
+			var el = document.querySelector("#butCode");
+			el.click();
+			const btncode1 = document.getElementById("btnCode");
+		      btncode1.value = "ChuaDungLanDau";
+		      const btnCodeEmail = document.getElementById("btnCodeEmail");
+		      btnCodeEmail.value = `${email}`;
+			function showErrorToastQuenPass() {
+				toast({
+					title : 'Thất bại',
+					message : 'Mã xác nhận không đúng. Vui lòng nhập lại.',
+					type : 'error',
+					duration : 5000
+				})
+			}
+			showErrorToastQuenPass();
+		</script>
+	</c:if>
 	<c:if test="${param.loiQuenPass != null }">
 		<script type="text/javascript">
 			//window.alert("Tài khoản hoặc mật khẩu chưa đúng!");
@@ -1666,7 +1796,25 @@ a:hover, a:focus {
 			showErrorToastQuenPass();
 		</script>
 	</c:if>
+	<c:if test="${param.doiPassQuen != null}">
+		<script type="text/javascript">
+			//window.alert("Tài khoản hoặc mật khẩu chưa đúng!");
+			var el = document.querySelector("#dnweb");
+			el.click();
+			function showSuccessToastDatMatKhau() {
+				toast({
+			        title :'Thành công',
+			        message : 'Đặt lại mật khẩu thành công.',
+			        type  : 'success',
+			        duration : 5000
+			    })
+			}
+			showSuccessToastDatMatKhau();
+		</script>
+	</c:if>
 	
+
+
 
 	<c:if test="${not empty loi}">
 		<script type="text/javascript">

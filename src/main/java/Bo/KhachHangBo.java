@@ -1,5 +1,7 @@
 package Bo;
 
+import java.util.ArrayList;
+
 import Bean.KhachHangBean;
 import Dao.KhachHangDao;
 
@@ -39,5 +41,30 @@ public class KhachHangBo {
 	//Kiểm tra quên mật khẩu
 	public KhachHangBean ktraQuenPass(String email, String sodienthoai)throws Exception {
 		return khdao.ktraQuenPass(email, sodienthoai);
+	}
+	
+	//xử lý cập nhật mã code	
+	public int capNhatCode(String email, String code) throws Exception{
+		return khdao.capNhatCode(email, code);
+	}
+	
+	//xử lý lấy mã code để so sánh
+	public String getMaCode(String email)throws Exception {
+		return khdao.getMaCode(email);
+	}
+	
+	//xử lý đổi mật khẩu theo email	
+	public int doiPassTheoEmail(String email, String pass) throws Exception{
+		return khdao.doiPassTheoEmail(email, pass);
+	}
+	
+	//Xử lý lấy danh sách số điện thoại của khách hàng
+	public ArrayList<String> getdsSoDienThoai()throws Exception{
+		return khdao.getdsSoDienThoai();
+	}
+	
+	//Xử lý lấy danh sách email của khách hàng
+	public ArrayList<String> getdsEmail()throws Exception{
+		return khdao.getdsEmail();
 	}
 }

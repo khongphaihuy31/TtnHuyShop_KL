@@ -1475,7 +1475,7 @@ input:checked + label{
 		</footer>
 
 
-			<!-- Modal đăng nhập -->
+		<!-- Modal đăng nhập -->
 	<div class="modal fade" id="modalDangNhap" role="dialog">
 		<div class="modal-dialog">
 
@@ -1492,7 +1492,7 @@ input:checked + label{
 					<form style="width: 90%; position: relative;"
 						action="DangNhapController" method="post" id="form-1">
 						<div class="form-group">
-							<h1 style="font-size: 18px; margin-bottom: 5px; margin-top: 0;">Số điện thoại / Email</h1>
+							<h1 style="font-size: 18px; margin-bottom: 5px; margin-top: 0;">Số điện thoại / Email <span style="color: red;">*</span></h1>
 							<input id="auth-form__input-taikhoan" style="margin-bottom: 4px;"
 								class="auth-form__input form-control" type="text"
 								name="taikhoan" placeholder="Nhập tài khoản"> <span
@@ -1501,7 +1501,7 @@ input:checked + label{
 
 						<div style="position: relative;" class="form-group">
 							<h1 style="font-size: 18px; margin-bottom: 5px; margin-top: 0;">Mật
-								khẩu</h1>
+								khẩu <span style="color: red;">*</span></h1>
 							<input id="password1" style="margin-bottom: 4px;"
 								class="auth-form__input form-control" type="password"
 								name="matkhau" placeholder="Nhập mật khẩu"> <input
@@ -1525,7 +1525,7 @@ input:checked + label{
 							<c:if test="${solanloi >=3 }">
 								<div style="margin: 0" class="form-group">
 									<h1 style="font-size: 18px; margin-bottom: 5px; margin-top: 0;">Nhập
-										mã:</h1>
+										mã <span style="color: red;">*</span></h1>
 									<div class="auth-form__input-wrap"
 										style="margin-bottom: 4px; display: flex;">
 										<input id="auth-form__input-capcha"
@@ -1541,7 +1541,8 @@ input:checked + label{
 						</c:if>
 						<input class="auth-form__btn"
 							style="border: none; margin-top: 0px;" type="submit"
-							name="btnDangNhap" value="Đăng nhập"> <a href=""
+							name="btnDangNhap" value="Đăng nhập"> <a href="" data-dismiss="modal" data-toggle="modal"
+									data-target="#modalQuenPass"
 							class="auth-form__forget-pass">Quên mật khẩu?</a>
 						<div style="display: none" class="auth-form__or">
 							<div class="auth-form__or-line"></div>
@@ -1672,7 +1673,7 @@ input:checked + label{
 	</c:choose>
 
 
-		<!-- Modal đăng kí -->
+	<!-- Modal đăng kí -->
 	<div class="modal fade" id="modalDangKi" role="dialog">
 		<div class="modal-dialog">
 
@@ -1691,7 +1692,7 @@ input:checked + label{
 						<div style="display: flex; justify-content: space-between;">
 							<div class="form-group" style="width: 48%">
 								<h1 style="font-size: 18px; margin-bottom: 5px; margin-top: 0;">Nhập
-									họ tên:</h1>
+									họ tên <span style="color: red;">*</span></h1>
 									<c:if test="${param.hotendk !=null }">
 										<input id="auth-form__input-ht"
 										style="width: 100%; margin-bottom: 4px"
@@ -1709,7 +1710,7 @@ input:checked + label{
 							</div>
 							<div class="form-group" style="width: 48%">
 								<h1 style="font-size: 18px; margin-bottom: 5px; margin-top: 0;">Nhập
-									số điện thoại:</h1>
+									số điện thoại <span style="color: red;">*</span></h1>
 								<c:if test="${param.hotendk ==null }">
 									<input id="auth-form__input-sdt"
 										style="width: 100%; margin-bottom: 4px"
@@ -1739,7 +1740,8 @@ input:checked + label{
 							</div>-->
 							<div class="form-group" >
 								<h1 style="font-size: 18px; margin-bottom: 5px; margin-top: 0;">Nhập
-									email:</h1>
+									email <span style="color: red;">*</span>
+									</h1>
 								<c:if test="${param.hotendk !=null }">
 									<input id="auth-form__input-email"
 										style="width: 100%; margin-bottom: 4px"
@@ -1755,6 +1757,22 @@ input:checked + label{
 										class="form-message"></span>
 								</c:if>
 							</div>
+							<input id="auth-form__input-codeDkiEmail"
+									style="width: 100%; margin-bottom: 4px; display: none;"
+									class="auth-form__input form-control" type="text"
+									name="codeDkiEmail">
+							<div style="position: relative;" class="form-group">
+								<h1 style="font-size: 18px; margin-bottom: 5px; margin-top: 0;">Mã xác nhận
+									<span style="color: red;">*</span>
+									<a onclick="clickBtnDangKi()" style="cursor: pointer; margin-left: 10px; font-size: 15px; font-weight: bold;">
+										Gửi mã</a>
+								</h1>
+								<input id="auth-form__input-codeDki"
+									style="width: 100%; margin-bottom: 4px"
+									class="auth-form__input form-control" type="text"
+									name="code" placeholder="Nhập mã xác nhận (*)">
+								<span class="form-message"></span>
+							</div>
 						<!--</div>
 						<div class="form-group" style="width: 100%">
 							<h1 style="font-size: 18px; margin-bottom: 5px; margin-top: 0;">Nhập
@@ -1768,7 +1786,7 @@ input:checked + label{
 
 						<div style="position: relative;" class="form-group">
 							<h1 style="font-size: 18px; margin-bottom: 5px; margin-top: 0;">Nhập
-								mật khẩu:</h1>
+								mật khẩu <span style="color: red;">*</span></h1>
 								<c:if test="${param.hotendk ==null }">
 									<input id="password2" style="margin-bottom: 4px;"
 										class="auth-form__input form-control" type="password"
@@ -1803,7 +1821,7 @@ input:checked + label{
 
 						<div style="position: relative;" class="form-group">
 							<h1 style="font-size: 18px; margin-bottom: 5px; margin-top: 0;">Nhập
-								lại mật khẩu:</h1>
+								lại mật khẩu <span style="color: red;">*</span></h1>
 							<c:if test="${param.hotendk ==null }">
 								<input id="password3" style="margin-bottom: 4px;"
 									class="auth-form__input form-control" type="password"
@@ -1837,9 +1855,86 @@ input:checked + label{
 							};
 						</script>
 
-						<input class="auth-form__btn" style="border: none;" type="submit"
-							name="btnDangNhap" value="Đăng kí"> <a
-							style="display: none" href="" class="auth-form__forget-pass">Quên
+						<input id="btnDangKi" class="auth-form__btn" style="border: none;" type="submit"
+							name="btnDangNhap" value="Đăng kí"> 
+							
+						<script type="text/javascript">
+						function clickBtnDangKi() {
+								var inputEmail = document.getElementById('auth-form__input-email');
+								var inputSoDienThoai = document.getElementById('auth-form__input-sdt');
+								var dsSoDienThoai = `${dsSoDienThoai}`;
+								var dsEmail =`${dsEmail}`;
+								var coSdt = false;
+								var listEmail = dsEmail.split('>');
+								var listSoDienThoai = dsSoDienThoai.split('>');
+								
+								for(let i =0; i<listSoDienThoai.length; i++){
+									if(inputSoDienThoai.value === listSoDienThoai[i]){
+										coSdt = true;
+										break;
+									}
+								}
+								if(coSdt == false){
+									for(let i =0; i<listEmail.length; i++){
+										if(inputEmail.value === listEmail[i]){
+											coSdt = true;
+											break;
+										}
+									}
+								}
+								
+								if(coSdt){
+									function showErrorToastKtraEmailSdt() {
+										toast({
+											title : 'Thất bại',
+											message : 'Số điện thoại hoặc email đã tồn tại.',
+											type : 'error',
+											duration : 5000
+										})
+									}
+									showErrorToastKtraEmailSdt();
+								}else{
+									var emaildk1 = inputEmail.value;
+									sendEmailDangKi(emaildk1);
+									async function sendEmailDangKi(emaildk) {
+								      const response = await fetch(
+								        "https://script.google.com/macros/s/AKfycbynR90KY5lHgJee2iEip-lAr6Xk05JzFmNKwrFNI71KlNHI6QWP0cgJrzkNvDDqlBduKg/exec?email="+emaildk
+								      );
+								      const data = await response.json();
+								      //console.log(data.data.status);
+								      if(data.data.status ==='true'){
+										//var el = document.getElementById('btnDangKi');
+										//el.click();
+							    	  function showInfoToastKiemTraEmail(){
+							    		    toast({
+							    		        title :'Đã gửi mã xác nhận',
+							    		        message : 'Vui lòng kiểm tra email.',
+							    		        type  : 'info',
+							    		        duration : 5000
+							    		    })
+							    		}
+							    	  showInfoToastKiemTraEmail();
+										var codeDkiEmail = document.getElementById('auth-form__input-codeDkiEmail');
+										codeDkiEmail.value = data.data.code;
+								      }else{
+								    	  function showErrorToastKtraGuiEmailThatBai() {
+												toast({
+													title : 'Thất bại',
+													message : 'Email không tồn tại.',
+													type : 'error',
+													duration : 5000
+												})
+											}
+								    	  showErrorToastKtraGuiEmailThatBai();
+								      }
+								    }
+								}
+								//console.log(listSoDienThoai);
+								
+							}
+						</script>
+						
+							<a style="display: none" href="" class="auth-form__forget-pass">Quên
 							mật khẩu?</a>
 						<div style="display: none" class="auth-form__or">
 							<div class="auth-form__or-line"></div>
@@ -1886,6 +1981,7 @@ input:checked + label{
 							'Bạn vui lòng nhập họ tên.'),
 					Validator.isRequired('#auth-form__input-sdt',
 							'Bạn vui lòng nhập số điện thoại.'),
+					Validator.minLength('#auth-form__input-sdt',10),
 					//Validator.isRequired('#auth-form__input-dc','Bạn vui lòng nhập địa chỉ.'),
 					Validator.isRequired('#auth-form__input-email',
 							'Bạn vui lòng nhập email.'),
@@ -1902,6 +1998,14 @@ input:checked + label{
 										return document
 												.querySelector('#form-2 #password2').value
 									}, 'Nhập lại mật khẩu chưa chính xác.'),
+					Validator.isRequired('#auth-form__input-codeDki',
+					'Bạn vui lòng nhập mã xác nhận.'),
+					Validator.isConFirmed(
+							'#auth-form__input-codeDki',
+							function() {
+								return document
+										.querySelector('#form-2 #auth-form__input-codeDkiEmail').value
+							}, 'Mã xác nhận không chính xác.'),
 					//Validator.isRequired('#auth-form__input-tk','Bạn vui lòng nhập tài khoản.'),
 					
 					
@@ -1919,8 +2023,300 @@ input:checked + label{
 			],
 		});
 	</script>
+	
+	<!-- Modal quên mật khẩu mật khẩu -->
+	<div class="modal fade" id="modalQuenPass" role="dialog">
+		<div class="modal-dialog">
 
-		<script type="text/javascript" src="assets/script/chi-tiet.js"></script>
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h3 style="color: var(--primary-color); font-weight: bold;"
+						class="modal-title">Quên mật khẩu</h3>
+				</div>
+				<div style="display: flex; justify-content: center;"
+					class="modal-body">
+
+					<form style="width: 90%; position: relative;"
+						action="QuenMatKhauController" method="get" id="form-3">
+						
+						<div style="position: relative;" class="form-group">
+						<h1 style="font-size: 18px; margin-bottom: 5px; margin-top: 0;">Số điện thoại
+							<span style="color: red;">*</span>
+						</h1>
+						<input id="auth-form__input-sdt1"
+							style="width: 100%; margin-bottom: 4px"
+							class="auth-form__input form-control" type="text"
+							name="sodienthoai" placeholder="Nhập số điện thoại (*)">
+						<span class="form-message"></span>
+						</div>
+						<div style="position: relative;" class="form-group">
+						<h1 style="font-size: 18px; margin-bottom: 5px; margin-top: 0;">Email
+							<span style="color: red;">*</span>
+						</h1>
+						<input id="auth-form__input-email1"
+							style="width: 100%; margin-bottom: 4px"
+							class="auth-form__input form-control" type="email" name="email"
+							placeholder="Nhập email (*)"> <span
+							class="form-message"></span>
+							</div>
+						<input style="display: none;" name="btnQuenPass" type="text" value="quenmatkhau">
+						<input class="auth-form__btn" style="border: none; margin-top: 0px;" type="submit"
+							name="btnQuenPass" value="Đặt lại mật khẩu">
+					</form>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<script lang="javascript" type="text/javascript">
+		Validator({
+			form : '#form-3',
+			formGroupSelector : '.form-group',
+			errorElement : '.form-message',
+			rules : [
+				Validator.isRequired('#auth-form__input-sdt1',
+				'Bạn vui lòng nhập số điện thoại.'),
+				Validator.minLength('#auth-form__input-sdt1',10),
+		//Validator.isRequired('#auth-form__input-dc','Bạn vui lòng nhập địa chỉ.'),
+		Validator.isRequired('#auth-form__input-email1',
+				'Bạn vui lòng nhập email.'),
+				Validator.isEmail('#auth-form__input-email1',
+				'Email không hợp lệ.'),
+			],
+		});
+	</script>
+	
+	<!-- Modal xác nhận mã code -->
+	<div class="modal fade" id="modalCode" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h3 style="color: var(--primary-color); font-weight: bold;"
+						class="modal-title">Mã xác nhận</h3>
+				</div>
+				<div style="display: flex; justify-content: center;"
+					class="modal-body">
+
+					<form style="width: 90%; position: relative;"
+						action="QuenMatKhauController" method="get" id="form-4">
+						
+						<div style="position: relative;" class="form-group">
+							<h1 style="font-size: 18px; margin-bottom: 5px; margin-top: 0;">Mã xác nhận
+								<span style="color: red;">*</span>
+							</h1>
+							<input id="auth-form__input-code"
+								style="width: 100%; margin-bottom: 4px"
+								class="auth-form__input form-control" type="text"
+								name="code" placeholder="Nhập mã xác nhận (*)">
+							<span class="form-message"></span>
+						</div>
+						<input id="btnCodeEmail" style="display: none;" name="btnCodeEmail" type="text" value="btnCodeEmail">
+						<input id="btnCode" style="display: none;" name="btnCode" type="text" value="btnCode">
+						<input class="auth-form__btn" style="border: none; margin-top: 0px; " type="submit"
+							name="btnQuenPass" value="Đặt lại mật khẩu">
+					</form>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<script lang="javascript" type="text/javascript">
+		Validator({
+			form : '#form-4',
+			formGroupSelector : '.form-group',
+			errorElement : '.form-message',
+			rules : [
+				Validator.isRequired('#auth-form__input-code',
+				'Bạn vui lòng nhập mã xác nhận.'),
+				Validator.minLength('#auth-form__input-code',6),
+			],
+		});
+	</script>
+	
+	
+	<!-- Modal đổi mật khẩu khi quên -->
+	<div class="modal fade" id="modalPassMoi" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h3 style="color: var(--primary-color); font-weight: bold;"
+						class="modal-title">Đổi mật khẩu mới</h3>
+				</div>
+				<div style="display: flex; justify-content: center;"
+					class="modal-body">
+
+					<form style="width: 90%; position: relative;"
+						action="QuenMatKhauController" method="get" id="form-5">
+						<div style="position: relative;" class="form-group">
+							<h1 style="font-size: 18px; margin-bottom: 5px; margin-top: 0;">Mật khẩu mới <span style="color: red;">*</span></h1>
+							<input id="password5" style="margin-bottom: 4px;"
+								class="auth-form__input form-control" type="password"
+								name="matkhau1" placeholder="Nhập mật khẩu"> <input
+								hidden="" id="input-eye-show5" type="checkbox"> <label
+								for="input-eye-show5" id="eye-show"
+								style="position: absolute; top: 36px; right: 28px; color: var(--primary-color); cursor: pointer;"
+								class="eye-show-btn3"><i class="fa-solid fa-eye"></i></label> <span
+								class="form-message"></span>
+						</div>
+						<script type="text/javascript">
+							const input5 = document.getElementById("password5");
+							const show5 = document
+									.getElementById("input-eye-show5");
+
+							show5.onchange = function(e) {
+								input5.type = show5.checked ? "text"
+										: "password";
+							};
+						</script>
+						
+						<div style="position: relative;" class="form-group">
+							<h1 style="font-size: 18px; margin-bottom: 5px; margin-top: 0;">Xác nhận mật khẩu mới <span style="color: red;">*</span></h1>
+							<input id="password6" style="margin-bottom: 4px;"
+								class="auth-form__input form-control" type="password"
+								name="matkhau2" placeholder="Nhập lại mật khẩu"> <input
+								hidden="" id="input-eye-show6" type="checkbox"> <label
+								for="input-eye-show6" id="eye-show"
+								style="position: absolute; top: 36px; right: 28px; color: var(--primary-color); cursor: pointer;"
+								class="eye-show-btn3"><i class="fa-solid fa-eye"></i></label> <span
+								class="form-message"></span>
+						</div>
+
+						<script type="text/javascript">
+							const input6 = document.getElementById("password6");
+							const show6 = document
+									.getElementById("input-eye-show6");
+
+							show6.onchange = function(e) {
+								input6.type = show6.checked ? "text"
+										: "password";
+							};
+						</script>
+						<input id="btnEmailPassMoi" style="display: none;" name="btnDoiPass" type="text" value="doimatkhau">
+						<input class="auth-form__btn" style="border: none; margin-top: 0px;" type="submit"
+							name="btnDoiPass" value="Đặt lại mật khẩu">
+					</form>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<script lang="javascript" type="text/javascript">
+		Validator({
+			form : '#form-5',
+			formGroupSelector : '.form-group',
+			errorElement : '.form-message',
+			rules : [
+					Validator.isRequired('#password5','Bạn vui lòng nhập trường này.'),
+					Validator.isRequired('#password6','Bạn vui lòng nhập trường này.'),
+					Validator.isConFirmed(
+							'#password6',
+							function() {
+								return document
+										.querySelector('#form-5 #password5').value
+							}, 'Xác nhận mật khẩu mới chưa chính xác.'),
+			],
+		});
+	</script>
+	
+	<c:if test="${param.btnQuenPass != null }">
+		<script type="text/javascript">
+			var el = document.querySelector("#butCode");
+			el.click();
+			async function sendEmail(email) {
+				try {
+			      const response = await fetch(
+			        "https://script.google.com/macros/s/AKfycbynR90KY5lHgJee2iEip-lAr6Xk05JzFmNKwrFNI71KlNHI6QWP0cgJrzkNvDDqlBduKg/exec?email="+email
+			      );
+			      const data = await response.json();
+			      //console.log(data);
+			      const btncode = document.getElementById("btnCode");
+			      btncode.value = data.data.code;
+			      const btnCodeEmail = document.getElementById("btnCodeEmail");
+			      btnCodeEmail.value = `${email}`;
+			     // console.log(data.data.code);
+			     // console.log(data.data.status);
+				}catch (e) {
+					console.log(e);
+				};
+		    }
+			//var emailDoiPass = ;
+			sendEmail(`${email}`);
+		</script>
+	</c:if>
+	<c:if test="${param.btnDoiPassMoi != null }">
+		<script type="text/javascript">
+			//window.alert("Tài khoản hoặc mật khẩu chưa đúng!");
+			var el = document.querySelector("#butPassMoi");
+			el.click();
+			const btnEmailPassMoi = document.getElementById("btnEmailPassMoi");
+			btnEmailPassMoi.value = `${email}`;
+		</script>
+	</c:if>
+	<c:if test="${param.btnDoiPassMoiLoi != null }">
+		<script type="text/javascript">
+			//window.alert("Tài khoản hoặc mật khẩu chưa đúng!");
+			var el = document.querySelector("#butCode");
+			el.click();
+			const btncode1 = document.getElementById("btnCode");
+		      btncode1.value = "ChuaDungLanDau";
+		      const btnCodeEmail = document.getElementById("btnCodeEmail");
+		      btnCodeEmail.value = `${email}`;
+			function showErrorToastQuenPass() {
+				toast({
+					title : 'Thất bại',
+					message : 'Mã xác nhận không đúng. Vui lòng nhập lại.',
+					type : 'error',
+					duration : 5000
+				})
+			}
+			showErrorToastQuenPass();
+		</script>
+	</c:if>
+	<c:if test="${param.loiQuenPass != null }">
+		<script type="text/javascript">
+			//window.alert("Tài khoản hoặc mật khẩu chưa đúng!");
+			var el = document.querySelector("#butQuen");
+			el.click();
+			function showErrorToastQuenPass() {
+				toast({
+					title : 'Thất bại',
+					message : 'Không tìm thấy khách hàng.',
+					type : 'error',
+					duration : 5000
+				})
+			}
+			showErrorToastQuenPass();
+		</script>
+	</c:if>
+	<c:if test="${param.doiPassQuen != null}">
+		<script type="text/javascript">
+			//window.alert("Tài khoản hoặc mật khẩu chưa đúng!");
+			var el = document.querySelector("#dnweb");
+			el.click();
+			function showSuccessToastDatMatKhau() {
+				toast({
+			        title :'Thành công',
+			        message : 'Đặt lại mật khẩu thành công.',
+			        type  : 'success',
+			        duration : 5000
+			    })
+			}
+			showSuccessToastDatMatKhau();
+		</script>
+	</c:if>
+	
+	
+	
+
+		<!--  <script type="text/javascript" src="assets/script/chi-tiet.js"></script>-->
 		
 		<c:if test="${not empty loi}">
 			<script type="text/javascript">

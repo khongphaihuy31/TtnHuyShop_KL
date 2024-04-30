@@ -17,6 +17,7 @@ import Bean.KhachHangBean;
 import Bean.SanPhamBean;
 import Bo.ChiTietSanPhamBo;
 import Bo.GioHangBo;
+import Bo.KhachHangBo;
 //import Bo.GioHangBo;
 import Bo.LoaiBo;
 import Bo.SanPhamBo;
@@ -51,6 +52,11 @@ public class ChiTietSanPhamController extends HttpServlet {
 			request.setAttribute("dsTenLoaiDMDoNam", lbo.getTenLoaiDMDoNam());
 			request.setAttribute("dsTenLoaiDMDoNu", lbo.getTenLoaiDMDoNu());
 			request.setAttribute("dsTenLoaiDMTreEm", lbo.getTenLoaiDMTreEm());
+			
+			//Xử lý lấy danh sách số điện thoại và email của tất cả các khách hàng
+			KhachHangBo khbo = new KhachHangBo();
+			request.setAttribute("dsSoDienThoai", khbo.getdsSoDienThoai());
+			request.setAttribute("dsEmail", khbo.getdsEmail());
 			
 //			Xử lý chi tiết sản phẩm
 			if(request.getParameter("tsp")!= null) {

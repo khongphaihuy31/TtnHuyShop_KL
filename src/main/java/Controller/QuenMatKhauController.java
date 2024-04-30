@@ -48,6 +48,51 @@ public class QuenMatKhauController extends HttpServlet {
 					return;
 				}
 			}
+			
+			if(request.getParameter("btnCode")!= null) {
+				if(request.getParameter("btnCode").equals("ChuaDungLanDau")) {
+					String codeNhap = request.getParameter("code");
+					String btnCodeEmail = request.getParameter("btnCodeEmail");
+					KhachHangBo khbo = new KhachHangBo();
+					String codeGui= khbo.getMaCode(btnCodeEmail);
+					if(codeNhap.equals(codeGui)) {
+						khbo.capNhatCode(btnCodeEmail, null);
+						response.sendRedirect("TrangChuController?btnDoiPassMoi=1&email="+btnCodeEmail);
+						return;
+					}else {
+						response.sendRedirect("TrangChuController?btnDoiPassMoiLoi=1&email="+btnCodeEmail);
+						return;
+					}
+				}else {
+					String codeGui = request.getParameter("btnCode");
+					String codeNhap = request.getParameter("code");
+					String btnCodeEmail = request.getParameter("btnCodeEmail");
+					KhachHangBo khbo = new KhachHangBo();
+					khbo.capNhatCode(btnCodeEmail, codeGui);
+					if(codeNhap.equals(codeGui)) {
+						khbo.capNhatCode(btnCodeEmail, null);
+						response.sendRedirect("TrangChuController?btnDoiPassMoi=1&email="+btnCodeEmail);
+						return;
+					}else {
+						response.sendRedirect("TrangChuController?btnDoiPassMoiLoi=1&email="+btnCodeEmail);
+						return;
+					}
+				}
+			}
+			
+			if(request.getParameter("btnDoiPass")!= null) {
+				String email = request.getParameter("btnDoiPass");
+				String matkhau1 = request.getParameter("matkhau1");
+				String matkhau2 = request.getParameter("matkhau2");
+				if(matkhau1.equals(matkhau2)) {
+					KhachHangBo khbo = new KhachHangBo();
+					int n = khbo.doiPassTheoEmail(email, matkhau2);
+					if(n==1) {
+						response.sendRedirect("TrangChuController?doiPassQuen=1");
+						return;
+					}
+				}
+			}
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();

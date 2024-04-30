@@ -54,6 +54,31 @@ public class TrangChuController extends HttpServlet {
 			
 			request.setAttribute("dsLoai", lbo.getDsLoai());
 			
+			
+			//Xử lý lấy danh sách số điện thoại và email của tất cả các khách hàng
+			KhachHangBo khbo = new KhachHangBo();
+			ArrayList<String> dsSdt = khbo.getdsSoDienThoai();
+			String dsSoDienThoai = "";
+			for(int i=0; i<dsSdt.size(); i++) {
+				if(i==0) {
+					dsSoDienThoai += dsSdt.get(0);
+				}else {
+					dsSoDienThoai += ">"+dsSdt.get(i);
+				}
+			}
+			
+			ArrayList<String> dsemail = khbo.getdsEmail();
+			String dsEmail = "";
+			for(int i=0; i<dsemail.size(); i++) {
+				if(i==0) {
+					dsEmail += dsemail.get(0);
+				}else {
+					dsEmail += ">"+dsemail.get(i);
+				}
+			}
+			request.setAttribute("dsSoDienThoai", dsSoDienThoai);
+			request.setAttribute("dsEmail", dsEmail);
+			
 	// Hiển thị phần body
 			String maloai = request.getParameter("maloai");
 			String madanhmuc = request.getParameter("madanhmuc");
@@ -100,6 +125,10 @@ public class TrangChuController extends HttpServlet {
 //			request.setAttribute("dsSP", dsSP);
 			
 			if(request.getParameter("btnQuenPass")!= null) {
+				request.setAttribute("email", request.getParameter("email"));
+			}
+			
+			if(request.getParameter("btnDoiPassMoi")!= null || request.getParameter("btnDoiPassMoiLoi")!= null) {
 				request.setAttribute("email", request.getParameter("email"));
 			}
 			

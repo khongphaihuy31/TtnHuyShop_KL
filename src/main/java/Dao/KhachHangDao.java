@@ -2,6 +2,7 @@ package Dao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import Bean.KhachHangBean;
 
@@ -107,6 +108,87 @@ public class KhachHangDao {
 			kh = new KhachHangBean(makhachhang, hoten, diachi, sodienthoai, email, avatar, tendn, mk, quyen, tichdiem, sothich);
 		}
 		return kh;
+	}
+	
+	//xử lý cập nhật mã code	
+	public int capNhatCode(String email, String code) throws Exception{
+		KetNoiDao kn = new KetNoiDao();
+		kn.ketnoi();
+		
+		String sql = "update KhachHang set code = ? where email = ?";
+		PreparedStatement cmd = kn.cn.prepareStatement(sql);
+		cmd.setString(1, code);
+		cmd.setString(2, email);
+		
+		int kq = cmd.executeUpdate();
+		cmd.close();
+		kn.cn.close();
+		return kq;
+	}
+	
+	//xử lý lấy mã code để so sánh
+	public String getMaCode(String email)throws Exception {
+		KetNoiDao kn= new KetNoiDao();
+		kn.ketnoi();
+		
+		String sql = "select code from KhachHang where email= ?";
+		PreparedStatement cdm = kn.cn.prepareStatement(sql);
+		cdm.setString(1, email);
+		ResultSet rs = cdm.executeQuery();
+		if(rs.next()) {
+			return rs.getString("code");
+		}
+		return "";
+	}
+	
+	//Xử lý lấy danh sách số điện thoại của khách hàng
+	public ArrayList<String> getdsSoDienThoai()throws Exception{
+		ArrayList<String> dsSodienthoai = new ArrayList<String>();
+		KetNoiDao kn = new KetNoiDao();
+		kn.ketnoi();
+		
+		String sql = "select sodienthoai from KhachHang";
+		PreparedStatement cmd = kn.cn.prepareStatement(sql);
+		ResultSet rs = cmd.executeQuery();
+		while(rs.next()) {
+			String sodienthoai = rs.getString("sodienthoai");
+			
+			dsSodienthoai.add(sodienthoai);
+		}
+		return dsSodienthoai;
+	}
+	
+	//Xử lý lấy danh sách email của khách hàng
+	public ArrayList<String> getdsEmail()throws Exception{
+		ArrayList<String> dsEmail = new ArrayList<String>();
+		KetNoiDao kn = new KetNoiDao();
+		kn.ketnoi();
+		
+		String sql = "select email from KhachHang";
+		PreparedStatement cmd = kn.cn.prepareStatement(sql);
+		ResultSet rs = cmd.executeQuery();
+		while(rs.next()) {
+			String email = rs.getString("email");
+			
+			dsEmail.add(email);
+		}
+		return dsEmail;
+	}
+	
+	//xử lý đổi mật khẩu theo email	
+	public int doiPassTheoEmail(String email, String pass) throws Exception{
+		KetNoiDao kn = new KetNoiDao();
+		kn.ketnoi();
+		
+		String sql = "update KhachHang set matkhau = ? where email = ?";
+		PreparedStatement cmd = kn.cn.prepareStatement(sql);
+		cmd.setString(1, pass);
+		cmd.setString(2, email);
+		
+		int kq = cmd.executeUpdate();
+		cmd.close();
+		kn.cn.close();
+		return kq;
 	}
 	
 	//xử lý điểm tích lũy cho khách hàng	

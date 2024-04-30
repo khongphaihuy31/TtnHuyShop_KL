@@ -48,7 +48,7 @@ public class DangKiController extends HttpServlet {
 							response.sendRedirect("DangNhapController?taikhoan=" + sodienthoai+"&matkhau="+ matkhau1);
 						}else {
 							response.sendRedirect("TrangChuController?loidangki=1");
-						}
+						}	
 					}else {
 						response.sendRedirect("TrangChuController?loidangki=1");
 					}
