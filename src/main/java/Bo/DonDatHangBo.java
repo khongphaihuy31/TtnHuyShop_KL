@@ -66,4 +66,13 @@ public class DonDatHangBo {
 	public long getDoanhThuTrongNgay(String ngayhientai) throws Exception {
 		return ddhdao.getDoanhThuTrongNgay(ngayhientai);
 	}
+	
+	// xử lý lấy danh sách mã hóa đơn chưa giao
+	public ArrayList<Long> dshoadonchuagiao() throws Exception {
+		return ddhdao.dshoadonchuagiao();
+	}
+	// xử lý lấy danh sách đơn đặt hàng chưa giao
+	public ArrayList<DonDatHangBean> dsdonchuagiao() throws Exception {
+		return ddhdao.dsdonchuagiao();
+	}
 }

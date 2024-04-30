@@ -59,33 +59,10 @@ public class AdminTrangChuController extends HttpServlet {
 			SanPhamBo spbo = new SanPhamBo();
 			request.setAttribute("soluongsanpham", spbo.getSLSanPham());
 			
-			//lấy danh sách hóa đơn
+			//lấy danh sách hóa đơn chưa xác nhận
 			ArrayList<Long> dshoadon;
-			dshoadon = ddhbo.dshoadonchoxacnhan();
+			dshoadon = ddhbo.dshoadonchuagiao();
 			request.setAttribute("dshoadon", dshoadon);
-			
-			//lấy danh sách sản phẩm chưa xác nhận
-			DonMuaBo dmbo = new DonMuaBo();
-			ArrayList<DonMuaBean> dsSPChuaXacNhan;
-			
-			
-			String mahoadon = request.getParameter("mahoadon");
-			if(mahoadon !=null) {
-				if(mahoadon.equals("All")){
-					dsSPChuaXacNhan = dmbo.dsDonChuaXacNhan();
-					request.setAttribute("dsSPChuaXacNhan", dsSPChuaXacNhan);
-				}else if(mahoadon.equals("All") == false) {
-					long mahoadon1 = Long.parseLong(mahoadon);
-					dsSPChuaXacNhan = dmbo.dsDonChuaXacNhanTheoMaHD(mahoadon1);
-					request.setAttribute("dsSPChuaXacNhan", dsSPChuaXacNhan);
-					
-				}
-			}else {
-				dsSPChuaXacNhan = dmbo.dsDonChuaXacNhan();
-				request.setAttribute("dsSPChuaXacNhan", dsSPChuaXacNhan);
-			}
-				
-			
 					
 			RequestDispatcher rd = request.getRequestDispatcher("AdminTrangChu.jsp");
 			rd.forward(request, response);

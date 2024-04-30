@@ -304,4 +304,46 @@ public class DonDatHangDao {
 		}
 		return doanhthutrongngay;
 	}
+	
+	// xử lý lấy danh sách mã hóa đơn chưa giao
+	public ArrayList<Long> dshoadonchuagiao() throws Exception {
+		ArrayList<Long> dshoadon = new ArrayList<Long>();
+		KetNoiDao kn = new KetNoiDao();
+		kn.ketnoi();
+
+		String sql = "select mahoadon from DonDatHang where matrangthai != 4";
+
+		PreparedStatement cmd = kn.cn.prepareStatement(sql);
+
+		ResultSet rs = cmd.executeQuery();
+		while (rs.next()) {
+			long mahoadon = rs.getLong("mahoadon");
+
+			dshoadon.add(mahoadon);
+		}
+		return dshoadon;
+	}
+	// xử lý lấy danh sách đơn đặt hàng chưa giao
+	public ArrayList<DonDatHangBean> dsdonchuagiao() throws Exception {
+		ArrayList<DonDatHangBean> dshoadon = new ArrayList<DonDatHangBean>();
+		KetNoiDao kn = new KetNoiDao();
+		kn.ketnoi();
+
+		String sql = "select * from DonDatHang where matrangthai != 4 order by mahoadon DESC";
+
+		PreparedStatement cmd = kn.cn.prepareStatement(sql);
+		ResultSet rs = cmd.executeQuery();
+		while (rs.next()) {
+			Date ngaydat = rs.getDate("ngaydat");
+			long mahoadon = rs.getLong("mahoadon");
+			boolean phuongthucthanhtoan = rs.getBoolean("phuongthucthanhtoan");
+			boolean thanhtoan = rs.getBoolean("thanhtoan");
+			long tongdongia = rs.getLong("tongdongia");
+			String diachinhanhang = rs.getString("diachinhanhang");
+
+			dshoadon.add(
+					new DonDatHangBean(mahoadon, ngaydat, phuongthucthanhtoan, thanhtoan, tongdongia, diachinhanhang));
+		}
+		return dshoadon;
+	}
 }

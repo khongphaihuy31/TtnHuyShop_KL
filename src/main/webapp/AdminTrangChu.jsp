@@ -7,22 +7,38 @@
 <head>
 <meta charset="utf-8">
 <title>Ttn-Huy Fashion</title>
-<link rel="stylesheet" href="assets/css/base.css">
-<link rel="stylesheet" href="assets/css/grid.css">
-<link rel="stylesheet" href="assets/css/main.css">
-<link rel="stylesheet" href="assets/css/responsive.css">
 <link rel="shortcut icon" href="./assets/img/huy-removebg-preview.png"
 	type="image/x-icon">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet"
-	href="https://fonts.googleapis.com/css?family=Raleway">
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="assets/script/toast.js"></script>
+<script src="assets/script/validator.js"></script>
+<link rel="stylesheet" href="assets/css/validation.css">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/grid.css">
+<link rel="stylesheet" href="assets/css/main.css">
+<link rel="stylesheet" href="assets/css/responsive.css">
+<link rel="stylesheet" href="assets/css/toast.css">
 <link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet"
 	href="assets/fonts/fontawesome-free-6.3.0-web/css/all.min.css">
+<link
+	href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+	rel="stylesheet">
 <style>
 html, body, h1, h2, h3, h4, h5 {
 	font-family: "Raleway", sans-serif
+}
+a:focus, a:hover {
+    text-decoration: none;
 }
 </style>
 </head>
@@ -51,20 +67,20 @@ html, body, h1, h2, h3, h4, h5 {
                             tên</a>
                 </ul> -->
                 <span>Xin chào, <strong>${dn.getHoten() }</strong></span><br>
-                    <a style="color: red;margin-left: 25px; font-size: 18px;" href="dangXuatController" class="js-register header__welcome-link"> <span class="glyphicon glyphicon-log-out"></span> Đăng
+                    <a style="color: red;margin-left: 25px; font-size: 18px;" href="dangXuatController" class="js-register header__welcome-link"> Đăng
                     xuất <i class="fa-solid fa-right-from-bracket"></i>
                     </a>
             </div>
         </div>
         <hr>
         <div class="w3-container">
-            <h5 style="text-align: center; font-weight: bold; margin-top: 0;">DANH MỤC QUẢN LÝ</h5>
+            <h5 style="text-align: center; font-weight: bold; margin-top: 0;font-size: 18px;">DANH MỤC QUẢN LÝ</h5>
         </div>
         <div class="w3-bar-block">
             <!--<a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black"
                 onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>-->
-            <a href="#" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa-solid fa-house"></i>  Trang chủ</a>
-            <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-truck-ramp-box"></i>  Xác nhận đơn hàng</a>
+            <a href="AdminTrangChuController" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa-solid fa-house"></i>  Trang chủ</a>
+            <a href="AdminXacNhanController" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-truck-ramp-box"></i>  Xác nhận đơn hàng</a>
             <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-layer-group"></i>  Quản lý loại sản phẩm</a>
             <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa-brands fa-docker"></i>  Quản lý loại trong danh mục</a>
             <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-boxes-stacked"></i>  Quản lý sản phẩm</a>
@@ -90,47 +106,55 @@ html, body, h1, h2, h3, h4, h5 {
 
         <div class="w3-row-padding w3-margin-bottom">
             <div class="w3-quarter">
-                <div class="w3-container w3-red w3-padding-16">
-                    <div class="w3-left"><i style="font-size: 50px;" class="fa-solid fa-boxes-stacked"></i></div>
-                    <div class="w3-right">
-                        <h3>${soluongsanpham }</h3>
-                    </div>
-                    <div class="w3-clear"></div>
-                    <h4 style="height: 60px;">Tổng số sản phẩm</h4>
-                </div>
+		        <a href="" style="text-decoration: none;">
+	                <div class="w3-container w3-red w3-padding-16">
+	                    <div class="w3-left"><i style="font-size: 50px;" class="fa-solid fa-boxes-stacked"></i></div>
+	                    <div class="w3-right">
+	                        <h3>${soluongsanpham }</h3>
+	                    </div>
+	                    <div class="w3-clear"></div>
+	                    <h4 style="height: 60px;">Tổng số sản phẩm</h4>
+	                </div>
+		        </a>
             </div>
             <div class="w3-quarter">
-                <div class="w3-container w3-blue w3-padding-16">
-                    <div class="w3-left"><i style="font-size: 50px;" class="fa-solid fa-box"></i></div>
-                    <div class="w3-right">
-                        <h3>${dsSPChuaXacNhan.size() }</h3>
-                    </div>
-                    <div class="w3-clear"></div>
-                    <h4 style="height: 60px;">Số đơn hàng mới</h4>
-                </div>
+	            <a href="AdminXacNhanController" style="text-decoration: none;">
+	                <div class="w3-container w3-blue w3-padding-16">
+	                    <div class="w3-left"><i style="font-size: 50px;" class="fa-solid fa-box"></i></div>
+	                    <div class="w3-right">
+	                        <h3>${dshoadon.size() }</h3>
+	                    </div>
+	                    <div class="w3-clear"></div>
+	                    <h4 style="height: 60px;">Số đơn hàng mới</h4>
+	                </div>
+		        </a>
             </div>
             <div class="w3-quarter">
-                <div class="w3-container w3-teal w3-padding-16">
-                    <div class="w3-left"><i style="font-size: 50px;" class="fa-solid fa-chart-pie"></i></div>
-                    <div class="w3-right">
-                        <h3>
-                        	<fmt:setLocale value="vi_VN"/>
-     						<fmt:formatNumber value="${tongdoanhthutrongngay}" type="currency"/>
-                        </h3>
-                    </div>
-                    <div class="w3-clear"></div>
-                    <h4 style="height: 60px;">Doanh thu hôm nay</h4>
-                </div>
+	            <a href="" style="text-decoration: none;">
+	                <div class="w3-container w3-teal w3-padding-16">
+	                    <div class="w3-left"><i style="font-size: 50px;" class="fa-solid fa-chart-pie"></i></div>
+	                    <div class="w3-right">
+	                        <h3>
+	                        	<fmt:setLocale value="vi_VN"/>
+	     						<fmt:formatNumber value="${tongdoanhthutrongngay}" type="currency"/>
+	                        </h3>
+	                    </div>
+	                    <div class="w3-clear"></div>
+	                    <h4 style="height: 60px;">Doanh thu hôm nay</h4>
+	                </div>
+		        </a>
             </div>
             <div class="w3-quarter">
-                <div class="w3-container w3-orange w3-text-white w3-padding-16">
-                    <div class="w3-left"><i class="fa fa-users w3-xxxlarge"></i></div>
-                    <div class="w3-right">
-                        <h3>${dskhachhang.size() }</h3>
-                    </div>
-                    <div class="w3-clear"></div>
-                    <h4 style="height: 60px;">Số lượng khách hàng</h4>
-                </div>
+	            <a href="" style="text-decoration: none;">
+	                <div class="w3-container w3-orange w3-text-white w3-padding-16">
+	                    <div class="w3-left"><i class="fa fa-users w3-xxxlarge"></i></div>
+	                    <div class="w3-right">
+	                        <h3>${dskhachhang.size() }</h3>
+	                    </div>
+	                    <div class="w3-clear"></div>
+	                    <h4 style="height: 60px;">Số lượng khách hàng</h4>
+	                </div>
+		        </a>
             </div>
         </div>
 

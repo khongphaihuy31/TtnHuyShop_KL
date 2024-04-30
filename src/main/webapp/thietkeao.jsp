@@ -2098,7 +2098,6 @@ input:checked + label{
 			});
 		</script>
 
-		<script type="text/javascript" src="assets/script/chi-tiet.js"></script>
 		
 		<c:if test="${not empty loi}">
 			<script type="text/javascript">

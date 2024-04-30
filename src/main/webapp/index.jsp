@@ -133,8 +133,8 @@ a:hover, a:focus {
 						<c:otherwise>
 							<ul class="header__welcome-list">
 								<li class="header__welcome-item"><a href="#"
-									class="js-login header__welcome-link"> <span
-										style="display: inline-block; width: 25px; line-height: 25px; height: 25px; background-color: green; color: white; border-radius: 50%; text-align: center; margin-right: 5px; font-weight: 500;"><%=session.getAttribute("taikhoan").toString().toUpperCase().charAt(0)%></span>
+									class="js-login header__welcome-link"> 
+									<span style="display: inline-block; width: 25px; line-height: 25px; height: 25px; background-color: green; color: white; border-radius: 50%; text-align: center; margin-right: 5px; font-weight: 500;"><%=session.getAttribute("taikhoan").toString().toUpperCase().charAt(0)%></span>
 										<%=session.getAttribute("taikhoan")%>
 								</a>
 									<ul class="header__welcome-item__list">
@@ -1097,8 +1097,8 @@ a:hover, a:focus {
 									Validator.isRequired('#password1',
 											'Bạn vui lòng nhập mật khẩu.'),
 									Validator
-											.isRequired('#auth-form__input-capcha')
-							//Validator.minLength('#auth-form__input-capcha', 4,'Capcha chưa đúng.')
+											.isRequired('#auth-form__input-capcha'),
+							Validator.minLength('#auth-form__input-capcha', 4)
 							// Validator.isEmail('#email'),
 							//Validator.isRequired('#avata'),
 							// Validator.isRequired('#password'),

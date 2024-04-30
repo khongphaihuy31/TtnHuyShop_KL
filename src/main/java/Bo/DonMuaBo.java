@@ -32,7 +32,11 @@ public class DonMuaBo {
 	}
 	
 	//lấy danh sách đơn mua chưa xác nhận theo mã hóa đơn (Admin)
-	public ArrayList<DonMuaBean> dsDonChuaXacNhanTheoMaHD(long mahoadon)throws Exception{
-		return dmdao.dsDonChuaXacNhanTheoMaHD(mahoadon);
+	public ArrayList<DonMuaBean> dsDonChuaGiaoTheoMaHD(long mahoadon)throws Exception{
+		return dmdao.dsDonChuaGiaoTheoMaHD(mahoadon);
+	}
+	//xử lý lấy sản phẩm đã giao (admin)
+	public ArrayList<DonMuaBean> getSPChuaGiao()throws Exception{
+		return dmdao.getSPChuaGiao();
 	}
 }
