@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import Bean.DonDatHangBean;
 import Bean.DonMuaBean;
+import Bean.KhachHangBean;
+import Bo.AdminKhachHangBo;
 import Bo.AdminXacNhanBo;
 import Bo.DonDatHangBo;
 import Bo.DonMuaBo;
@@ -46,6 +48,12 @@ public class AdminXacNhanController extends HttpServlet {
 				AdminXacNhanBo xnbo = new AdminXacNhanBo();
 				xnbo.suaTinhTrangHD(mahoadon);
 			}
+			
+			//lấy danh sách khách hàng
+			AdminKhachHangBo adkhbo = new AdminKhachHangBo();
+			ArrayList<KhachHangBean> dskh;
+			dskh = adkhbo.dskhachhang();
+			request.setAttribute("dskhachhang", dskh);
 			
 			//lấy danh sách mã hóa đơn chưa giao
 			DonDatHangBo ddhbo = new DonDatHangBo();

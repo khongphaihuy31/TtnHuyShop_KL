@@ -129,9 +129,11 @@ public class DonDatHangDao {
 			boolean thanhtoan = rs.getBoolean("thanhtoan");
 			long tongdongia = rs.getLong("tongdongia");
 			String diachinhanhang = rs.getString("diachinhanhang");
+			long makhachhang1 = rs.getLong("makhachhang");
+			long matrangthai = rs.getLong("matrangthai");
 
 			dshoadon.add(
-					new DonDatHangBean(mahoadon, ngaydat, phuongthucthanhtoan, thanhtoan, tongdongia, diachinhanhang));
+					new DonDatHangBean(mahoadon, ngaydat, phuongthucthanhtoan, thanhtoan, tongdongia, diachinhanhang,makhachhang1,matrangthai));
 		}
 		return dshoadon;
 	}
@@ -154,9 +156,11 @@ public class DonDatHangDao {
 			boolean thanhtoan = rs.getBoolean("thanhtoan");
 			long tongdongia = rs.getLong("tongdongia");
 			String diachinhanhang = rs.getString("diachinhanhang");
+			long makhachhang1 = rs.getLong("makhachhang");
+			long matrangthai = rs.getLong("matrangthai");
 
 			dshoadon.add(
-					new DonDatHangBean(mahoadon, ngaydat, phuongthucthanhtoan, thanhtoan, tongdongia, diachinhanhang));
+					new DonDatHangBean(mahoadon, ngaydat, phuongthucthanhtoan, thanhtoan, tongdongia, diachinhanhang,makhachhang1,matrangthai));
 		}
 		return dshoadon;
 	}
@@ -179,9 +183,11 @@ public class DonDatHangDao {
 			boolean thanhtoan = rs.getBoolean("thanhtoan");
 			long tongdongia = rs.getLong("tongdongia");
 			String diachinhanhang = rs.getString("diachinhanhang");
+			long makhachhang1 = rs.getLong("makhachhang");
+			long matrangthai = rs.getLong("matrangthai");
 
 			dshoadon.add(
-					new DonDatHangBean(mahoadon, ngaydat, phuongthucthanhtoan, thanhtoan, tongdongia, diachinhanhang));
+					new DonDatHangBean(mahoadon, ngaydat, phuongthucthanhtoan, thanhtoan, tongdongia, diachinhanhang,makhachhang1,matrangthai));
 		}
 		return dshoadon;
 	}
@@ -204,9 +210,11 @@ public class DonDatHangDao {
 			boolean thanhtoan = rs.getBoolean("thanhtoan");
 			long tongdongia = rs.getLong("tongdongia");
 			String diachinhanhang = rs.getString("diachinhanhang");
+			long makhachhang1 = rs.getLong("makhachhang");
+			long matrangthai = rs.getLong("matrangthai");
 
 			dshoadon.add(
-					new DonDatHangBean(mahoadon, ngaydat, phuongthucthanhtoan, thanhtoan, tongdongia, diachinhanhang));
+					new DonDatHangBean(mahoadon, ngaydat, phuongthucthanhtoan, thanhtoan, tongdongia, diachinhanhang,makhachhang1,matrangthai));
 		}
 		return dshoadon;
 	}
@@ -340,9 +348,11 @@ public class DonDatHangDao {
 			boolean thanhtoan = rs.getBoolean("thanhtoan");
 			long tongdongia = rs.getLong("tongdongia");
 			String diachinhanhang = rs.getString("diachinhanhang");
+			long makhachhang1 = rs.getLong("makhachhang");
+			long matrangthai = rs.getLong("matrangthai");
 
 			dshoadon.add(
-					new DonDatHangBean(mahoadon, ngaydat, phuongthucthanhtoan, thanhtoan, tongdongia, diachinhanhang));
+					new DonDatHangBean(mahoadon, ngaydat, phuongthucthanhtoan, thanhtoan, tongdongia, diachinhanhang,makhachhang1,matrangthai));
 		}
 		return dshoadon;
 	}

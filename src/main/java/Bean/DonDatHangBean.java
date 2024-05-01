@@ -9,6 +9,8 @@ public class DonDatHangBean {
 	private boolean thanhtoan;
 	private long tongdongia;
 	private String diachinhanhang;
+	private long makhachhang;
+	private long matrangthai;
 	
 	public DonDatHangBean() {
 		super();
@@ -16,7 +18,7 @@ public class DonDatHangBean {
 	}
 
 	public DonDatHangBean(long mahoadon, Date ngaydat, boolean phuongthucthanhtoan, boolean thanhtoan, long tongdongia,
-			String diachinhanhang) {
+			String diachinhanhang,long makhachhang,long matrangthai) {
 		super();
 		this.mahoadon = mahoadon;
 		this.ngaydat = ngaydat;
@@ -24,6 +26,8 @@ public class DonDatHangBean {
 		this.thanhtoan = thanhtoan;
 		this.tongdongia = tongdongia;
 		this.diachinhanhang = diachinhanhang;
+		this.makhachhang = makhachhang;
+		this.matrangthai = matrangthai;
 	}
 
 	public long getMahoadon() {
@@ -72,6 +76,22 @@ public class DonDatHangBean {
 
 	public void setDiachinhanhang(String diachinhanhang) {
 		this.diachinhanhang = diachinhanhang;
+	}
+
+	public long getMakhachhang() {
+		return makhachhang;
+	}
+
+	public void setMakhachhang(long makhachhang) {
+		this.makhachhang = makhachhang;
+	}
+
+	public long getMatrangthai() {
+		return matrangthai;
+	}
+
+	public void setMatrangthai(long matrangthai) {
+		this.matrangthai = matrangthai;
 	}
 	
 	

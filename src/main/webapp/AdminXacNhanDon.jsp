@@ -37,6 +37,9 @@
 html, body, h1, h2, h3, h4, h5 {
 	font-family: "Raleway", sans-serif
 }
+table,th, td, tr, thead, tbody {
+  border: 1px solid var(--primary-color);
+}
 a:focus, a:hover {
     text-decoration: none;
 }
@@ -45,7 +48,7 @@ a:focus, a:hover {
 <body class="w3-light-grey">
 	<!-- Top container -->
     <div class="w3-bar w3-top w3-large" style="z-index:4;background: linear-gradient(169.68deg, #086a87 19.53%, #75dbd9 128.18%); color: white; height: 72px; padding: 0 20px;">
-        <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey"
+        <button style="height: 100%;" class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey"
             onclick="w3_open();"><i class="fa fa-bars"></i></button>
         <span class="w3-bar-item w3-left" style="line-height: 56px;">Website Admin Ttn-Huy Fashion</span>
         <a href="AdminTrangChuController" class="w3-bar-item w3-right" style="padding: 0 !important;">
@@ -118,6 +121,19 @@ a:focus, a:hover {
 					<button style="display: inline-block; height: 25px; position: relative; top: 0px; width: 40px;"><i style="height: 26px; line-height: 26px; color: var(--primary-color)" class="fa-solid fa-magnifying-glass"></i></button>
 				</form>
 			</div>
+			
+			<div class="w3-section" style="margin-bottom: -16px !important;">
+				<c:choose>
+					<c:when test="${param.donDesign!= null }">
+						<a href="AdminXacNhanController" class="w3-button w3-white w3-hide-small" style="background-color: var(--primary-color); color: #fff"><i class="fa-solid fa-box"></i> Đơn hàng bình thường</a>
+				    	<a href="AdminXacNhanController?donDesign=1" class="w3-button" style="background-color: var(--primary-color); color: #fff"><i class="fa-solid fa-box"></i> Đơn hàng design</a>
+					</c:when>
+					<c:otherwise>
+				    	<a href="AdminXacNhanController" class="w3-button" style="background-color: var(--primary-color); color: #fff"><i class="fa-solid fa-box"></i> Đơn hàng bình thường</a>
+				    	<a href="AdminXacNhanController?donDesign=1" class="w3-button w3-white w3-hide-small"><i class="fa-solid fa-box"></i> Đơn hàng design</a>
+					</c:otherwise>
+				</c:choose>
+		    </div>
         </div>
         <div class="w3-row-padding w3-margin-bottom">
         	<c:choose>
@@ -126,111 +142,258 @@ a:focus, a:hover {
 						<c:when test="${dsSPChoXacNhan.size()!=0 }">
 							<c:forEach items="${dshdchoxacnhan }" var="hdcb">
 						        <c:if test="${hdcb.getMahoadon().toString().equals( param.mahoadon )}">
-									<div style="border: 2px solid #4dcdcf; border-radius: 10px;width: 100%; padding: 10px 20px; margin-top: 20px;">
-								        <div style="display: flex; width: 100%; justify-content: space-around;">
-								            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold;">Mã hóa đơn: <span style="color: black; font-weight: 500;">${hdcb.getMahoadon() }</span></span> 
-								            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold;">Tổng tiền: <span style="color: black; font-weight: 500;">${hdcb.getTongdongia() } VND</span></span>
-								            <div>
-									            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold;">Thanh toán: </span> 
-									            <c:choose>
-									            	<c:when test="${hdcb.isPhuongthucthanhtoan() == true }">
-											            <span style="color: black; font-weight: 500;">Thanh toán online </span>
-									            	</c:when>
-									            	<c:otherwise>
-									            		<span style="color: black; font-weight: 500;">Thanh toán tiền mặt </span>
-									            	</c:otherwise>
-									            </c:choose>
-									            <c:choose>
-									            	<c:when test="${hdcb.isThanhtoan() == true }">
-											            <span style=" color: rgb(65, 200, 65);">(Đã thanh toán)</span>
-									            	</c:when>
-									            	<c:otherwise>
-									            		<span style=" color: red;">(Chưa thanh toán)</span>
-									            	</c:otherwise>
-									            </c:choose>
-									            
-								            </div>
-								        </div>
-								        <div style="display: flex; width: 100%; justify-content: space-around;">
-								            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold; ">Địa chỉ nhận hàng: <span style="color: black; font-weight: 500;">${hdcb.getDiachinhanhang() }</span></span> 
-								            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold; width: 30%;">Ngày đặt: <span style="color: black; font-weight: 500;">${hdcb.getNgaydat() }</span></span> 
-								        </div>
-								        <table class="table table-bordered" style="width: 100%; margin-top: 10px;"  cellpadding="2" cellspacing="2">
-								            <thead>
-								                <tr>
-								                   <th style="text-align: center;" colspan="3">Tên sản phẩm</th>
-								                   <th style="text-align: center;">Giá</th>
-								                   <th style="text-align: center;">SL</th>
-								                   <th style="text-align: center;">Thành tiền</th>
-								                </tr>
-								            </thead>
-								            <tbody>
-								            	<c:forEach items="${dsSPChoXacNhan }" var="dm">
-									                <c:if test="${dm.getMahoadon() == hdcb.getMahoadon() }">
+						        	<c:forEach items="${dskhachhang }" var="kh">
+										<c:if test="${kh.getMakhachhang() ==  hdcb.getMakhachhang()}">
+											<div style="border: 2px solid #4dcdcf; border-radius: 10px;width: 100%; padding: 10px 20px; margin-top: 20px; background-color: #fff;">
+										        <div style="display: flex; width: 100%; justify-content: space-around;">
+										            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold;">Mã hóa đơn: <span style="color: black; font-weight: 500;">${hdcb.getMahoadon() }</span></span> 
+										            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold;">Tổng tiền: <span style="color: black; font-weight: 500;"><fmt:setLocale value="vi_VN" />
+													<fmt:formatNumber value="${hdcb.getTongdongia() }"
+														type="currency" /></span></span>
+										            <div>
+											            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold;">Thanh toán: </span> 
+											            <c:choose>
+											            	<c:when test="${hdcb.isPhuongthucthanhtoan() == true }">
+													            <span style="color: black; font-weight: 500;">Thanh toán online </span>
+											            	</c:when>
+											            	<c:otherwise>
+											            		<span style="color: black; font-weight: 500;">Thanh toán tiền mặt </span>
+											            	</c:otherwise>
+											            </c:choose>
+											            <c:choose>
+											            	<c:when test="${hdcb.isThanhtoan() == true }">
+													            <span style=" color: rgb(65, 200, 65);">(Đã thanh toán)</span>
+											            	</c:when>
+											            	<c:otherwise>
+											            		<span style=" color: red;">(Chưa thanh toán)</span>
+											            	</c:otherwise>
+											            </c:choose>
+											            
+										            </div>
+										        </div>
+										        <div style="display: flex; width: 100%; justify-content: space-around;">
+										            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold; ">Họ tên: <span style="color: black; font-weight: 500;">${kh.getHoten() }</span></span> 
+										            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold; width: 30%;">Số điện thoại: <span style="color: black; font-weight: 500;">${kh.getSodienthoai() }</span></span> 
+										        	<span style="color: #4dcdcf; font-size: 15px; font-weight: bold; width: 30%;">Email: <span style="color: black; font-weight: 500;">${kh.getEmail() }</span></span>
+										        </div>
+										        <div style="display: flex; width: 100%; justify-content: space-around;">
+										            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold; ">Địa chỉ nhận hàng: <span style="color: black; font-weight: 500;">${hdcb.getDiachinhanhang() }</span></span> 
+										            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold; width: 30%;">Ngày đặt: <span style="color: black; font-weight: 500;">${hdcb.getNgaydat() }</span></span> 
+										        </div>
+										        <table class="table" style="width: 100%; margin-top: 10px; margin-bottom: 0;"  cellpadding="2" cellspacing="2">
+										            <thead>
 										                <tr>
-										                    <td rowspan="2" style="width: 80px;">
-										                    	<c:choose>
-																	<c:when test="${dm.getAnhthietke() == null }">
-																		<div>
-																			<img style="width: 100%; display: inline-block;"
-																				alt="" src="${dm.getAnhsanpham()}">
-																		</div>
-																	</c:when>
-																	<c:otherwise>
-																		<div 
-																			style="position: relative; height: fit-content; text-align: center;">
-																			<img style="width: 100%; display: inline-block;"
-																				alt="" src="${dm.getAnhsanpham()}">
-																			<div
-																				style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: flex; justify-content: center; align-items: center;"
-																				class="preview-img">
-																				<img class="previewImgDesign"
-																					src="${dm.getAnhthietke() }" alt="preview-img">
-																			</div>
-																		</div>
-																	</c:otherwise>
-																</c:choose>
-										                    </td>
-										                    <td colspan="2">
-										                    	<h4
-														style="font-size: 2rem; line-height: 2.5rem; font-weight: 500; height: 5rem; overflow: hidden; display: block; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2;">${dm.getTensanpham() }</h4>
-										                    </td>
-										                   <td rowspan="2">
-														   		<h4 style="font-size: 20px;">
-																	<fmt:setLocale value="vi_VN" />
-																	<fmt:formatNumber value="${dm.getGiasanpham()}"
-																		type="currency" />
-																</h4>
-														   </td>
-										                   <td rowspan="2">
-										                   		<h4 style="font-size: 20px;">${dm.getSoluongmua() }</h4>
-										                   </td>
-										                   <td rowspan="2">
-										                   		<h4 style="font-size: 20px;">
-																	<fmt:setLocale value="vi_VN" />
-																	<fmt:formatNumber value="${dm.getThanhtien()}"
-																		type="currency" />
-																</h4>
-										                   </td>
+										                   <th style="text-align: center; border-bottom: 2px solid var(--primary-color);" colspan="3">Tên sản phẩm</th>
+										                   <th style="text-align: center; border-bottom: 2px solid var(--primary-color);">Giá</th>
+										                   <th style="text-align: center; border-bottom: 2px solid var(--primary-color);">SL</th>
+										                   <th style="text-align: center; border-bottom: 2px solid var(--primary-color);">Thành tiền</th>
 										                </tr>
-										                <tr >
-										                    <td> 
-										                    	<p style="font-size: 1.6rem;">
-																Màu: <b style="font-size: 1.8rem;">${dm.getMausanpham()}</b>
-																</p>
-										                    </td>
-										                   <td>
-											                   	<p style="font-size: 1.6rem;">
-																	Size: <b style="font-size: 1.8rem;">${dm.getSizesanpham() }</b>
-																</p>
-										                   </td>
-										                </tr>
-									                </c:if>
-								            	</c:forEach>
-								            </tbody>
-								        </table>
-								    </div>
+										            </thead>
+										            <tbody>
+										            	<c:forEach items="${dsSPChoXacNhan }" var="dm">
+											                <c:if test="${dm.getMahoadon() == hdcb.getMahoadon() }">
+												                <tr>
+												                    <td rowspan="2" style="width: 80px;">
+												                    	<c:choose>
+																			<c:when test="${dm.getAnhthietke() == null }">
+																				<div>
+																					<img style="width: 100%; display: inline-block;"
+																						alt="" src="${dm.getAnhsanpham()}">
+																				</div>
+																			</c:when>
+																			<c:otherwise>
+																				<div 
+																					style="position: relative; height: fit-content; text-align: center;">
+																					<img style="width: 100%; display: inline-block;"
+																						alt="" src="${dm.getAnhsanpham()}">
+																					<div
+																						style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: flex; justify-content: center; align-items: center;"
+																						class="preview-img">
+																						<img style="width: 100%" class="previewImgDesign"
+																							src="${dm.getAnhthietke() }" alt="preview-img">
+																					</div>
+																				</div>
+																			</c:otherwise>
+																		</c:choose>
+												                    </td>
+												                    <td colspan="2">
+												                    	<h4
+																style="font-size: 2rem; line-height: 2.5rem; font-weight: 500; height: 5rem; overflow: hidden; display: block; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2;">${dm.getTensanpham() }</h4>
+												                    </td>
+												                   <td rowspan="2">
+																   		<h4 style="font-size: 20px;">
+																			<fmt:setLocale value="vi_VN" />
+																			<fmt:formatNumber value="${dm.getGiasanpham()}"
+																				type="currency" />
+																		</h4>
+																   </td>
+												                   <td rowspan="2">
+												                   		<h4 style="font-size: 20px;">${dm.getSoluongmua() }</h4>
+												                   </td>
+												                   <td rowspan="2">
+												                   		<h4 style="font-size: 20px;">
+																			<fmt:setLocale value="vi_VN" />
+																			<fmt:formatNumber value="${dm.getThanhtien()}"
+																				type="currency" />
+																		</h4>
+												                   </td>
+												                </tr>
+												                <tr >
+												                    <td> 
+												                    	<p style="font-size: 1.6rem;">
+																		Màu: <b style="font-size: 1.8rem;">${dm.getMausanpham()}</b>
+																		</p>
+												                    </td>
+												                   <td>
+													                   	<p style="font-size: 1.6rem;">
+																			Size: <b style="font-size: 1.8rem;">${dm.getSizesanpham() }</b>
+																		</p>
+												                   </td>
+												                </tr>
+											                </c:if>
+										            	</c:forEach>
+										            </tbody>
+										        </table>
+										    </div>
+										</c:if>
+									</c:forEach>
 						        </c:if>
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+							<div class="row" style="margin-top: 10px;">
+								<h3>Chưa có đơn hàng</h3>
+							</div>
+						</c:otherwise>
+					</c:choose>
+        		</c:when>
+        		<c:when test="${param.donDesign != null }">
+        			<c:choose>
+						<c:when test="${dsSPChoXacNhan.size()!=0 }">
+							<c:forEach items="${dsSPChoXacNhan }" var="ktraDesign">
+								<c:if test="${ktraDesign.getAnhthietke() != null }">
+									<c:forEach items="${dshdchoxacnhan }" var="hdcb">
+										<c:if test="${hdcb.getMahoadon()==ktraDesign.getMahoadon()  }">
+											<c:forEach items="${dskhachhang }" var="kh">
+												<c:if test="${kh.getMakhachhang() ==  hdcb.getMakhachhang()}">
+													<div style="border: 2px solid #4dcdcf; border-radius: 10px;width: 100%; padding: 10px 20px; margin-top: 20px; background-color: #fff;">
+												        <div style="display: flex; width: 100%; justify-content: space-around;">
+												            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold;">Mã hóa đơn: <span style="color: black; font-weight: 500;">${hdcb.getMahoadon() }</span></span> 
+												            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold;">Tổng tiền: <span style="color: black; font-weight: 500;">
+													            <fmt:setLocale value="vi_VN" />
+																<fmt:formatNumber value="${hdcb.getTongdongia() }"
+																	type="currency" />
+												            </span></span>
+												            <div>
+													            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold;">Thanh toán: </span> 
+													            <c:choose>
+													            	<c:when test="${hdcb.isPhuongthucthanhtoan() == true }">
+															            <span style="color: black; font-weight: 500;">Thanh toán online </span>
+													            	</c:when>
+													            	<c:otherwise>
+													            		<span style="color: black; font-weight: 500;">Thanh toán tiền mặt </span>
+													            	</c:otherwise>
+													            </c:choose>
+													            <c:choose>
+													            	<c:when test="${hdcb.isThanhtoan() == true }">
+															            <span style=" color: rgb(65, 200, 65);">(Đã thanh toán)</span>
+													            	</c:when>
+													            	<c:otherwise>
+													            		<span style=" color: red;">(Chưa thanh toán)</span>
+													            	</c:otherwise>
+													            </c:choose>
+													            
+												            </div>
+												        </div>
+												        <div style="display: flex; width: 100%; justify-content: space-around;">
+												            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold; ">Họ tên: <span style="color: black; font-weight: 500;">${kh.getHoten() }</span></span> 
+												            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold; width: 30%;">Số điện thoại: <span style="color: black; font-weight: 500;">${kh.getSodienthoai() }</span></span> 
+												        	<span style="color: #4dcdcf; font-size: 15px; font-weight: bold; width: 30%;">Email: <span style="color: black; font-weight: 500;">${kh.getEmail() }</span></span>
+												        </div>
+												        <div style="display: flex; width: 100%; justify-content: space-around;">
+												            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold; ">Địa chỉ nhận hàng: <span style="color: black; font-weight: 500;">${hdcb.getDiachinhanhang() }</span></span> 
+												            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold; width: 30%;">Ngày đặt: <span style="color: black; font-weight: 500;">${hdcb.getNgaydat() }</span></span> 
+												        </div>
+												        <table class="table" style="width: 100%; margin-top: 10px;margin-bottom: 0;"  cellpadding="2" cellspacing="2">
+												            <thead>
+												                <tr>
+												                   <th style="text-align: center; border-bottom: 2px solid var(--primary-color);" colspan="3">Tên sản phẩm</th>
+												                   <th style="text-align: center; border-bottom: 2px solid var(--primary-color);">Giá</th>
+												                   <th style="text-align: center; border-bottom: 2px solid var(--primary-color);">SL</th>
+												                   <th style="text-align: center; border-bottom: 2px solid var(--primary-color);">Thành tiền</th>
+												                </tr>
+												            </thead>
+												            <tbody>
+												            	<c:forEach items="${dsSPChoXacNhan }" var="dm">
+													                <c:if test="${dm.getMahoadon() == hdcb.getMahoadon() }">
+														                <tr>
+														                    <td rowspan="2" style="width: 80px;">
+														                    	<c:choose>
+																					<c:when test="${dm.getAnhthietke() == null }">
+																						<div>
+																							<img style="width: 100%; display: inline-block;"
+																								alt="" src="${dm.getAnhsanpham()}">
+																						</div>
+																					</c:when>
+																					<c:otherwise>
+																						<div 
+																							style="position: relative; height: fit-content; text-align: center;box-shadow: 2px 1px 5px #ccc">
+																							<img style="width: 100%; display: inline-block;"
+																								alt="" src="${dm.getAnhsanpham()}">
+																							<div
+																								style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: flex; justify-content: center; align-items: center; "
+																								class="preview-img">
+																								<img style="width: 100%" class="previewImgDesign"
+																									src="${dm.getAnhthietke() }" alt="preview-img">
+																							</div>
+																						</div>
+																					</c:otherwise>
+																				</c:choose>
+														                    </td>
+														                    <td colspan="2">
+														                    	<h4
+																		style="font-size: 2rem; line-height: 2.5rem; font-weight: 500; height: 5rem; overflow: hidden; display: block; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2;">${dm.getTensanpham() }</h4>
+														                    </td>
+														                   <td rowspan="2">
+																		   		<h4 style="font-size: 20px;">
+																					<fmt:setLocale value="vi_VN" />
+																					<fmt:formatNumber value="${dm.getGiasanpham()}"
+																						type="currency" />
+																				</h4>
+																		   </td>
+														                   <td rowspan="2">
+														                   		<h4 style="font-size: 20px;">${dm.getSoluongmua() }</h4>
+														                   </td>
+														                   <td rowspan="2">
+														                   		<h4 style="font-size: 20px;">
+																					<fmt:setLocale value="vi_VN" />
+																					<fmt:formatNumber value="${dm.getThanhtien()}"
+																						type="currency" />
+																				</h4>
+														                   </td>
+														                </tr>
+														                <tr >
+														                    <td> 
+														                    	<p style="font-size: 1.6rem;">
+																				Màu: <b style="font-size: 1.8rem;">${dm.getMausanpham()}</b>
+																				</p>
+														                    </td>
+														                   <td>
+															                   	<p style="font-size: 1.6rem;">
+																					Size: <b style="font-size: 1.8rem;">${dm.getSizesanpham() }</b>
+																				</p>
+														                   </td>
+														                </tr>
+													                </c:if>
+												            	</c:forEach>
+												            </tbody>
+												        </table>
+												    </div>
+												</c:if>
+											</c:forEach>
+										</c:if>
+									</c:forEach>
+								</c:if>
 							</c:forEach>
 						</c:when>
 						<c:otherwise>
@@ -243,111 +406,130 @@ a:focus, a:hover {
         		<c:otherwise>
 		        	<c:choose>
 						<c:when test="${dsSPChoXacNhan.size()!=0 }">
-							<c:forEach items="${dshdchoxacnhan }" var="hdcb">
-								<div style="border: 2px solid #4dcdcf; border-radius: 10px;width: 100%; padding: 10px 20px; margin-top: 20px;">
-							        <div style="display: flex; width: 100%; justify-content: space-around;">
-							            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold;">Mã hóa đơn: <span style="color: black; font-weight: 500;">${hdcb.getMahoadon() }</span></span> 
-							            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold;">Tổng tiền: <span style="color: black; font-weight: 500;">${hdcb.getTongdongia() } VND</span></span>
-							            <div>
-								            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold;">Thanh toán: </span> 
-								            <c:choose>
-								            	<c:when test="${hdcb.isPhuongthucthanhtoan() == true }">
-										            <span style="color: black; font-weight: 500;">Thanh toán online </span>
-								            	</c:when>
-								            	<c:otherwise>
-								            		<span style="color: black; font-weight: 500;">Thanh toán tiền mặt </span>
-								            	</c:otherwise>
-								            </c:choose>
-								            <c:choose>
-								            	<c:when test="${hdcb.isThanhtoan() == true }">
-										            <span style=" color: rgb(65, 200, 65);">(Đã thanh toán)</span>
-								            	</c:when>
-								            	<c:otherwise>
-								            		<span style=" color: red;">(Chưa thanh toán)</span>
-								            	</c:otherwise>
-								            </c:choose>
-								            
-							            </div>
-							        </div>
-							        <div style="display: flex; width: 100%; justify-content: space-around;">
-							            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold; ">Địa chỉ nhận hàng: <span style="color: black; font-weight: 500;">${hdcb.getDiachinhanhang() }</span></span> 
-							            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold; width: 30%;">Ngày đặt: <span style="color: black; font-weight: 500;">${hdcb.getNgaydat() }</span></span> 
-							        </div>
-							        <table class="table table-bordered" style="width: 100%; margin-top: 10px;"  cellpadding="2" cellspacing="2">
-							            <thead>
-							                <tr>
-							                   <th style="text-align: center;" colspan="3">Tên sản phẩm</th>
-							                   <th style="text-align: center;">Giá</th>
-							                   <th style="text-align: center;">SL</th>
-							                   <th style="text-align: center;">Thành tiền</th>
-							                </tr>
-							            </thead>
-							            <tbody>
-							            	<c:forEach items="${dsSPChoXacNhan }" var="dm">
-								                <c:if test="${dm.getMahoadon() == hdcb.getMahoadon() }">
-									                <tr>
-									                    <td rowspan="2" style="width: 80px;">
-									                    	<c:choose>
-																<c:when test="${dm.getAnhthietke() == null }">
-																	<div>
-																		<img style="width: 100%; display: inline-block;"
-																			alt="" src="${dm.getAnhsanpham()}">
-																	</div>
-																</c:when>
-																<c:otherwise>
-																	<div 
-																		style="position: relative; height: fit-content; text-align: center;">
-																		<img style="width: 100%; display: inline-block;"
-																			alt="" src="${dm.getAnhsanpham()}">
-																		<div
-																			style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: flex; justify-content: center; align-items: center;"
-																			class="preview-img">
-																			<img class="previewImgDesign"
-																				src="${dm.getAnhthietke() }" alt="preview-img">
-																		</div>
-																	</div>
-																</c:otherwise>
-															</c:choose>
-									                    </td>
-									                    <td colspan="2">
-									                    	<h4
-													style="font-size: 2rem; line-height: 2.5rem; font-weight: 500; height: 5rem; overflow: hidden; display: block; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2;">${dm.getTensanpham() }</h4>
-									                    </td>
-									                   <td rowspan="2">
-													   		<h4 style="font-size: 20px;">
-																<fmt:setLocale value="vi_VN" />
-																<fmt:formatNumber value="${dm.getGiasanpham()}"
+							<c:forEach items="${dsSPChoXacNhan }" var="ktraDesign">
+								<c:if test="${ktraDesign.getAnhthietke() == null }">
+									<c:forEach items="${dshdchoxacnhan }" var="hdcb">
+										<c:if test="${hdcb.getMahoadon()==ktraDesign.getMahoadon()  }">
+											<c:forEach items="${dskhachhang }" var="kh">
+												<c:if test="${kh.getMakhachhang() ==  hdcb.getMakhachhang()}">
+													<div style="border: 2px solid #4dcdcf; border-radius: 10px;width: 100%; padding: 10px 20px; margin-top: 20px; background-color: #fff;">
+												        <div style="display: flex; width: 100%; justify-content: space-around;">
+												            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold;">Mã hóa đơn: <span style="color: black; font-weight: 500;">${hdcb.getMahoadon() }</span></span> 
+												            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold;">Tổng tiền: <span style="color: black; font-weight: 500;">
+													            <fmt:setLocale value="vi_VN" />
+																<fmt:formatNumber value="${hdcb.getTongdongia() }"
 																	type="currency" />
-															</h4>
-													   </td>
-									                   <td rowspan="2">
-									                   		<h4 style="font-size: 20px;">${dm.getSoluongmua() }</h4>
-									                   </td>
-									                   <td rowspan="2">
-									                   		<h4 style="font-size: 20px;">
-																<fmt:setLocale value="vi_VN" />
-																<fmt:formatNumber value="${dm.getThanhtien()}"
-																	type="currency" />
-															</h4>
-									                   </td>
-									                </tr>
-									                <tr >
-									                    <td> 
-									                    	<p style="font-size: 1.6rem;">
-															Màu: <b style="font-size: 1.8rem;">${dm.getMausanpham()}</b>
-															</p>
-									                    </td>
-									                   <td>
-										                   	<p style="font-size: 1.6rem;">
-																Size: <b style="font-size: 1.8rem;">${dm.getSizesanpham() }</b>
-															</p>
-									                   </td>
-									                </tr>
-								                </c:if>
-							            	</c:forEach>
-							            </tbody>
-							        </table>
-							    </div>
+												            </span></span>
+												            <div>
+													            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold;">Thanh toán: </span> 
+													            <c:choose>
+													            	<c:when test="${hdcb.isPhuongthucthanhtoan() == true }">
+															            <span style="color: black; font-weight: 500;">Thanh toán online </span>
+													            	</c:when>
+													            	<c:otherwise>
+													            		<span style="color: black; font-weight: 500;">Thanh toán tiền mặt </span>
+													            	</c:otherwise>
+													            </c:choose>
+													            <c:choose>
+													            	<c:when test="${hdcb.isThanhtoan() == true }">
+															            <span style=" color: rgb(65, 200, 65);">(Đã thanh toán)</span>
+													            	</c:when>
+													            	<c:otherwise>
+													            		<span style=" color: red;">(Chưa thanh toán)</span>
+													            	</c:otherwise>
+													            </c:choose>
+													            
+												            </div>
+												        </div>
+												        <div style="display: flex; width: 100%; justify-content: space-around;">
+												            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold; ">Họ tên: <span style="color: black; font-weight: 500;">${kh.getHoten() }</span></span> 
+												            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold; width: 30%;">Số điện thoại: <span style="color: black; font-weight: 500;">${kh.getSodienthoai() }</span></span> 
+												        	<span style="color: #4dcdcf; font-size: 15px; font-weight: bold; width: 30%;">Email: <span style="color: black; font-weight: 500;">${kh.getEmail() }</span></span>
+												        </div>
+												        <div style="display: flex; width: 100%; justify-content: space-around;">
+												            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold; ">Địa chỉ nhận hàng: <span style="color: black; font-weight: 500;">${hdcb.getDiachinhanhang() }</span></span> 
+												            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold; width: 30%;">Ngày đặt: <span style="color: black; font-weight: 500;">${hdcb.getNgaydat() }</span></span> 
+												        </div>
+												        <table class="table" style="width: 100%; margin-top: 10px;margin-bottom: 0;"  cellpadding="2" cellspacing="2">
+												            <thead>
+												                <tr>
+												                   <th style="text-align: center; border-bottom: 2px solid var(--primary-color);" colspan="3">Tên sản phẩm</th>
+												                   <th style="text-align: center; border-bottom: 2px solid var(--primary-color);">Giá</th>
+												                   <th style="text-align: center; border-bottom: 2px solid var(--primary-color);">SL</th>
+												                   <th style="text-align: center; border-bottom: 2px solid var(--primary-color);">Thành tiền</th>
+												                </tr>
+												            </thead>
+												            <tbody>
+												            	<c:forEach items="${dsSPChoXacNhan }" var="dm">
+													                <c:if test="${dm.getMahoadon() == hdcb.getMahoadon() }">
+														                <tr>
+														                    <td rowspan="2" style="width: 80px;">
+														                    	<c:choose>
+																					<c:when test="${dm.getAnhthietke() == null }">
+																						<div>
+																							<img style="width: 100%; display: inline-block;"
+																								alt="" src="${dm.getAnhsanpham()}">
+																						</div>
+																					</c:when>
+																					<c:otherwise>
+																						<div 
+																							style="position: relative; height: fit-content; text-align: center;box-shadow: 1px 2px 2px #000">
+																							<img style="width: 100%; display: inline-block;"
+																								alt="" src="${dm.getAnhsanpham()}">
+																							<div
+																								style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: flex; justify-content: center; align-items: center; "
+																								class="preview-img">
+																								<img style="width: 100%" class="previewImgDesign"
+																									src="${dm.getAnhthietke() }" alt="preview-img">
+																							</div>
+																						</div>
+																					</c:otherwise>
+																				</c:choose>
+														                    </td>
+														                    <td colspan="2">
+														                    	<h4
+																		style="font-size: 2rem; line-height: 2.5rem; font-weight: 500; height: 5rem; overflow: hidden; display: block; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2;">${dm.getTensanpham() }</h4>
+														                    </td>
+														                   <td rowspan="2">
+																		   		<h4 style="font-size: 20px;">
+																					<fmt:setLocale value="vi_VN" />
+																					<fmt:formatNumber value="${dm.getGiasanpham()}"
+																						type="currency" />
+																				</h4>
+																		   </td>
+														                   <td rowspan="2">
+														                   		<h4 style="font-size: 20px;">${dm.getSoluongmua() }</h4>
+														                   </td>
+														                   <td rowspan="2">
+														                   		<h4 style="font-size: 20px;">
+																					<fmt:setLocale value="vi_VN" />
+																					<fmt:formatNumber value="${dm.getThanhtien()}"
+																						type="currency" />
+																				</h4>
+														                   </td>
+														                </tr>
+														                <tr >
+														                    <td> 
+														                    	<p style="font-size: 1.6rem;">
+																				Màu: <b style="font-size: 1.8rem;">${dm.getMausanpham()}</b>
+																				</p>
+														                    </td>
+														                   <td>
+															                   	<p style="font-size: 1.6rem;">
+																					Size: <b style="font-size: 1.8rem;">${dm.getSizesanpham() }</b>
+																				</p>
+														                   </td>
+														                </tr>
+													                </c:if>
+												            	</c:forEach>
+												            </tbody>
+												        </table>
+												    </div>
+												</c:if>
+											</c:forEach>
+										</c:if>
+									</c:forEach>
+								</c:if>
 							</c:forEach>
 						</c:when>
 						<c:otherwise>
