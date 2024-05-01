@@ -102,7 +102,7 @@ public class ThanhToanController extends HttpServlet {
 				
 				KhachHangBo khbo = new KhachHangBo();
 				long diemKhachHang = khbo.getTichDiem(khbean.getMakhachhang());
-				System.out.print(diemKhachHang);
+				//System.out.print(diemKhachHang);
 				request.setAttribute("diemKhachHang", diemKhachHang);
 				
 				GiamGiaBo ggbo = new GiamGiaBo();
@@ -119,7 +119,7 @@ public class ThanhToanController extends HttpServlet {
 					}
 				}
 				//kiểm tra tổng tiền nhỏ hơn điểm tích lũy khách hàng
-				System.out.println(tongtien);
+				//System.out.println(tongtien);
 				if(tongtien<(diemKhachHang*1000)) {
 					request.setAttribute("tiengiamdiem", 0);
 					request.setAttribute("soDiemTruCuaKhachHang", tongtien/1000);
@@ -183,7 +183,7 @@ public class ThanhToanController extends HttpServlet {
 				
 				KhachHangBo khbo = new KhachHangBo();
 				long diemKhachHang = khbo.getTichDiem(khbean.getMakhachhang());
-				System.out.print(diemKhachHang);
+				//System.out.print(diemKhachHang);
 				request.setAttribute("diemKhachHang", diemKhachHang);
 				
 				GiamGiaBo ggbo = new GiamGiaBo();
@@ -200,7 +200,7 @@ public class ThanhToanController extends HttpServlet {
 					}
 				}
 				
-				System.out.println(thanhTien);
+				//System.out.println(thanhTien);
 				if(thanhTien<(diemKhachHang*1000)) {
 					request.setAttribute("tiengiamdiem", 0);
 					request.setAttribute("soDiemTruCuaKhachHang", thanhTien/1000);

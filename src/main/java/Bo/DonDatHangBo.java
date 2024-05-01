@@ -22,6 +22,21 @@ public class DonDatHangBo {
 		return ddhdao.capNhatDaThanhToan(mahoadon, makhachhang);
 	}
 	
+	// xử lý cập nhật trạng thái chuẩn bị đơn cho đơn đặt hàng
+	public int capNhatChiTietHDChuanBiDon(long mahoadon) throws Exception {
+		return ddhdao.capNhatChiTietHDChuanBiDon(mahoadon);
+	}
+	
+	// xử lý cập nhật trạng thái đang giao cho đơn đặt hàng
+	public int capNhatChiTietHDDangGiao(long mahoadon) throws Exception {
+		return ddhdao.capNhatChiTietHDDangGiao(mahoadon);
+	}
+	
+	// xử lý cập nhật trạng thái đã giao cho đơn đặt hàng
+	public int capNhatChiTietHDDaGiao(long mahoadon) throws Exception {
+		return ddhdao.capNhatChiTietHDDaGiao(mahoadon);
+	}
+	
 	//xử lý lấy danh sách mã hóa đơn chờ xác nhận
 	public ArrayList<Long> dshoadonchoxacnhan()throws Exception{
 		return ddhdao.dshoadonchoxacnhan();

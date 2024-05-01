@@ -43,9 +43,24 @@ table,th, td, tr, thead, tbody {
 a:focus, a:hover {
     text-decoration: none;
 }
+
+#toast h3 {
+	margin: 0;
+}
+
+#toast .toast {
+	width: 400px;
+	max-width: 400px;
+	min-width: 350px;
+}
+
+#toast {
+	top: 90px;
+}
 </style>
 </head>
 <body class="w3-light-grey">
+	<div style="z-index: 9999999999999999" id="toast"></div>
 	<!-- Top container -->
     <div class="w3-bar w3-top w3-large" style="z-index:4;background: linear-gradient(169.68deg, #086a87 19.53%, #75dbd9 128.18%); color: white; height: 72px; padding: 0 20px;">
         <button style="height: 100%;" class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey"
@@ -254,6 +269,42 @@ a:focus, a:hover {
 										            	</c:forEach>
 										            </tbody>
 										        </table>
+										        <div class="w3-row-padding w3-margin-top">
+										        	<c:if test="${hdcb.getMatrangthai() ==1 }">
+											           <div class="w3-quarter">
+												        <a href="AdminXacNhanController?xacNhanDon=${hdcb.getMahoadon() }" style="text-decoration: none;">
+											                <div style="text-align: center;border-radius: 10px;" class="w3-container w3-orange w3-text-white">
+											                    <h4>Xác nhận đơn</h4>
+											                </div>
+												        </a>
+											           </div>
+										        	</c:if>
+										        	<c:if test="${hdcb.getMatrangthai() ==2 }">
+											           <div class="w3-quarter">
+											            <a href="AdminXacNhanController?dangGiaoDon=${hdcb.getMahoadon() }" style="text-decoration: none;">
+											                <div style="text-align: center;border-radius: 10px;" class="w3-container w3-blue">
+											                    <h4>Chuẩn bị xong</h4>
+											                </div>
+												        </a>
+											           </div>
+										        	</c:if>
+										           <c:if test="${hdcb.getMatrangthai() ==3 }">
+											           <div class="w3-quarter">
+											            <a href="AdminXacNhanController?daGiaoDon=${hdcb.getMahoadon() }" style="text-decoration: none;">
+											                <div style="text-align: center; border-radius: 10px;" class="w3-container w3-teal">
+											                    <h4>Đã giao</h4>
+											                </div>
+												        </a>
+											           </div>
+										        	</c:if>
+										           <div class="w3-quarter">
+										            <a href="AdminXacNhanController?huyDon=${hdcb.getMahoadon() }" style="text-decoration: none;">
+										                <div style="text-align: center; border-radius: 10px;" class="w3-container w3-red w3-text-white">
+										                    <h4>Hủy đơn</h4>
+										                </div>
+											        </a>
+										           </div>
+										       </div>
 										    </div>
 										</c:if>
 									</c:forEach>
@@ -388,6 +439,42 @@ a:focus, a:hover {
 												            	</c:forEach>
 												            </tbody>
 												        </table>
+												        <div class="w3-row-padding w3-margin-top">
+												        	<c:if test="${hdcb.getMatrangthai() ==1 }">
+													           <div class="w3-quarter">
+														        <a href="AdminXacNhanController?xacNhanDon=${hdcb.getMahoadon() }" style="text-decoration: none;">
+													                <div style="text-align: center;border-radius: 10px;" class="w3-container w3-orange w3-text-white">
+													                    <h4>Xác nhận đơn</h4>
+													                </div>
+														        </a>
+													           </div>
+												        	</c:if>
+												        	<c:if test="${hdcb.getMatrangthai() ==2 }">
+													           <div class="w3-quarter">
+													            <a href="AdminXacNhanController?dangGiaoDon=${hdcb.getMahoadon() }" style="text-decoration: none;">
+													                <div style="text-align: center;border-radius: 10px;" class="w3-container w3-blue">
+													                    <h4>Chuẩn bị xong</h4>
+													                </div>
+														        </a>
+													           </div>
+												        	</c:if>
+												           <c:if test="${hdcb.getMatrangthai() ==3 }">
+													           <div class="w3-quarter">
+													            <a href="AdminXacNhanController?daGiaoDon=${hdcb.getMahoadon() }" style="text-decoration: none;">
+													                <div style="text-align: center; border-radius: 10px;" class="w3-container w3-teal">
+													                    <h4>Đã giao</h4>
+													                </div>
+														        </a>
+													           </div>
+												        	</c:if>
+												           <div class="w3-quarter">
+												            <a href="AdminXacNhanController?huyDon=${hdcb.getMahoadon() }" style="text-decoration: none;">
+												                <div style="text-align: center; border-radius: 10px;" class="w3-container w3-red w3-text-white">
+												                    <h4>Hủy đơn</h4>
+												                </div>
+													        </a>
+												           </div>
+												       </div>
 												    </div>
 												</c:if>
 											</c:forEach>
@@ -524,6 +611,42 @@ a:focus, a:hover {
 												            	</c:forEach>
 												            </tbody>
 												        </table>
+												        <div class="w3-row-padding w3-margin-top">
+												        	<c:if test="${hdcb.getMatrangthai() ==1 }">
+													           <div class="w3-quarter">
+														        <a href="AdminXacNhanController?xacNhanDon=${hdcb.getMahoadon() }" style="text-decoration: none;">
+													                <div style="text-align: center;border-radius: 10px;" class="w3-container w3-orange w3-text-white">
+													                    <h4>Xác nhận đơn</h4>
+													                </div>
+														        </a>
+													           </div>
+												        	</c:if>
+												        	<c:if test="${hdcb.getMatrangthai() ==2 }">
+													           <div class="w3-quarter">
+													            <a href="AdminXacNhanController?dangGiaoDon=${hdcb.getMahoadon() }" style="text-decoration: none;">
+													                <div style="text-align: center;border-radius: 10px;" class="w3-container w3-blue">
+													                    <h4>Chuẩn bị xong</h4>
+													                </div>
+														        </a>
+													           </div>
+												        	</c:if>
+												           <c:if test="${hdcb.getMatrangthai() ==3 }">
+													           <div class="w3-quarter">
+													            <a href="AdminXacNhanController?daGiaoDon=${hdcb.getMahoadon() }" style="text-decoration: none;">
+													                <div style="text-align: center; border-radius: 10px;" class="w3-container w3-teal">
+													                    <h4>Đã giao</h4>
+													                </div>
+														        </a>
+													           </div>
+												        	</c:if>
+												           <div class="w3-quarter">
+												            <a href="AdminXacNhanController?huyDon=${hdcb.getMahoadon() }" style="text-decoration: none;">
+												                <div style="text-align: center; border-radius: 10px;" class="w3-container w3-red w3-text-white">
+												                    <h4>Hủy đơn</h4>
+												                </div>
+													        </a>
+												           </div>
+												       </div>
 												    </div>
 												</c:if>
 											</c:forEach>
@@ -575,5 +698,65 @@ a:focus, a:hover {
             overlayBg.style.display = "none";
         }
     </script>
+    
+    <c:if test="${param.xacNhanTC != null}">
+		<script type="text/javascript">
+			//window.alert("Tài khoản hoặc mật khẩu chưa đúng!");
+			function showSuccessToastXacNhanDon() {
+				toast({
+			        title :'Thành công',
+			        message : 'Xác nhận đơn hàng thành công.',
+			        type  : 'success',
+			        duration : 5000
+			    })
+			}
+			showSuccessToastXacNhanDon();
+		</script>
+	</c:if>
+	
+	<c:if test="${param.dangGiaoTC != null}">
+		<script type="text/javascript">
+			//window.alert("Tài khoản hoặc mật khẩu chưa đúng!");
+			function showSuccessToastDangGiaoDon() {
+				toast({
+			        title :'Thành công',
+			        message : 'Xác nhận đơn hàng đang giao thành công.',
+			        type  : 'success',
+			        duration : 5000
+			    })
+			}
+			showSuccessToastDangGiaoDon();
+		</script>
+	</c:if>
+	
+	<c:if test="${param.daGiaoTC != null}">
+		<script type="text/javascript">
+			//window.alert("Tài khoản hoặc mật khẩu chưa đúng!");
+			function showSuccessToastDaGiao() {
+				toast({
+			        title :'Thành công',
+			        message : 'Xác nhận đơn hàng đã được giao thành công.',
+			        type  : 'success',
+			        duration : 5000
+			    })
+			}
+			showSuccessToastDaGiao();
+		</script>
+	</c:if>
+	
+	<c:if test="${param.huyDonTC != null}">
+		<script type="text/javascript">
+			//window.alert("Tài khoản hoặc mật khẩu chưa đúng!");
+			function showSuccessToastHuyDon() {
+				toast({
+			        title :'Thành công',
+			        message : 'Hủy đơn thành công.',
+			        type  : 'success',
+			        duration : 5000
+			    })
+			}
+			showSuccessToastHuyDon();
+		</script>
+	</c:if>
 </body>
 </html>
