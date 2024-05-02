@@ -73,7 +73,7 @@ public class AdminLoaiSanPhamController extends HttpServlet {
 			}
 			
 			
-			RequestDispatcher rd = request.getRequestDispatcher("AdminLoaiSanPham.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("AdminLoai.jsp");
 			rd.forward(request, response);
 		} catch (Exception e) {
 			// TODO: handle exception

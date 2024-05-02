@@ -791,6 +791,7 @@ p {
 													src="${dn.getAvatar() }" alt="preview-img">
 											</c:otherwise>
 										</c:choose>
+										<h4 style="width: 100%; text-align: center; color: var(--primary-color); font-weight: bold; margin-top: 35px;">Số điểm: <span style="color: red; font-size: 20px;">${dn.getTichdiem() } điểm</span></h4>
 									</div>
 									<div class="col l-9">
 									<form id="formInfo" action="SuaThongTinKhachHangController"

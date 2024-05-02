@@ -13,7 +13,7 @@ public class AdminLoaiDao {
 		KetNoiDao kn = new KetNoiDao();
 		kn.ketnoi();
 		
-		String sql = "select * from Loai";
+		String sql = "select * from Loai order by maloai DESC";
 		
 		PreparedStatement cmd = kn.cn.prepareStatement(sql);
 		ResultSet rs = cmd.executeQuery();

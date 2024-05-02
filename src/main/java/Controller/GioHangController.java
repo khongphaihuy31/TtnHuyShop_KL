@@ -148,9 +148,17 @@ public class GioHangController extends HttpServlet {
 				String size = request.getParameter("size");
 				KhachHangBean khbaen = (KhachHangBean)session.getAttribute("dn");
 				GioHangBo ghbo = new GioHangBo();
-				ghbo.capNhatGio(masanpham, khbaen.getMakhachhang(), soluongcapnhat, mausanpham, size);
-				response.sendRedirect("GioHangController");
-				return;
+				//Lấy số lượng sản phẩm trong kho
+				ChiTietSanPhamBo ctspbo =  new ChiTietSanPhamBo();
+				long soluongSPtrongKho = ctspbo.getSoluongTrongKho(masanpham, mausanpham, size);
+				if(soluongcapnhat<=soluongSPtrongKho) {
+					ghbo.capNhatGio(masanpham, khbaen.getMakhachhang(), soluongcapnhat, mausanpham, size);
+					response.sendRedirect("GioHangController?capNhatTC=1");
+					return;
+				}else {
+					response.sendRedirect("GioHangController?capNhatTB=1");
+					return;
+				}
 			}
 			
 			//Xử lý xóa

@@ -902,5 +902,33 @@ a:hover, a:focus {
 			showWarningToastChuaChonSanPhamMua();
 		</script>
 	</c:if>
+	<c:if test="${param.capNhatTB != null}">
+		<script type="text/javascript">
+			//window.alert("Tài khoản hoặc mật khẩu chưa đúng!");
+			function showErrorToastVuotQua() {
+					toast({
+						title : 'Cập nhật thất bại',
+						message : 'Số lượng mua vượt quá số lượng còn trong kho.',
+						type : 'error',
+						duration : 5000
+					})
+				}
+			showErrorToastVuotQua();
+		</script>
+	</c:if>
+	<c:if test="${param.capNhatTC != null}">
+		<script type="text/javascript">
+			//window.alert("Tài khoản hoặc mật khẩu chưa đúng!");
+			function showSuccessToastThemSp() {
+				toast({
+			        title :'Thành công',
+			        message : 'Cập nhật số lượng thành công.',
+			        type  : 'success',
+			        duration : 5000
+			    })
+			}
+			showSuccessToastThemSp();
+		</script>
+	</c:if>
 </body>
 </html>

@@ -833,10 +833,10 @@ input:checked + label{
 									<button class="input--quantity__down down-js">
 										<i class="input--quantity__down-icon fa-solid fa-minus"></i>
 									</button>
-									<input form="soluongmua" type="text"
+									<input style="background-color: white;" form="soluongmua" type="text"
 										class="input--quantity__show input--quantity__show-js"
 										name="soluongmua" value="1" role="spinbutton"
-										aria-valuenow="1">
+										aria-valuenow="1" disabled="disabled">
 									<button class="input--quantity__up up-js">
 										<i class="input--quantity__up-icon fa-solid fa-plus"></i>
 									</button>

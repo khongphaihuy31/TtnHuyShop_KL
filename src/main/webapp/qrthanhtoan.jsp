@@ -225,12 +225,18 @@
 							<p style="margin: 0; font-size: 20px; font-weight: bold;">
 								Nội dung <span style="color: red;">*</span>:
 							</p>
+							<p style="margin: 10px 0 0 0; font-size: 20px; font-weight: bold;">
+								Ngân hàng <span style="color: red;">*</span>:
+							</p>
+							<p style="margin: 10px 0 0 0; font-size: 20px; font-weight: bold;">
+								Số tài khoản <span style="color: red;">*</span>:
+							</p>
 							<p style="font-size: 20px; font-weight: bold; margin-top: 10px;">
 								Người thụ hưởng <span style="color: red;">*</span>
 							</p>
 						</div>
 						<div style="margin-left: 20px;">
-							<p>
+							<p style="font-size: 20px; font-weight: bold; margin-top: 20px; margin-bottom: 10px;">
 								<span style="margin: 0; font-size: 20px; font-weight: bold;"
 									id="st"> </span> <i style="margin-left: 90px;"
 									class="fa-regular fa-copy"></i>
@@ -239,10 +245,16 @@
 							<h1 style="display: none;" class="noiDungChuyenKhoan">${noiDungChuyenKhoan}</h1>
 							<a style="display: none;" class="btnChuyenKhoanThanhCong" href="HoSoKhachHangController?donmua=1&btnchoxacnhan=1&thanhtoan=thanhcong"></a>
 							<a style="display: none;" class="btnChuyenKhoanThatBai" href="HoSoKhachHangController?donmua=1&btnchoxacnhan=1&thanhtoan=thatbai"></a>
-							<p>
+							<p style="margin: 0">
 								<span style="margin: 0; font-size: 20px; font-weight: bold;"
 									id="ndck"> </span><i style="margin-left: 28px;"
 									class="fa-regular fa-copy"></i>
+							</p>
+							<p style="margin: 10px 0 0 0; font-size: 20px; font-weight: bold;">
+								MB Bank
+							</p>
+							<p style="margin: 10px 0 0 0; font-size: 20px; font-weight: bold;">
+								4910183992030
 							</p>
 							<p style="font-size: 20px; font-weight: bold; margin-top: 10px;">TON
 								THAT NHAT HUY</p>
