@@ -112,6 +112,30 @@ a:hover, a:focus {
 #toast {
 	top: 90px;
 }
+.header-nav__item-trademark::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 42px;
+    top: 30px;
+    /* background-color: red; */
+}
+.header-nav__item-men::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 42px;
+    top: 30px;
+    /* background-color: red; */
+}
+.header-nav__item-women::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 42px;
+    top: 30px;
+    /* background-color: red; */
+}
 </style>
 </head>
 <body>
@@ -193,7 +217,7 @@ a:hover, a:focus {
 										class="header-nav__icon fa-solid fa-caret-down"></i>
 								</a></li>
 								<!-- list trong list thương hiệu -->
-								<ul class="header-nav-item-trademark__list">
+								<ul style="max-height: 30vh;overflow-y: auto;" class="header-nav-item-trademark__list">
 									<c:forEach items="${dsTenLoaiDMThuongHieu}" var="tt">
 										<li class="header-nav-item-trademark__item"><a
 											href="TrangChuController?maloai=0&madanhmuc=0&mathuonghieu=${tt.getMathuonghieu()}"
@@ -209,7 +233,7 @@ a:hover, a:focus {
 										class="header-nav__icon fa-solid fa-caret-down"></i>
 								</a></li>
 								<!-- list trong list đồ nam -->
-								<ul class="header-nav-item-men__list">
+								<ul style="max-height: 30vh;overflow-y: auto;" class="header-nav-item-men__list">
 									<c:forEach items="${dsTenLoaiDMDoNam}" var="dn">
 										<li class="header-nav-item-men__item"><a
 											href="TrangChuController?maloai=${dn.getMaloai()}&madanhmuc=${dn.getMadanhmuc()}&mathuonghieu=0"
@@ -224,7 +248,7 @@ a:hover, a:focus {
 										class="header-nav__icon fa-solid fa-caret-down"></i>
 								</a></li>
 								<!-- list trong list đồ nữ -->
-								<ul class="header-nav-item-women__list">
+								<ul style="max-height: 30vh;overflow-y: auto;" class="header-nav-item-women__list">
 									<c:forEach items="${dsTenLoaiDMDoNu }" var="dnu">
 										<li class="header-nav-item-women__item"><a
 											href="TrangChuController?maloai=${dnu.getMaloai()}&madanhmuc=${ dnu.getMadanhmuc()}&mathuonghieu=0"

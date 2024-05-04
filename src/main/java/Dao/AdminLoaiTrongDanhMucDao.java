@@ -13,7 +13,7 @@ public class AdminLoaiTrongDanhMucDao {
 		KetNoiDao kn = new KetNoiDao();
 		kn.ketnoi();
 		
-		String sql = "select * from tb_LoaiThuocDanhMucAdmin";
+		String sql = "select * from tb_LoaiThuocDanhMucAdmin order by maloaithuocdanhmuc desc";
 		
 		PreparedStatement cmd = kn.cn.prepareStatement(sql);
 		ResultSet rs = cmd.executeQuery();
@@ -22,8 +22,9 @@ public class AdminLoaiTrongDanhMucDao {
 			String tenloai = rs.getString("tenloai"); 
 			long madanhmuc = rs.getLong("madanhmuc");
 			String tendanhmuc = rs.getString("tendanhmuc");
+			long maloaithuocdanhmuc = rs.getLong("maloaithuocdanhmuc");
 			
-			dsLoaiTrongDanhMuc.add(new AdminLoaiThuocDanhMucBean(maloai, tenloai, madanhmuc, tendanhmuc));
+			dsLoaiTrongDanhMuc.add(new AdminLoaiThuocDanhMucBean(maloai, tenloai, madanhmuc, tendanhmuc, maloaithuocdanhmuc));
 		}
 		return dsLoaiTrongDanhMuc;
 	}
@@ -113,4 +114,19 @@ public class AdminLoaiTrongDanhMucDao {
 		return kq;
 	}
 	
+	//Xóa loại trong danh mục (Chức năng xóa loại)
+	public int xoaLoaiTrongDanhMucThuocLoai(long maloai)throws Exception{
+		KetNoiDao kn = new KetNoiDao();
+		kn.ketnoi();
+		
+		String sql = "delete from LoaiThuocDanhMuc where maloai=?";
+		PreparedStatement cmd = kn.cn.prepareStatement(sql);
+		
+		cmd.setLong(1, maloai);
+		
+		int kq = cmd.executeUpdate();
+		cmd.close();
+		kn.cn.close();
+		return kq;
+	}
 }

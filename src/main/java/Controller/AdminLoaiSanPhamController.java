@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import Bean.LoaiBean;
 import Bo.AdminLoaiBo;
+import Bo.AdminLoaiTrongDanhMucBo;
+import Bo.AdminSanPhamBo;
 
 /**
  * Servlet implementation class AdminLoaiSanPhamController
@@ -45,13 +47,15 @@ public class AdminLoaiSanPhamController extends HttpServlet {
 			String btnthem = request.getParameter("btnthem");
 			if(btnthem != null) {
 				String tenloai = request.getParameter("tenloai");
-				if(tenloai != null) {
+				if(tenloai != null && tenloai.trim()!= "") {
 					lbo.themLoai(tenloai);
-					response.sendRedirect("AdminLoaiSanPhamController")	;
+					response.sendRedirect("AdminLoaiSanPhamController?tlTC=1");
 					return;
+//					System.out.print("ok đấy");
 				}else {
 					response.sendRedirect("AdminLoaiSanPhamController?tl=null")	;
 					return;
+//					System.out.print("ko ok lắm");
 				}
 			}
 			
@@ -59,16 +63,25 @@ public class AdminLoaiSanPhamController extends HttpServlet {
 			if(btnsua != null) {
 				long maloai = Long.parseLong(btnsua);
 				String tenloai = request.getParameter("tenloai");
-				lbo.suaLoai(maloai, tenloai);
-				response.sendRedirect("AdminLoaiSanPhamController")	;
-				return;
+				if(tenloai != null && tenloai.trim()!= "") {
+					lbo.suaLoai(maloai, tenloai);
+					response.sendRedirect("AdminLoaiSanPhamController?slTC=1")	;
+					return;
+				}else {
+					response.sendRedirect("AdminLoaiSanPhamController?sl=null")	;
+					return;
+				}
 			}
 			
 			String btnxoa = request.getParameter("btnxoa");
 			if(btnxoa != null) {
 				long maloai = Long.parseLong(request.getParameter("maloai"));
+				AdminSanPhamBo adspbo = new AdminSanPhamBo();
+				adspbo.xoaSanPhamThuocLoai(maloai);
+				AdminLoaiTrongDanhMucBo adltdmbo =  new AdminLoaiTrongDanhMucBo();
+				adltdmbo.xoaLoaiTrongDanhMucThuocLoai(maloai);
 				lbo.xoaLoai(maloai);
-				response.sendRedirect("AdminLoaiSanPhamController")	;
+				response.sendRedirect("AdminLoaiSanPhamController?xlTC=1");
 				return;
 			}
 			

@@ -35,4 +35,8 @@ public class AdminLoaiTrongDanhMucBo {
 	public int xoaLoaiTrongDanhMuc(long maloai, long madanhmuc)throws Exception{
 		return ltdmdao.xoaLoaiTrongDanhMuc(maloai, madanhmuc);
 	}
+	//Xóa loại trong danh mục (Chức năng xóa loại)
+	public int xoaLoaiTrongDanhMucThuocLoai(long maloai)throws Exception{
+		return ltdmdao.xoaLoaiTrongDanhMucThuocLoai(maloai);
+	}
 }

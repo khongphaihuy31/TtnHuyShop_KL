@@ -26,4 +26,9 @@ public class AdminSanPhamBo {
 	public int suaSanPham(long masanpham ,String tensanpham, long giacu, long giamoi, long soluongdaban, String motasanpham, String chitietsanpham, long maloai, long mathuonghieu, long madanhmuc)throws Exception{
 		return spdao.suaSanPham(masanpham, tensanpham, giacu, giamoi, soluongdaban, motasanpham, chitietsanpham, maloai, mathuonghieu, madanhmuc);
 	}
+	
+	//Xóa sản phẩm thuộc mã loại
+	public int xoaSanPhamThuocLoai(long maloai)throws Exception{
+		return spdao.xoaSanPhamThuocLoai(maloai);
+	}
 }

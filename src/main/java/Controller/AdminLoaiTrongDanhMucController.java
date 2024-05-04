@@ -73,10 +73,10 @@ public class AdminLoaiTrongDanhMucController extends HttpServlet {
 					if(ktraLoaiTrongDanhMuc == 0) {
 						String tenloai = ltdmbo.timTenLoai(maloai1);
 						ltdmbo.themLoaiTrongDanhMuc(maloai1, tenloai, madanhmuc1);
-						response.sendRedirect("AdminLoaiTrongDanhMucController");
+						response.sendRedirect("AdminLoaiTrongDanhMucController?themTC=1");
 						return;
 					}else {
-						response.sendRedirect("AdminLoaiTrongDanhMucController?kiemtra = 1");
+						response.sendRedirect("AdminLoaiTrongDanhMucController?themTB=1");
 						return;
 					}
 				}
@@ -90,7 +90,7 @@ public class AdminLoaiTrongDanhMucController extends HttpServlet {
 				long madanhmucmoi = Long.parseLong(request.getParameter("madanhmucmoi"));
 				
 				ltdmbo.suaLoaiTrongDanhMuc(maloai, madanhmuccu, madanhmucmoi);
-				response.sendRedirect("AdminLoaiTrongDanhMucController");
+				response.sendRedirect("AdminLoaiTrongDanhMucController?suaTC=1");
 				return;
 			}
 			
@@ -98,10 +98,10 @@ public class AdminLoaiTrongDanhMucController extends HttpServlet {
 			String btnxoa = request.getParameter("btnxoa");
 			if(btnxoa != null) {
 				long madanhmuc = Long.parseLong(request.getParameter("madanhmuc"));
-				long maloai = Long.parseLong(request.getParameter("maloai"));
+				long maloai = Long.parseLong(request.getParameter("btnxoa"));
 				
 				ltdmbo.xoaLoaiTrongDanhMuc(maloai, madanhmuc);
-				response.sendRedirect("AdminLoaiTrongDanhMucController");
+				response.sendRedirect("AdminLoaiTrongDanhMucController?xoaTC=1");
 				return;
 			}
 					

@@ -99,4 +99,19 @@ public class AdminSanPhamDao {
 		kn.cn.close();
 		return kq;
 	}
+	
+	//Xóa sản phẩm thuộc mã loại
+	public int xoaSanPhamThuocLoai(long maloai)throws Exception{
+		KetNoiDao kn = new KetNoiDao();
+		kn.ketnoi();
+		String sql = "delete from SanPham where maloai=? ";
+		PreparedStatement cmd = kn.cn.prepareStatement(sql);
+		
+		cmd.setLong(1, maloai);
+		
+		int kq = cmd.executeUpdate();
+		cmd.close();
+		kn.cn.close();
+		return kq;
+	}
 }
