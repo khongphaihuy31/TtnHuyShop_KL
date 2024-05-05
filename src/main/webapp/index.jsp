@@ -632,20 +632,23 @@ a:hover, a:focus {
 		<div style="margin: var(--header-height) 0 10px 0;" id="myCarousel"
 			class="carousel slide" data-ride="carousel">
 			<!-- Indicators -->
-			<ol class="carousel-indicators">
+			<!--<ol class="carousel-indicators">
 				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
 				<li data-target="#myCarousel" data-slide-to="1"></li>
-			</ol>
+			</ol>-->
 
 			<!-- Wrapper for slides -->
 			<div class="carousel-inner" role="listbox">
 				<div class="item active">
-					<img src="assets/img/1200x280-kappanewarrivals-slider.webp" alt="">
+					<img src="${dsbanner.get(0).getSrcbanner() }" alt="">
 				</div>
-
-				<div class="item">
-					<img src="assets/img/slide.jpg" alt="">
-				</div>
+				<c:forEach items="${dsbanner }" var="bn" varStatus="index">
+					<c:if test="${index.index !=0 }">
+						<div class="item">
+							<img src="${bn.getSrcbanner() }" alt="">
+						</div>
+					</c:if>
+				</c:forEach>
 			</div>
 
 			<!-- Left and right controls -->

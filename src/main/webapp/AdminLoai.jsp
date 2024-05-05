@@ -109,8 +109,8 @@ a:focus, a:hover {
             <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-boxes-stacked"></i>  Quản lý sản phẩm</a>
             <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users"></i>  Quản lý khách hàng</a>
             <a href="AdminThuongHieuController" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-shirt"></i>  Quản lý thương hiệu</a>
-            <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-image"></i>  Quản lý banner</a>
-            <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-gift"></i>  Quản lý khuyến mãi</a>
+            <a href="AdminBannerController" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-image"></i>  Quản lý banner</a>
+            <a href="AdminKhuyenMaiController" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-gift"></i>  Quản lý khuyến mãi</a>
             <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-star"></i>  Quản lý tích điểm</a>
             <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-chart-pie"></i>  Thống kê doanh thu</a><br><br>
         </div>
@@ -157,10 +157,10 @@ a:focus, a:hover {
 						                <td style="display:none;">${l.getMaloai() }</td>
 						                <td>${l.getTenloai() }</td>
 						                <td>
-						                	<a style="font-size: 18px; font-weight: 600; color: var(--primary-color);" data-toggle="modal" data-target="#modalsua${l.getMaloai() }"><i class="fa-solid fa-pen-to-square"></i></a>
+						                	<a style="font-size: 18px; font-weight: 600; color: var(--primary-color); cursor: pointer;" data-toggle="modal" data-target="#modalsua${l.getMaloai() }"><i class="fa-solid fa-pen-to-square"></i></a>
 						                </td>
 						                <td>
-						                	<a style="font-size: 18px; font-weight: 600; color: var(--primary-color);" data-toggle="modal" data-target="#modalxoa${l.getMaloai() }"><i class="fa-solid fa-trash"></i></a>
+						                	<a style="font-size: 18px; font-weight: 600; color: var(--primary-color); cursor: pointer;" data-toggle="modal" data-target="#modalxoa${l.getMaloai() }"><i class="fa-solid fa-trash"></i></a>
 						                </td>
 						            </tr>
 									<div class="modal fade" id="modalxoa${l.getMaloai() }" role="dialog">

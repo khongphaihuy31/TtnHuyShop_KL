@@ -6,19 +6,17 @@ public class GiamGiaBean {
 	private long tiengiam;
 	private long dieukien;
 	private String mota;
-	private boolean khoa;
 	public GiamGiaBean() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public GiamGiaBean(long magiamgia, String tengiamgia, long tiengiam, long dieukien, String mota, boolean khoa) {
+	public GiamGiaBean(long magiamgia, String tengiamgia, long tiengiam, long dieukien, String mota) {
 		super();
 		this.magiamgia = magiamgia;
 		this.tengiamgia = tengiamgia;
 		this.tiengiam = tiengiam;
 		this.dieukien = dieukien;
 		this.mota = mota;
-		this.khoa = khoa;
 	}
 	public long getMagiamgia() {
 		return magiamgia;
@@ -50,12 +48,4 @@ public class GiamGiaBean {
 	public void setMota(String mota) {
 		this.mota = mota;
 	}
-	public boolean isKhoa() {
-		return khoa;
-	}
-	public void setKhoa(boolean khoa) {
-		this.khoa = khoa;
-	}
-	
-	
 }

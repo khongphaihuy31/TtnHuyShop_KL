@@ -11,10 +11,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import Bean.BannerBean;
 import Bean.GioHangBean;
 import Bean.KhachHangBean;
 import Bean.LoaiThuocDanhMucBean;
 import Bean.SanPhamBean;
+import Bo.BannerBo;
 import Bo.GioHangBo;
 import Bo.KhachHangBo;
 //import Bo.GioHangBo;
@@ -54,6 +56,12 @@ public class TrangChuController extends HttpServlet {
 			
 			request.setAttribute("dsLoai", lbo.getDsLoai());
 			
+			
+			//Lấy danh sách banner
+			BannerBo bnbo = new BannerBo();
+			ArrayList<BannerBean> dsbanner;
+			dsbanner = bnbo.getDsBanner();
+			request.setAttribute("dsbanner", dsbanner);
 			
 			//Xử lý lấy danh sách số điện thoại và email của tất cả các khách hàng
 			KhachHangBo khbo = new KhachHangBo();
