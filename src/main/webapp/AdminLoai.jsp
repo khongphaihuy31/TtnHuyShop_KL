@@ -108,7 +108,7 @@ a:focus, a:hover {
             <a href="AdminLoaiTrongDanhMucController" class="w3-bar-item w3-button w3-padding"><i class="fa-brands fa-docker"></i>  Quản lý loại trong danh mục</a>
             <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-boxes-stacked"></i>  Quản lý sản phẩm</a>
             <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users"></i>  Quản lý khách hàng</a>
-            <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-shirt"></i>  Quản lý thương hiệu</a>
+            <a href="AdminThuongHieuController" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-shirt"></i>  Quản lý thương hiệu</a>
             <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-image"></i>  Quản lý banner</a>
             <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-gift"></i>  Quản lý khuyến mãi</a>
             <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-star"></i>  Quản lý tích điểm</a>
@@ -173,9 +173,9 @@ a:focus, a:hover {
 									      </div>
 									      <div class="modal-body text-center">
 									          <p><span style="color: red;">Lưu ý:</span> Nếu bạn đồng ý xóa, đồng nghĩa với việc các sản phẩm thuộc loại này cũng sẽ bị xóa.</p>
-									        <form action="AdminLoaiSanPhamControllera" style="font-size: 20px;">
-									        <p style="width: 120px; display: inline-block;font-weight: bold; font-size: 20px;">Mã loại:</p> <input style="width: 260px; height: 30px;" type="text" name="maloai" value="${l.getMaloai() }" required="required" disabled="disabled"> <br>
-									          <p style="width: 120px; display: inline-block;font-weight: bold;font-size: 20px;">Tên loại:</p> <input style="width: 260px; height: 30px;" type="text" name="tenloai" value="${l.getTenloai() }" required="required" disabled="disabled"> <br>
+									        <form action="AdminLoaiSanPhamController" style="font-size: 20px;">
+									        <p style="width: 120px; display: inline-block;font-weight: bold; font-size: 20px;">Mã loại <span style="color: red;">*</span></p> <input style="width: 260px; height: 30px;" type="text" name="maloai" value="${l.getMaloai() }" required="required" disabled="disabled"> <br>
+									          <p style="width: 120px; display: inline-block;font-weight: bold;font-size: 20px;">Tên loại <span style="color: red;">*</span></p> <input style="width: 260px; height: 30px;" type="text" name="tenloai" value="${l.getTenloai() }" required="required" disabled="disabled"> <br>
 									          <button class=" btn-lg" name="btnxoa" value="${l.getMaloai() }" style="background-color: var(--primary-color); color: white;font-weight: bold; border: none;">Có</button>
 									          <button class="btn-lg" data-dismiss="modal" style="background-color: red; color: white;font-weight: bold; border: none;">Không</button>
 									        </form>
