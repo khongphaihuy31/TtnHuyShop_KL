@@ -44,6 +44,60 @@ public class AdminKhuyenMaiController extends HttpServlet {
 			dskhuyenmai = ggbo.getGiamGia();
 			request.setAttribute("dskhuyenmai", dskhuyenmai);
 			
+			//Thêm khuyến mãi
+			String btnthem = request.getParameter("btnthem");
+			if(btnthem != null) {
+				String tengiamgia = request.getParameter("tengiamgia");
+				String tiengiam = request.getParameter("tiengiam");
+				String dieukien = request.getParameter("dieukien");
+				String mota = request.getParameter("mota");
+				if(tengiamgia != null && tengiamgia.trim()!= ""
+				&&tiengiam != null && tiengiam.trim()!= ""
+				&&dieukien != null && dieukien.trim()!= ""
+				&&mota != null && mota.trim()!= "") {
+					long tiengiamlong = Long.parseLong(tiengiam);
+					long dieukienlong = Long.parseLong(dieukien);
+					ggbo.themKhuyenMai(tengiamgia, tiengiamlong, dieukienlong, mota);
+					response.sendRedirect("AdminKhuyenMaiController?tkmTC=1");
+					return;
+				}else {
+					response.sendRedirect("AdminKhuyenMaiController?tkmTB=1");
+					return;
+				}
+			}
+			
+			//Sửa khuyến mãi
+			String btnsua = request.getParameter("btnsua");
+			if(btnsua != null) {
+				String tengiamgia = request.getParameter("tengiamgia");
+				String tiengiam = request.getParameter("tiengiam");
+				String dieukien = request.getParameter("dieukien");
+				String mota = request.getParameter("mota");
+				if(tengiamgia != null && tengiamgia.trim()!= ""
+				&&tiengiam != null && tiengiam.trim()!= ""
+				&&dieukien != null && dieukien.trim()!= ""
+				&&mota != null && mota.trim()!= "") {
+					long tiengiamlong = Long.parseLong(tiengiam);
+					long dieukienlong = Long.parseLong(dieukien);
+					long magiamgia = Long.parseLong(btnsua);
+					ggbo.suaKhuyenMai(magiamgia, tengiamgia, tiengiamlong, dieukienlong, mota);
+					response.sendRedirect("AdminKhuyenMaiController?skmTC=1");
+					return;
+				}else {
+					response.sendRedirect("AdminKhuyenMaiController?skmTB=1");
+					return;
+				}
+			}
+			
+			//Xử lý xóa khuyến mãi
+			String btnxoa = request.getParameter("btnxoa");
+			if(btnxoa != null) {
+				long magiamgia = Long.parseLong(btnxoa);
+				ggbo.xoaKhuyenMai(magiamgia);
+				response.sendRedirect("AdminKhuyenMaiController?xkmTC=1");
+				return;
+			}
+			
 			RequestDispatcher rd = request.getRequestDispatcher("AdminKhuyenMai.jsp");
 			rd.forward(request, response);
 		} catch (Exception e) {

@@ -84,11 +84,11 @@ a:focus, a:hover {
             <a href="AdminLoaiSanPhamController" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-layer-group"></i>  Quản lý loại sản phẩm</a>
             <a href="AdminLoaiTrongDanhMucController" class="w3-bar-item w3-button w3-padding"><i class="fa-brands fa-docker"></i>  Quản lý loại trong danh mục</a>
             <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-boxes-stacked"></i>  Quản lý sản phẩm</a>
-            <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users"></i>  Quản lý khách hàng</a>
+            <a href="AdminKhachHangController" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users"></i>  Quản lý khách hàng</a>
             <a href="AdminThuongHieuController" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-shirt"></i>  Quản lý thương hiệu</a>
             <a href="AdminBannerController" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-image"></i>  Quản lý banner</a>
             <a href="AdminKhuyenMaiController" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-gift"></i>  Quản lý khuyến mãi</a>
-            <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-star"></i>  Quản lý tích điểm</a>
+            <a href="AdminTichDiemController" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-star"></i>  Quản lý tích điểm</a>
             <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-chart-pie"></i>  Thống kê doanh thu</a><br><br>
         </div>
     </nav>
@@ -147,7 +147,7 @@ a:focus, a:hover {
 		        </a>
             </div>
             <div class="w3-quarter">
-	            <a href="" style="text-decoration: none;">
+	            <a href="AdminKhachHangController" style="text-decoration: none;">
 	                <div class="w3-container w3-orange w3-text-white w3-padding-16">
 	                    <div class="w3-left"><i class="fa fa-users w3-xxxlarge"></i></div>
 	                    <div class="w3-right">

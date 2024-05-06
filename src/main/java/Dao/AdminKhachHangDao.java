@@ -12,7 +12,7 @@ public class AdminKhachHangDao {
 		KetNoiDao kn = new KetNoiDao();
 		kn.ketnoi();
 		
-		String sql = "select * from KhachHang where quyen = 0";
+		String sql = "select * from KhachHang where quyen = 0 order by makhachhang DESC";
 		
 		PreparedStatement cmd = kn.cn.prepareStatement(sql);
 		

@@ -109,9 +109,9 @@ a:focus, a:hover {
             <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-boxes-stacked"></i>  Quản lý sản phẩm</a>
             <a href="AdminKhachHangController" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users"></i>  Quản lý khách hàng</a>
             <a href="AdminThuongHieuController" class="w3-bar-item w3-button w3-padding "><i class="fa-solid fa-shirt"></i>  Quản lý thương hiệu</a>
-            <a href="AdminBannerController" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa-solid fa-image"></i>  Quản lý banner</a>
+            <a href="AdminBannerController" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-image"></i>  Quản lý banner</a>
             <a href="AdminKhuyenMaiController" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-gift"></i>  Quản lý khuyến mãi</a>
-            <a href="AdminTichDiemController" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-star"></i>  Quản lý tích điểm</a>
+            <a href="AdminTichDiemController" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa-solid fa-star"></i>  Quản lý tích điểm</a>
             <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-chart-pie"></i>  Thống kê doanh thu</a><br><br>
         </div>
     </nav>
@@ -126,44 +126,49 @@ a:focus, a:hover {
 
         <!-- Header -->
         <header class="w3-container" style="padding-top:22px;color:var(--primary-color); margin-bottom: 16px;">
-            <h2 style="display: inline-block;"><b><i class="fa-solid fa-image"></i>  Banner quảng cáo</b></h2>
+            <h2 style="display: inline-block;"><b><i class="fa-solid fa-star"></i>  Tích điểm</b></h2>
             <div style="display: inline-block; float: right;margin-top: 18px; cursor: pointer;" class="w3-quarter">
 	            <a data-toggle="modal" data-target="#modalThemLoai" style="text-decoration: none;">
 	                <div style="text-align: center; border-radius: 10px; background-color: var(--primary-color)" class="w3-container w3-text-white">
-	                    <h4><i class="fa-solid fa-circle-plus"></i> Thêm banner</h4>
+	                    <h4><i class="fa-solid fa-circle-plus"></i> Thêm</h4>
 	                </div>
 		        </a>
             </div>
         </header>
         <div class="w3-row-padding w3-margin-bottom">
 	       	<c:choose>
-				<c:when test="${dsbanner.size()!=0 }">
+				<c:when test="${dstichdiem.size()!=0 }">
 					<div style="border: 2px solid #4dcdcf; border-radius: 10px;width: 100%; padding: 10px 20px; margin-top: 20px; background-color: #fff;">
 				        
 				        <table id="example" class="table table-striped table-bordered" style="width:100%;">
 					        <thead>
 					            <tr>
 					                <th style="background-color: var(--primary-color); color: white; ">Stt</th>
-					                <th style="display:none;background-color: var(--primary-color); color: white; ">Mã banner</th>
-					                <th style="background-color: var(--primary-color); color: white; ">Ảnh banner quảng cáo</th>
+					                <th style="display:none;background-color: var(--primary-color); color: white; ">Mã tích điểm</th>
+					                <th style="background-color: var(--primary-color); color: white; ">Điều kiện</th>
+					                <th style="background-color: var(--primary-color); color: white; ">Điểm cộng</th>
 					                <th style="background-color: var(--primary-color); color: white; ">Sửa</th>
 					                <th style="background-color: var(--primary-color); color: white; ">Xóa</th>
 					            </tr>
 					        </thead>
 					        <tbody>
-					        	<c:forEach items="${dsbanner }" var="l" varStatus="index">
+					        	<c:forEach items="${dstichdiem }" var="l" varStatus="index">
 						            <tr>
 						                <td>${index.index+1 }</td>
-						                <td style="display:none;">${l.getMabanner() }</td>
-						                <td><img style="width: 60%;" alt="" src="${l.getSrcbanner() }"></td>
+						                <td style="display:none;">${l.getMatichdiem() }</td>
+						                <td>Tổng tiền lớn hơn hoặc bằng 
+						                	<fmt:setLocale value="vi_VN"/>
+											<fmt:formatNumber value="${l.getDieukien() }" type="currency"/>
+						                </td>
+						                <td>${l.getDiemcong() }</td>
 						                <td>
-						                	<a style="font-size: 18px; font-weight: 600; color: var(--primary-color); cursor: pointer;" data-toggle="modal" data-target="#modalsua${l.getMabanner() }"><i class="fa-solid fa-pen-to-square"></i></a>
+						                	<a style="font-size: 18px; font-weight: 600; color: var(--primary-color); cursor: pointer;" data-toggle="modal" data-target="#modalsua${l.getMatichdiem() }"><i class="fa-solid fa-pen-to-square"></i></a>
 						                </td>
 						                <td>
-						                	<a style="font-size: 18px; font-weight: 600; color: var(--primary-color); cursor: pointer;" data-toggle="modal" data-target="#modalxoa${l.getMabanner() }"><i class="fa-solid fa-trash"></i></a>
+						                	<a style="font-size: 18px; font-weight: 600; color: var(--primary-color); cursor: pointer;" data-toggle="modal" data-target="#modalxoa${l.getMatichdiem() }"><i class="fa-solid fa-trash"></i></a>
 						                </td>
 						            </tr>
-									<div class="modal fade" id="modalxoa${l.getMabanner() }" role="dialog">
+									<div class="modal fade" id="modalxoa${l.getMatichdiem() }" role="dialog">
 									  <div class="modal-dialog">
 									    <!-- Modal content-->
 									    <div class="modal-content">
@@ -172,12 +177,12 @@ a:focus, a:hover {
 									        <h3 class="modal-title" style="font-weight: bold;color: var(--primary-color)">Bạn có muốn xóa không?</h3>
 									      </div>
 									      <div class="modal-body text-center">
-									          <p><span style="color: red;">Lưu ý:</span> Nếu bạn đồng ý xóa, đồng nghĩa với việc banner sẽ không còn hiển thị ở trang chủ.</p>
-									        <form action="AdminBannerController" style="font-size: 20px;">
-									        <p style="width: 120px; display: inline-block;font-weight: bold; font-size: 20px;">Mã banner <span style="color: red;">*</span></p> <input style="width: 260px; height: 30px;" type="text" name="mabanner" value="${l.getMabanner() }" required="required" disabled="disabled"> <br>
-									          <p style="width: 140px; display: inline-block;font-weight: bold;font-size: 20px;">Ảnh banner <span style="color: red;">*</span></p> 
-									          <div style="width: 250px;display: inline-block; margin-bottom: 10px;"> <img style="width: 100px;" alt="" src="${l.getSrcbanner() }"> </div><br>
-									          <button class=" btn-lg" name="btnxoa" value="${l.getMabanner() }" style="background-color: var(--primary-color); color: white;font-weight: bold; border: none;">Có</button>
+									          <p><span style="color: red;">Lưu ý:</span> Nếu bạn đồng ý xóa, đồng nghĩa với việc khuyến mãi điểm cộng khi mua hàng sẽ bị xóa.</p>
+									        <form action="AdminTichDiemController" style="font-size: 20px;">
+									        <p style="width: 120px; display: inline-block;font-weight: bold; font-size: 20px;">Mã TD <span style="color: red;">*</span></p> <input style="width: 260px; height: 30px;" type="text" name="matichdiem" value="${l.getMatichdiem() }" required="required" disabled="disabled"> <br>
+									          <p style="width: 120px; display: inline-block;font-weight: bold;font-size: 20px;">Điều kiện <span style="color: red;">*</span></p> <input style="width: 260px; height: 30px;" type="text" name="dieukien" value="${l.getDieukien() }" required="required" disabled="disabled"> <br>
+									          <p style="width: 120px; display: inline-block;font-weight: bold;font-size: 20px;">Điểm cộng <span style="color: red;">*</span></p> <input style="width: 260px; height: 30px;" type="text" name="diemcong" value="${l.getDiemcong() }" required="required" disabled="disabled"> <br>
+									          <button class=" btn-lg" name="btnxoa" value="${l.getMatichdiem() }" style="background-color: var(--primary-color); color: white;font-weight: bold; border: none;">Có</button>
 									          <button class="btn-lg" data-dismiss="modal" style="background-color: red; color: white;font-weight: bold; border: none;">Không</button>
 									        </form>
 									      </div>
@@ -190,8 +195,8 @@ a:focus, a:hover {
 				    </div>
 				</c:when>
 				<c:otherwise>
-					<div class="row" style="margin-top: 10px;margin-left: 20px;">
-						<h3>Không có banner.</h3>
+					<div class="row" style="margin-top: 10px;">
+						<h3>Không có tích điểm.</h3>
 					</div>
 				</c:otherwise>
 			</c:choose>
@@ -213,44 +218,27 @@ a:focus, a:hover {
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h3 class="modal-title" style="font-weight: bold;color: var(--primary-color)">Thêm banner quảng cáo</h3>
+        <h3 class="modal-title" style="font-weight: bold;color: var(--primary-color)">Thêm tích điểm</h3>
       </div>
       <div class="modal-body text-center">
-        <form action="AdminThemSuaBannerController" enctype="multipart/form-data" method="post" style="font-size: 20px;" id="form-ThemLoai">
-          <div class="form-group" style="display: inline-block;">
-	          <h1 style="width: 130px; display: inline-block;font-weight: bold; font-size: 18px;">Banner <span style="color: red;">*</span></h1> 
-	       
-	        <img style="display: none; width: 100px; " class="previewImgDesign" src="" alt="preview-img">
-	       	<input class="form-control" id="tenLoai" style="width: 300px; height: 35px; display: inline-block; border: none; box-shadow: none;" type="file" name="srcbanner" value="${l.getTenthuonghieu() }" accept="image/*">
-	       <!-- <input class="form-control" id="tenLoai" name="srcbanner" style="display: none;" type="file" id="file-input" accept="image/*">
-            <button class="choose-img">Tải ảnh</button>-->
-            
-	        <!--<input class="form-control" id="tenLoai" style="width: 260px; height: 30px; display: inline-block;" type="text" name="tenthuonghieu">-->
+        <form action="AdminTichDiemController" style="font-size: 20px;" id="form-ThemLoai">
+          <div class="form-group" style="display: inline-block; margin-bottom: 0;">
+	          <h1 style="width: 130px; display: inline-block;font-weight: bold; font-size: 18px;">Điều kiện <span style="color: red;">*</span></h1> 
+	        <input class="form-control" id="dieukien" style="width: 260px; height: 30px; display: inline-block;" type="number" name="dieukien">
+          	<br><span style="margin-left: 135px; display: block;" class="form-message"></span>
+          </div>
+          <div class="form-group" style="display: inline-block; margin-bottom: 0;">
+	          <h1 style="width: 130px; display: inline-block;font-weight: bold; font-size: 18px;">Điểm cộng <span style="color: red;">*</span></h1> 
+	        <input class="form-control" id="diemcong" style="width: 260px; height: 30px; display: inline-block;" type="number" name="diemcong">
           	<br><span style="margin-left: 135px; display: block;" class="form-message"></span>
 	          <input name="btnthem" value="them" hidden="">
 	          <button style="font-weight: bold; background-color: var(--primary-color); border: none; color: white; margin-top: 5px;" class=" btn-lg" name="btnthem" value="them">Thêm</button>
-          </div><br>
+          </div>
         </form>
       </div>
     </div>
   </div>
 </div>
-
-	<script type="text/javascript">
-	const fileInput = document.querySelector("#tenLoai");
-	const previewImgDesign = document.querySelector('.previewImgDesign');
-	let brightness = "100", saturation = "100", inversion = "0", grayscale = "0";
-	let rotate = 0, flipHorizontal = 1, flipVertical = 1;
-
-	const loadImage = () => {
-	    let file = fileInput.files[0];
-	    if(!file) return;
-	    previewImgDesign.src = URL.createObjectURL(file);
-	    previewImgDesign.style.display = "inline-block";
-	    fileInput.style.width = "200px";
-	}
-	fileInput.addEventListener("change", loadImage);
-	</script>
 
 <script lang="javascript" type="text/javascript">
 	Validator({
@@ -258,36 +246,39 @@ a:focus, a:hover {
 		formGroupSelector : '.form-group',
 		errorElement : '.form-message',
 		rules : [
-				Validator.isRequired('#tenLoai','Bạn vui lòng chọn ảnh.'),
+				Validator.isRequired('#diemcong','Bạn vui lòng nhập trường này.'),
+				Validator.isRequired('#dieukien','Bạn vui lòng nhập trường này.'),
 				//Validator.isRequired('#password6','Bạn vui lòng nhập trường này.'),
 		],
 	});
 </script>
 
-<c:forEach items="${dsbanner }" var="l" varStatus="index">
-	<div class="modal fade" id="modalsua${l.getMabanner() }" role="dialog">
+<c:forEach items="${dstichdiem }" var="l" varStatus="index">
+	<div class="modal fade" id="modalsua${l.getMatichdiem() }" role="dialog">
 	  <div class="modal-dialog">
 	    <!-- Modal content-->
 	    <div class="modal-content">
 	      <div class="modal-header">
 	        <button type="button" class="close" data-dismiss="modal">&times;</button>
-	        <h3 class="modal-title" style="font-weight: bold;color: var(--primary-color)">Sửa banner</h3>
+	        <h3 class="modal-title" style="font-weight: bold;color: var(--primary-color)">Sửa tích điểm</h3>
 	      </div>
 	      <div class="modal-body text-center">
-	        <form action="AdminThemSuaBannerController" enctype="multipart/form-data" method="post" style="font-size: 20px;" id="form-SuaLoai${index.index+1 }">
-	        	<h1 style="width: 120px; display: inline-block;font-weight: bold; font-size: 18px;">Mã banner <span style="color: red;">*</span></h1>  
-	        		<input style="width: 360px; height: 30px;" type="text" name="mabanner" value="${l.getMabanner() }" required="required" disabled="disabled"> <br>
-		          <div class="form-group" style="display: inline-block;">
-			          <h1 style="width: 120px; display: inline-block;font-weight: bold; font-size: 18px;">Banner <span style="color: red;">*</span></h1> 
-			        
-			        <img style="display: inline-block; width: 100px;" class="previewImgDesign${index.index+1 }" src="${l.getSrcbanner() }" alt="preview-img">
-			       <input class="form-control" id="tenLoaiSua${index.index+1 }" style="width: 290px; height: 35px; display: inline-block;border: none; box-shadow: none;" type="file" name="srcbanner" accept="image/*">
-		           <!-- <button class="choose-img">Tải ảnh</button>-->
-			        
+	        <form action="AdminTichDiemController" style="font-size: 20px;" id="form-SuaLoai${index.index+1 }">
+	        	<h1 style="width: 120px; display: inline-block;font-weight: bold; font-size: 18px;">Mã TD <span style="color: red;">*</span></h1>  
+	        		<input style="width: 260px; height: 30px;" type="text" name="matichdiem" value="${l.getMatichdiem() }" required="required" disabled="disabled"> <br>
+		          
+		          <div class="form-group" style="display: inline-block; margin-bottom: 0;">
+			          <h1 style="width: 120px; display: inline-block;font-weight: bold; font-size: 18px;">Điều kiện <span style="color: red;">*</span></h1> 
+			        <input class="form-control" id="dieuKienSua${index.index+1 }" style="width: 260px; height: 30px; display: inline-block;" type="number" name="dieukien" value="${l.getDieukien() }">
 		          	<br><span style="margin-left: 125px; display: block;" class="form-message"></span>
-			          <input name="mabanner" value="${l.getMabanner() }" hidden="">
-			          <button style="font-weight: bold; background-color: var(--primary-color); border: none; color: white; margin-top: 5px;" class=" btn-lg" name="btnsua" value="${l.getMabanner() }">Sửa</button>
 		          </div><br>
+		          <div class="form-group" style="display: inline-block; margin-bottom: 0;">
+			          <h1 style="width: 120px; display: inline-block;font-weight: bold; font-size: 18px;">Điểm cộng <span style="color: red;">*</span></h1> 
+			        <input class="form-control" id="diemCongSua${index.index+1 }" style="width: 260px; height: 30px; display: inline-block;" type="number" name="diemcong" value="${l.getDiemcong() }">
+		          	<br><span style="margin-left: 125px; display: block;" class="form-message"></span>
+			          <input name="btnsua" value="${l.getMatichdiem() }" hidden="">
+			          <button style="font-weight: bold; background-color: var(--primary-color); border: none; color: white; margin-top: 5px;" class=" btn-lg" name="btnsua" value="${l.getMatichdiem() }">Sửa</button>
+		          </div>
 	        </form>
 	      </div>
 	    </div>
@@ -295,32 +286,16 @@ a:focus, a:hover {
 	</div>
 </c:forEach>
 
-	<script type="text/javascript">
-	var lengthDsLoai = ${dsbanner.size()}
-	for(let i=1; i<=lengthDsLoai; i++){
-		let brightness = "100", saturation = "100", inversion = "0", grayscale = "0";
-		let rotate = 0, flipHorizontal = 1, flipVertical = 1;
-	
-		const loadImage = () => {
-		    let file = document.querySelector("#tenLoaiSua"+i).files[0];
-		    if(!file) return;
-		    document.querySelector('.previewImgDesign'+i).src = URL.createObjectURL(file);
-		    document.querySelector('.previewImgDesign'+i).style.display = "inline-block";
-		    document.querySelector("#tenLoaiSua"+i).style.width = "200px";
-		}
-		document.querySelector("#tenLoaiSua"+i).addEventListener("change", loadImage);
-	}
-	</script>
-
 <script lang="javascript" type="text/javascript">
-	var lengthDsLoai = ${dsbanner.size()}
+	var lengthDsLoai = ${dstichdiem.size()}
 	for(let i=1; i<=lengthDsLoai; i++){
 		Validator({
 			form : '#form-SuaLoai'+i,
 			formGroupSelector : '.form-group',
 			errorElement : '.form-message',
 			rules : [
-					Validator.isRequired('#tenLoaiSua'+i,'Bạn vui lòng chọn ảnh thay thế.'),
+					Validator.isRequired('#diemCongSua'+i,'Bạn vui lòng nhập trường này.'),
+					Validator.isRequired('#dieuKienSua'+i,'Bạn vui lòng nhập trường này.'),
 					//Validator.isRequired('#password6','Bạn vui lòng nhập trường này.'),
 			],
 		});
@@ -383,7 +358,7 @@ a:focus, a:hover {
 	  </script>   
     
 	
-	<c:if test="${param.thembanner != null}">
+	<c:if test="${param.ttdTC != null}">
 		<script type="text/javascript">
 			//window.alert("Tài khoản hoặc mật khẩu chưa đúng!");
 			function showSuccessToastThemLoaiTB() {
@@ -397,23 +372,7 @@ a:focus, a:hover {
 			showSuccessToastThemLoaiTB();
 		</script>
 	</c:if>
-	<c:if test="${param.sth != null }">
-			<script type="text/javascript">
-				//window.alert("Đăng kí không thành công!");
-				//var el = document.querySelector("#dkweb");
-				//el.click();
-				function showErrorToastSuaLoaiTC() {
-					toast({
-						title : 'Thất bại',
-						message : 'Sửa không thành công.',
-						type : 'error',
-						duration : 5000
-					})
-				}
-				showErrorToastSuaLoaiTC();
-			</script>
-		</c:if>
-	<c:if test="${param.suabanner != null}">
+	<c:if test="${param.stdTC != null}">
 		<script type="text/javascript">
 			//window.alert("Tài khoản hoặc mật khẩu chưa đúng!");
 			function showSuccessToastSuaLoaiTB() {
@@ -428,7 +387,7 @@ a:focus, a:hover {
 		</script>
 	</c:if>
 	
-	<c:if test="${param.xoabanner != null}">
+	<c:if test="${param.xtdTC != null}">
 		<script type="text/javascript">
 			//window.alert("Tài khoản hoặc mật khẩu chưa đúng!");
 			function showSuccessToastXoaLoaiTC() {

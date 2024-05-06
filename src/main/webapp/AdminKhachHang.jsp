@@ -107,12 +107,12 @@ a:focus, a:hover {
             <a href="AdminLoaiSanPhamController" class="w3-bar-item w3-button w3-padding "><i class="fa-solid fa-layer-group"></i>  Quản lý loại sản phẩm</a>
             <a href="AdminLoaiTrongDanhMucController" class="w3-bar-item w3-button w3-padding"><i class="fa-brands fa-docker"></i>  Quản lý loại trong danh mục</a>
             <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-boxes-stacked"></i>  Quản lý sản phẩm</a>
-            <a href="AdminKhachHangController" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users"></i>  Quản lý khách hàng</a>
-            <a href="AdminThuongHieuController" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa-solid fa-shirt"></i>  Quản lý thương hiệu</a>
+            <a href="AdminKhachHangController" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-users"></i>  Quản lý khách hàng</a>
+            <a href="AdminThuongHieuController" class="w3-bar-item w3-button w3-padding "><i class="fa-solid fa-shirt"></i>  Quản lý thương hiệu</a>
             <a href="AdminBannerController" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-image"></i>  Quản lý banner</a>
-            <a href="AdminKhuyenMaiController" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-gift"></i>  Quản lý khuyến mãi</a>
+            <a href="AdminKhuyenMaiController" class="w3-bar-item w3-button w3-padding "><i class="fa-solid fa-gift"></i>  Quản lý khuyến mãi</a>
             <a href="AdminTichDiemController" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-star"></i>  Quản lý tích điểm</a>
-            <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-chart-pie"></i>  Thống kê doanh thu</a><br><br>
+            <a href="#" class="w3-bar-item w3-button w3-padding "><i class="fa-solid fa-chart-pie"></i>  Thống kê doanh thu</a><br><br>
         </div>
     </nav>
 
@@ -126,58 +126,61 @@ a:focus, a:hover {
 
         <!-- Header -->
         <header class="w3-container" style="padding-top:22px;color:var(--primary-color); margin-bottom: 16px;">
-            <h2 style="display: inline-block;"><b><i class="fa-solid fa-shirt"></i>  Thương hiệu</b></h2>
-            <div style="display: inline-block; float: right;margin-top: 18px; cursor: pointer;" class="w3-quarter">
-	            <a data-toggle="modal" data-target="#modalThemLoai" style="text-decoration: none;">
-	                <div style="text-align: center; border-radius: 10px; background-color: var(--primary-color)" class="w3-container w3-text-white">
-	                    <h4><i class="fa-solid fa-circle-plus"></i> Thêm thương hiệu</h4>
-	                </div>
-		        </a>
-            </div>
+            <h2 style="display: inline-block;"><b><i class="fa fa-users"></i>  Khách hàng</b></h2>
         </header>
         <div class="w3-row-padding w3-margin-bottom">
 	       	<c:choose>
-				<c:when test="${dsthuonghieu.size()!=0 }">
+				<c:when test="${dskhachhang.size()!=0 }">
 					<div style="border: 2px solid #4dcdcf; border-radius: 10px;width: 100%; padding: 10px 20px; margin-top: 20px; background-color: #fff;">
 				        
 				        <table id="example" class="table table-striped table-bordered" style="width:100%;">
 					        <thead>
 					            <tr>
 					                <th style="background-color: var(--primary-color); color: white; ">Stt</th>
-					                <th style="display:none;background-color: var(--primary-color); color: white; ">Mã thương hiệu</th>
-					                <th style="background-color: var(--primary-color); color: white; ">Tên thương hiệu</th>
-					                <th style="background-color: var(--primary-color); color: white; ">Sửa</th>
-					                <th style="background-color: var(--primary-color); color: white; ">Xóa</th>
+					                <th style="display:none;background-color: var(--primary-color); color: white; ">Mã khách hàng</th>
+					                <th style="background-color: var(--primary-color); color: white; width: 150px">Avatar</th>
+					                <th style="background-color: var(--primary-color); color: white; ">Tên khách hàng</th>
+					                <th style="background-color: var(--primary-color); color: white; ">Số điện thoại</th>
+					                <th style="background-color: var(--primary-color); color: white; ">Email</th>
+					                <th style="background-color: var(--primary-color); color: white; ">Xem chi tiết</th>
 					            </tr>
 					        </thead>
 					        <tbody>
-					        	<c:forEach items="${dsthuonghieu }" var="l" varStatus="index">
+					        	<c:forEach items="${dskhachhang }" var="l" varStatus="index">
 						            <tr>
 						                <td>${index.index+1 }</td>
-						                <td style="display:none;">${l.getMathuonghieu() }</td>
-						                <td>${l.getTenthuonghieu() }</td>
+						                <td style="display:none;">${l.getMakhachhang() }</td>
+						                <c:if test="${l.getAvatar() == null }">
+							                <td><img style="width: 50%;" alt="" src="assets\img\NoAvatar.jpg"></td>
+						                </c:if>
+						                <c:if test="${l.getAvatar() != null }">
+							                <td><img style="width: 50%;" alt="" src="${l.getAvatar() }"></td>
+						                </c:if>
+						                <td>${l.getHoten()}</td>
+						                <td>${l.getSodienthoai()}</td>
+						                <td>${l.getEmail() }</td>
 						                <td>
-						                	<a style="font-size: 18px; font-weight: 600; color: var(--primary-color);" data-toggle="modal" data-target="#modalsua${l.getMathuonghieu() }"><i class="fa-solid fa-pen-to-square"></i></a>
-						                </td>
-						                <td>
-						                	<a style="font-size: 18px; font-weight: 600; color: var(--primary-color);" data-toggle="modal" data-target="#modalxoa${l.getMathuonghieu() }"><i class="fa-solid fa-trash"></i></a>
+						                	<a style="font-size: 18px; font-weight: 600; color: var(--primary-color); cursor: pointer;" data-toggle="modal" data-target="#modalxoa${l.getMakhachhang() }"><i class="fa-solid fa-book"></i></a>
 						                </td>
 						            </tr>
-									<div class="modal fade" id="modalxoa${l.getMathuonghieu() }" role="dialog">
+									<div class="modal fade" id="modalxoa${l.getMakhachhang() }" role="dialog">
 									  <div class="modal-dialog">
 									    <!-- Modal content-->
 									    <div class="modal-content">
 									      <div class="modal-header">
 									        <button type="button" class="close" data-dismiss="modal">&times;</button>
-									        <h3 class="modal-title" style="font-weight: bold;color: var(--primary-color)">Bạn có muốn xóa không?</h3>
+									        <h3 class="modal-title" style="font-weight: bold;color: var(--primary-color)">Thông tin chi tiết khách hàng</h3>
 									      </div>
 									      <div class="modal-body text-center">
-									          <p><span style="color: red;">Lưu ý:</span> Nếu bạn đồng ý xóa, đồng nghĩa với việc các sản phẩm thuộc thương hiệu này cũng sẽ bị xóa.</p>
-									        <form action="AdminThuongHieuController" style="font-size: 20px;">
-									        <p style="width: 120px; display: inline-block;font-weight: bold; font-size: 20px;">Mã TH <span style="color: red;">*</span></p> <input style="width: 260px; height: 30px;" type="text" name="mathuonghieu" value="${l.getMathuonghieu() }" required="required" disabled="disabled"> <br>
-									          <p style="width: 120px; display: inline-block;font-weight: bold;font-size: 20px;">Tên TH <span style="color: red;">*</span></p> <input style="width: 260px; height: 30px;" type="text" name="tenthuonghieu" value="${l.getTenthuonghieu() }" required="required" disabled="disabled"> <br>
-									          <button class=" btn-lg" name="btnxoa" value="${l.getMathuonghieu() }" style="background-color: var(--primary-color); color: white;font-weight: bold; border: none;">Có</button>
-									          <button class="btn-lg" data-dismiss="modal" style="background-color: red; color: white;font-weight: bold; border: none;">Không</button>
+									        <form action="AdminKhuyenMaiController" style="font-size: 20px;">
+									        <p style="width: 120px; display: inline-block;font-weight: bold; font-size: 20px;">Mã KH <span style="color: red;">*</span></p> <input style="width: 260px; height: 30px;" type="text" name="magiamgia" value="${l.getMakhachhang() }" required="required" disabled="disabled"> <br>
+									          <p style="width: 120px; display: inline-block;font-weight: bold;font-size: 20px;">Họ tên <span style="color: red;">*</span></p> <input style="width: 260px; height: 30px;" type="text" name="tengiamgia" value="${l.getHoten() }" required="required" disabled="disabled"> <br>
+									          <p style="width: 120px; display: inline-block;font-weight: bold;font-size: 20px;">Sđt <span style="color: red;">*</span></p> <input style="width: 260px; height: 30px;" type="text" name="tengiamgia" value="${l.getSodienthoai() }" required="required" disabled="disabled"> <br>
+									          <p style="width: 120px; display: inline-block;font-weight: bold;font-size: 20px;">Email <span style="color: red;">*</span></p> <input style="width: 260px; height: 30px;" type="text" name="tengiamgia" value="${l.getEmail() }" required="required" disabled="disabled"> <br>
+									          <p style="width: 120px; display: inline-block;font-weight: bold;font-size: 20px;">Địa chỉ <span style="color: red;">*</span></p> <input style="width: 260px; height: 30px;" type="text" name="tengiamgia" value="${l.getDiachi() }" required="required" disabled="disabled"> <br>
+									          <p style="width: 120px; display: inline-block;font-weight: bold;font-size: 20px;">Số điểm <span style="color: red;">*</span></p> <input style="width: 260px; height: 30px;" type="text" name="tengiamgia" value="${l.getTichdiem() }" required="required" disabled="disabled"> <br>
+									          
+									          <button class="btn-lg" data-dismiss="modal" style="background-color: red; color: white;font-weight: bold; border: none;">Đóng</button>
 									        </form>
 									      </div>
 									    </div>
@@ -190,7 +193,7 @@ a:focus, a:hover {
 				</c:when>
 				<c:otherwise>
 					<div class="row" style="margin-top: 10px;">
-						<h3>Không có thương hiệu.</h3>
+						<h3>Không có khách hàng.</h3>
 					</div>
 				</c:otherwise>
 			</c:choose>
@@ -205,83 +208,6 @@ a:focus, a:hover {
         <!-- End page content -->
     </div>
     
-    <!-- Modal thêm loại sản phẩm -->
-<div class="modal fade" id="modalThemLoai" role="dialog">
-  <div class="modal-dialog">
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h3 class="modal-title" style="font-weight: bold;color: var(--primary-color)">Thêm thương hiệu</h3>
-      </div>
-      <div class="modal-body text-center">
-        <form action="AdminThuongHieuController" style="font-size: 20px;" id="form-ThemLoai">
-          <div class="form-group" style="display: inline-block;">
-	          <h1 style="width: 130px; display: inline-block;font-weight: bold; font-size: 18px;">Thương hiệu <span style="color: red;">*</span></h1> 
-	        <input class="form-control" id="tenLoai" style="width: 260px; height: 30px; display: inline-block;" type="text" name="tenthuonghieu">
-          	<br><span style="margin-left: 135px; display: block;" class="form-message"></span>
-	          <input name="btnthem" value="them" hidden="">
-	          <button style="font-weight: bold; background-color: var(--primary-color); border: none; color: white; margin-top: 5px;" class=" btn-lg" name="btnthem" value="them">Thêm</button>
-          </div><br>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-
-<script lang="javascript" type="text/javascript">
-	Validator({
-		form : '#form-ThemLoai',
-		formGroupSelector : '.form-group',
-		errorElement : '.form-message',
-		rules : [
-				Validator.isRequired('#tenLoai','Bạn vui lòng nhập trường này.'),
-				//Validator.isRequired('#password6','Bạn vui lòng nhập trường này.'),
-		],
-	});
-</script>
-
-<c:forEach items="${dsthuonghieu }" var="l" varStatus="index">
-	<div class="modal fade" id="modalsua${l.getMathuonghieu() }" role="dialog">
-	  <div class="modal-dialog">
-	    <!-- Modal content-->
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal">&times;</button>
-	        <h3 class="modal-title" style="font-weight: bold;color: var(--primary-color)">Sửa thương hiệu</h3>
-	      </div>
-	      <div class="modal-body text-center">
-	        <form action="AdminThuongHieuController" style="font-size: 20px;" id="form-SuaLoai${index.index+1 }">
-	        	<h1 style="width: 120px; display: inline-block;font-weight: bold; font-size: 18px;">Mã TH <span style="color: red;">*</span></h1>  
-	        		<input style="width: 260px; height: 30px;" type="text" name="mathuonghieu" value="${l.getMathuonghieu() }" required="required" disabled="disabled"> <br>
-		          <div class="form-group" style="display: inline-block;">
-			          <h1 style="width: 120px; display: inline-block;font-weight: bold; font-size: 18px;">Tên TH <span style="color: red;">*</span></h1> 
-			        <input class="form-control" id="tenLoaiSua${index.index+1 }" style="width: 260px; height: 30px; display: inline-block;" type="text" name="tenthuonghieu" value="${l.getTenthuonghieu() }">
-		          	<br><span style="margin-left: 125px; display: block;" class="form-message"></span>
-			          <input name="btnsua" value="${l.getMathuonghieu() }" hidden="">
-			          <button style="font-weight: bold; background-color: var(--primary-color); border: none; color: white; margin-top: 5px;" class=" btn-lg" name="btnsua" value="${l.getMathuonghieu() }">Sửa</button>
-		          </div><br>
-	        </form>
-	      </div>
-	    </div>
-	  </div>
-	</div>
-</c:forEach>
-
-<script lang="javascript" type="text/javascript">
-	var lengthDsLoai = ${dsthuonghieu.size()}
-	for(let i=1; i<=lengthDsLoai; i++){
-		Validator({
-			form : '#form-SuaLoai'+i,
-			formGroupSelector : '.form-group',
-			errorElement : '.form-message',
-			rules : [
-					Validator.isRequired('#tenLoaiSua'+i,'Bạn vui lòng nhập trường này.'),
-					//Validator.isRequired('#password6','Bạn vui lòng nhập trường này.'),
-			],
-		});
-	}
-</script>
 
     <script>
         // Get the Sidebar
@@ -338,81 +264,5 @@ a:focus, a:hover {
 	   } );
 	  </script>   
     
-	
-	<c:if test="${param.tth != null }">
-			<script type="text/javascript">
-				//window.alert("Đăng kí không thành công!");
-				//var el = document.querySelector("#dkweb");
-				//el.click();
-				function showErrorToastThemLoaiTC() {
-					toast({
-						title : 'Thất bại',
-						message : 'Thêm không thành công.',
-						type : 'error',
-						duration : 5000
-					})
-				}
-				showErrorToastThemLoaiTC();
-			</script>
-		</c:if>
-	<c:if test="${param.tthTC != null}">
-		<script type="text/javascript">
-			//window.alert("Tài khoản hoặc mật khẩu chưa đúng!");
-			function showSuccessToastThemLoaiTB() {
-				toast({
-			        title :'Thành công',
-			        message : 'Thêm thành công.',
-			        type  : 'success',
-			        duration : 5000
-			    })
-			}
-			showSuccessToastThemLoaiTB();
-		</script>
-	</c:if>
-	<c:if test="${param.sth != null }">
-			<script type="text/javascript">
-				//window.alert("Đăng kí không thành công!");
-				//var el = document.querySelector("#dkweb");
-				//el.click();
-				function showErrorToastSuaLoaiTC() {
-					toast({
-						title : 'Thất bại',
-						message : 'Sửa không thành công.',
-						type : 'error',
-						duration : 5000
-					})
-				}
-				showErrorToastSuaLoaiTC();
-			</script>
-		</c:if>
-	<c:if test="${param.sthTC != null}">
-		<script type="text/javascript">
-			//window.alert("Tài khoản hoặc mật khẩu chưa đúng!");
-			function showSuccessToastSuaLoaiTB() {
-				toast({
-			        title :'Thành công',
-			        message : 'Sửa thành công.',
-			        type  : 'success',
-			        duration : 5000
-			    })
-			}
-			showSuccessToastSuaLoaiTB();
-		</script>
-	</c:if>
-	
-	<c:if test="${param.xthTC != null}">
-		<script type="text/javascript">
-			//window.alert("Tài khoản hoặc mật khẩu chưa đúng!");
-			function showSuccessToastXoaLoaiTC() {
-				toast({
-			        title :'Thành công',
-			        message : 'Xóa loại thành công.',
-			        type  : 'success',
-			        duration : 5000
-			    })
-			}
-			showSuccessToastXoaLoaiTC();
-		</script>
-	</c:if>
 </body>
 </html>

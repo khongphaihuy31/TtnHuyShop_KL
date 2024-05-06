@@ -107,11 +107,11 @@ a:focus, a:hover {
             <a href="AdminLoaiSanPhamController" class="w3-bar-item w3-button w3-padding "><i class="fa-solid fa-layer-group"></i>  Quản lý loại sản phẩm</a>
             <a href="AdminLoaiTrongDanhMucController" class="w3-bar-item w3-button w3-padding"><i class="fa-brands fa-docker"></i>  Quản lý loại trong danh mục</a>
             <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-boxes-stacked"></i>  Quản lý sản phẩm</a>
-            <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users"></i>  Quản lý khách hàng</a>
+            <a href="AdminKhachHangController" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users"></i>  Quản lý khách hàng</a>
             <a href="AdminThuongHieuController" class="w3-bar-item w3-button w3-padding "><i class="fa-solid fa-shirt"></i>  Quản lý thương hiệu</a>
             <a href="AdminBannerController" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-image"></i>  Quản lý banner</a>
             <a href="AdminKhuyenMaiController" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa-solid fa-gift"></i>  Quản lý khuyến mãi</a>
-            <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-star"></i>  Quản lý tích điểm</a>
+            <a href="AdminTichDiemController" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-star"></i>  Quản lý tích điểm</a>
             <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-chart-pie"></i>  Thống kê doanh thu</a><br><br>
         </div>
     </nav>
@@ -185,7 +185,7 @@ a:focus, a:hover {
 									      </div>
 									      <div class="modal-body text-center">
 									          <p><span style="color: red;">Lưu ý:</span> Nếu bạn đồng ý xóa, đồng nghĩa với việc khuyến mãi này sẽ bị xóa.</p>
-									        <form action="AdminThuongHieuController" style="font-size: 20px;">
+									        <form action="AdminKhuyenMaiController" style="font-size: 20px;">
 									        <p style="width: 120px; display: inline-block;font-weight: bold; font-size: 20px;">Mã KM <span style="color: red;">*</span></p> <input style="width: 260px; height: 30px;" type="text" name="magiamgia" value="${l.getMagiamgia() }" required="required" disabled="disabled"> <br>
 									          <p style="width: 120px; display: inline-block;font-weight: bold;font-size: 20px;">Tên KM <span style="color: red;">*</span></p> <input style="width: 260px; height: 30px;" type="text" name="tengiamgia" value="${l.getTengiamgia() }" required="required" disabled="disabled"> <br>
 									          <p style="width: 120px; display: inline-block;font-weight: bold;font-size: 20px;">Tiền giảm <span style="color: red;">*</span></p> <input style="width: 260px; height: 30px;" type="text" name="tengiamgia" value="${l.getTiengiam() }" required="required" disabled="disabled"> <br>
@@ -230,7 +230,7 @@ a:focus, a:hover {
         <h3 class="modal-title" style="font-weight: bold;color: var(--primary-color)">Thêm khuyến mãi</h3>
       </div>
       <div class="modal-body text-center">
-        <form action="AdminThuongHieuController" style="font-size: 20px;" id="form-ThemLoai">
+        <form action="AdminKhuyenMaiController" style="font-size: 20px;" id="form-ThemLoai">
           <div class="form-group" style="display: inline-block; margin-bottom: 0;">
 	          <h1 style="width: 130px; display: inline-block;font-weight: bold; font-size: 18px;">Tên KM <span style="color: red;">*</span></h1> 
 	        <input class="form-control" id="tengiamgia" style="width: 260px; height: 30px; display: inline-block;" type="text" name="tengiamgia">
@@ -238,12 +238,12 @@ a:focus, a:hover {
           </div>
           <div class="form-group" style="display: inline-block; margin-bottom: 0;">
 	          <h1 style="width: 130px; display: inline-block;font-weight: bold; font-size: 18px;">Tiền giảm <span style="color: red;">*</span></h1> 
-	        <input class="form-control" id="tiengiam" style="width: 260px; height: 30px; display: inline-block;" type="text" name="tiengiam">
+	        <input class="form-control" id="tiengiam" style="width: 260px; height: 30px; display: inline-block;" type="number" name="tiengiam">
           	<br><span style="margin-left: 135px; display: block;" class="form-message"></span>
           </div>
           <div class="form-group" style="display: inline-block; margin-bottom: 0;">
 	          <h1 style="width: 130px; display: inline-block;font-weight: bold; font-size: 18px;">Điều kiện <span style="color: red;">*</span></h1> 
-	        <input class="form-control" id="dieukien" style="width: 260px; height: 30px; display: inline-block;" type="text" name="dieukien">
+	        <input class="form-control" id="dieukien" style="width: 260px; height: 30px; display: inline-block;" type="number" name="dieukien">
           	<br><span style="margin-left: 135px; display: block;" class="form-message"></span>
           </div>
           <div class="form-group" style="display: inline-block; margin-bottom: 0;">
@@ -284,7 +284,7 @@ a:focus, a:hover {
 	        <h3 class="modal-title" style="font-weight: bold;color: var(--primary-color)">Sửa khuyến mãi</h3>
 	      </div>
 	      <div class="modal-body text-center">
-	        <form action="AdminThuongHieuController" style="font-size: 20px;" id="form-SuaLoai${index.index+1 }">
+	        <form action="AdminKhuyenMaiController" style="font-size: 20px;" id="form-SuaLoai${index.index+1 }">
 	        	<h1 style="width: 120px; display: inline-block;font-weight: bold; font-size: 18px;">Mã KM <span style="color: red;">*</span></h1>  
 	        		<input style="width: 260px; height: 30px;" type="text" name="mathuonghieu" value="${l.getMagiamgia() }" required="required" disabled="disabled"> <br>
 		          <div class="form-group" style="display: inline-block; margin-bottom: 0;">
@@ -294,12 +294,12 @@ a:focus, a:hover {
 		          </div><br>
 		          <div class="form-group" style="display: inline-block; margin-bottom: 0;">
 			          <h1 style="width: 120px; display: inline-block;font-weight: bold; font-size: 18px;">Tiền giảm <span style="color: red;">*</span></h1> 
-			        <input class="form-control" id="tienGiamSua${index.index+1 }" style="width: 260px; height: 30px; display: inline-block;" type="text" name="tiengiam" value="${l.getTiengiam() }">
+			        <input class="form-control" id="tienGiamSua${index.index+1 }" style="width: 260px; height: 30px; display: inline-block;" type="number" name="tiengiam" value="${l.getTiengiam() }">
 		          	<br><span style="margin-left: 125px; display: block;" class="form-message"></span>
 		          </div><br>
 		          <div class="form-group" style="display: inline-block; margin-bottom: 0;">
 			          <h1 style="width: 120px; display: inline-block;font-weight: bold; font-size: 18px;">Điều kiện <span style="color: red;">*</span></h1> 
-			        <input class="form-control" id="dieuKienSua${index.index+1 }" style="width: 260px; height: 30px; display: inline-block;" type="text" name="dieukien" value="${l.getDieukien() }">
+			        <input class="form-control" id="dieuKienSua${index.index+1 }" style="width: 260px; height: 30px; display: inline-block;" type="number" name="dieukien" value="${l.getDieukien() }">
 		          	<br><span style="margin-left: 125px; display: block;" class="form-message"></span>
 		          </div><br>
 		          <div class="form-group" style="display: inline-block; margin-bottom: 0;">
@@ -390,7 +390,7 @@ a:focus, a:hover {
 	  </script>   
     
 	
-	<c:if test="${param.tth != null }">
+	<c:if test="${param.tkmTB != null }">
 			<script type="text/javascript">
 				//window.alert("Đăng kí không thành công!");
 				//var el = document.querySelector("#dkweb");
@@ -406,7 +406,7 @@ a:focus, a:hover {
 				showErrorToastThemLoaiTC();
 			</script>
 		</c:if>
-	<c:if test="${param.tthTC != null}">
+	<c:if test="${param.tkmTC != null}">
 		<script type="text/javascript">
 			//window.alert("Tài khoản hoặc mật khẩu chưa đúng!");
 			function showSuccessToastThemLoaiTB() {
@@ -420,7 +420,7 @@ a:focus, a:hover {
 			showSuccessToastThemLoaiTB();
 		</script>
 	</c:if>
-	<c:if test="${param.sth != null }">
+	<c:if test="${param.skmTB != null }">
 			<script type="text/javascript">
 				//window.alert("Đăng kí không thành công!");
 				//var el = document.querySelector("#dkweb");
@@ -436,7 +436,7 @@ a:focus, a:hover {
 				showErrorToastSuaLoaiTC();
 			</script>
 		</c:if>
-	<c:if test="${param.sthTC != null}">
+	<c:if test="${param.skmTC != null}">
 		<script type="text/javascript">
 			//window.alert("Tài khoản hoặc mật khẩu chưa đúng!");
 			function showSuccessToastSuaLoaiTB() {
@@ -451,13 +451,13 @@ a:focus, a:hover {
 		</script>
 	</c:if>
 	
-	<c:if test="${param.xthTC != null}">
+	<c:if test="${param.xkmTC != null}">
 		<script type="text/javascript">
 			//window.alert("Tài khoản hoặc mật khẩu chưa đúng!");
 			function showSuccessToastXoaLoaiTC() {
 				toast({
 			        title :'Thành công',
-			        message : 'Xóa loại thành công.',
+			        message : 'Xóa thành công.',
 			        type  : 'success',
 			        duration : 5000
 			    })
