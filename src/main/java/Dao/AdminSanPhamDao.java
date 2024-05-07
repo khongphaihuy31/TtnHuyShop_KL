@@ -13,7 +13,7 @@ public class AdminSanPhamDao {
 		KetNoiDao kn = new KetNoiDao();
 		kn.ketnoi();
 		
-		String sql = "select * from SanPham";
+		String sql = "select * from SanPham order by masanpham DESC";
 		
 		PreparedStatement cmd = kn.cn.prepareStatement(sql);
 		ResultSet rs = cmd.executeQuery();
@@ -21,17 +21,17 @@ public class AdminSanPhamDao {
 			long masanpham = rs.getLong("masanpham");
 			String tensanpham = rs.getString("tensanpham");
 			String anh = rs.getString("anh");
-			long giacu = rs.getLong("giacu");
-			long giamoi = rs.getLong("giamoi");
+			long giaban = rs.getLong("giaban");
+			long giagiam = rs.getLong("giagiam");
 			long soluongdaban = rs.getLong("soluongdaban");
 			boolean sanphamhot = rs.getBoolean("sanphamhot");
 			String motasanpham = rs.getString("motasanpham");
-			String chitietsanpham = rs.getString("chitietsanpham");
 			long maloai = rs.getLong("maloai");
 			long mathuonghieu = rs.getLong("mathuonghieu");
 			long madanhmuc = rs.getLong("madanhmuc");
+			String anhchonsize = rs.getString("anhchonsize");
 			
-//			dsSanPham.add(new SanPhamBean(masanpham, tensanpham, anh, giacu, giamoi, soluongdaban, sanphamhot, motasanpham, chitietsanpham, maloai, mathuonghieu, madanhmuc));;
+			dsSanPham.add(new SanPhamBean(masanpham, tensanpham, anh, giaban, giagiam, soluongdaban, sanphamhot, motasanpham, maloai, mathuonghieu, madanhmuc, anhchonsize));
 		}
 		return dsSanPham;
 	}
@@ -44,6 +44,23 @@ public class AdminSanPhamDao {
 		PreparedStatement cmd = kn.cn.prepareStatement(sql);
 		
 		cmd.setLong(1, masanpham);
+		
+		int kq = cmd.executeUpdate();
+		cmd.close();
+		kn.cn.close();
+		return kq;
+	}
+	
+	//Sửa sản phẩm hot
+	public int capNhatSpHot(long masanpham ,long sanphamhot)throws Exception{
+		KetNoiDao kn= new KetNoiDao();
+		kn.ketnoi();
+		
+		String sql = "update SanPham set sanphamhot = ? where masanpham=?";
+		PreparedStatement cmd = kn.cn.prepareStatement(sql);
+		
+		cmd.setLong(1, sanphamhot);
+		cmd.setLong(2, masanpham);
 		
 		int kq = cmd.executeUpdate();
 		cmd.close();

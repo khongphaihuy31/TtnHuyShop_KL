@@ -106,11 +106,11 @@ a:focus, a:hover {
             <a href="AdminXacNhanController" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-truck-ramp-box"></i>  Xác nhận đơn hàng</a>
             <a href="AdminLoaiSanPhamController" class="w3-bar-item w3-button w3-padding "><i class="fa-solid fa-layer-group"></i>  Quản lý loại sản phẩm</a>
             <a href="AdminLoaiTrongDanhMucController" class="w3-bar-item w3-button w3-padding"><i class="fa-brands fa-docker"></i>  Quản lý loại trong danh mục</a>
-            <a href="AdminSanPhamController" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-boxes-stacked"></i>  Quản lý sản phẩm</a>
+            <a href="AdminSanPhamController" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa-solid fa-boxes-stacked"></i>  Quản lý sản phẩm</a>
             <a href="AdminKhachHangController" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users"></i>  Quản lý khách hàng</a>
             <a href="AdminThuongHieuController" class="w3-bar-item w3-button w3-padding "><i class="fa-solid fa-shirt"></i>  Quản lý thương hiệu</a>
-            <a href="AdminBannerController" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa-solid fa-image"></i>  Quản lý banner</a>
-            <a href="AdminKhuyenMaiController" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-gift"></i>  Quản lý khuyến mãi</a>
+            <a href="AdminBannerController" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-image"></i>  Quản lý banner</a>
+            <a href="AdminKhuyenMaiController" class="w3-bar-item w3-button w3-padding "><i class="fa-solid fa-gift"></i>  Quản lý khuyến mãi</a>
             <a href="AdminTichDiemController" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-star"></i>  Quản lý tích điểm</a>
             <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-chart-pie"></i>  Thống kê doanh thu</a><br><br>
         </div>
@@ -126,44 +126,80 @@ a:focus, a:hover {
 
         <!-- Header -->
         <header class="w3-container" style="padding-top:22px;color:var(--primary-color); margin-bottom: 16px;">
-            <h2 style="display: inline-block;"><b><i class="fa-solid fa-image"></i>  Banner quảng cáo</b></h2>
+            <h2 style="display: inline-block;"><b><i class="fa-solid fa-boxes-stacked"></i>  Sản phẩm</b></h2>
             <div style="display: inline-block; float: right;margin-top: 18px; cursor: pointer;" class="w3-quarter">
 	            <a data-toggle="modal" data-target="#modalThemLoai" style="text-decoration: none;">
 	                <div style="text-align: center; border-radius: 10px; background-color: var(--primary-color)" class="w3-container w3-text-white">
-	                    <h4><i class="fa-solid fa-circle-plus"></i> Thêm banner</h4>
+	                    <h4><i class="fa-solid fa-circle-plus"></i> Thêm sản phẩm</h4>
 	                </div>
 		        </a>
             </div>
         </header>
         <div class="w3-row-padding w3-margin-bottom">
 	       	<c:choose>
-				<c:when test="${dsbanner.size()!=0 }">
+				<c:when test="${dssanpham.size()!=0 }">
 					<div style="border: 2px solid #4dcdcf; border-radius: 10px;width: 100%; padding: 10px 20px; margin-top: 20px; background-color: #fff;">
 				        
 				        <table id="example" class="table table-striped table-bordered" style="width:100%;">
 					        <thead>
 					            <tr>
 					                <th style="background-color: var(--primary-color); color: white; ">Stt</th>
-					                <th style="display:none;background-color: var(--primary-color); color: white; ">Mã banner</th>
-					                <th style="background-color: var(--primary-color); color: white; ">Ảnh banner quảng cáo</th>
+					                <th style="background-color: var(--primary-color); color: white; ">Mã</th>
+					                <th style="background-color: var(--primary-color); color: white; width: 10%;">Ảnh</th>
+					                <th style="background-color: var(--primary-color); color: white; width: 30%;">Tên sản phẩm</th>
+					                <th style="background-color: var(--primary-color); color: white; ">Giá</th>
+					                <th style="background-color: var(--primary-color); color: white; ">Tồn kho</th>
+					                <th style="background-color: var(--primary-color); color: white; ">SP hot</th>
+					                <th style="background-color: var(--primary-color); color: white; ">Nhập hàng</th>
 					                <th style="background-color: var(--primary-color); color: white; ">Sửa</th>
 					                <th style="background-color: var(--primary-color); color: white; ">Xóa</th>
 					            </tr>
 					        </thead>
 					        <tbody>
-					        	<c:forEach items="${dsbanner }" var="l" varStatus="index">
+					        	<c:forEach items="${dssanpham }" var="l" varStatus="index">
 						            <tr>
 						                <td>${index.index+1 }</td>
-						                <td style="display:none;">${l.getMabanner() }</td>
-						                <td><img style="width: 60%;" alt="" src="${l.getSrcbanner() }"></td>
+						                <td>${l.getMasanpham() }</td>
+						                <td><img style="width: 50%;" alt="" src="${l.getAnh() }"></td>
+						                <td>${l.getTensanpham() }</td>
+						                <c:choose>
+						                	<c:when test="${l.getGiagiam()==0 }">
+								                <td>
+								                	<fmt:setLocale value="vi_VN"/>
+													<fmt:formatNumber value="${l.getGiaban() }" type="currency"/>
+								                </td>
+						                	</c:when>
+						                	<c:otherwise>
+								                <td>
+								                	<fmt:setLocale value="vi_VN"/>
+													<fmt:formatNumber value="${l.getGiagiam() }" type="currency"/>
+								                </td>
+						                	</c:otherwise>
+						                </c:choose>
+						                <td>Số hàng trong kho</td>
+						                <c:choose>
+						                	<c:when test="${l.isSanphamhot() == true }">
+							                	<td>
+								                	<a href="AdminSanPhamController?suaSpHot=${l.getMasanpham() }&suathanh=0" style="font-size: 18px; font-weight: 600; color: var(--primary-color); cursor: pointer;"><i class="fa-regular fa-square-check"></i></a>
+								                </td>
+						                	</c:when>
+						                	<c:otherwise>
+						                		<td>
+								                	<a href="AdminSanPhamController?suaSpHot=${l.getMasanpham() }&suathanh=1" style="font-size: 18px; font-weight: 600; color: var(--primary-color); cursor: pointer;" ><i class="fa-regular fa-square"></i></a>
+								                </td>
+						                	</c:otherwise>
+						                </c:choose>
 						                <td>
-						                	<a style="font-size: 18px; font-weight: 600; color: var(--primary-color); cursor: pointer;" data-toggle="modal" data-target="#modalsua${l.getMabanner() }"><i class="fa-solid fa-pen-to-square"></i></a>
+						                	<a style="font-size: 18px; font-weight: 600; color: var(--primary-color); cursor: pointer;" data-toggle="modal" data-target="#modalnhaphang${l.getMasanpham() }"><i class="fa-solid fa-truck-fast"></i></a>
 						                </td>
 						                <td>
-						                	<a style="font-size: 18px; font-weight: 600; color: var(--primary-color); cursor: pointer;" data-toggle="modal" data-target="#modalxoa${l.getMabanner() }"><i class="fa-solid fa-trash"></i></a>
+						                	<a style="font-size: 18px; font-weight: 600; color: var(--primary-color); cursor: pointer;" data-toggle="modal" data-target="#modalsua${l.getMasanpham() }"><i class="fa-solid fa-pen-to-square"></i></a>
+						                </td>
+						                <td>
+						                	<a style="font-size: 18px; font-weight: 600; color: var(--primary-color); cursor: pointer;" data-toggle="modal" data-target="#modalxoa${l.getMasanpham() }"><i class="fa-solid fa-trash"></i></a>
 						                </td>
 						            </tr>
-									<div class="modal fade" id="modalxoa${l.getMabanner() }" role="dialog">
+									<div class="modal fade" id="modalxoa${l.getMasanpham() }" role="dialog">
 									  <div class="modal-dialog">
 									    <!-- Modal content-->
 									    <div class="modal-content">
@@ -172,12 +208,11 @@ a:focus, a:hover {
 									        <h3 class="modal-title" style="font-weight: bold;color: var(--primary-color)">Bạn có muốn xóa không?</h3>
 									      </div>
 									      <div class="modal-body text-center">
-									          <p><span style="color: red;">Lưu ý:</span> Nếu bạn đồng ý xóa, đồng nghĩa với việc banner sẽ không còn hiển thị ở trang chủ.</p>
-									        <form action="AdminBannerController" style="font-size: 20px;">
-									        <p style="width: 120px; display: inline-block;font-weight: bold; font-size: 20px;">Mã banner <span style="color: red;">*</span></p> <input style="width: 260px; height: 30px;" type="text" name="mabanner" value="${l.getMabanner() }" required="required" disabled="disabled"> <br>
-									          <p style="width: 140px; display: inline-block;font-weight: bold;font-size: 20px;">Ảnh banner <span style="color: red;">*</span></p> 
-									          <div style="width: 250px;display: inline-block; margin-bottom: 10px;"> <img style="width: 100px;" alt="" src="${l.getSrcbanner() }"> </div><br>
-									          <button class=" btn-lg" name="btnxoa" value="${l.getMabanner() }" style="background-color: var(--primary-color); color: white;font-weight: bold; border: none;">Có</button>
+									          <p><span style="color: red;">Lưu ý:</span> Nếu bạn đồng ý xóa, đồng nghĩa với việc sản phẩm này sẽ bị xóa.</p>
+									        <form action="AdminSanPhamController" style="font-size: 20px;">
+									        <p style="width: 120px; display: inline-block;font-weight: bold; font-size: 20px;">Mã SP <span style="color: red;">*</span></p> <input style="width: 260px; height: 30px;" type="text" name="masanpham" value="${l.getMasanpham() }" required="required" disabled="disabled"> <br>
+									          <p style="width: 120px; display: inline-block;font-weight: bold;font-size: 20px;">Tên SP <span style="color: red;">*</span></p> <input style="width: 260px; height: 30px;" type="text" name="tensanpham" value="${l.getTensanpham() }" required="required" disabled="disabled"> <br>
+									          <button class=" btn-lg" name="btnxoa" value="${l.getMasanpham() }" style="background-color: var(--primary-color); color: white;font-weight: bold; border: none;">Có</button>
 									          <button class="btn-lg" data-dismiss="modal" style="background-color: red; color: white;font-weight: bold; border: none;">Không</button>
 									        </form>
 									      </div>
@@ -190,8 +225,8 @@ a:focus, a:hover {
 				    </div>
 				</c:when>
 				<c:otherwise>
-					<div class="row" style="margin-top: 10px;margin-left: 20px;">
-						<h3>Không có banner.</h3>
+					<div class="row" style="margin-top: 10px;">
+						<h3>Không có sản phẩm.</h3>
 					</div>
 				</c:otherwise>
 			</c:choose>
@@ -205,128 +240,7 @@ a:focus, a:hover {
 
         <!-- End page content -->
     </div>
-    
-    <!-- Modal thêm loại sản phẩm -->
-<div class="modal fade" id="modalThemLoai" role="dialog">
-  <div class="modal-dialog">
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h3 class="modal-title" style="font-weight: bold;color: var(--primary-color)">Thêm banner quảng cáo</h3>
-      </div>
-      <div class="modal-body text-center">
-        <form action="AdminThemSuaBannerController" enctype="multipart/form-data" method="post" style="font-size: 20px;" id="form-ThemLoai">
-          <div class="form-group" style="display: inline-block;">
-	          <h1 style="width: 130px; display: inline-block;font-weight: bold; font-size: 18px;">Banner <span style="color: red;">*</span></h1> 
-	       
-	        <img style="display: none; width: 100px; " class="previewImgDesign" src="" alt="preview-img">
-	       	<input class="form-control" id="tenLoai" style="width: 300px; height: 35px; display: inline-block; border: none; box-shadow: none;" type="file" name="srcbanner" value="${l.getTenthuonghieu() }" accept="image/*">
-	       <!-- <input class="form-control" id="tenLoai" name="srcbanner" style="display: none;" type="file" id="file-input" accept="image/*">
-            <button class="choose-img">Tải ảnh</button>-->
-            
-	        <!--<input class="form-control" id="tenLoai" style="width: 260px; height: 30px; display: inline-block;" type="text" name="tenthuonghieu">-->
-          	<br><span style="margin-left: 135px; display: block;" class="form-message"></span>
-	          <input name="btnthem" value="them" hidden="">
-	          <button style="font-weight: bold; background-color: var(--primary-color); border: none; color: white; margin-top: 5px;" class=" btn-lg" name="btnthem" value="them">Thêm</button>
-          </div><br>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-
-	<script type="text/javascript">
-	const fileInput = document.querySelector("#tenLoai");
-	const previewImgDesign = document.querySelector('.previewImgDesign');
-	let brightness = "100", saturation = "100", inversion = "0", grayscale = "0";
-	let rotate = 0, flipHorizontal = 1, flipVertical = 1;
-
-	const loadImage = () => {
-	    let file = fileInput.files[0];
-	    if(!file) return;
-	    previewImgDesign.src = URL.createObjectURL(file);
-	    previewImgDesign.style.display = "inline-block";
-	    fileInput.style.width = "200px";
-	}
-	fileInput.addEventListener("change", loadImage);
-	</script>
-
-<script lang="javascript" type="text/javascript">
-	Validator({
-		form : '#form-ThemLoai',
-		formGroupSelector : '.form-group',
-		errorElement : '.form-message',
-		rules : [
-				Validator.isRequired('#tenLoai','Bạn vui lòng chọn ảnh.'),
-				//Validator.isRequired('#password6','Bạn vui lòng nhập trường này.'),
-		],
-	});
-</script>
-
-<c:forEach items="${dsbanner }" var="l" varStatus="index">
-	<div class="modal fade" id="modalsua${l.getMabanner() }" role="dialog">
-	  <div class="modal-dialog">
-	    <!-- Modal content-->
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal">&times;</button>
-	        <h3 class="modal-title" style="font-weight: bold;color: var(--primary-color)">Sửa banner</h3>
-	      </div>
-	      <div class="modal-body text-center">
-	        <form action="AdminThemSuaBannerController" enctype="multipart/form-data" method="post" style="font-size: 20px;" id="form-SuaLoai${index.index+1 }">
-	        	<h1 style="width: 120px; display: inline-block;font-weight: bold; font-size: 18px;">Mã banner <span style="color: red;">*</span></h1>  
-	        		<input style="width: 360px; height: 30px;" type="text" name="mabanner" value="${l.getMabanner() }" required="required" disabled="disabled"> <br>
-		          <div class="form-group" style="display: inline-block;">
-			          <h1 style="width: 120px; display: inline-block;font-weight: bold; font-size: 18px;">Banner <span style="color: red;">*</span></h1> 
-			        
-			        <img style="display: inline-block; width: 100px;" class="previewImgDesign${index.index+1 }" src="${l.getSrcbanner() }" alt="preview-img">
-			       <input class="form-control" id="tenLoaiSua${index.index+1 }" style="width: 290px; height: 35px; display: inline-block;border: none; box-shadow: none;" type="file" name="srcbanner" accept="image/*">
-		           <!-- <button class="choose-img">Tải ảnh</button>-->
-			        
-		          	<br><span style="margin-left: 125px; display: block;" class="form-message"></span>
-			          <input name="mabanner" value="${l.getMabanner() }" hidden="">
-			          <button style="font-weight: bold; background-color: var(--primary-color); border: none; color: white; margin-top: 5px;" class=" btn-lg" name="btnsua" value="${l.getMabanner() }">Sửa</button>
-		          </div><br>
-	        </form>
-	      </div>
-	    </div>
-	  </div>
-	</div>
-</c:forEach>
-
-	<script type="text/javascript">
-	var lengthDsLoai = ${dsbanner.size()}
-	for(let i=1; i<=lengthDsLoai; i++){
-		let brightness = "100", saturation = "100", inversion = "0", grayscale = "0";
-		let rotate = 0, flipHorizontal = 1, flipVertical = 1;
-	
-		const loadImage = () => {
-		    let file = document.querySelector("#tenLoaiSua"+i).files[0];
-		    if(!file) return;
-		    document.querySelector('.previewImgDesign'+i).src = URL.createObjectURL(file);
-		    document.querySelector('.previewImgDesign'+i).style.display = "inline-block";
-		    document.querySelector("#tenLoaiSua"+i).style.width = "200px";
-		}
-		document.querySelector("#tenLoaiSua"+i).addEventListener("change", loadImage);
-	}
-	</script>
-
-<script lang="javascript" type="text/javascript">
-	var lengthDsLoai = ${dsbanner.size()}
-	for(let i=1; i<=lengthDsLoai; i++){
-		Validator({
-			form : '#form-SuaLoai'+i,
-			formGroupSelector : '.form-group',
-			errorElement : '.form-message',
-			rules : [
-					Validator.isRequired('#tenLoaiSua'+i,'Bạn vui lòng chọn ảnh thay thế.'),
-					//Validator.isRequired('#password6','Bạn vui lòng nhập trường này.'),
-			],
-		});
-	}
-</script>
-
+   
     <script>
         // Get the Sidebar
         var mySidebar = document.getElementById("mySidebar");
@@ -383,7 +297,23 @@ a:focus, a:hover {
 	  </script>   
     
 	
-	<c:if test="${param.thembanner != null}">
+	<c:if test="${param.tkmTB != null }">
+			<script type="text/javascript">
+				//window.alert("Đăng kí không thành công!");
+				//var el = document.querySelector("#dkweb");
+				//el.click();
+				function showErrorToastThemLoaiTC() {
+					toast({
+						title : 'Thất bại',
+						message : 'Thêm không thành công.',
+						type : 'error',
+						duration : 5000
+					})
+				}
+				showErrorToastThemLoaiTC();
+			</script>
+		</c:if>
+	<c:if test="${param.tkmTC != null}">
 		<script type="text/javascript">
 			//window.alert("Tài khoản hoặc mật khẩu chưa đúng!");
 			function showSuccessToastThemLoaiTB() {
@@ -397,7 +327,7 @@ a:focus, a:hover {
 			showSuccessToastThemLoaiTB();
 		</script>
 	</c:if>
-	<c:if test="${param.sth != null }">
+	<c:if test="${param.skmTB != null }">
 			<script type="text/javascript">
 				//window.alert("Đăng kí không thành công!");
 				//var el = document.querySelector("#dkweb");
@@ -413,7 +343,7 @@ a:focus, a:hover {
 				showErrorToastSuaLoaiTC();
 			</script>
 		</c:if>
-	<c:if test="${param.suabanner != null}">
+	<c:if test="${param.skmTC != null}">
 		<script type="text/javascript">
 			//window.alert("Tài khoản hoặc mật khẩu chưa đúng!");
 			function showSuccessToastSuaLoaiTB() {
@@ -428,7 +358,22 @@ a:focus, a:hover {
 		</script>
 	</c:if>
 	
-	<c:if test="${param.xoabanner != null}">
+	<c:if test="${param.ssphot != null}">
+		<script type="text/javascript">
+			//window.alert("Tài khoản hoặc mật khẩu chưa đúng!");
+			function showSuccessToastSuaSpHotTC() {
+				toast({
+			        title :'Thành công',
+			        message : 'Cập nhật sản phẩm hot thành công.',
+			        type  : 'success',
+			        duration : 5000
+			    })
+			}
+			showSuccessToastSuaSpHotTC();
+		</script>
+	</c:if>
+	
+	<c:if test="${param.xspTC != null}">
 		<script type="text/javascript">
 			//window.alert("Tài khoản hoặc mật khẩu chưa đúng!");
 			function showSuccessToastXoaLoaiTC() {

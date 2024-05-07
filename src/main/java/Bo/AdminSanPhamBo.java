@@ -17,6 +17,11 @@ public class AdminSanPhamBo {
 		return spdao.xoaSanPham(masanpham);
 	}
 	
+	//Sửa sản phẩm hot
+	public int capNhatSpHot(long masanpham ,long sanphamhot)throws Exception{
+		return spdao.capNhatSpHot(masanpham, sanphamhot);
+	}
+	
 	//Thêm sản phẩm
 	public int themSanPham(String tensanpham, String anh, long giacu, long giamoi, long soluongdaban, String motasanpham, String chitietsanpham, long maloai, long mathuonghieu, long madanhmuc)throws Exception{
 		return spdao.themSanPham(tensanpham, anh, giacu, giamoi, soluongdaban, motasanpham, chitietsanpham, maloai, mathuonghieu, madanhmuc);

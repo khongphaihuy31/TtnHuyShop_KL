@@ -72,9 +72,19 @@ public class AdminSanPhamController extends HttpServlet {
 			//Xóa sản phẩm
 			String btnxoa = request.getParameter("btnxoa");
 			if(btnxoa != null) {
-				long masanpham = Long.parseLong(request.getParameter("masanpham"));
+				long masanpham = Long.parseLong(btnxoa);
 				spbo.xoaSanPham(masanpham);
-				response.sendRedirect("AdminSanPhamController");
+				response.sendRedirect("AdminSanPhamController?xspTC=1");
+				return;
+			}
+			
+			String suaSpHot = request.getParameter("suaSpHot");
+			if(suaSpHot!= null) {
+				long masanpham = Long.parseLong(suaSpHot);
+				String suathanh = request.getParameter("suathanh");
+				long sanphamhot = Long.parseLong(suathanh);
+				spbo.capNhatSpHot(masanpham, sanphamhot);
+				response.sendRedirect("AdminSanPhamController?ssphot=1");
 				return;
 			}
 			

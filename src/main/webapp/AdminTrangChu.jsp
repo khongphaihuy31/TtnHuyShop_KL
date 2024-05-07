@@ -83,7 +83,7 @@ a:focus, a:hover {
             <a href="AdminXacNhanController" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-truck-ramp-box"></i>  Xác nhận đơn hàng</a>
             <a href="AdminLoaiSanPhamController" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-layer-group"></i>  Quản lý loại sản phẩm</a>
             <a href="AdminLoaiTrongDanhMucController" class="w3-bar-item w3-button w3-padding"><i class="fa-brands fa-docker"></i>  Quản lý loại trong danh mục</a>
-            <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-boxes-stacked"></i>  Quản lý sản phẩm</a>
+            <a href="AdminSanPhamController" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-boxes-stacked"></i>  Quản lý sản phẩm</a>
             <a href="AdminKhachHangController" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users"></i>  Quản lý khách hàng</a>
             <a href="AdminThuongHieuController" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-shirt"></i>  Quản lý thương hiệu</a>
             <a href="AdminBannerController" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-image"></i>  Quản lý banner</a>
@@ -108,7 +108,7 @@ a:focus, a:hover {
 
         <div class="w3-row-padding w3-margin-bottom">
             <div class="w3-quarter">
-		        <a href="" style="text-decoration: none;">
+		        <a href="AdminSanPhamController" style="text-decoration: none;">
 	                <div class="w3-container w3-red w3-padding-16">
 	                    <div class="w3-left"><i style="font-size: 50px;" class="fa-solid fa-boxes-stacked"></i></div>
 	                    <div class="w3-right">
