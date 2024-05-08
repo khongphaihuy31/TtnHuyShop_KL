@@ -128,9 +128,9 @@ a:focus, a:hover {
         <header class="w3-container" style="padding-top:22px;color:var(--primary-color); margin-bottom: 16px;">
             <h2 style="display: inline-block;"><b><i class="fa-solid fa-boxes-stacked"></i>  Sản phẩm</b></h2>
             <div style="display: inline-block; float: right;margin-top: 18px; cursor: pointer;" class="w3-quarter">
-	            <a data-toggle="modal" data-target="#modalThemLoai" style="text-decoration: none;">
+	            <a href="AdminNhapSanPhamMoi" style="text-decoration: none;">
 	                <div style="text-align: center; border-radius: 10px; background-color: var(--primary-color)" class="w3-container w3-text-white">
-	                    <h4><i class="fa-solid fa-circle-plus"></i> Thêm sản phẩm</h4>
+	                    <h4><i class="fa-solid fa-truck-fast"></i> Nhập mới</h4>
 	                </div>
 		        </a>
             </div>
