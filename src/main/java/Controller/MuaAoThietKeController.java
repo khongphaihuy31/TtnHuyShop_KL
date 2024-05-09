@@ -80,7 +80,7 @@ public class MuaAoThietKeController extends HttpServlet {
 					 {
 						String tentk=fileItem.getFieldName();
 						if(tentk.equals("mau")) {
-							maumua = fileItem.getString();
+							maumua = fileItem.getString("UTF-8");
 						}
 						if(tentk.equals("size")) {
 							sizemua = fileItem.getString("UTF-8");
