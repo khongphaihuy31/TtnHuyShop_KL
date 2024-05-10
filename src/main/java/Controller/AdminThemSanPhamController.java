@@ -218,103 +218,103 @@ public class AdminThemSanPhamController extends HttpServlet {
 					String tentk=fileItem.getFieldName();
 					if(tentk.equals("tensanpham")) {
 //						String nameimg = fileItem.getName();
-//						if(!nameimg.equals("")) {
-							tensanpham = fileItem.getString("UTF-8");
+//						if(nameimg != null) {
+							tensanpham = fileItem.getString();
 //						}
 					}
 					if(tentk.equals("gianhap")) {
 //						String nameimg = fileItem.getName();
-//						if(!nameimg.equals("")) {
-							gianhap = fileItem.getString("UTF-8");
+//						if(nameimg != null) {
+							gianhap = fileItem.getString();
 //						}
 					}
 					if(tentk.equals("giaban")) {
 //						String nameimg = fileItem.getName();
-//						if(!nameimg.equals("")) {
-							giaban = fileItem.getString("UTF-8");
+//						if(nameimg != null) {
+							giaban = fileItem.getString();
 //						}
 					}
 					if(tentk.equals("loai")) {
 //						String nameimg = fileItem.getName();
-//						if(!nameimg.equals("")) {
-							maloai = fileItem.getString("UTF-8");
+//						if(nameimg != null) {
+							maloai = fileItem.getString();
 //						}
 					}
 					if(tentk.equals("thuonghieu")) {
 //						String nameimg = fileItem.getName();
-//						if(!nameimg.equals("")) {
-							mathuonghieu = fileItem.getString("UTF-8");
+//						if(nameimg != null) {
+							mathuonghieu = fileItem.getString();
 //						}
 					}
 					if(tentk.equals("danhmuc")) {
 //						String nameimg = fileItem.getName();
-//						if(!nameimg.equals("")) {
-							madanhmuc = fileItem.getString("UTF-8");
+//						if(nameimg != null) {
+							madanhmuc = fileItem.getString();
 //						}
 					}
 					if(tentk.equals("FCKeditor1")) {
 //						String nameimg = fileItem.getName();
-//						if(!nameimg.equals("")) {
-							FCKeditor1 = fileItem.getString("UTF-8");
+//						if(nameimg != null) {
+							FCKeditor1 = fileItem.getString();
 //						}
 					}
 					if(tentk.equals("lsize1")) {
 //						String nameimg = fileItem.getName();
-//						if(!nameimg.equals("")) {
-							lsize1 = fileItem.getString("UTF-8");
+//						if(nameimg != null) {
+							lsize1 = fileItem.getString();
 //						}
 					}
 					if(tentk.equals("lsize2")) {
 //						String nameimg = fileItem.getName();
-//						if(!nameimg.equals("")) {
-							lsize2 = fileItem.getString("UTF-8");
+//						if(nameimg != null) {
+							lsize2 = fileItem.getString();
 //						}
 					}
 					if(tentk.equals("lsize3")) {
 //						String nameimg = fileItem.getName();
-//						if(!nameimg.equals("")) {
-							lsize3 = fileItem.getString("UTF-8");
+//						if(nameimg != null) {
+							lsize3 = fileItem.getString();
 //						}
 					}
 					if(tentk.equals("lsize4")) {
 //						String nameimg = fileItem.getName();
-//						if(!nameimg.equals("")) {
-							lsize4 = fileItem.getString("UTF-8");
+//						if(nameimg != null) {
+							lsize4 = fileItem.getString();
 //						}
 					}
 					if(tentk.equals("lsize5")) {
 //						String nameimg = fileItem.getName();
-//						if(!nameimg.equals("")) {
-							lsize5 = fileItem.getString("UTF-8");
+//						if(nameimg != null) {
+							lsize5 = fileItem.getString();
 //						}
 					}
 					if(tentk.equals("lmau1")) {
 //						String nameimg = fileItem.getName();
-//						if(!nameimg.equals("")) {
+//						if(nameimg != null) {
 						lmau1 = fileItem.getString();
 //						}
 					}
 					if(tentk.equals("lmau2")) {
 //						String nameimg = fileItem.getName();
-//						if(!nameimg.equals("")) {
+//						if(nameimg != null) {
 						lmau2 = fileItem.getString();
 //						}
 					}
 					if(tentk.equals("lmau3")) {
 //						String nameimg = fileItem.getName();
-//						if(!nameimg.equals("")) {
+//						if(nameimg != null) {
 						lmau3 = fileItem.getString();
 //						}
 					}
 					if(tentk.equals("lmau4")) {
 //						String nameimg = fileItem.getName();
-//						if(!nameimg.equals("")) {
+//						if(nameimg != null) {
 						lmau4 = fileItem.getString();
 //						}
 					}
 					if(tentk.equals("lmau5")) {
 //						String nameimg = fileItem.getName();
-//						if(!nameimg.equals("")) {
+//						if(nameimg != null) {
 						lmau5 = fileItem.getString();
 //						}
 					}

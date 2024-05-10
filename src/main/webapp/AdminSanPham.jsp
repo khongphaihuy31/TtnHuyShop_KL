@@ -313,18 +313,18 @@ a:focus, a:hover {
 				showErrorToastThemLoaiTC();
 			</script>
 		</c:if>
-	<c:if test="${param.tkmTC != null}">
+	<c:if test="${param.nmTC != null}">
 		<script type="text/javascript">
 			//window.alert("Tài khoản hoặc mật khẩu chưa đúng!");
-			function showSuccessToastThemLoaiTB() {
+			function showSuccessToastNhapHangMoiTC() {
 				toast({
 			        title :'Thành công',
-			        message : 'Thêm thành công.',
+			        message : 'Nhập hàng mới thành công.',
 			        type  : 'success',
 			        duration : 5000
 			    })
 			}
-			showSuccessToastThemLoaiTB();
+			showSuccessToastNhapHangMoiTC();
 		</script>
 	</c:if>
 	<c:if test="${param.skmTB != null }">

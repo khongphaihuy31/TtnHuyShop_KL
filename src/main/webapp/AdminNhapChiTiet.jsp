@@ -126,42 +126,65 @@ a:focus, a:hover {
 
         <!-- Header -->
         <header class="w3-container" style="padding-top:22px;color:var(--primary-color); margin-bottom: 16px;">
-            <h2 style="display: inline-block;"><b><i class="fa-solid fa-boxes-stacked"></i>  Sản phẩm</b></h2>
-            <div style="display: inline-block; float: right;margin-top: 18px; cursor: pointer;" class="w3-quarter">
-	            <a href="AdminNhapSanPhamMoi" style="text-decoration: none;">
-	                <div style="text-align: center; border-radius: 10px; background-color: var(--primary-color)" class="w3-container w3-text-white">
-	                    <h4><i class="fa-solid fa-truck-fast"></i> Nhập chi tiết số lượng</h4>
-	                </div>
-		        </a>
-            </div>
+            <h2 style="display: inline-block;"><b><i class="fa-solid fa-truck-fast"></i> Nhập chi tiết số lượng</b></h2>
+            
         </header>
         <div class="w3-row-padding w3-margin-bottom">
 	       	<c:choose>
-				<c:when test="${listSize.size()!=0 }">
-					<div style="border: 2px solid #4dcdcf; border-radius: 10px;width: 100%; padding: 10px 20px; margin-top: 20px; background-color: #fff;">
-				        
-				        <table id="example" class="table table-striped table-bordered bangChiTiet" style="width:100%;">
-					    </table>
-				        <script type="text/javascript">
-					        var listMau = ${listMau};
-					        console.log(listMau);
-					        var listSize = ${listSize};
-					        console.log(listSize);
-					        
-				            let content='<thead> <tr> <th style="background-color: var(--primary-color); color: white;">Màu</th> <th style="background-color: var(--primary-color); color: white;">Size</th> <th style="background-color: var(--primary-color); color: white;"> số lượng</th> </tr> </thead><tbody>';
-					        for(let i = 0; i < listMau.length; i++){
-					            content+='<tr><td rowspan='+${listSize.size()}+'>'+listMau[i]+'</td><td>'+listSize[0]+'</td><td><input style="width: 100%" type="text" id="surname" name='+listMau[i]+'/'+listSize[0]+'></td> </td></tr>'
-			                    for(let j = 1; j<listSize.length; j++){
-			                        content+=  '<tr><td>'+listSize[j]+'</td> <td> <input style="width: 100%" type="text" id="surname" name='+listMau[i]+'/'+listSize[j]+'></td> </td></tr>'
-			                    }
-
-					                    
-					        }
-					        content += '</tbody>'
-					        bangChiTiet = document.querySelector('.bangChiTiet');
-					        bangChiTiet.innerHTML = content;
-						</script>
-				    </div>
+				<c:when test="${listSize.size()!=0 && listMau.size()!= 0}">
+			        <form id="formNhapChiTiet" action="AdminNhapChiTietController">
+						<div style="border: 2px solid #4dcdcf; border-radius: 10px;width: 100%; padding: 10px 20px; margin-top: 20px; background-color: #fff; display: inline-block;">
+					        <table id="example" class="table table-striped table-bordered bangChiTiet" style="width:100%;">
+						    </table>
+						    <input type="text" style="display: none;" name="anhmau5" value="${param.anhmau5 }">
+						    <input type="text" style="display: none;" name="lmau5" value="${param.lmau5 }">
+						    <input type="text" style="display: none;" name="anhmau4" value="${param.anhmau4 }">
+						    <input type="text" style="display: none;" name="lmau4" value="${param.lmau4 }">
+						    <input type="text" style="display: none;" name="anhmau3" value="${param.anhmau3 }">
+						    <input type="text" style="display: none;" name="lmau3" value="${param.lmau3 }">
+						    <input type="text" style="display: none;" name="anhmau2" value="${param.anhmau2 }">
+						    <input type="text" style="display: none;" name="lmau2" value="${param.lmau2 }">
+						    <input type="text" style="display: none;" name="anhmau1" value="${param.anhmau1 }">
+						    <input type="text" style="display: none;" name="lmau1" value="${param.lmau1 }">
+						    <input type="text" style="display: none;" name="lsize5" value="${param.lsize5 }">
+						    <input type="text" style="display: none;" name="lsize4" value="${param.lsize4 }">
+						    <input type="text" style="display: none;" name="lsize3" value="${param.lsize3 }">
+						    <input type="text" style="display: none;" name="lsize2" value="${param.lsize2 }">
+						    <input type="text" style="display: none;" name="lsize1" value="${param.lsize1 }">
+						    <input type="text" style="display: none;" name="anhchonsize" value="${param.anhchonsize }">
+						    <input type="text" style="display: none;" name="anh" value="${param.anh }">
+						    <input type="text" style="display: none;" name="motasanpham" value="${param.motasanpham }">
+						    <input type="text" style="display: none;" name="madanhmuc" value="${param.madanhmuc }">
+						    <input type="text" style="display: none;" name="mathuonghieu" value="${param.mathuonghieu }">
+						    <input type="text" style="display: none;" name="maloai" value="${param.maloai }">
+						    <input type="text" style="display: none;" name="giaban" value="${param.giaban }">
+						    <input type="text" style="display: none;" name="gianhap" value="${param.gianhap }">
+						    <input type="text" style="display: none;" name="tensanpham" value="${param.tensanpham }">
+						    <div class="w3-third" style="width: 100%; text-align: center;margin-bottom: 20px;">
+						      <button name="btnNhapHang" value="1" form="formNhapChiTiet" class="w3-button" style="padding: 15px 20px; background-color: var(--primary-color); color: var(--text-color); font-size: 25px; border-radius: 10px; width: 30%;">Nhập hàng</button>
+				    		</div>
+					        <script type="text/javascript">
+						        var listMau = ${listMau};
+						        console.log(listMau);
+						        var listSize = ${listSize};
+						        console.log(listSize);
+						        
+					            let content='<thead> <tr> <th style="background-color: var(--primary-color); color: white;">Màu</th> <th style="background-color: var(--primary-color); color: white;">Size</th> <th style="background-color: var(--primary-color); color: white;"> số lượng</th> </tr> </thead><tbody>';
+						        for(let i = 0; i < listMau.length; i++){
+						            content+='<tr><td style="height: 20px; font-size: 18px;" rowspan='+${listSize.size()}+'>'+listMau[i]+'</td><td style="height: 20px; font-size: 18px;">'+listSize[0]+'</td><td><input style="width: 100%; height: 20px; font-size: 18px; padding: 20px 10px; border-radius: 10px; border: 1px solid #ccc;" type="number" id="surname" name='+listMau[i]+'/'+listSize[0]+'></td> </td></tr>'
+				                    for(let j = 1; j<listSize.length; j++){
+				                        content+=  '<tr><td>'+listSize[j]+'</td> <td> <input style="width: 100%; height: 20px; font-size: 18px; padding: 20px 10px; border-radius: 10px; border: 1px solid #ccc;" type="number" id="surname" name='+listMau[i]+'/'+listSize[j]+'></td> </td></tr>'
+				                    }
+	
+						                    
+						        }
+						        content += '</tbody>'
+						        bangChiTiet = document.querySelector('.bangChiTiet');
+						        bangChiTiet.innerHTML = content;
+							</script>
+							
+					    </div>
+		    		</form>
 				</c:when>
 				<c:otherwise>
 					<div class="row" style="margin-top: 10px;">
@@ -205,20 +228,20 @@ a:focus, a:hover {
         }
     </script> 
     
-	<c:if test="${param.tkmTB != null }">
+	<c:if test="${param.chuacosl != null }">
 			<script type="text/javascript">
 				//window.alert("Đăng kí không thành công!");
 				//var el = document.querySelector("#dkweb");
 				//el.click();
-				function showErrorToastThemLoaiTC() {
+				function showErrorToastChuaNhapSL() {
 					toast({
 						title : 'Thất bại',
-						message : 'Thêm không thành công.',
+						message : 'Vui lòng nhập số lượng cho từng loại.',
 						type : 'error',
 						duration : 5000
 					})
 				}
-				showErrorToastThemLoaiTC();
+				showErrorToastChuaNhapSL();
 			</script>
 		</c:if>
 	<c:if test="${param.tkmTC != null}">

@@ -23,8 +23,43 @@ public class AdminSanPhamBo {
 	}
 	
 	//Thêm sản phẩm
-	public int themSanPham(String tensanpham, String anh, long giacu, long giamoi, long soluongdaban, String motasanpham, String chitietsanpham, long maloai, long mathuonghieu, long madanhmuc)throws Exception{
-		return spdao.themSanPham(tensanpham, anh, giacu, giamoi, soluongdaban, motasanpham, chitietsanpham, maloai, mathuonghieu, madanhmuc);
+	public int themSanPham(String tensanpham, String anh, long giaban, String motasanpham, long maloai, long mathuonghieu, long madanhmuc, String anhchonsize)throws Exception{
+		return spdao.themSanPham(tensanpham, anh, giaban, motasanpham, maloai, mathuonghieu, madanhmuc, anhchonsize);
+	}
+	
+	//Lấy mã sản phẩm max
+	public long getMaxMasanpham() throws Exception {
+		return spdao.getMaxMasanpham();
+	}
+	
+	//Thêm size sản phẩm
+	public int themSizeSanPham(String size,long masanpham)throws Exception{
+		return spdao.themSizeSanPham(size, masanpham);
+	}
+	
+	//Thêm màu và ảnh sản phẩm
+	public int themMauSanPham(String mau,String srcanh,long masanpham)throws Exception{
+		return spdao.themMauSanPham(mau, srcanh, masanpham);
+	}
+	
+	//Nhập hàng
+	public int nhapHang(long masanpham, long soluongnhap, long gianhap, long tongtiennhap)throws Exception{
+		return spdao.nhapHang(masanpham, soluongnhap, gianhap, tongtiennhap);
+	}
+	
+	//Lấy mã nhập hàng max
+	public long getMaxMadonnhap() throws Exception {
+		return spdao.getMaxMadonnhap();
+	}
+	
+	//Chi tiết nhập hàng
+	public int chiTietNhapHang(long masanpham, String mau, String size, long soluong, long madonnhap)throws Exception{
+		return spdao.chiTietNhapHang(masanpham, mau, size, soluong, madonnhap);
+	}
+	
+	//Chi tiết sản phẩm
+	public int chiTietSanPham(long masanpham, String mau, String size, long soluong)throws Exception{
+		return spdao.chiTietSanPham(masanpham, mau, size, soluong);
 	}
 	
 	//Sửa sản phẩm
