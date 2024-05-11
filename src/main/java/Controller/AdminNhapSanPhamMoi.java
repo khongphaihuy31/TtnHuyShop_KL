@@ -12,8 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import Bean.DanhMucBean;
 import Bean.LoaiBean;
+import Bean.SanPhamBean;
 import Bean.ThuongHieuBean;
 import Bo.AdminLoaiBo;
+import Bo.AdminSanPhamBo;
 import Bo.DanhMucBo;
 import Bo.LoaiBo;
 
@@ -59,6 +61,16 @@ public class AdminNhapSanPhamMoi extends HttpServlet {
 			ArrayList<ThuongHieuBean> dsthuonghieu;
 			dsthuonghieu = lthbo.getTenLoaiDMThuongHieu();
 			request.setAttribute("dsthuonghieu", dsthuonghieu);
+			
+			//Xử lý nhập sản phẩm đã có trong cửa hàng
+			String btnnhapcu = request.getParameter("btnnhapcu");
+			if(btnnhapcu !=null) {
+				String msp = request.getParameter("msp");
+				long masanpham = Long.parseLong(msp);
+				AdminSanPhamBo adspbo = new AdminSanPhamBo();
+				SanPhamBean spnhapdacotrongcuahang = adspbo.getSanPham(masanpham);
+				request.setAttribute("spnhapdacotrongcuahang", spnhapdacotrongcuahang);
+			}
 			
 			RequestDispatcher rd = request.getRequestDispatcher("AdminNhapSanPhamMoi.jsp");
 			rd.forward(request, response);

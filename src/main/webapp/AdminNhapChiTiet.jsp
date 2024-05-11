@@ -18,6 +18,8 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script src="assets/script/toast.js"></script>
 <script src="assets/script/validator.js"></script>
+<!-- FCK editor -->
+<script type="text/javascript" src="fckeditor/fckeditor.js"></script>
 <link rel="stylesheet" href="assets/css/validation.css">
 <link rel="stylesheet" href="assets/css/base.css">
 <link rel="stylesheet" href="assets/css/grid.css">
@@ -64,6 +66,19 @@ a:focus, a:hover {
 }
 </style>
 </head>
+<script type="text/javascript">
+	window.onload = function()
+	{
+		// Automatically calculates the editor base path based on the _samples directory.
+		// This is usefull only for these samples. A real application should use something like this:
+		// oFCKeditor.BasePath = '/fckeditor/' ;	// '/fckeditor/' is the default value.
+		var sBasePath = document.location.href.substring(0,document.location.href.lastIndexOf('_samples')) ;
+	
+		var oFCKeditor = new FCKeditor( 'FCKeditor1' ) ;
+		oFCKeditor.BasePath	= sBasePath ;
+		oFCKeditor.ReplaceTextarea() ;
+	}
+</script>
 <body class="w3-light-grey">
 	<div style="z-index: 9999999999999999" id="toast"></div>
 	<!-- Top container -->
@@ -134,6 +149,9 @@ a:focus, a:hover {
 				<c:when test="${listSize.size()!=0 && listMau.size()!= 0}">
 			        <form id="formNhapChiTiet" action="AdminNhapChiTietController">
 						<div style="border: 2px solid #4dcdcf; border-radius: 10px;width: 100%; padding: 10px 20px; margin-top: 20px; background-color: #fff; display: inline-block;">
+					        <label style="font-size: 20px; margin-bottom: 10px;" for="motasanpham">
+								Nhập số lượng <span style="color: red;">*</span>
+							</label>
 					        <table id="example" class="table table-striped table-bordered bangChiTiet" style="width:100%;">
 						    </table>
 						    <input type="text" style="display: none;" name="anhmau5" value="${param.anhmau5 }">
@@ -160,9 +178,7 @@ a:focus, a:hover {
 						    <input type="text" style="display: none;" name="giaban" value="${param.giaban }">
 						    <input type="text" style="display: none;" name="gianhap" value="${param.gianhap }">
 						    <input type="text" style="display: none;" name="tensanpham" value="${param.tensanpham }">
-						    <div class="w3-third" style="width: 100%; text-align: center;margin-bottom: 20px;">
-						      <button name="btnNhapHang" value="1" form="formNhapChiTiet" class="w3-button" style="padding: 15px 20px; background-color: var(--primary-color); color: var(--text-color); font-size: 25px; border-radius: 10px; width: 30%;">Nhập hàng</button>
-				    		</div>
+						    
 					        <script type="text/javascript">
 						        var listMau = ${listMau};
 						        console.log(listMau);
@@ -181,8 +197,48 @@ a:focus, a:hover {
 						        content += '</tbody>'
 						        bangChiTiet = document.querySelector('.bangChiTiet');
 						        bangChiTiet.innerHTML = content;
+						        
+						        // kiểm tra đã nhập số lượng sản phẩm chưa
+						        function ChuaNhapSoLuong() {
+						        	let tongsoluong = 0;
+									for(let i=0; i<listMau.length; i++) {
+										for(let j=0; j<listSize.length; j++) {
+											var sln = document.querySelector('input[name="'+listMau[i]+'/'+listSize[j]+'"]').value;
+											if(sln != "") {
+												tongsoluong += parseInt(sln,10);
+											}
+										}
+									}
+									if (tongsoluong == 0) {
+							        	function showErrorToastChuaChonSizeHoacMau() {
+											toast({
+												title : 'Nhập thất bại',
+												message : 'Vui lòng nhập số lượng cho loại nhập vào.',
+												type : 'error',
+												duration : 5000
+											})
+										}
+							        	showErrorToastChuaChonSizeHoacMau();
+							        }else{
+							        	var btnNhapHang = document.querySelector('.btnNhapHang');
+							        	btnNhapHang.click();
+							        }
+							    }
 							</script>
-							
+							<div style="margin-top: 20px;" class="form-group">
+								<label style="font-size: 20px; margin-bottom: 0;" for="motasanpham">
+									Mô tả sản phẩm <span style="color: red;">*</span>
+								</label>
+								<div style="margin-top: 10px;" class="control">
+									<textarea class="form-control" form="formNhapChiTiet" id="motasanpham" name="FCKeditor1" rows="10" cols="30" style="width: 100%; height: 500px">
+									</textarea>
+									<span class="form-message"></span> 
+								</div>
+							</div>
+							<div class="w3-third" style="width: 100%; text-align: center;margin-bottom: 20px;">
+						      	<div onclick="ChuaNhapSoLuong()"class="w3-button" style="padding: 15px 20px; background-color: var(--primary-color); color: var(--text-color); font-size: 25px; border-radius: 10px; width: 30%;">Nhập hàng</div>
+						      	<button onclick="ChuaNhapSoLuong()" name="btnNhapHang" value="1" form="formNhapChiTiet" class="w3-button btnNhapHang" style="padding: 15px 20px; background-color: var(--primary-color); color: var(--text-color); font-size: 25px; border-radius: 10px; width: 30%; display: none;">Nhập hàng</button>
+				    		</div>
 					    </div>
 		    		</form>
 				</c:when>

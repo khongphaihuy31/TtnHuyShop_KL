@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
@@ -48,7 +49,6 @@ public class AdminThemSanPhamController extends HttpServlet {
 			String maloai = null;
 			String mathuonghieu = null;
 			String madanhmuc = null;
-			String FCKeditor1 = null;
 			String anh = null;
 			String anhchonsize =  null;
 			String lsize1 = null;
@@ -252,12 +252,6 @@ public class AdminThemSanPhamController extends HttpServlet {
 							madanhmuc = fileItem.getString();
 //						}
 					}
-					if(tentk.equals("FCKeditor1")) {
-//						String nameimg = fileItem.getName();
-//						if(nameimg != null) {
-							FCKeditor1 = fileItem.getString();
-//						}
-					}
 					if(tentk.equals("lsize1")) {
 //						String nameimg = fileItem.getName();
 //						if(nameimg != null) {
@@ -321,7 +315,7 @@ public class AdminThemSanPhamController extends HttpServlet {
 				}
 			}
 			
-			response.sendRedirect("AdminNhapChiTietController?tensanpham="+tensanpham+"&gianhap="+gianhap+"&giaban="+giaban+"&maloai="+maloai+"&mathuonghieu="+mathuonghieu+"&madanhmuc="+madanhmuc+"&motasanpham="+FCKeditor1+"&anh="+anh+"&anhchonsize="+anhchonsize+"&lsize1="+lsize1+"&lsize2="+lsize2+"&lsize3="+lsize3+"&lsize4="+lsize4+"&lsize5="+lsize5+"&lmau1="+lmau1+"&anhmau1="+anhmau1+"&lmau2="+lmau2+"&anhmau2="+anhmau2+"&lmau3="+lmau3+"&anhmau3="+anhmau3+"&lmau4="+lmau4+"&anhmau4="+anhmau4+"&lmau5="+lmau5+"&anhmau5="+anhmau5);
+			response.sendRedirect("AdminNhapChiTietController?tensanpham="+tensanpham+"&gianhap="+gianhap+"&giaban="+giaban+"&maloai="+maloai+"&mathuonghieu="+mathuonghieu+"&madanhmuc="+madanhmuc+"&anh="+anh+"&anhchonsize="+anhchonsize+"&lsize1="+lsize1+"&lsize2="+lsize2+"&lsize3="+lsize3+"&lsize4="+lsize4+"&lsize5="+lsize5+"&lmau1="+lmau1+"&anhmau1="+anhmau1+"&lmau2="+lmau2+"&anhmau2="+anhmau2+"&lmau3="+lmau3+"&anhmau3="+anhmau3+"&lmau4="+lmau4+"&anhmau4="+anhmau4+"&lmau5="+lmau5+"&anhmau5="+anhmau5);
 			return;
 		} catch (Exception e) {
 			// TODO: handle exception

@@ -11,7 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
+import Bean.AdminLuuTongSoLuongTonKho;
+import Bean.ChiTietSanPhamBean;
 import Bean.DanhMucBean;
 import Bean.LoaiBean;
 import Bean.SanPhamBean;
@@ -68,6 +69,23 @@ public class AdminSanPhamController extends HttpServlet {
 			ArrayList<SanPhamBean> dssanpham;
 			dssanpham = spbo.dsSanPham();
 			request.setAttribute("dssanpham", dssanpham);
+			
+			//Lấy danh sách chi tiết sản phẩm
+			ArrayList<ChiTietSanPhamBean> dschitietsanpham = spbo.dsChiTietSanPham();
+			request.setAttribute("dschitietsanpham", dschitietsanpham);
+			
+			//Lấy tổng số lượng tồn kho
+			ArrayList<AdminLuuTongSoLuongTonKho> dstongsoluongtonkho = new ArrayList<AdminLuuTongSoLuongTonKho>();
+			for(SanPhamBean sp: dssanpham) {
+				long tongsoluong=0;
+				for(ChiTietSanPhamBean ctsp: dschitietsanpham) {
+					if(ctsp.getMasanpham() == sp.getMasanpham()) {
+						tongsoluong += ctsp.getSoluong();
+					}
+				}
+				dstongsoluongtonkho.add(new AdminLuuTongSoLuongTonKho(sp.getMasanpham(), tongsoluong));
+			}
+			request.setAttribute("dstongsoluongtonkho", dstongsoluongtonkho);
 			
 			//Xóa sản phẩm
 			String btnxoa = request.getParameter("btnxoa");

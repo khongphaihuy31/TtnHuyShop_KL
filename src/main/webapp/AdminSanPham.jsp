@@ -148,6 +148,9 @@ a:focus, a:hover {
 					                <th style="background-color: var(--primary-color); color: white; width: 10%;">Ảnh</th>
 					                <th style="background-color: var(--primary-color); color: white; width: 30%;">Tên sản phẩm</th>
 					                <th style="background-color: var(--primary-color); color: white; ">Giá</th>
+					                <th style="background-color: var(--primary-color); color: white; display: none;">Tên loại</th>
+					                <th style="background-color: var(--primary-color); color: white; display: none;">Tên thương hiệu</th>
+					                <th style="background-color: var(--primary-color); color: white; display: none;">Tên danh mục</th>
 					                <th style="background-color: var(--primary-color); color: white; ">Tồn kho</th>
 					                <th style="background-color: var(--primary-color); color: white; ">SP hot</th>
 					                <th style="background-color: var(--primary-color); color: white; ">Nhập hàng</th>
@@ -176,7 +179,26 @@ a:focus, a:hover {
 								                </td>
 						                	</c:otherwise>
 						                </c:choose>
-						                <td>Số hàng trong kho</td>
+						                <c:forEach items="${dsloai }" var="dsl">
+						                	<c:if test="${dsl.getMaloai() == l.getMaloai()}">
+								                <td style="display: none;">${dsl.getTenloai() }</td>
+						                	</c:if>
+						                </c:forEach>
+						                <c:forEach items="${dsthuonghieu }" var="dsth">
+						                	<c:if test="${dsth.getMathuonghieu() == l.getMathuonghieu()}">
+								                <td style="display: none;">${dsth.getTenthuonghieu() }</td>
+						                	</c:if>
+						                </c:forEach>
+						                <c:forEach items="${dsdanhmuc }" var="dsdm">
+						                	<c:if test="${dsdm.getMadanhmuc() == l.getMadanhmuc()}">
+								                <td style="display: none;">${dsdm.getTendanhmuc() }</td>
+						                	</c:if>
+						                </c:forEach>
+						                <c:forEach items="${dstongsoluongtonkho }" var="tsltk">
+							                <c:if test="${tsltk.getMasanpham() == l.getMasanpham() }">
+								                <td>${tsltk.getSoluong()}</td>
+							                </c:if>
+						                </c:forEach>
 						                <c:choose>
 						                	<c:when test="${l.isSanphamhot() == true }">
 							                	<td>
@@ -190,7 +212,7 @@ a:focus, a:hover {
 						                	</c:otherwise>
 						                </c:choose>
 						                <td>
-						                	<a style="font-size: 18px; font-weight: 600; color: var(--primary-color); cursor: pointer;" data-toggle="modal" data-target="#modalnhaphang${l.getMasanpham() }"><i class="fa-solid fa-truck-fast"></i></a>
+						                	<a href="AdminNhapSanPhamMoi?msp=${l.getMasanpham() }&btnnhapcu=1" style="font-size: 18px; font-weight: 600; color: var(--primary-color); cursor: pointer;"><i class="fa-solid fa-truck-fast"></i></a>
 						                </td>
 						                <td>
 						                	<a style="font-size: 18px; font-weight: 600; color: var(--primary-color); cursor: pointer;" data-toggle="modal" data-target="#modalsua${l.getMasanpham() }"><i class="fa-solid fa-pen-to-square"></i></a>

@@ -18,8 +18,6 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script src="assets/script/toast.js"></script>
 <script src="assets/script/validator.js"></script>
-<!-- FCK editor -->
-<script type="text/javascript" src="fckeditor/fckeditor.js"></script>
 <link rel="stylesheet" href="assets/css/validation.css">
 <link rel="stylesheet" href="assets/css/base.css">
 <link rel="stylesheet" href="assets/css/grid.css">
@@ -66,19 +64,6 @@ a:focus, a:hover {
 }
 </style>
 </head>
-<script type="text/javascript">
-	window.onload = function()
-	{
-		// Automatically calculates the editor base path based on the _samples directory.
-		// This is usefull only for these samples. A real application should use something like this:
-		// oFCKeditor.BasePath = '/fckeditor/' ;	// '/fckeditor/' is the default value.
-		var sBasePath = document.location.href.substring(0,document.location.href.lastIndexOf('_samples')) ;
-	
-		var oFCKeditor = new FCKeditor( 'FCKeditor1' ) ;
-		oFCKeditor.BasePath	= sBasePath ;
-		oFCKeditor.ReplaceTextarea() ;
-	}
-</script>
 <body class="w3-light-grey">
 	<div style="z-index: 9999999999999999" id="toast"></div>
 	<!-- Top container -->
@@ -144,195 +129,379 @@ a:focus, a:hover {
             <h2 style="display: inline-block;"><b><i class="fa-solid fa-truck-fast"></i>  Nhập sản phẩm mới</b></h2>
         </header>
         <div class="w3-panel" style="margin-bottom: 100px">
-	        <form id="formNhapHang" action="AdminThemSanPhamController" enctype="multipart/form-data" method="post">
-		    	<div class="w3-row-padding" style="border: 2px solid #4dcdcf; border-radius: 10px;background-color: #fff;">
-			    	<div class="w3-row-padding" style="margin:0 -16px;">
-				      <div class="w3-twothird">
-				        	<div style="margin-top: 20px;" class="form-group">
-								<label style="font-size: 20px; margin-bottom: 0;" for="tensanpham">
-									Tên Sản phẩm <span style="color: red;">*</span>
-								</label>
-								<div style="margin-top: 10px;" class="control">
-									<input form="formNhapHang"
-									style="width: 100%; height: 20px; font-size: 18px; padding: 20px 10px; border-radius: 10px; border: 1px solid #ccc;"
-									type="text" id="tensanpham" name="tensanpham"
-									placeholder="Nhập tên sản phẩm"
-									class="input-text required-entry form-control">
-									<span class="form-message"></span> 
-								</div>
-							</div>
-							<div style="margin-top: 20px;" class="form-group">
-								<label style="font-size: 20px; margin-bottom: 0;" for="gianhap">
-									Giá nhập <span style="color: red;">*</span>
-								</label>
-								<div style="margin-top: 10px;" class="control">
-									<input form="formNhapHang"
-									style="width: 100%; height: 20px; font-size: 18px; padding: 20px 10px; border-radius: 10px; border: 1px solid #ccc;"
-									type="number" id="gianhap" name="gianhap"
-									placeholder="Nhập giá nhập"
-									class="input-text required-entry form-control">
-									<span class="form-message"></span> 
-								</div>
-							</div>
-							<div style="margin-top: 20px;" class="form-group">
-								<label style="font-size: 20px; margin-bottom: 0;" for="giaban">
-									Giá bán <span style="color: red;">*</span>
-								</label>
-								<div style="margin-top: 10px;" class="control">
-									<input form="formNhapHang"
-									style="width: 100%; height: 20px; font-size: 18px; padding: 20px 10px; border-radius: 10px; border: 1px solid #ccc;"
-									type="number" id="giaban" name="giaban"
-									placeholder="Nhập giá bán"
-									class="input-text required-entry form-control">
-									<span class="form-message"></span> 
-								</div>
-							</div>
-							<div style="margin-top: 20px;" class="form-group">
-								<label style="font-size: 20px; margin-bottom: 0;" for="loai">
-									Loại <span style="color: red;">*</span>
-								</label> 
-								<select style="margin-top: 10px; height:41px; font-size: 18px; padding: 2px 10px; border-radius: 10px; border: 1px solid #ccc;"
-									form="formNhapHang" name="loai"
-									class="form-control" id="loai">
-									<option style="color: #555;" value="" selected>Chọn loại</option>
-									<c:forEach items="${dsloai }" var="l">
-										<option style="color: #555;" value="${l.getMaloai() }">${l.getTenloai() }</option>
-									</c:forEach>
-								</select>
-								<span class="form-message"></span>
-							</div>
-							<div style="margin-top: 20px;" class="form-group">
-								<label style="font-size: 20px; margin-bottom: 0;" for="thuonghieu">
-									Thương hiệu <span style="color: red;">*</span>
-								</label> 
-								<select style="margin-top: 10px; height:41px; font-size: 18px; padding: 2px 10px; border-radius: 10px; border: 1px solid #ccc;"
-									form="formNhapHang" name="thuonghieu"
-									class="form-control" id="thuonghieu">
-									<option style="color: #555;" value="" selected>Chọn thương hiệu</option>
-									<c:forEach items="${dsthuonghieu }" var="l">
-										<option style="color: #555;" value="${l.getMathuonghieu() }">${l.getTenthuonghieu() }</option>
-									</c:forEach>
-								</select>
-								<span class="form-message"></span>
-							</div>
-							<div style="margin-top: 20px;" class="form-group">
-								<label style="font-size: 20px; margin-bottom: 0;" for="danhmuc">
-									Danh mục <span style="color: red;">*</span>
-								</label> 
-								<select style="margin-top: 10px; height:41px; font-size: 18px; padding: 2px 10px; border-radius: 10px; border: 1px solid #ccc;"
-									form="formNhapHang" name="danhmuc"
-									class="form-control" id="danhmuc">
-									<option style="color: #555;" value="" selected>Chọn danh mục</option>
-									<c:forEach items="${dsdanhmuc }" var="l">
-										<option style="color: #555;" value="${l.getMadanhmuc() }">${l.getTendanhmuc() }</option>
-									</c:forEach>
-								</select>
-								<span class="form-message"></span>
-							</div>
-							<div style="margin-top: 20px;" class="form-group">
-								<label style="font-size: 20px; margin-bottom: 0;" for="motasanpham">
-									Mô tả sản phẩm <span style="color: red;">*</span>
-								</label>
-								<div style="margin-top: 10px;" class="control">
-									<textarea class="form-control" form="formNhapHang" id="motasanpham" name="FCKeditor1" rows="10" cols="30" style="width: 100%; height: 500px">
-									</textarea>
-									<span class="form-message"></span> 
-								</div>
-							</div>
-			      		</div>
-				      <div class="w3-third">
-				      	<div style="margin-top: 20px;" class="form-group">
-							<label style="font-size: 20px; margin-bottom: 0;" for="anh">
-								Ảnh sản phẩm <span style="color: red;">*</span>
-							</label>
-							<div style="margin-top: 10px;" class="control">
-								<input form="formNhapHang"
-								style="width: 100%; height: 41px; font-size: 18px;border: none; box-shadow: none;"
-								type="file" id="anh" name="anh"
-								class="input-text required-entry form-control" accept="image/*">
-								<span class="form-message"></span> 
-							</div>
-						</div>
-						<div style="margin-top: 20px;" class="form-group">
-							<label style="font-size: 20px; margin-bottom: 0;" for="anhchonsize">
-								Ảnh HD chọn size <span style="color: red;">*</span>
-							</label>
-							<div style="margin-top: 10px;" class="control">
-								<input form="formNhapHang"
-								style="width: 100%; height: 42px; font-size: 18px;border: none; box-shadow: none;"
-								type="file" id="anhchonsize" name="anhchonsize"
-								class="input-text required-entry form-control" accept="image/*">
-								<span class="form-message"></span> 
-							</div>
-						</div>
-						<div style="margin-top: 20px;" class="form-group">
-							<label style="font-size: 20px; margin-bottom: 0;">
-								Size <span style="color: red;">*</span>
-								<a style="margin-left: 20px;font-size:25px; cursor: pointer;" class="btnAddSize"><i class="fa-solid fa-circle-plus"></i></a>
-				               <a style="margin-left: 20px;font-size:25px; cursor: pointer; display: none;" class="btnDeleteSize"><i class="fa-solid fa-circle-minus"></i></a> <br>
-							</label>
-							<div style="margin-top: 10px;" class="control warpper-lsize1">
-								<input form="formNhapHang"
-									style="width: 100%; height: 20px; font-size: 18px; padding: 20px 10px; border-radius: 10px; border: 1px solid #ccc;"
-									type="text" id="lsize1" name="lsize1"
-									placeholder="Nhập size"
-									class="input-text required-entry form-control">
-								<span class="form-message"></span> 
-							</div>
-						</div>
-							<c:forEach var = "i" begin = "2" end = "5">
-								<div style="margin-top: 10px;width: 100%; display: none;" class="control warpper-lsize${i } form-group">
-									<input form="formNhapHang"
-										style="width: 100%; height: 20px; font-size: 18px; padding: 20px 10px; border-radius: 10px; border: 1px solid #ccc;"
-										type="text" id="lsize${i }" name="lsize${i }"
-										placeholder="Nhập size"
-										class="input-text required-entry form-control">
-									<span class="form-message"></span> 
-								</div>
-							</c:forEach>
-						<div style="margin-top: 20px;" class="form-group">
-							<label style="font-size: 20px; margin-bottom: 0;">
-								Màu - Ảnh <span style="color: red;">*</span>
-								<a style="margin-left: 20px; font-size:25px; cursor: pointer;" class="btnAddColor"><i class="fa-solid fa-circle-plus"></i></a>
-				               <a style="margin-left: 20px;font-size:25px; cursor: pointer; display: none;" class="btnDeleteColor"><i class="fa-solid fa-circle-minus"></i></a> <br>
-							</label>
-							<div style="margin-top: 10px;" class="control warpper-lmau1">
-									<input form="formNhapHang"
-										style="width: 100%; height: 20px; font-size: 18px; padding: 20px 10px; border-radius: 10px; border: 1px solid #ccc;"
-										type="text" id="lmau1" name="lmau1"
-										placeholder="Nhập màu"
-										class="input-text required-entry form-control">
-									<input form="formNhapHang"
-										style="width: 100%; height: 41px; font-size: 18px;border: none; box-shadow: none; margin-top: 10px; border-radius: 10px;"
-										type="file" id="anhmau1" name="anhmau1"
-										class="input-text required-entry form-control" accept="image/*">
-									<span class="form-message"></span> 
-								</div>
-							</div>
-							<c:forEach var = "i" begin = "2" end = "5">
-								<div style="margin-top: 10px; display: none;" class="control warpper-lmau${i } form-group">
-									<div>
+        	<c:choose>
+        		<c:when test="${param.btnnhapcu == null }">
+			        <form id="formNhapHang" action="AdminThemSanPhamController" enctype="multipart/form-data" method="post">
+				    	<div class="w3-row-padding" style="border: 2px solid #4dcdcf; border-radius: 10px;background-color: #fff;">
+					    	<div class="w3-row-padding" style="margin:0 -16px;">
+						      <div class="w3-twothird">
+						        	<div style="margin-top: 20px;" class="form-group">
+										<label style="font-size: 20px; margin-bottom: 0;" for="tensanpham">
+											Tên Sản phẩm <span style="color: red;">*</span>
+										</label>
+										<div style="margin-top: 10px;" class="control">
+											<input form="formNhapHang"
+											style="width: 100%; height: 20px; font-size: 18px; padding: 20px 10px; border-radius: 10px; border: 1px solid #ccc;"
+											type="text" id="tensanpham" name="tensanpham"
+											placeholder="Nhập tên sản phẩm"
+											class="input-text required-entry form-control">
+											<span class="form-message"></span> 
+										</div>
 									</div>
-									<input form="formNhapHang"
-										style="width: 100%; height: 20px; font-size: 18px; padding: 20px 10px; border-radius: 10px; border: 1px solid #ccc;"
-										type="text" id="lmau${i }" name="lmau${i }"
-										placeholder="Nhập màu"
-										class="input-text required-entry form-control">
-									<input form="formNhapHang"
-										style="width: 100%; height: 41px; font-size: 18px;border: none; box-shadow: none; margin-top: 10px; border-radius: 10px;"
-										type="file" id="anhmau${i }" name="anhmau${i }"
+									<div style="margin-top: 20px;" class="form-group">
+										<label style="font-size: 20px; margin-bottom: 0;" for="gianhap">
+											Giá nhập <span style="color: red;">*</span>
+										</label>
+										<div style="margin-top: 10px;" class="control">
+											<input form="formNhapHang"
+											style="width: 100%; height: 20px; font-size: 18px; padding: 20px 10px; border-radius: 10px; border: 1px solid #ccc;"
+											type="number" id="gianhap" name="gianhap"
+											placeholder="Nhập giá nhập"
+											class="input-text required-entry form-control">
+											<span class="form-message"></span> 
+										</div>
+									</div>
+									<div style="margin-top: 20px;" class="form-group">
+										<label style="font-size: 20px; margin-bottom: 0;" for="giaban">
+											Giá bán <span style="color: red;">*</span>
+										</label>
+										<div style="margin-top: 10px;" class="control">
+											<input form="formNhapHang"
+											style="width: 100%; height: 20px; font-size: 18px; padding: 20px 10px; border-radius: 10px; border: 1px solid #ccc;"
+											type="number" id="giaban" name="giaban"
+											placeholder="Nhập giá bán"
+											class="input-text required-entry form-control">
+											<span class="form-message"></span> 
+										</div>
+									</div>
+									<div style="margin-top: 20px;" class="form-group">
+										<label style="font-size: 20px; margin-bottom: 0;" for="loai">
+											Loại <span style="color: red;">*</span>
+										</label> 
+										<select style="margin-top: 10px; height:41px; font-size: 18px; padding: 2px 10px; border-radius: 10px; border: 1px solid #ccc;"
+											form="formNhapHang" name="loai"
+											class="form-control" id="loai">
+											<option style="color: #555;" value="" selected>Chọn loại</option>
+											<c:forEach items="${dsloai }" var="l">
+												<option style="color: #555;" value="${l.getMaloai() }">${l.getTenloai() }</option>
+											</c:forEach>
+										</select>
+										<span class="form-message"></span>
+									</div>
+									<div style="margin-top: 20px;" class="form-group">
+										<label style="font-size: 20px; margin-bottom: 0;" for="thuonghieu">
+											Thương hiệu <span style="color: red;">*</span>
+										</label> 
+										<select style="margin-top: 10px; height:41px; font-size: 18px; padding: 2px 10px; border-radius: 10px; border: 1px solid #ccc;"
+											form="formNhapHang" name="thuonghieu"
+											class="form-control" id="thuonghieu">
+											<option style="color: #555;" value="" selected>Chọn thương hiệu</option>
+											<c:forEach items="${dsthuonghieu }" var="l">
+												<option style="color: #555;" value="${l.getMathuonghieu() }">${l.getTenthuonghieu() }</option>
+											</c:forEach>
+										</select>
+										<span class="form-message"></span>
+									</div>
+									<div style="margin-top: 20px;" class="form-group">
+										<label style="font-size: 20px; margin-bottom: 0;" for="danhmuc">
+											Danh mục <span style="color: red;">*</span>
+										</label> 
+										<select style="margin-top: 10px; height:41px; font-size: 18px; padding: 2px 10px; border-radius: 10px; border: 1px solid #ccc;"
+											form="formNhapHang" name="danhmuc"
+											class="form-control" id="danhmuc">
+											<option style="color: #555;" value="" selected>Chọn danh mục</option>
+											<c:forEach items="${dsdanhmuc }" var="l">
+												<option style="color: #555;" value="${l.getMadanhmuc() }">${l.getTendanhmuc() }</option>
+											</c:forEach>
+										</select>
+										<span class="form-message"></span>
+									</div>
+					      		</div>
+						      <div class="w3-third">
+						      	<div style="margin-top: 20px;" class="form-group">
+									<label style="font-size: 20px; margin-bottom: 0;" for="anh">
+										Ảnh sản phẩm <span style="color: red;">*</span>
+									</label>
+									<div style="margin-top: 10px;" class="control">
+										<input form="formNhapHang"
+										style="width: 100%; height: 41px; font-size: 18px;border: none; box-shadow: none;"
+										type="file" id="anh" name="anh"
 										class="input-text required-entry form-control" accept="image/*">
-									<span class="form-message"></span> 
+										<span class="form-message"></span> 
+									</div>
 								</div>
-							</c:forEach>
-						
-				      </div>
-		    		</div>
-		    		<div class="w3-third" style="width: 100%; text-align: center;margin-bottom: 20px">
-				      <button form="formNhapHang" class="w3-button" style="padding: 15px 20px; background-color: var(--primary-color); color: var(--text-color); font-size: 25px; border-radius: 10px; width: 40%;">Nhập chi tiết số lượng</button>
-		    		</div>
-		    	</div>
-	        </form>
+								<div style="margin-top: 20px;" class="form-group">
+									<label style="font-size: 20px; margin-bottom: 0;" for="anhchonsize">
+										Ảnh HD chọn size <span style="color: red;">*</span>
+									</label>
+									<div style="margin-top: 10px;" class="control">
+										<input form="formNhapHang"
+										style="width: 100%; height: 42px; font-size: 18px;border: none; box-shadow: none;"
+										type="file" id="anhchonsize" name="anhchonsize"
+										class="input-text required-entry form-control" accept="image/*">
+										<span class="form-message"></span> 
+									</div>
+								</div>
+								<div style="margin-top: 20px;" class="form-group">
+									<label style="font-size: 20px; margin-bottom: 0;">
+										Size <span style="color: red;">*</span>
+										<a style="margin-left: 20px;font-size:25px; cursor: pointer;" class="btnAddSize"><i class="fa-solid fa-circle-plus"></i></a>
+						               <a style="margin-left: 20px;font-size:25px; cursor: pointer; display: none;" class="btnDeleteSize"><i class="fa-solid fa-circle-minus"></i></a> <br>
+									</label>
+									<div style="margin-top: 10px;" class="control warpper-lsize1">
+										<input form="formNhapHang"
+											style="width: 100%; height: 20px; font-size: 18px; padding: 20px 10px; border-radius: 10px; border: 1px solid #ccc;"
+											type="text" id="lsize1" name="lsize1"
+											placeholder="Nhập size"
+											class="input-text required-entry form-control">
+										<span class="form-message"></span> 
+									</div>
+								</div>
+									<c:forEach var = "i" begin = "2" end = "5">
+										<div style="margin-top: 10px;width: 100%; display: none;" class="control warpper-lsize${i } form-group">
+											<input form="formNhapHang"
+												style="width: 100%; height: 20px; font-size: 18px; padding: 20px 10px; border-radius: 10px; border: 1px solid #ccc;"
+												type="text" id="lsize${i }" name="lsize${i }"
+												placeholder="Nhập size"
+												class="input-text required-entry form-control">
+											<span class="form-message"></span> 
+										</div>
+									</c:forEach>
+								<div style="margin-top: 20px;" class="form-group">
+									<label style="font-size: 20px; margin-bottom: 0;">
+										Màu - Ảnh <span style="color: red;">*</span>
+										<a style="margin-left: 20px; font-size:25px; cursor: pointer;" class="btnAddColor"><i class="fa-solid fa-circle-plus"></i></a>
+						               <a style="margin-left: 20px;font-size:25px; cursor: pointer; display: none;" class="btnDeleteColor"><i class="fa-solid fa-circle-minus"></i></a> <br>
+									</label>
+									<div style="margin-top: 10px;" class="control warpper-lmau1">
+											<input form="formNhapHang"
+												style="width: 100%; height: 20px; font-size: 18px; padding: 20px 10px; border-radius: 10px; border: 1px solid #ccc;"
+												type="text" id="lmau1" name="lmau1"
+												placeholder="Nhập màu"
+												class="input-text required-entry form-control">
+											<input form="formNhapHang"
+												style="width: 100%; height: 41px; font-size: 18px;border: none; box-shadow: none; margin-top: 10px; border-radius: 10px;"
+												type="file" id="anhmau1" name="anhmau1"
+												class="input-text required-entry form-control" accept="image/*">
+											<span class="form-message"></span> 
+										</div>
+									</div>
+									<c:forEach var = "i" begin = "2" end = "5">
+										<div style="margin-top: 10px; display: none;" class="control warpper-lmau${i } form-group">
+											<div>
+											</div>
+											<input form="formNhapHang"
+												style="width: 100%; height: 20px; font-size: 18px; padding: 20px 10px; border-radius: 10px; border: 1px solid #ccc;"
+												type="text" id="lmau${i }" name="lmau${i }"
+												placeholder="Nhập màu"
+												class="input-text required-entry form-control">
+											<input form="formNhapHang"
+												style="width: 100%; height: 41px; font-size: 18px;border: none; box-shadow: none; margin-top: 10px; border-radius: 10px;"
+												type="file" id="anhmau${i }" name="anhmau${i }"
+												class="input-text required-entry form-control" accept="image/*">
+											<span class="form-message"></span> 
+										</div>
+									</c:forEach>
+						      </div>
+				    		</div>
+				    		<div class="w3-third" style="width: 100%; text-align: center;margin-bottom: 20px">
+						      <button form="formNhapHang" class="w3-button" style="padding: 15px 20px; background-color: var(--primary-color); color: var(--text-color); font-size: 25px; border-radius: 10px; width: 40%;">Nhập chi tiết số lượng</button>
+				    		</div>
+				    	</div>
+			        </form>
+        		</c:when>
+        		<c:otherwise>
+        			<c:if test="${spnhapdacotrongcuahang != null }">
+				        <form id="formNhapHangDaCo" action="AdminThemSanPhamController" enctype="multipart/form-data" method="post">
+					    	<div class="w3-row-padding" style="border: 2px solid #4dcdcf; border-radius: 10px;background-color: #fff;">
+						    	<div class="w3-row-padding" style="margin:0 -16px;">
+							      <div class="w3-twothird">
+							        	<div style="margin-top: 20px;" class="form-group">
+											<label style="font-size: 20px; margin-bottom: 0;" for="tensanpham">
+												Tên Sản phẩm <span style="color: red;">*</span>
+											</label>
+											<div style="margin-top: 10px;" class="control">
+												<input form="formNhapHang"
+												style="width: 100%; height: 20px; font-size: 18px; padding: 20px 10px; border-radius: 10px; border: 1px solid #ccc;"
+												type="text" id="tensanpham" name="tensanpham"
+												placeholder="Nhập tên sản phẩm"
+												class="input-text required-entry form-control" value="${spnhapdacotrongcuahang.getTensanpham() }" disabled="disabled">
+												<span class="form-message"></span> 
+											</div>
+										</div>
+										<div style="margin-top: 20px;" class="form-group">
+											<label style="font-size: 20px; margin-bottom: 0;" for="gianhap">
+												Giá nhập <span style="color: red;">*</span>
+											</label>
+											<div style="margin-top: 10px;" class="control">
+												<input form="formNhapHang"
+												style="width: 100%; height: 20px; font-size: 18px; padding: 20px 10px; border-radius: 10px; border: 1px solid #ccc;"
+												type="number" id="gianhap" name="gianhap"
+												placeholder="Nhập giá nhập"
+												class="input-text required-entry form-control">
+												<span class="form-message"></span> 
+											</div>
+										</div>
+										<div style="margin-top: 20px;" class="form-group">
+											<label style="font-size: 20px; margin-bottom: 0;" for="giaban">
+												Giá bán <span style="color: red;">*</span>
+											</label>
+											<div style="margin-top: 10px;" class="control">
+												<input form="formNhapHang"
+												style="width: 100%; height: 20px; font-size: 18px; padding: 20px 10px; border-radius: 10px; border: 1px solid #ccc;"
+												type="number" id="giaban" name="giaban"
+												placeholder="Nhập giá bán"
+												class="input-text required-entry form-control">
+												<span class="form-message"></span> 
+											</div>
+										</div>
+										<div style="margin-top: 20px;" class="form-group">
+											<label style="font-size: 20px; margin-bottom: 0;" for="loai">
+												Loại <span style="color: red;">*</span>
+											</label> 
+											<select style="margin-top: 10px; height:41px; font-size: 18px; padding: 2px 10px; border-radius: 10px; border: 1px solid #ccc;"
+												form="formNhapHang" name="loai"
+												class="form-control" id="loai" disabled="disabled">
+												<c:forEach items="${dsloai }" var="l">
+													<c:if test="${l.getMaloai() == ${spnhapdacotrongcuahang.getMaloai() }}">
+														<option style="color: #555;" value="${spnhapdacotrongcuahang.getMaloai() }" selected>${l.getTenloai() }</option>
+													</c:if>
+												</c:forEach>
+											</select>
+											<span class="form-message"></span>
+										</div>
+										<div style="margin-top: 20px;" class="form-group">
+											<label style="font-size: 20px; margin-bottom: 0;" for="thuonghieu">
+												Thương hiệu <span style="color: red;">*</span>
+											</label> 
+											<select style="margin-top: 10px; height:41px; font-size: 18px; padding: 2px 10px; border-radius: 10px; border: 1px solid #ccc;"
+												form="formNhapHang" name="thuonghieu"
+												class="form-control" id="thuonghieu" disabled="disabled">
+												<c:forEach items="${dsthuonghieu }" var="l">
+													<c:if test="${l.getMathuonghieu() == spnhapdacotrongcuahang.getMathuonghieu() }">
+														<option style="color: #555;" value="${spnhapdacotrongcuahang.getMathuonghieu() }" selected>${l.getTenthuonghieu() }</option>
+													</c:if>
+												</c:forEach>
+											</select>
+											<span class="form-message"></span>
+										</div>
+										<div style="margin-top: 20px;" class="form-group">
+											<label style="font-size: 20px; margin-bottom: 0;" for="danhmuc">
+												Danh mục <span style="color: red;">*</span>
+											</label> 
+											<select style="margin-top: 10px; height:41px; font-size: 18px; padding: 2px 10px; border-radius: 10px; border: 1px solid #ccc;"
+												form="formNhapHang" name="danhmuc"
+												class="form-control" id="danhmuc" disabled="disabled">
+												<c:forEach items="${dsdanhmuc }" var="l">
+													<c:if test="${l.getMadanhmuc() == spnhapdacotrongcuahang.getMadanhmuc() }">
+														<option style="color: #555;" value="${spnhapdacotrongcuahang.getMadanhmuc() }" selected>${l.getTendanhmuc() }</option>
+													</c:if>
+												</c:forEach>
+											</select>
+											<span class="form-message"></span>
+										</div>
+						      		</div>
+							      <div class="w3-third">
+							      	<div style="margin-top: 20px;" class="form-group">
+										<label style="font-size: 20px; margin-bottom: 0;" for="anh">
+											Ảnh sản phẩm <span style="color: red;">*</span>
+										</label>
+										<div style="margin-top: 10px;" class="control">
+											<img class="choose-img" style="width: 100%;"
+													src="${spnhapdacotrongcuahang.getAnh() }" alt="preview-img">
+											<!--<input form="formNhapHang"
+											style="width: 100%; height: 41px; font-size: 18px;border: none; box-shadow: none; display: none;"
+											type="file" id="anh" name="anh"
+											class="input-text required-entry form-control" accept="image/*" value="">
+											<span class="form-message"></span> -->
+										</div>
+									</div>
+									<div style="margin-top: 20px;" class="form-group">
+										<label style="font-size: 20px; margin-bottom: 0;" for="anhchonsize">
+											Ảnh HD chọn size <span style="color: red;">*</span>
+										</label>
+										<div style="margin-top: 10px;" class="control">
+											<img class="choose-img" style="width: 100%;"
+													src="${spnhapdacotrongcuahang.getAnhchonsize() }" alt="preview-img">
+											<!--<input form="formNhapHang"
+											style="width: 100%; height: 42px; font-size: 18px;border: none; box-shadow: none;"
+											type="file" id="anhchonsize" name="anhchonsize"
+											class="input-text required-entry form-control" accept="image/*">
+											<span class="form-message"></span> -->
+										</div>
+									</div>
+									<!-- Sửa ngang đoạn này rồi, tối cố sửa tiếp nha -->
+									<div style="margin-top: 20px;" class="form-group">
+										<label style="font-size: 20px; margin-bottom: 0;">
+											Size <span style="color: red;">*</span>
+											<a style="margin-left: 20px;font-size:25px; cursor: pointer;" class="btnAddSize"><i class="fa-solid fa-circle-plus"></i></a>
+							               <a style="margin-left: 20px;font-size:25px; cursor: pointer; display: none;" class="btnDeleteSize"><i class="fa-solid fa-circle-minus"></i></a> <br>
+										</label>
+										<div style="margin-top: 10px;" class="control warpper-lsize1">
+											<input form="formNhapHang"
+												style="width: 100%; height: 20px; font-size: 18px; padding: 20px 10px; border-radius: 10px; border: 1px solid #ccc;"
+												type="text" id="lsize1" name="lsize1"
+												placeholder="Nhập size"
+												class="input-text required-entry form-control">
+											<span class="form-message"></span> 
+										</div>
+									</div>
+										<c:forEach var = "i" begin = "2" end = "5">
+											<div style="margin-top: 10px;width: 100%; display: none;" class="control warpper-lsize${i } form-group">
+												<input form="formNhapHang"
+													style="width: 100%; height: 20px; font-size: 18px; padding: 20px 10px; border-radius: 10px; border: 1px solid #ccc;"
+													type="text" id="lsize${i }" name="lsize${i }"
+													placeholder="Nhập size"
+													class="input-text required-entry form-control">
+												<span class="form-message"></span> 
+											</div>
+										</c:forEach>
+									<div style="margin-top: 20px;" class="form-group">
+										<label style="font-size: 20px; margin-bottom: 0;">
+											Màu - Ảnh <span style="color: red;">*</span>
+											<a style="margin-left: 20px; font-size:25px; cursor: pointer;" class="btnAddColor"><i class="fa-solid fa-circle-plus"></i></a>
+							               <a style="margin-left: 20px;font-size:25px; cursor: pointer; display: none;" class="btnDeleteColor"><i class="fa-solid fa-circle-minus"></i></a> <br>
+										</label>
+										<div style="margin-top: 10px;" class="control warpper-lmau1">
+												<input form="formNhapHang"
+													style="width: 100%; height: 20px; font-size: 18px; padding: 20px 10px; border-radius: 10px; border: 1px solid #ccc;"
+													type="text" id="lmau1" name="lmau1"
+													placeholder="Nhập màu"
+													class="input-text required-entry form-control">
+												<input form="formNhapHang"
+													style="width: 100%; height: 41px; font-size: 18px;border: none; box-shadow: none; margin-top: 10px; border-radius: 10px;"
+													type="file" id="anhmau1" name="anhmau1"
+													class="input-text required-entry form-control" accept="image/*">
+												<span class="form-message"></span> 
+											</div>
+										</div>
+										<c:forEach var = "i" begin = "2" end = "5">
+											<div style="margin-top: 10px; display: none;" class="control warpper-lmau${i } form-group">
+												<div>
+												</div>
+												<input form="formNhapHang"
+													style="width: 100%; height: 20px; font-size: 18px; padding: 20px 10px; border-radius: 10px; border: 1px solid #ccc;"
+													type="text" id="lmau${i }" name="lmau${i }"
+													placeholder="Nhập màu"
+													class="input-text required-entry form-control">
+												<input form="formNhapHang"
+													style="width: 100%; height: 41px; font-size: 18px;border: none; box-shadow: none; margin-top: 10px; border-radius: 10px;"
+													type="file" id="anhmau${i }" name="anhmau${i }"
+													class="input-text required-entry form-control" accept="image/*">
+												<span class="form-message"></span> 
+											</div>
+										</c:forEach>
+									
+							      </div>
+					    		</div>
+					    		<div class="w3-third" style="width: 100%; text-align: center;margin-bottom: 20px">
+							      <button form="formNhapHang" class="w3-button" style="padding: 15px 20px; background-color: var(--primary-color); color: var(--text-color); font-size: 25px; border-radius: 10px; width: 40%;">Nhập chi tiết số lượng</button>
+					    		</div>
+					    	</div>
+				        </form>
+        			</c:if>
+        		</c:otherwise>
+        	</c:choose>
 		  </div>
 
         <!-- Footer -->
@@ -357,7 +526,6 @@ a:focus, a:hover {
 					Validator.isRequired('#thuonghieu','Bạn vui lòng chọn trường này.'),
 					Validator.isRequired('#danhmuc','Bạn vui lòng chọn trường này.'),
 					
-					Validator.isRequired('#motasanpham','Bạn vui lòng nhập trường này.'),
 					
 					Validator.isRequired('#anh','Bạn vui lòng chọn trường này.'),
 					Validator.isRequired('#anhchonsize','Bạn vui lòng chọn trường này.'),

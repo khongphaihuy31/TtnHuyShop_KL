@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import Bo.AdminSanPhamBo;
 
@@ -43,7 +44,8 @@ public class AdminNhapChiTietController extends HttpServlet {
 			String maloai = request.getParameter("maloai");
 			String mathuonghieu = request.getParameter("mathuonghieu");
 			String madanhmuc = request.getParameter("madanhmuc");
-			String motasanpham = request.getParameter("motasanpham");
+			String motasanpham = request.getParameter("FCKeditor1");
+			System.out.println(motasanpham);
 			String anh = request.getParameter("anh");
 			String anhchonsize =  request.getParameter("anhchonsize");
 			String lsize1 = request.getParameter("lsize1");

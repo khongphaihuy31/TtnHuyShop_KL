@@ -2,6 +2,7 @@ package Bo;
 
 import java.util.ArrayList;
 
+import Bean.ChiTietSanPhamBean;
 import Bean.SanPhamBean;
 import Dao.AdminSanPhamDao;
 
@@ -10,6 +11,11 @@ public class AdminSanPhamBo {
 //	Lấy các sản phẩm hot
 	public ArrayList<SanPhamBean> dsSanPham()throws Exception{
 		return spdao.dsSanPham();
+	}
+	
+//	Lấy sản phẩm theo mã sản phẩm
+	public SanPhamBean getSanPham(long masanpham)throws Exception{
+		return spdao.getSanPham(masanpham);
 	}
 	
 	//Xóa sản phẩm
@@ -60,6 +66,11 @@ public class AdminSanPhamBo {
 	//Chi tiết sản phẩm
 	public int chiTietSanPham(long masanpham, String mau, String size, long soluong)throws Exception{
 		return spdao.chiTietSanPham(masanpham, mau, size, soluong);
+	}
+	
+//	Lấy danh sách chi tiết sản phẩm
+	public ArrayList<ChiTietSanPhamBean> dsChiTietSanPham()throws Exception{
+		return spdao.dsChiTietSanPham();
 	}
 	
 	//Sửa sản phẩm

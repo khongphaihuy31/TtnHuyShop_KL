@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import Bean.ChiTietSanPhamBean;
 import Bean.SanPhamBean;
 
 public class AdminSanPhamDao {
@@ -32,6 +33,36 @@ public class AdminSanPhamDao {
 			String anhchonsize = rs.getString("anhchonsize");
 			
 			dsSanPham.add(new SanPhamBean(masanpham, tensanpham, anh, giaban, giagiam, soluongdaban, sanphamhot, motasanpham, maloai, mathuonghieu, madanhmuc, anhchonsize));
+		}
+		return dsSanPham;
+	}
+	
+//	Lấy sản phẩm theo mã sản phẩm
+	public SanPhamBean getSanPham(long masanpham)throws Exception{
+		SanPhamBean dsSanPham = new SanPhamBean();
+		KetNoiDao kn = new KetNoiDao();
+		kn.ketnoi();
+		
+		String sql = "select * from SanPham where masanpham=?";
+		
+		PreparedStatement cmd = kn.cn.prepareStatement(sql);
+		cmd.setLong(1, masanpham);
+		ResultSet rs = cmd.executeQuery();
+		if(rs.next()) {
+			long masanpham1 = rs.getLong("masanpham");
+			String tensanpham = rs.getString("tensanpham");
+			String anh = rs.getString("anh");
+			long giaban = rs.getLong("giaban");
+			long giagiam = rs.getLong("giagiam");
+			long soluongdaban = rs.getLong("soluongdaban");
+			boolean sanphamhot = rs.getBoolean("sanphamhot");
+			String motasanpham = rs.getString("motasanpham");
+			long maloai = rs.getLong("maloai");
+			long mathuonghieu = rs.getLong("mathuonghieu");
+			long madanhmuc = rs.getLong("madanhmuc");
+			String anhchonsize = rs.getString("anhchonsize");
+			
+			dsSanPham = new SanPhamBean(masanpham, tensanpham, anh, giaban, giagiam, soluongdaban, sanphamhot, motasanpham, maloai, mathuonghieu, madanhmuc, anhchonsize);
 		}
 		return dsSanPham;
 	}
@@ -210,6 +241,27 @@ public class AdminSanPhamDao {
 		cmd.close();
 		kn.cn.close();
 		return kq;
+	}
+	
+//	Lấy danh sách chi tiết sản phẩm
+	public ArrayList<ChiTietSanPhamBean> dsChiTietSanPham()throws Exception{
+		ArrayList<ChiTietSanPhamBean> dsSanPham = new ArrayList<ChiTietSanPhamBean>();
+		KetNoiDao kn = new KetNoiDao();
+		kn.ketnoi();
+		
+		String sql = "select * from ChiTietSanPham";
+		
+		PreparedStatement cmd = kn.cn.prepareStatement(sql);
+		ResultSet rs = cmd.executeQuery();
+		while(rs.next()) {
+			long masanpham = rs.getLong("masanpham");
+			String mau = rs.getString("mau");
+			String size = rs.getString("size");
+			long soluong = rs.getLong("soluong");
+			
+			dsSanPham.add(new ChiTietSanPhamBean(masanpham, mau, size, soluong));
+		}
+		return dsSanPham;
 	}
 	
 	//Sửa sản phẩm
