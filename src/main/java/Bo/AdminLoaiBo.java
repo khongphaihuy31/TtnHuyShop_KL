@@ -26,4 +26,21 @@ public class AdminLoaiBo {
 	public int xoaLoai(long maloai)throws Exception{
 		return admloaidao.xoaLoai(maloai);
 	}
+	
+	//Xóa size sản phẩm theo mã sản phẩm
+	public int xoaSizeSanPham(long masanpham)throws Exception{
+		return admloaidao.xoaSizeSanPham(masanpham);
+	}
+	//Xóa ảnh, màu sản phẩm theo mã sản phẩm
+	public int xoaAnhSanPham(long masanpham)throws Exception{
+		return admloaidao.xoaAnhSanPham(masanpham);
+	}
+	//Xóa chi tiết sản phẩm theo mã sản phẩm
+	public int xoaChiTietSanPham(long masanpham)throws Exception{
+		return admloaidao.xoaChiTietSanPham(masanpham);
+	}
+	//Xóa sản phẩm trong giỏ theo mã sản phẩm
+	public int xoaGioHang(long masanpham)throws Exception{
+		return admloaidao.xoaGioHang(masanpham);
+	}
 }

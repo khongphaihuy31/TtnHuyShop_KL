@@ -76,4 +76,66 @@ public class AdminLoaiDao {
 		kn.cn.close();
 		return kq;
 	}
+	
+	//Xóa size sản phẩm theo mã sản phẩm
+	public int xoaSizeSanPham(long masanpham)throws Exception{
+		KetNoiDao kn = new KetNoiDao();
+		kn.ketnoi();
+		
+		String sql = "delete from SizeSanPham where masanpham=? ";
+		PreparedStatement cmd = kn.cn.prepareStatement(sql);
+		
+		cmd.setLong(1, masanpham);
+		
+		int kq = cmd.executeUpdate();
+		cmd.close();
+		kn.cn.close();
+		return kq;
+	}
+	//Xóa chi tiết sản phẩm theo mã sản phẩm
+	public int xoaChiTietSanPham(long masanpham)throws Exception{
+		KetNoiDao kn = new KetNoiDao();
+		kn.ketnoi();
+		
+		String sql = "delete from ChiTietSanPham where masanpham=? ";
+		PreparedStatement cmd = kn.cn.prepareStatement(sql);
+		
+		cmd.setLong(1, masanpham);
+		
+		int kq = cmd.executeUpdate();
+		cmd.close();
+		kn.cn.close();
+		return kq;
+	}
+	//Xóa ảnh, màu sản phẩm theo mã sản phẩm
+	public int xoaAnhSanPham(long masanpham)throws Exception{
+		KetNoiDao kn = new KetNoiDao();
+		kn.ketnoi();
+		
+		String sql = "delete from AnhSanPham where masanpham=? ";
+		PreparedStatement cmd = kn.cn.prepareStatement(sql);
+		
+		cmd.setLong(1, masanpham);
+		
+		int kq = cmd.executeUpdate();
+		cmd.close();
+		kn.cn.close();
+		return kq;
+	}
+	
+	//Xóa sản phẩm trong giỏ theo mã sản phẩm
+	public int xoaGioHang(long masanpham)throws Exception{
+		KetNoiDao kn = new KetNoiDao();
+		kn.ketnoi();
+		
+		String sql = "delete from GioHang where masanpham=? ";
+		PreparedStatement cmd = kn.cn.prepareStatement(sql);
+		
+		cmd.setLong(1, masanpham);
+		
+		int kq = cmd.executeUpdate();
+		cmd.close();
+		kn.cn.close();
+		return kq;
+	}
 }

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 
 import Bean.LoaiBean;
+import Bean.SanPhamBean;
 import Bo.AdminLoaiBo;
 import Bo.AdminLoaiTrongDanhMucBo;
 import Bo.AdminSanPhamBo;
@@ -77,6 +78,18 @@ public class AdminLoaiSanPhamController extends HttpServlet {
 			if(btnxoa != null) {
 				long maloai = Long.parseLong(request.getParameter("maloai"));
 				AdminSanPhamBo adspbo = new AdminSanPhamBo();
+				//danh sách sản phẩm thuộc loại
+				ArrayList<SanPhamBean> dssanpham = adspbo.dsSanPhamThuocLoai(maloai);
+				for(SanPhamBean sp: dssanpham) {
+					//Xóa SizeSanPham
+					lbo.xoaSizeSanPham(sp.getMasanpham());
+					//Xóa AnhSanPham
+					lbo.xoaAnhSanPham(sp.getMasanpham());
+					//Xóa ChiTietSanPham
+					lbo.xoaChiTietSanPham(sp.getMasanpham());
+					//Xóa GioHang
+					lbo.xoaGioHang(sp.getMasanpham());
+				}
 				adspbo.xoaSanPhamThuocLoai(maloai);
 				AdminLoaiTrongDanhMucBo adltdmbo =  new AdminLoaiTrongDanhMucBo();
 				adltdmbo.xoaLoaiTrongDanhMucThuocLoai(maloai);

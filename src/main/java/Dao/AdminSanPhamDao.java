@@ -4,8 +4,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import Bean.AnhSanPham;
 import Bean.ChiTietSanPhamBean;
 import Bean.SanPhamBean;
+import Bean.SizeSanPhamBean;
 
 public class AdminSanPhamDao {
 //	Lấy các sản phẩm hot
@@ -63,6 +65,46 @@ public class AdminSanPhamDao {
 			String anhchonsize = rs.getString("anhchonsize");
 			
 			dsSanPham = new SanPhamBean(masanpham, tensanpham, anh, giaban, giagiam, soluongdaban, sanphamhot, motasanpham, maloai, mathuonghieu, madanhmuc, anhchonsize);
+		}
+		return dsSanPham;
+	}
+	
+//	Lấy danh sách size theo mã sản phẩm
+	public ArrayList<SizeSanPhamBean> dsSizeSanPham(long masanpham)throws Exception{
+		ArrayList<SizeSanPhamBean> dsSanPham = new ArrayList<SizeSanPhamBean>();
+		KetNoiDao kn = new KetNoiDao();
+		kn.ketnoi();
+		
+		String sql = "select * from SizeSanPham where masanpham=?";
+		
+		PreparedStatement cmd = kn.cn.prepareStatement(sql);
+		cmd.setLong(1, masanpham);
+		ResultSet rs = cmd.executeQuery();
+		while(rs.next()) {
+			long masanpham1 = rs.getLong("masanpham");
+			String size = rs.getString("size");
+			
+			dsSanPham.add(new SizeSanPhamBean(masanpham1, size));
+		}
+		return dsSanPham;
+	}
+	
+//	Lấy danh sách màu và ảnh theo mã sản phẩm
+	public ArrayList<AnhSanPham> dsAnhSanPham(long masanpham)throws Exception{
+		ArrayList<AnhSanPham> dsSanPham = new ArrayList<AnhSanPham>();
+		KetNoiDao kn = new KetNoiDao();
+		kn.ketnoi();
+		
+		String sql = "select * from AnhSanPham where masanpham=?";
+		
+		PreparedStatement cmd = kn.cn.prepareStatement(sql);
+		cmd.setLong(1, masanpham);
+		ResultSet rs = cmd.executeQuery();
+		while(rs.next()) {
+			String mau = rs.getString("mau");
+			String srcanh = rs.getString("srcanh");
+			
+			dsSanPham.add(new AnhSanPham(mau, srcanh));
 		}
 		return dsSanPham;
 	}
@@ -242,6 +284,24 @@ public class AdminSanPhamDao {
 		kn.cn.close();
 		return kq;
 	}
+	//Cập nhật số lượng trong kho
+	public int capNhatChiTietSanPham(long masanpham, String mau, String size, long soluong)throws Exception{
+		KetNoiDao kn= new KetNoiDao();
+		kn.ketnoi();
+		
+		String sql = "update ChiTietSanPham set soluong= ? where masanpham=? and mau=? and size=?";
+		PreparedStatement cmd = kn.cn.prepareStatement(sql);
+		
+		cmd.setLong(1, soluong);
+		cmd.setLong(2, masanpham);
+		cmd.setString(3, mau);
+		cmd.setString(4, size);
+		
+		int kq = cmd.executeUpdate();
+		cmd.close();
+		kn.cn.close();
+		return kq;
+	}
 	
 //	Lấy danh sách chi tiết sản phẩm
 	public ArrayList<ChiTietSanPhamBean> dsChiTietSanPham()throws Exception{
@@ -260,6 +320,28 @@ public class AdminSanPhamDao {
 			long soluong = rs.getLong("soluong");
 			
 			dsSanPham.add(new ChiTietSanPhamBean(masanpham, mau, size, soluong));
+		}
+		return dsSanPham;
+	}
+	
+//	Lấy danh sách chi tiết sản phẩm
+	public ArrayList<ChiTietSanPhamBean> dsChiTietSanPhamThemMasanpham(long masanpham)throws Exception{
+		ArrayList<ChiTietSanPhamBean> dsSanPham = new ArrayList<ChiTietSanPhamBean>();
+		KetNoiDao kn = new KetNoiDao();
+		kn.ketnoi();
+		
+		String sql = "select * from ChiTietSanPham where masanpham = ?";
+		
+		PreparedStatement cmd = kn.cn.prepareStatement(sql);
+		cmd.setLong(1, masanpham);
+		ResultSet rs = cmd.executeQuery();
+		while(rs.next()) {
+			long masanpham1 = rs.getLong("masanpham");
+			String mau = rs.getString("mau");
+			String size = rs.getString("size");
+			long soluong = rs.getLong("soluong");
+			
+			dsSanPham.add(new ChiTietSanPhamBean(masanpham1, mau, size, soluong));
 		}
 		return dsSanPham;
 	}
@@ -302,5 +384,34 @@ public class AdminSanPhamDao {
 		cmd.close();
 		kn.cn.close();
 		return kq;
+	}
+//	Lấy danh sách sản phẩm thuộc loại
+	public ArrayList<SanPhamBean> dsSanPhamThuocLoai(long maloai)throws Exception{
+		ArrayList<SanPhamBean> dsSanPham = new ArrayList<SanPhamBean>();
+		KetNoiDao kn = new KetNoiDao();
+		kn.ketnoi();
+		
+		String sql = "select * from SanPham where maloai=?";
+		
+		PreparedStatement cmd = kn.cn.prepareStatement(sql);
+		cmd.setLong(1, maloai);
+		ResultSet rs = cmd.executeQuery();
+		while(rs.next()) {
+			long masanpham = rs.getLong("masanpham");
+			String tensanpham = rs.getString("tensanpham");
+			String anh = rs.getString("anh");
+			long giaban = rs.getLong("giaban");
+			long giagiam = rs.getLong("giagiam");
+			long soluongdaban = rs.getLong("soluongdaban");
+			boolean sanphamhot = rs.getBoolean("sanphamhot");
+			String motasanpham = rs.getString("motasanpham");
+			long maloai1 = rs.getLong("maloai");
+			long mathuonghieu = rs.getLong("mathuonghieu");
+			long madanhmuc = rs.getLong("madanhmuc");
+			String anhchonsize = rs.getString("anhchonsize");
+			
+			dsSanPham.add(new SanPhamBean(masanpham, tensanpham, anh, giaban, giagiam, soluongdaban, sanphamhot, motasanpham, maloai1, mathuonghieu, madanhmuc, anhchonsize));
+		}
+		return dsSanPham;
 	}
 }

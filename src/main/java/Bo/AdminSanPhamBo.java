@@ -2,8 +2,10 @@ package Bo;
 
 import java.util.ArrayList;
 
+import Bean.AnhSanPham;
 import Bean.ChiTietSanPhamBean;
 import Bean.SanPhamBean;
+import Bean.SizeSanPhamBean;
 import Dao.AdminSanPhamDao;
 
 public class AdminSanPhamBo {
@@ -16,6 +18,16 @@ public class AdminSanPhamBo {
 //	Lấy sản phẩm theo mã sản phẩm
 	public SanPhamBean getSanPham(long masanpham)throws Exception{
 		return spdao.getSanPham(masanpham);
+	}
+	
+//	Lấy danh sách màu và ảnh theo mã sản phẩm
+	public ArrayList<AnhSanPham> dsAnhSanPham(long masanpham)throws Exception{
+		return spdao.dsAnhSanPham(masanpham);
+	}
+	
+//	Lấy danh sách size theo mã sản phẩm
+	public ArrayList<SizeSanPhamBean> dsSizeSanPham(long masanpham)throws Exception{
+		return spdao.dsSizeSanPham(masanpham);
 	}
 	
 	//Xóa sản phẩm
@@ -68,6 +80,16 @@ public class AdminSanPhamBo {
 		return spdao.chiTietSanPham(masanpham, mau, size, soluong);
 	}
 	
+	//Cập nhật số lượng trong kho
+	public int capNhatChiTietSanPham(long masanpham, String mau, String size, long soluong)throws Exception{
+		return spdao.capNhatChiTietSanPham(masanpham, mau, size, soluong);
+	}
+	
+//	Lấy danh sách chi tiết sản phẩm
+	public ArrayList<ChiTietSanPhamBean> dsChiTietSanPhamThemMasanpham(long masanpham)throws Exception{
+		return spdao.dsChiTietSanPhamThemMasanpham(masanpham);
+	}
+	
 //	Lấy danh sách chi tiết sản phẩm
 	public ArrayList<ChiTietSanPhamBean> dsChiTietSanPham()throws Exception{
 		return spdao.dsChiTietSanPham();
@@ -81,5 +103,10 @@ public class AdminSanPhamBo {
 	//Xóa sản phẩm thuộc mã loại
 	public int xoaSanPhamThuocLoai(long maloai)throws Exception{
 		return spdao.xoaSanPhamThuocLoai(maloai);
+	}
+	
+//	Lấy danh sách sản phẩm thuộc loại
+	public ArrayList<SanPhamBean> dsSanPhamThuocLoai(long maloai)throws Exception{
+		return spdao.dsSanPhamThuocLoai(maloai);
 	}
 }

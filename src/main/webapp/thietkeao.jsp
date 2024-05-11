@@ -1253,6 +1253,43 @@ input:checked + label{
 									    }
 									}
 									down.addEventListener('click' , Down);
+									
+									//Kiểm tra đã chọn màu và size chưa, chưa thì hiện ra thông báo
+									function validateInput() {
+										if (thuoctinhmau== false && thuoctinhsize == false) {
+								        	function showErrorToastChuaChonSizeHoacMau() {
+												toast({
+													title : 'Mua thất bại',
+													message : 'Vui lòng chọn đầy đủ màu và size.',
+													type : 'error',
+													duration : 5000
+												})
+											}
+								        	showErrorToastChuaChonSizeHoacMau();
+								        }
+										if (thuoctinhmau== true && thuoctinhsize == false) {
+								        	function showErrorToastChuaChonSizeHoacMau() {
+												toast({
+													title : 'Mua thất bại',
+													message : 'Vui lòng chọn đầy đủ màu và size.',
+													type : 'error',
+													duration : 5000
+												})
+											}
+								        	showErrorToastChuaChonSizeHoacMau();
+								        }
+										if (thuoctinhmau== false && thuoctinhsize == true) {
+								        	function showErrorToastChuaChonSizeHoacMau() {
+												toast({
+													title : 'Mua thất bại',
+													message : 'Vui lòng chọn đầy đủ màu và size.',
+													type : 'error',
+													duration : 5000
+												})
+											}
+								        	showErrorToastChuaChonSizeHoacMau();
+								        }
+								    }
 							</script>
 							<div class="container__buy " style="margin-top: 0; justify-content: space-between; display: flex;">
 								<c:choose>
@@ -1260,7 +1297,7 @@ input:checked + label{
 										<input form="soluongmua" name="anhdesign" style="display: none;" type="file" id="file-input" accept="image/*">
                                         <button class="choose-img">Tải ảnh</button>
 			
-										<button style="padding: 8px; width: 50%; min-width: 0;" name="buyNow" form="soluongmua"
+										<button onclick="validateInput()" style="padding: 8px; width: 50%; min-width: 0;" name="buyNow" form="soluongmua"
 											class="container__buy-add-now save-img" value="Mua ngay">Mua
 											ngay</button>
 									</c:when>

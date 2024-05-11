@@ -10,9 +10,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Bean.AnhSanPham;
 import Bean.DanhMucBean;
 import Bean.LoaiBean;
 import Bean.SanPhamBean;
+import Bean.SizeSanPhamBean;
 import Bean.ThuongHieuBean;
 import Bo.AdminLoaiBo;
 import Bo.AdminSanPhamBo;
@@ -70,6 +72,13 @@ public class AdminNhapSanPhamMoi extends HttpServlet {
 				AdminSanPhamBo adspbo = new AdminSanPhamBo();
 				SanPhamBean spnhapdacotrongcuahang = adspbo.getSanPham(masanpham);
 				request.setAttribute("spnhapdacotrongcuahang", spnhapdacotrongcuahang);
+				
+				//Lấy danh sách size đã có  ở sản phẩm
+				ArrayList<AnhSanPham> dsAnhSanPham = adspbo.dsAnhSanPham(masanpham);
+				request.setAttribute("dsAnhSanPham", dsAnhSanPham);
+				
+				ArrayList<SizeSanPhamBean> dsSizeSanPham = adspbo.dsSizeSanPham(masanpham);
+				request.setAttribute("dsSizeSanPham", dsSizeSanPham);
 			}
 			
 			RequestDispatcher rd = request.getRequestDispatcher("AdminNhapSanPhamMoi.jsp");

@@ -66,19 +66,6 @@ a:focus, a:hover {
 }
 </style>
 </head>
-<script type="text/javascript">
-	window.onload = function()
-	{
-		// Automatically calculates the editor base path based on the _samples directory.
-		// This is usefull only for these samples. A real application should use something like this:
-		// oFCKeditor.BasePath = '/fckeditor/' ;	// '/fckeditor/' is the default value.
-		var sBasePath = document.location.href.substring(0,document.location.href.lastIndexOf('_samples')) ;
-	
-		var oFCKeditor = new FCKeditor( 'FCKeditor1' ) ;
-		oFCKeditor.BasePath	= sBasePath ;
-		oFCKeditor.ReplaceTextarea() ;
-	}
-</script>
 <body class="w3-light-grey">
 	<div style="z-index: 9999999999999999" id="toast"></div>
 	<!-- Top container -->
@@ -146,7 +133,20 @@ a:focus, a:hover {
         </header>
         <div class="w3-row-padding w3-margin-bottom">
 	       	<c:choose>
-				<c:when test="${listSize.size()!=0 && listMau.size()!= 0}">
+				<c:when test="${listSize.size()!=0 && listMau.size()!= 0 && param.btnnhapcu == null}">
+					<script type="text/javascript">
+						window.onload = function()
+						{
+							// Automatically calculates the editor base path based on the _samples directory.
+							// This is usefull only for these samples. A real application should use something like this:
+							// oFCKeditor.BasePath = '/fckeditor/' ;	// '/fckeditor/' is the default value.
+							var sBasePath = document.location.href.substring(0,document.location.href.lastIndexOf('_samples')) ;
+						
+							var oFCKeditor = new FCKeditor( 'FCKeditor1' ) ;
+							oFCKeditor.BasePath	= sBasePath ;
+							oFCKeditor.ReplaceTextarea() ;
+						}
+					</script>
 			        <form id="formNhapChiTiet" action="AdminNhapChiTietController">
 						<div style="border: 2px solid #4dcdcf; border-radius: 10px;width: 100%; padding: 10px 20px; margin-top: 20px; background-color: #fff; display: inline-block;">
 					        <label style="font-size: 20px; margin-bottom: 10px;" for="motasanpham">
@@ -243,9 +243,82 @@ a:focus, a:hover {
 		    		</form>
 				</c:when>
 				<c:otherwise>
-					<div class="row" style="margin-top: 10px;">
-						<h3>Không có size hoặc màu.</h3>
-					</div>
+					<form id="formNhapChiTiet" action="AdminNhapChiTietController">
+						<div style="border: 2px solid #4dcdcf; border-radius: 10px;width: 100%; padding: 10px 20px; margin-top: 20px; background-color: #fff; display: inline-block;">
+					        <label style="font-size: 20px; margin-bottom: 10px;" for="motasanpham">
+								Nhập số lượng <span style="color: red;">*</span>
+							</label>
+					        <table id="example" class="table table-striped table-bordered bangChiTiet" style="width:100%;">
+						    </table>
+						    <input type="text" style="display: none;" name="anhmau5" value="${param.anhmau5 }">
+						    <input type="text" style="display: none;" name="lmau5" value="${param.lmau5 }">
+						    <input type="text" style="display: none;" name="anhmau4" value="${param.anhmau4 }">
+						    <input type="text" style="display: none;" name="lmau4" value="${param.lmau4 }">
+						    <input type="text" style="display: none;" name="anhmau3" value="${param.anhmau3 }">
+						    <input type="text" style="display: none;" name="lmau3" value="${param.lmau3 }">
+						    <input type="text" style="display: none;" name="anhmau2" value="${param.anhmau2 }">
+						    <input type="text" style="display: none;" name="lmau2" value="${param.lmau2 }">
+						    <input type="text" style="display: none;" name="anhmau1" value="${param.anhmau1 }">
+						    <input type="text" style="display: none;" name="lmau1" value="${param.lmau1 }">
+						    <input type="text" style="display: none;" name="lsize5" value="${param.lsize5 }">
+						    <input type="text" style="display: none;" name="lsize4" value="${param.lsize4 }">
+						    <input type="text" style="display: none;" name="lsize3" value="${param.lsize3 }">
+						    <input type="text" style="display: none;" name="lsize2" value="${param.lsize2 }">
+						    <input type="text" style="display: none;" name="lsize1" value="${param.lsize1 }">
+						    <input type="text" style="display: none;" name="gianhap" value="${param.gianhap }">
+						    <input type="text" style="display: none;" name="btnnhapcu" value="${param.btnnhapcu }">
+					        <script type="text/javascript">
+						        var listMau = ${listMau};
+						        console.log(listMau);
+						        var listSize = ${listSize};
+						        console.log(listSize);
+						        
+					            let content='<thead> <tr> <th style="background-color: var(--primary-color); color: white;">Màu</th> <th style="background-color: var(--primary-color); color: white;">Size</th> <th style="background-color: var(--primary-color); color: white;"> số lượng</th> </tr> </thead><tbody>';
+						        for(let i = 0; i < listMau.length; i++){
+						            content+='<tr><td style="height: 20px; font-size: 18px;" rowspan='+${listSize.size()}+'>'+listMau[i]+'</td><td style="height: 20px; font-size: 18px;">'+listSize[0]+'</td><td><input style="width: 100%; height: 20px; font-size: 18px; padding: 20px 10px; border-radius: 10px; border: 1px solid #ccc;" type="number" id="surname" name='+listMau[i]+'/'+listSize[0]+'></td> </td></tr>'
+				                    for(let j = 1; j<listSize.length; j++){
+				                        content+=  '<tr><td>'+listSize[j]+'</td> <td> <input style="width: 100%; height: 20px; font-size: 18px; padding: 20px 10px; border-radius: 10px; border: 1px solid #ccc;" type="number" id="surname" name='+listMau[i]+'/'+listSize[j]+'></td> </td></tr>'
+				                    }
+	
+						                    
+						        }
+						        content += '</tbody>'
+						        bangChiTiet = document.querySelector('.bangChiTiet');
+						        bangChiTiet.innerHTML = content;
+						        
+						        // kiểm tra đã nhập số lượng sản phẩm chưa
+						        function ChuaNhapSoLuong() {
+						        	let tongsoluong = 0;
+									for(let i=0; i<listMau.length; i++) {
+										for(let j=0; j<listSize.length; j++) {
+											var sln = document.querySelector('input[name="'+listMau[i]+'/'+listSize[j]+'"]').value;
+											if(sln != "") {
+												tongsoluong += parseInt(sln,10);
+											}
+										}
+									}
+									if (tongsoluong == 0) {
+							        	function showErrorToastChuaChonSizeHoacMau() {
+											toast({
+												title : 'Nhập thất bại',
+												message : 'Vui lòng nhập số lượng cho loại nhập vào.',
+												type : 'error',
+												duration : 5000
+											})
+										}
+							        	showErrorToastChuaChonSizeHoacMau();
+							        }else{
+							        	var btnNhapHang = document.querySelector('.btnNhapHang');
+							        	btnNhapHang.click();
+							        }
+							    }
+							</script>
+							<div class="w3-third" style="width: 100%; text-align: center;margin-bottom: 20px;">
+						      	<div onclick="ChuaNhapSoLuong()"class="w3-button" style="padding: 15px 20px; background-color: var(--primary-color); color: var(--text-color); font-size: 25px; border-radius: 10px; width: 30%;">Nhập hàng</div>
+						      	<button onclick="ChuaNhapSoLuong()" name="btnNhapHang" value="1" form="formNhapChiTiet" class="w3-button btnNhapHang" style="padding: 15px 20px; background-color: var(--primary-color); color: var(--text-color); font-size: 25px; border-radius: 10px; width: 30%; display: none;">Nhập hàng</button>
+				    		</div>
+					    </div>
+		    		</form>
 				</c:otherwise>
 			</c:choose>
         </div>
