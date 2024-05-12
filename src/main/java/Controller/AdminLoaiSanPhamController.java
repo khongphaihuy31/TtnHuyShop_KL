@@ -81,12 +81,12 @@ public class AdminLoaiSanPhamController extends HttpServlet {
 				//danh sách sản phẩm thuộc loại
 				ArrayList<SanPhamBean> dssanpham = adspbo.dsSanPhamThuocLoai(maloai);
 				for(SanPhamBean sp: dssanpham) {
+					//Xóa ChiTietSanPham
+					lbo.xoaChiTietSanPham(sp.getMasanpham());
 					//Xóa SizeSanPham
 					lbo.xoaSizeSanPham(sp.getMasanpham());
 					//Xóa AnhSanPham
 					lbo.xoaAnhSanPham(sp.getMasanpham());
-					//Xóa ChiTietSanPham
-					lbo.xoaChiTietSanPham(sp.getMasanpham());
 					//Xóa GioHang
 					lbo.xoaGioHang(sp.getMasanpham());
 				}

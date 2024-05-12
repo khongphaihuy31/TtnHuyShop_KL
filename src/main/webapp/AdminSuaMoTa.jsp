@@ -147,7 +147,7 @@ a:focus, a:hover {
 							oFCKeditor.ReplaceTextarea() ;
 						}
 					</script>
-			        <form id="formNhapChiTiet" action="AdminSuaMoTaa">
+			        <form id="formNhapChiTiet" action="AdminSuaMoTa">
 						<div style="border: 2px solid #4dcdcf; border-radius: 10px;width: 100%; padding: 10px 20px; margin-top: 20px; background-color: #fff; display: inline-block;">
 					        <div class="form-group">
 								<label style="font-size: 20px; margin-bottom: 0;" for="motasanpham">

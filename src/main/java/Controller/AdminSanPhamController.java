@@ -91,6 +91,15 @@ public class AdminSanPhamController extends HttpServlet {
 			String btnxoa = request.getParameter("btnxoa");
 			if(btnxoa != null) {
 				long masanpham = Long.parseLong(btnxoa);
+				//Xóa chi tiết sản phẩm
+				lbo.xoaChiTietSanPham(masanpham);
+				//Xóa SizeSanPham
+				lbo.xoaSizeSanPham(masanpham);
+				//Xóa AnhSanPham
+				lbo.xoaAnhSanPham(masanpham);
+				//Xóa GioHang
+				lbo.xoaGioHang(masanpham);
+				//Xóa SanPham
 				spbo.xoaSanPham(masanpham);
 				response.sendRedirect("AdminSanPhamController?xspTC=1");
 				return;
@@ -106,24 +115,24 @@ public class AdminSanPhamController extends HttpServlet {
 				return;
 			}
 			
-			//Sửa sản phẩm
-			String btnsua= request.getParameter("btnsua");
-			if(btnsua != null) {
-				long masanpham = Long.parseLong(btnsua);
-				String tensanpham = request.getParameter("tensanpham");
-				long giacu = Long.parseLong(request.getParameter("giacu"));
-				long giamoi = Long.parseLong(request.getParameter("giamoi"));
-				long soluongdaban = Long.parseLong(request.getParameter("soluongdaban"));
-				String motasanpham = request.getParameter("motasanpham");
-				String chitietsanpham = request.getParameter("chitietsanpham");
-				long maloai = Long.parseLong(request.getParameter("maloai"));
-				long mathuonghieu = Long.parseLong(request.getParameter("mathuonghieu"));
-				long madanhmuc = Long.parseLong(request.getParameter("madanhmuc"));
-				
-				spbo.suaSanPham(masanpham, tensanpham, giacu, giamoi, soluongdaban, motasanpham, chitietsanpham, maloai, mathuonghieu, madanhmuc);
-				response.sendRedirect("AdminSanPhamController");
-				return;
-			}
+//			//Sửa sản phẩm
+//			String btnsua= request.getParameter("btnsua");
+//			if(btnsua != null) {
+//				long masanpham = Long.parseLong(btnsua);
+//				String tensanpham = request.getParameter("tensanpham");
+//				long giacu = Long.parseLong(request.getParameter("giacu"));
+//				long giamoi = Long.parseLong(request.getParameter("giamoi"));
+//				long soluongdaban = Long.parseLong(request.getParameter("soluongdaban"));
+//				String motasanpham = request.getParameter("motasanpham");
+//				String chitietsanpham = request.getParameter("chitietsanpham");
+//				long maloai = Long.parseLong(request.getParameter("maloai"));
+//				long mathuonghieu = Long.parseLong(request.getParameter("mathuonghieu"));
+//				long madanhmuc = Long.parseLong(request.getParameter("madanhmuc"));
+//				
+//				spbo.suaSanPham(masanpham, tensanpham, giacu, giamoi, soluongdaban, motasanpham, chitietsanpham, maloai, mathuonghieu, madanhmuc);
+//				response.sendRedirect("AdminSanPhamController");
+//				return;
+//			}
 					
 					
 			RequestDispatcher rd = request.getRequestDispatcher("AdminSanPham.jsp");

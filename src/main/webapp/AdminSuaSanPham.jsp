@@ -133,7 +133,7 @@ a:focus, a:hover {
         <div class="w3-panel" style="margin-bottom: 100px">
         	<c:choose>
         		<c:when test="${spnhapdacotrongcuahang != null }">
-			        <form id="formNhapHangDaCo" action="AdminNhapSanPhamDaCoController" enctype="multipart/form-data" method="post">
+			        <form id="formNhapHangDaCo" action="AdminSuaSanPhamUpfile" enctype="multipart/form-data" method="post">
 				    	<div class="w3-row-padding" style="border: 2px solid #4dcdcf; border-radius: 10px;background-color: #fff;">
 					    	<div class="w3-row-padding" style="margin:0 -16px;">
 						      <div class="w3-twothird">
@@ -262,7 +262,7 @@ a:focus, a:hover {
 											Mô tả sản phẩm <span style="color: red;">*</span>
 										</label>
 										<a href="AdminSuaMoTa?btnsuamota=${spnhapdacotrongcuahang.getMasanpham() }" style="font-size: 15px; margin-left: 20px; font-weight: bold; cursor: pointer;">Sửa mô tả sản phẩm</a>
-										<div style="width: 100%; height:100%; font-size: 18px; border-radius: 10px; border: 1px solid #ccc; display: block;word-wrap: break-word; background-color: #eee; margin-top: 10px;line-height: 100%;"
+										<div style="width: 100%; height:100%; font-size: 18px; border-radius: 10px; border: 1px solid #ccc; display: block;word-wrap: break-word; background-color: #eee; margin-top: 10px;line-height: 100%; padding-left: 25px;"
 											class="form-control" id="motasanpham">
 											${spnhapdacotrongcuahang.getMotasanpham() }
 										</div>
@@ -277,11 +277,11 @@ a:focus, a:hover {
 									<div style="margin-top: 10px; text-align: center;" class="control">
 										<img class="choose-img" style="width: 20%;"
 												src="${spnhapdacotrongcuahang.getAnh() }" alt="preview-img">
-										<!--<input form="formNhapHang"
-										style="width: 100%; height: 41px; font-size: 18px;border: none; box-shadow: none; display: none;"
+										<input form="formNhapHangDaCo"
+										style="width: 100%; height: 41px; font-size: 18px;border: none; box-shadow: none;"
 										type="file" id="anh" name="anh"
 										class="input-text required-entry form-control" accept="image/*" value="">
-										<span class="form-message"></span> -->
+										<span class="form-message"></span>
 									</div>
 								</div>
 								<div style="margin-top: 20px;" class="form-group">
@@ -291,19 +291,17 @@ a:focus, a:hover {
 									<div style="margin-top: 10px; text-align: center;" class="control">
 										<img class="choose-img" style="width: 20%;"
 												src="${spnhapdacotrongcuahang.getAnhchonsize() }" alt="preview-img">
-										<!--<input form="formNhapHang"
+										<input form="formNhapHangDaCo"
 										style="width: 100%; height: 42px; font-size: 18px;border: none; box-shadow: none;"
 										type="file" id="anhchonsize" name="anhchonsize"
 										class="input-text required-entry form-control" accept="image/*">
-										<span class="form-message"></span> -->
+										<span class="form-message"></span>
 									</div>
 								</div>
 								<!-- Sửa ngang đoạn này rồi, tối cố sửa tiếp nha -->
 								<div style="margin-top: 20px;" class="form-group">
 									<label style="font-size: 20px; margin-bottom: 0;">
 										Size <span style="color: red;">*</span>
-										<a style="margin-left: 20px;font-size:25px; cursor: pointer;" class="btnAddSize"><i class="fa-solid fa-circle-plus"></i></a>
-						               <a style="margin-left: 20px;font-size:25px; cursor: pointer; display: none;" class="btnDeleteSize"><i class="fa-solid fa-circle-minus"></i></a> <br>
 									</label>
 									<c:forEach items="${dsSizeSanPham }" var="s" varStatus="index">
 										<div style="margin-top: 10px;" class="control warpper-lsize${index.index+1 }">
@@ -315,25 +313,13 @@ a:focus, a:hover {
 											<span class="form-message"></span> 
 										</div>
 									</c:forEach>
-									<c:forEach var = "i" begin = "${dsSizeSanPham.size()+1 }" end = "5">
-										<div style="margin-top: 10px;width: 100%; display: none;" class="control warpper-lsize${i } form-group">
-											<input form="formNhapHangDaCo"
-												style="width: 100%; height: 20px; font-size: 18px; padding: 20px 10px; border-radius: 10px; border: 1px solid #ccc;"
-												type="text" id="lsize${i }" name="lsize${i }"
-												placeholder="Nhập size"
-												class="input-text required-entry form-control">
-											<span class="form-message"></span> 
-										</div>
-									</c:forEach>
 								</div>
 								<div style="margin-top: 20px;" class="form-group">
 									<label style="font-size: 20px; margin-bottom: 0;">
 										Màu - Ảnh <span style="color: red;">*</span>
-										<a style="margin-left: 20px; font-size:25px; cursor: pointer;" class="btnAddColor"><i class="fa-solid fa-circle-plus"></i></a>
-						               <a style="margin-left: 20px;font-size:25px; cursor: pointer; display: none;" class="btnDeleteColor"><i class="fa-solid fa-circle-minus"></i></a> <br>
 									</label>
 									<c:forEach items="${dsAnhSanPham }" var="am" varStatus="index">
-										<div style="margin-top: 10px;text-align: center;" class="control warpper-lmau${index.index+1 }">
+										<div style="margin-top: 20px;text-align: center;" class="control warpper-lmau${index.index+1 }">
 												<img class="choose-img" style="width: 20%; margin-bottom: 5px;"
 													src="${am.getSrcanh() }" alt="preview-img">
 												<input form="formNhapHangDaCo"
@@ -341,115 +327,23 @@ a:focus, a:hover {
 													type="text" id="lmau${index.index+1 }" name="lmau${index.index+1 }"
 													placeholder="Nhập màu"
 													class="input-text required-entry form-control" value="${am.getMauString() }" disabled="disabled">
-												
-												<!--<input form="formNhapHang"
-													style="width: 100%; height: 41px; font-size: 18px;border: none; box-shadow: none; margin-top: 10px; border-radius: 10px;"
-													type="file" id="anhmau1" name="anhmau1"
+												<input form="formNhapHangDaCo" type="text" name="lmau${index.index+1 }" value="${am.getMauString() }" style="display: none;">
+												<input form="formNhapHangDaCo"
+													style="width: 100%; height: 41px; font-size: 18px;border: none; box-shadow: none; margin-top: 0px; border-radius: 10px;"
+													type="file" id="anhmau1" name="anhmau${index.index+1 }"
 													class="input-text required-entry form-control" accept="image/*">
-												<span class="form-message"></span>--> 
+												<span class="form-message"></span>
 											</div>
 									</c:forEach>
 									</div>
-									<c:forEach var = "i" begin = "${dsAnhSanPham.size()+1 }" end = "5">
-										<div style="margin-top: 10px; display: none;" class="control warpper-lmau${i } form-group">
-											<div>
-											</div>
-											<input form="formNhapHangDaCo"
-												style="width: 100%; height: 20px; font-size: 18px; padding: 20px 10px; border-radius: 10px; border: 1px solid #ccc;"
-												type="text" id="lmau${i }" name="lmau${i }"
-												placeholder="Nhập màu"
-												class="input-text required-entry form-control">
-											<input form="formNhapHangDaCo"
-												style="width: 100%; height: 41px; font-size: 18px;border: none; box-shadow: none; margin-top: 10px; border-radius: 10px;"
-												type="file" id="anhmau${i }" name="anhmau${i }"
-												class="input-text required-entry form-control" accept="image/*">
-											<span class="form-message"></span> 
-										</div>
-									</c:forEach>
-								
 						      </div>
 				    		</div>
 				    		<div class="w3-third" style="width: 100%; text-align: center;margin-bottom: 20px">
-				    		<input form="formNhapHangDaCo" type="text" style="display: none;" name="btnnhapcu" value="${param.msp }">
-						      <button form="formNhapHangDaCo" class="w3-button" style="padding: 15px 20px; background-color: var(--primary-color); color: var(--text-color); font-size: 25px; border-radius: 10px; width: 40%;">Nhập chi tiết số lượng</button>
+				    		<input form="formNhapHangDaCo" type="text" style="display: none;" name="btnsua" value="${param.msp }">
+						      <button form="formNhapHangDaCo" class="w3-button" style="padding: 15px 20px; background-color: var(--primary-color); color: var(--text-color); font-size: 25px; border-radius: 10px; width: 40%;">Cập nhật</button>
 				    		</div>
 				    	</div>
 			        </form>
-			        <script type="text/javascript">
-				    const btnAddSize = document.querySelector('.btnAddSize');
-				    var soSize = ${dsSizeSanPham.size()+1};
-				    btnAddSize.addEventListener('click',()=>{
-				        if(soSize<=5){
-				            lsize = document.querySelector('.warpper-lsize'+soSize);
-				            lsize.style.display= "inline-block"
-				            btnDeleteSize.style.display= "inline-block"
-				            soSize +=1;
-				        }else{
-				        	function showInfoToastSizeToiDa(){
-							    toast({
-							        title :'Thông báo',
-							        message : 'Bạn chỉ được thêm tối đa 5 size.',
-							        type  : 'info',
-							        duration : 5000
-							    })
-							}
-				        	showInfoToastSizeToiDa();
-				        }
-				    })
-				
-				    const btnDeleteSize = document.querySelector('.btnDeleteSize');
-				    btnDeleteSize.addEventListener('click',()=>{
-				        if(soSize>${dsSizeSanPham.size()+1}){
-				            soSize -=1;
-				            lsize = document.querySelector('.warpper-lsize'+soSize);
-				            input = document.querySelector('.warpper-lsize'+soSize +' input[name = lsize'+soSize+']');
-				            // controllerSize = document.querySelector('.controllerSize');
-				            input.value ='';
-				            lsize.style.display= "none";
-				            if(soSize ==${dsSizeSanPham.size()+1}){
-				                btnDeleteSize.style.display= "none";
-				            }
-				        }
-				    })
-				    
-				    
-				    
-			    const btnAddColor = document.querySelector('.btnAddColor');
-			    var soMau = ${dsAnhSanPham.size()+1};
-			    btnAddColor.addEventListener('click',()=>{
-			        if(soMau<=5){
-			            lmau = document.querySelector('.warpper-lmau'+soMau);
-			            lmau.style.display= "inline-block"
-			            btnDeleteColor.style.display= "inline-block"
-			            soMau +=1;
-			        }else{
-			        	function showInfoToastMauToiDa(){
-						    toast({
-						        title :'Thông báo',
-						        message : 'Bạn chỉ được thêm tối đa 5 màu.',
-						        type  : 'info',
-						        duration : 5000
-						    })
-						}
-			        	showInfoToastMauToiDa();
-			        }
-			    })
-			
-			    const btnDeleteColor = document.querySelector('.btnDeleteColor');
-			    btnDeleteColor.addEventListener('click',()=>{
-			        if(soMau>${dsAnhSanPham.size()+1}){
-			            soMau -=1;
-			            lmau = document.querySelector('.warpper-lmau'+soMau);
-			            input = document.querySelector('.warpper-lmau'+soMau+ ' input[name = lmau'+soMau+']');
-			            // controllerMau = document.querySelector('.controllerMau');
-			            lmau.style.display= "none";
-			            input.value=''
-			            if(soMau ==${dsAnhSanPham.size()+1}){
-			                btnDeleteColor.style.display= "none";
-			            }
-			        }
-			    })
-			    </script>
         		</c:when>
         		<c:otherwise>
         			<div class="row" style="margin-top: 10px;">
@@ -467,36 +361,6 @@ a:focus, a:hover {
 
         <!-- End page content -->
     </div>
-    
-    <script lang="javascript" type="text/javascript">
-		Validator({
-			form : '#formNhapHang',
-			formGroupSelector : '.form-group',
-			errorElement : '.form-message',
-			rules : [
-					Validator.isRequired('#tensanpham','Bạn vui lòng nhập trường này.'),
-					Validator.isRequired('#giaban','Bạn vui lòng nhập trường này.'),
-					Validator.isRequired('#loai','Bạn vui lòng chọn trường này.'),
-					Validator.isRequired('#thuonghieu','Bạn vui lòng chọn trường này.'),
-					Validator.isRequired('#danhmuc','Bạn vui lòng chọn trường này.'),
-					
-					
-					Validator.isRequired('#anh','Bạn vui lòng chọn trường này.'),
-					Validator.isRequired('#anhchonsize','Bạn vui lòng chọn trường này.'),
-					Validator.isRequired('#lsize1','Bạn vui lòng nhập trường này.'),
-					//Validator.isRequired('#lsize2','Bạn vui lòng nhập trường này.'),
-					//Validator.isRequired('#lsize3','Bạn vui lòng nhập trường này.'),
-					//Validator.isRequired('#lsize4','Bạn vui lòng nhập trường này.'),
-					//Validator.isRequired('#lsize5','Bạn vui lòng nhập trường này.'),
-					Validator.isRequired('#lmau1','Bạn vui lòng nhập và chọn trường này.'),
-					//Validator.isRequired('#lmau2','Bạn vui lòng nhập và chọn trường này.'),
-					//Validator.isRequired('#lmau3','Bạn vui lòng nhập và chọn trường này.'),
-					//Validator.isRequired('#lmau4','Bạn vui lòng nhập và chọn trường này.'),
-					//Validator.isRequired('#lmau5','Bạn vui lòng nhập và chọn trường này.'),
-					//Validator.isRequired('#password6','Bạn vui lòng nhập trường này.'),
-			],
-		});
-	</script>
    
     <script>
         // Get the Sidebar

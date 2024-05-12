@@ -1069,13 +1069,10 @@ input:checked + label{
 					<!-- container bottom boby detail -->
 					<div class="container-bottom__body-detail">
 						<div class="row">
-							<div class="container-bottom__body-left col l-2 m-6 c-6">
-								Thương hiệu</div>
-							<div class="container-bottom__body-right col l-10 m-6 c-6">
-								Kappa</div>
+							${motasanpham }
 						</div>
 
-						<div class="row">
+						<!--<div class="row">
 							<div class="container-bottom__body-left col l-2 m-6 c-6">
 								Phong cách</div>
 							<div class="container-bottom__body-right col l-10 m-6 c-6">
@@ -1115,11 +1112,12 @@ input:checked + label{
 								Giới tính</div>
 							<div class="container-bottom__body-right col l-10 m-6 c-6">
 								Nữ</div>
-						</div>
+						</div>-->
 					</div>
 
 					<!-- container bottom boby describe -->
 					<div  class="container-bottom__body-describe">
+						<img style="width: 80%;" alt="" src="${anhchonsize}">
 						<!--<p class="body-describe__delivery-time">
 							- Áo thun dáng suông Staple, thuộc bộ sưu tập Open Air, mang hơi
 							thở đường phố Mỹ với các gam màu rất nổi bật. <br> - Chất
@@ -1167,26 +1165,22 @@ input:checked + label{
 								bạn không trước khi mua.</li>
 							<li class="body-describe__node-item">- Gợi ý chọn size phù
 								hợp: Sử dụng quần áo tương tự để lấy size.</li>
-						</ul>  -->
-						<img style="width: 80%;" alt="" src="${anhchonsize}">
+						</ul> -->
+						
 					</div>
 				</div>
 
 				<!-- container bottom mobile -->
 				<div class="container-bottom container-bottom__mobile">
-					<h3 class="container-bottom__nav container-bottom__detail">Chi
-						tiết sản phẩm</h3>
+					<h3 class="container-bottom__nav container-bottom__detail">Mô tả sản phẩm</h3>
 
 					<!-- container bottom boby detail -->
 					<div class="container-bottom__body-detail">
 						<div class="row">
-							<div class="container-bottom__body-left col l-2 m-6 c-6">
-								Thương hiệu</div>
-							<div class="container-bottom__body-right col l-10 m-6 c-6">
-								Kappa</div>
+							${motasanpham }
 						</div>
 
-						<div class="row">
+						<!--<div class="row">
 							<div class="container-bottom__body-left col l-2 m-6 c-6">
 								Phong cách</div>
 							<div class="container-bottom__body-right col l-10 m-6 c-6">
@@ -1226,14 +1220,14 @@ input:checked + label{
 								Giới tính</div>
 							<div class="container-bottom__body-right col l-10 m-6 c-6">
 								Nữ</div>
-						</div>
+						</div>-->
 					</div>
 
 					<!-- container bottom boby describe -->
-					<h3 class="container-bottom__nav container-bottom__describe">Mô
-						tả sản phẩm</h3>
+					<h3 class="container-bottom__nav container-bottom__describe">Hướng dẫn chọn size</h3>
 					<div class="container-bottom__body-describe">
-						<p class="body-describe__delivery-time">
+						<img style="width: 80%;" alt="" src="${anhchonsize}">
+						<!--<p class="body-describe__delivery-time">
 							- Áo thun dáng suông Staple, thuộc bộ sưu tập Open Air, mang hơi
 							thở đường phố Mỹ với các gam màu rất nổi bật. <br> - Chất
 							liệu 100% cotton, mỏng nhẹ, thoáng mát. <br> - Thời gian
@@ -1280,7 +1274,7 @@ input:checked + label{
 								bạn không trước khi mua.</li>
 							<li class="body-describe__node-item">- Gợi ý chọn size phù
 								hợp: Sử dụng quần áo tương tự để lấy size.</li>
-						</ul>
+						</ul>-->
 					</div>
 				</div>
 				

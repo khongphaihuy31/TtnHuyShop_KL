@@ -61,8 +61,8 @@ public class AdminSanPhamBo {
 	}
 	
 	//Nhập hàng
-	public int nhapHang(long masanpham, long soluongnhap, long gianhap, long tongtiennhap)throws Exception{
-		return spdao.nhapHang(masanpham, soluongnhap, gianhap, tongtiennhap);
+	public int nhapHang(long masanpham, long soluongnhap, long gianhap, long tongtiennhap, String tensanpham, String anhsanpham)throws Exception{
+		return spdao.nhapHang(masanpham, soluongnhap, gianhap, tongtiennhap, tensanpham, anhsanpham);
 	}
 	
 	//Lấy mã nhập hàng max
@@ -95,9 +95,24 @@ public class AdminSanPhamBo {
 		return spdao.dsChiTietSanPham();
 	}
 	
-	//Sửa sản phẩm
-	public int suaSanPham(long masanpham ,String tensanpham, long giacu, long giamoi, long soluongdaban, String motasanpham, String chitietsanpham, long maloai, long mathuonghieu, long madanhmuc)throws Exception{
-		return spdao.suaSanPham(masanpham, tensanpham, giacu, giamoi, soluongdaban, motasanpham, chitietsanpham, maloai, mathuonghieu, madanhmuc);
+	//Sửa giá giảm sản phẩm
+	public int suaGiaGiamSanPham(long masanpham ,String tensanpham, long giaban, long giagiam, long maloai, long mathuonghieu, long madanhmuc)throws Exception{
+		return spdao.suaGiaGiamSanPham(masanpham, tensanpham, giaban, giagiam, maloai, mathuonghieu, madanhmuc);
+	}
+	
+	//Sửa ảnh sản phẩm
+	public int suaAnhSanPham(long masanpham ,String anh)throws Exception{
+		return spdao.suaAnhSanPham(masanpham, anh);
+	}
+	
+	//Sửa ảnh chọn size
+	public int suaAnhChonSize(long masanpham ,String anhchonsize)throws Exception{
+		return spdao.suaAnhChonSize(masanpham, anhchonsize);
+	}
+	
+	//Sửa ảnh sản phẩm theo màu
+	public int suaAnhSanPhamTheoMau(long masanpham ,String mau, String srcanh)throws Exception{
+		return spdao.suaAnhSanPhamTheoMau(masanpham, mau, srcanh);
 	}
 	
 	//Xóa sản phẩm thuộc mã loại
@@ -117,5 +132,10 @@ public class AdminSanPhamBo {
 //	Lấy giá nhập
 	public long getgianhap(long masanpham)throws Exception{
 		return spdao.getgianhap(masanpham);
+	}
+	
+	//Sửa mô tả sản phẩm
+	public int capNhatMoTaSanPham(long masanpham ,String motasanpham)throws Exception{
+		return spdao.capNhatMoTaSanPham(masanpham, motasanpham);
 	}
 }

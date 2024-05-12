@@ -1321,219 +1321,31 @@ input:checked + label{
 					<h3 class="container-bottom__nav container-bottom__describe">Hướng dẫn chọn size</h3>
 					<!-- container bottom boby detail -->
 					<div class="container-bottom__body-detail">
-						<div class="row">
-							<div class="container-bottom__body-left col l-2 m-6 c-6">
-								Thương hiệu</div>
-							<div class="container-bottom__body-right col l-10 m-6 c-6">
-								Kappa</div>
-						</div>
-
-						<div class="row">
-							<div class="container-bottom__body-left col l-2 m-6 c-6">
-								Phong cách</div>
-							<div class="container-bottom__body-right col l-10 m-6 c-6">
-								Hàn Quốc</div>
-						</div>
-
-						<div class="row">
-							<div class="container-bottom__body-left col l-2 m-6 c-6">
-								Xuất xứ</div>
-							<div class="container-bottom__body-right col l-10 m-6 c-6">
-								Việt Nam</div>
-						</div>
-
-						<div class="row">
-							<div class="container-bottom__body-left col l-2 m-6 c-6">
-								Chất liệu</div>
-							<div class="container-bottom__body-right col l-10 m-6 c-6">
-								Thun</div>
-						</div>
-
-						<div class="row">
-							<div class="container-bottom__body-left col l-2 m-6 c-6">
-								Loại</div>
-							<div class="container-bottom__body-right col l-10 m-6 c-6">
-								Áo thun tay ngắn</div>
-						</div>
-
-						<div class="row">
-							<div class="container-bottom__body-left col l-2 m-6 c-6">
-								Mẫu</div>
-							<div class="container-bottom__body-right col l-10 m-6 c-6">
-								Có hình Logo Kappa</div>
-						</div>
-
-						<div class="row">
-							<div class="container-bottom__body-left col l-2 m-6 c-6">
-								Giới tính</div>
-							<div class="container-bottom__body-right col l-10 m-6 c-6">
-								Nữ</div>
+						<div class="row" style="margin-left: 15px;">
+							${spChon.getMotasanpham() }
 						</div>
 					</div>
 
 					<!-- container bottom boby describe -->
 					<div  class="container-bottom__body-describe">
-						<!--<p class="body-describe__delivery-time">
-							- Áo thun dáng suông Staple, thuộc bộ sưu tập Open Air, mang hơi
-							thở đường phố Mỹ với các gam màu rất nổi bật. <br> - Chất
-							liệu 100% cotton, mỏng nhẹ, thoáng mát. <br> - Thời gian
-							giao hàng dự kiến cho sản phẩm này là từ 7-9 ngày.
-						</p>
-						<table class="body-describe__size-table">
-							<h3 class="body-describe__size-table-title">*Bảng quy đổi
-								size theo cân nặng:</h3>
-							<thead>
-								<th>Size</th>
-								<th>Cân Nặng</th>
-							</thead>
-							<tbody>
-								<tr>
-									<td>M</td>
-									<td>40kg - 50kg</td>
-								</tr>
-								<tr>
-									<td>L</td>
-									<td>50kg - 60kg</td>
-								</tr>
-								<tr>
-									<td>X</td>
-									<td>60kg - 70kg</td>
-								</tr>
-								<tr>
-									<td>XL</td>
-									<td>70kg - 80kg</td>
-								</tr>
-								<tr>
-									<td>XXL</td>
-									<td>> 80kg</td>
-								</tr>
-							</tbody>
-						</table>
-						<ul class="body-describe__node-list">
-							<p class="body-describe__node-list-title">*LƯU Ý:</p>
-							<li class="body-describe__node-item">- Do màn hình khác nhau
-								và hiệu ứng ánh sáng, màu sắc sản phẩm thực tế sẽ khác so với
-								hình ảnh, vui lòng lấy Sản phẩm thật làm tiêu chuẩn.</li>
-							<li class="body-describe__node-item">- Kích thước chỉ là để
-								tham khảo, Xin vui lòng cho phép sai số từ 1-3cm do đo lường thủ
-								công, vui lòng kiểm tra xem kích thước Sản phẩm có phù hợp với
-								bạn không trước khi mua.</li>
-							<li class="body-describe__node-item">- Gợi ý chọn size phù
-								hợp: Sử dụng quần áo tương tự để lấy size.</li>
-						</ul>  -->
-						<img style="width: 80%;" alt="" src="${anhchonsize}">
+						<img style="width: 80%;" alt="" src="${spChon.getAnhchonsize() }">
 					</div>
 				</div>
 
 				<!-- container bottom mobile -->
 				<div style="margin-left: 50px; margin-right: 50px;" class="container-bottom container-bottom__mobile">
-					<h3 class="container-bottom__nav container-bottom__detail">Chi
-						tiết sản phẩm</h3>
-
+					<h3 class="container-bottom__nav container-bottom__detail">Mô tả sản phẩm</h3>
 					<!-- container bottom boby detail -->
 					<div class="container-bottom__body-detail">
 						<div class="row">
-							<div class="container-bottom__body-left col l-2 m-6 c-6">
-								Thương hiệu</div>
-							<div class="container-bottom__body-right col l-10 m-6 c-6">
-								Kappa</div>
-						</div>
-
-						<div class="row">
-							<div class="container-bottom__body-left col l-2 m-6 c-6">
-								Phong cách</div>
-							<div class="container-bottom__body-right col l-10 m-6 c-6">
-								Hàn Quốc</div>
-						</div>
-
-						<div class="row">
-							<div class="container-bottom__body-left col l-2 m-6 c-6">
-								Xuất xứ</div>
-							<div class="container-bottom__body-right col l-10 m-6 c-6">
-								Việt Nam</div>
-						</div>
-
-						<div class="row">
-							<div class="container-bottom__body-left col l-2 m-6 c-6">
-								Chất liệu</div>
-							<div class="container-bottom__body-right col l-10 m-6 c-6">
-								Thun</div>
-						</div>
-
-						<div class="row">
-							<div class="container-bottom__body-left col l-2 m-6 c-6">
-								Loại</div>
-							<div class="container-bottom__body-right col l-10 m-6 c-6">
-								Áo thun tay ngắn</div>
-						</div>
-
-						<div class="row">
-							<div class="container-bottom__body-left col l-2 m-6 c-6">
-								Mẫu</div>
-							<div class="container-bottom__body-right col l-10 m-6 c-6">
-								Có hình Logo Kappa</div>
-						</div>
-
-						<div class="row">
-							<div class="container-bottom__body-left col l-2 m-6 c-6">
-								Giới tính</div>
-							<div class="container-bottom__body-right col l-10 m-6 c-6">
-								Nữ</div>
+							${spChon.getMotasanpham() }
 						</div>
 					</div>
 
 					<!-- container bottom boby describe -->
-					<h3 class="container-bottom__nav container-bottom__describe">Mô
-						tả sản phẩm</h3>
+					<h3 class="container-bottom__nav container-bottom__describe">Hướng dẫn chọn size</h3>
 					<div class="container-bottom__body-describe">
-						<p class="body-describe__delivery-time">
-							- Áo thun dáng suông Staple, thuộc bộ sưu tập Open Air, mang hơi
-							thở đường phố Mỹ với các gam màu rất nổi bật. <br> - Chất
-							liệu 100% cotton, mỏng nhẹ, thoáng mát. <br> - Thời gian
-							giao hàng dự kiến cho sản phẩm này là từ 7-9 ngày.
-						</p>
-						<table class="body-describe__size-table">
-							<h3 class="body-describe__size-table-title">*Bảng quy đổi
-								size theo cân nặng:</h3>
-							<thead>
-								<th>Size</th>
-								<th>Cân Nặng</th>
-							</thead>
-							<tbody>
-								<tr>
-									<td>M</td>
-									<td>40kg - 50kg</td>
-								</tr>
-								<tr>
-									<td>L</td>
-									<td>50kg - 60kg</td>
-								</tr>
-								<tr>
-									<td>X</td>
-									<td>60kg - 70kg</td>
-								</tr>
-								<tr>
-									<td>XL</td>
-									<td>70kg - 80kg</td>
-								</tr>
-								<tr>
-									<td>XXL</td>
-									<td>> 80kg</td>
-								</tr>
-							</tbody>
-						</table>
-						<ul class="body-describe__node-list">
-							<p class="body-describe__node-list-title">*LƯU Ý:</p>
-							<li class="body-describe__node-item">- Do màn hình khác nhau
-								và hiệu ứng ánh sáng, màu sắc sản phẩm thực tế sẽ khác so với
-								hình ảnh, vui lòng lấy Sản phẩm thật làm tiêu chuẩn.</li>
-							<li class="body-describe__node-item">- Kích thước chỉ là để
-								tham khảo, Xin vui lòng cho phép sai số từ 1-3cm do đo lường thủ
-								công, vui lòng kiểm tra xem kích thước Sản phẩm có phù hợp với
-								bạn không trước khi mua.</li>
-							<li class="body-describe__node-item">- Gợi ý chọn size phù
-								hợp: Sử dụng quần áo tương tự để lấy size.</li>
-						</ul>
+						<img style="width: 80%;" alt="" src="${spChon.getAnhchonsize() }">
 					</div>
 				</div>
 				
@@ -1609,12 +1421,12 @@ input:checked + label{
 								</a>
 							</div>
 						</c:forEach>
+					</div>
 				</c:if>
-				
-				</div>
+				<!-- Hiển thị sản phẩm bạn có thể thích -->
 				<c:if test="${dsSPUaThich != null }">
 					<h3 class="container__heading"
-						style="font-weight: 600; margin-top: 30px; ">SẢN PHẨM GIÁ TỐT</h3>
+						style="font-weight: 600; margin-top: 30px; margin-left: 50px; margin-right: 50px;">SẢN PHẨM GIÁ TỐT</h3>
 					<div style="margin-left: 50px; margin-right: 50px;" class="row sm-gutter">
 						<c:forEach items="${dsSPUaThich }" var="sp">
 							<div class="product-item-col col l-2 m-4 c-6">
@@ -1639,8 +1451,8 @@ input:checked + label{
 												</span>
 												<span class="product-item__price-current"
 													style="font-weight: 600;">
-													<fmt:setLocale value="vi_VN"/>
-                    								<fmt:formatNumber value="${sp.getGiagiam()}" type="currency"/>
+														<fmt:setLocale value="vi_VN"/>
+           												<fmt:formatNumber value="${sp.getGiagiam()}" type="currency"/>
 													</span>
 											</c:otherwise>
 										</c:choose>
@@ -1668,8 +1480,8 @@ input:checked + label{
 								</a>
 							</div>
 						</c:forEach>
+					</div>
 				</c:if>
-				</div>
 			</div>
 		</div>
 		<footer class="footer">

@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import Bean.AnhSanPham;
 import Bean.ChiTietSanPhamBean;
+import Bean.SanPhamBean;
 import Bean.SizeSanPhamBean;
 import Bo.AdminSanPhamBo;
 
@@ -194,7 +195,7 @@ public class AdminNhapChiTietController extends HttpServlet {
 						
 						//Nhập hàng
 						long gianhapLong = Long.parseLong(gianhap);
-						adspbo.nhapHang(masanpham, soluongnhap, gianhapLong, soluongnhap*gianhapLong);
+						adspbo.nhapHang(masanpham, soluongnhap, gianhapLong, soluongnhap*gianhapLong, tensanpham,anh);
 						//Lấy mã nhập hàng vừa thêm
 						long madonnhap = adspbo.getMaxMadonnhap();
 						//Thêm chi tiết hàng nhập và chi tiết sản phẩm
@@ -383,10 +384,11 @@ public class AdminNhapChiTietController extends HttpServlet {
 //							adspbo.themMauSanPham(lmau5, anhmau5, masanpham);
 //							listMau.add(lmau5);
 //						}
-						
+						//lấy sản phẩm nhập
+						SanPhamBean spbean = adspbo.getSanPham(masanpham);						
 						//Nhập hàng
 						long gianhapLong = Long.parseLong(gianhap);
-						adspbo.nhapHang(masanpham, soluongnhap, gianhapLong, soluongnhap*gianhapLong);
+						adspbo.nhapHang(masanpham, soluongnhap, gianhapLong, soluongnhap*gianhapLong, spbean.getTensanpham(),spbean.getAnh());
 						//Lấy mã nhập hàng vừa thêm
 						long madonnhap = adspbo.getMaxMadonnhap();
 						//Thêm chi tiết hàng nhập và chi tiết sản phẩm

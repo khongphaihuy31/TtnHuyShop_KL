@@ -14,17 +14,19 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
+import Bo.AdminSanPhamBo;
+
 /**
- * Servlet implementation class AdminNhapSanPhamDaCoController
+ * Servlet implementation class AdminSuaSanPhamUpfile
  */
-@WebServlet("/AdminNhapSanPhamDaCoController")
-public class AdminNhapSanPhamDaCoController extends HttpServlet {
+@WebServlet("/AdminSuaSanPhamUpfile")
+public class AdminSuaSanPhamUpfile extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminNhapSanPhamDaCoController() {
+    public AdminSuaSanPhamUpfile() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -38,15 +40,18 @@ public class AdminNhapSanPhamDaCoController extends HttpServlet {
 		DiskFileItemFactory fileItemFactory = new DiskFileItemFactory();
 		ServletFileUpload upload = new ServletFileUpload(fileItemFactory);
 		try {
-			
+
 			//Thêm sản phẩm , upload file
-			String gianhap = null;
-			String lsize1 = null;
-			String lsize2 = null;
-			String lsize3 =  null;
-			String lsize4 = null;
-			String lsize5 = null;
-			String lmau1 = null;
+			String tensanpham = null;
+			String giaban = null;
+			String giagiam = null;
+			String loai =  null;
+			String thuonghieu = null;
+			String danhmuc = null;
+			String anh = null;
+			String anhchonsize =  null;
+			String btnsua = null;
+			String lmau1 =  null;
 			String anhmau1 = null;
 			String lmau2 =  null;
 			String anhmau2 = null;
@@ -56,7 +61,6 @@ public class AdminNhapSanPhamDaCoController extends HttpServlet {
 			String anhmau4 =  null;
 			String lmau5 = null;
 			String anhmau5 = null;
-			String btnnhapcu = null;
 			
 			List<FileItem> fileItems = upload.parseRequest(request);//Lấy về các đối tượng gửi lên
 			//duyệt qua các đối tượng gửi lên từ client gồm file và các control
@@ -64,6 +68,44 @@ public class AdminNhapSanPhamDaCoController extends HttpServlet {
 				if (!fileItem.isFormField()) {//Nếu ko phải các control=>upfile lên
 					// xử lý file
 					String tentk=fileItem.getFieldName();
+					if(tentk.equals("anh")) {
+						String nameimg = fileItem.getName();
+						if (!nameimg.equals("")) {
+							//Lấy đường dẫn hiện tại, chủ ý xử lý trên dirUrl để có đường dẫn đúng
+							String dirUrl = request.getServletContext().getRealPath("") +  File.separator + "anhBiaSanPham";
+							File dir = new File(dirUrl);
+							if (!dir.exists()) {//nếu ko có thư mục thì tạo ra
+								dir.mkdir();
+							}
+							String fileImg = dirUrl + File.separator + nameimg;
+							File file = new File(fileImg);//tạo file
+							try {
+								fileItem.write(file);//lưu file
+								anh = "anhBiaSanPham/"+nameimg;
+							} catch (Exception e) {
+								e.printStackTrace();
+							}
+						}
+					}
+					if(tentk.equals("anhchonsize")) {
+						String nameimg = fileItem.getName();
+						if (!nameimg.equals("")) {
+							//Lấy đường dẫn hiện tại, chủ ý xử lý trên dirUrl để có đường dẫn đúng
+							String dirUrl = request.getServletContext().getRealPath("") +  File.separator + "anhChonSize";
+							File dir = new File(dirUrl);
+							if (!dir.exists()) {//nếu ko có thư mục thì tạo ra
+								dir.mkdir();
+							}
+							String fileImg = dirUrl + File.separator + nameimg;
+							File file = new File(fileImg);//tạo file
+							try {
+								fileItem.write(file);//lưu file
+								anhchonsize = "anhChonSize/"+nameimg;
+							} catch (Exception e) {
+								e.printStackTrace();
+							}
+						}
+					}
 					
 					if(tentk.equals("anhmau1")) {
 						String nameimg = fileItem.getName();
@@ -164,88 +206,130 @@ public class AdminNhapSanPhamDaCoController extends HttpServlet {
 							}
 						}
 					}
-					
 				 }else//Neu la control
 				 {
 					String tentk=fileItem.getFieldName();
 					
-					if(tentk.equals("gianhap")) {
+					if(tentk.equals("tensanpham")) {
 //						String nameimg = fileItem.getName();
 //						if(nameimg != null) {
-							gianhap = fileItem.getString();
+						tensanpham = fileItem.getString("utf-8");
 //						}
 					}
-					if(tentk.equals("lsize1")) {
+					if(tentk.equals("giaban")) {
 //						String nameimg = fileItem.getName();
 //						if(nameimg != null) {
-							lsize1 = fileItem.getString();
+							giaban = fileItem.getString();
 //						}
 					}
-					if(tentk.equals("lsize2")) {
+					
+					if(tentk.equals("giagiam")) {
 //						String nameimg = fileItem.getName();
 //						if(nameimg != null) {
-							lsize2 = fileItem.getString();
+							giagiam = fileItem.getString();
 //						}
 					}
-					if(tentk.equals("lsize3")) {
+					if(tentk.equals("loai")) {
 //						String nameimg = fileItem.getName();
 //						if(nameimg != null) {
-							lsize3 = fileItem.getString();
+							loai = fileItem.getString();
 //						}
 					}
-					if(tentk.equals("lsize4")) {
+					if(tentk.equals("thuonghieu")) {
 //						String nameimg = fileItem.getName();
 //						if(nameimg != null) {
-							lsize4 = fileItem.getString();
+							thuonghieu = fileItem.getString();
 //						}
 					}
-					if(tentk.equals("lsize5")) {
+					if(tentk.equals("danhmuc")) {
 //						String nameimg = fileItem.getName();
 //						if(nameimg != null) {
-							lsize5 = fileItem.getString();
+							danhmuc = fileItem.getString();
 //						}
 					}
 					if(tentk.equals("lmau1")) {
 //						String nameimg = fileItem.getName();
 //						if(nameimg != null) {
-						lmau1 = fileItem.getString();
+						lmau1 = fileItem.getString("utf-8");
 //						}
 					}
 					if(tentk.equals("lmau2")) {
 //						String nameimg = fileItem.getName();
 //						if(nameimg != null) {
-						lmau2 = fileItem.getString();
+						lmau2 = fileItem.getString("utf-8");
 //						}
 					}
 					if(tentk.equals("lmau3")) {
 //						String nameimg = fileItem.getName();
 //						if(nameimg != null) {
-						lmau3 = fileItem.getString();
+						lmau3 = fileItem.getString("utf-8");
 //						}
 					}
 					if(tentk.equals("lmau4")) {
 //						String nameimg = fileItem.getName();
 //						if(nameimg != null) {
-						lmau4 = fileItem.getString();
+						lmau4 = fileItem.getString("utf-8");
 //						}
 					}
 					if(tentk.equals("lmau5")) {
 //						String nameimg = fileItem.getName();
 //						if(nameimg != null) {
-						lmau5 = fileItem.getString();
+						lmau5 = fileItem.getString("utf-8");
 //						}
 					}
-					if(tentk.equals("btnnhapcu")) {
+					if(tentk.equals("btnsua")) {
 //						String nameimg = fileItem.getName();
 //						if(nameimg != null) {
-						btnnhapcu = fileItem.getString();
+						btnsua = fileItem.getString();
 //						}
 					}
 				}
 			}
 			
-			response.sendRedirect("AdminNhapChiTietController?btnnhapcu="+btnnhapcu+"&gianhap="+gianhap+"&lsize1="+lsize1+"&lsize2="+lsize2+"&lsize3="+lsize3+"&lsize4="+lsize4+"&lsize5="+lsize5+"&lmau1="+lmau1+"&anhmau1="+anhmau1+"&lmau2="+lmau2+"&anhmau2="+anhmau2+"&lmau3="+lmau3+"&anhmau3="+anhmau3+"&lmau4="+lmau4+"&anhmau4="+anhmau4+"&lmau5="+lmau5+"&anhmau5="+anhmau5);
+			AdminSanPhamBo adspbo = new AdminSanPhamBo();
+			long giabanLong = Long.parseLong(giaban);
+			long masanpham = Long.parseLong(btnsua);
+			long maloai = Long.parseLong(loai);
+			long mathuonghieu = Long.parseLong(thuonghieu);
+			long madanhmuc = Long.parseLong(danhmuc);
+			//Cập nhật sản phẩm
+			if(giagiam.equals("")) {
+				adspbo.suaGiaGiamSanPham(masanpham, tensanpham, giabanLong, 0, maloai, mathuonghieu, madanhmuc);
+			}else {
+				long giagiamLong = Long.parseLong(giagiam);
+				adspbo.suaGiaGiamSanPham(masanpham, tensanpham, giabanLong, giagiamLong, maloai, mathuonghieu, madanhmuc);
+			}
+			
+			//Cập nhật ảnh sản phẩm
+			if(anh != null) {
+				adspbo.suaAnhSanPham(masanpham, anh);
+			}
+			
+			//Cập nhật ảnh chọn size
+			if(anhchonsize!= null) {
+				adspbo.suaAnhChonSize(masanpham, anhchonsize);
+			}
+			
+			//Cập nhật ảnh sản phẩm theo màu
+			if(anhmau1 != null) {
+				adspbo.suaAnhSanPhamTheoMau(masanpham, lmau1, anhmau1);
+			}
+			if(anhmau2!= null) {
+				adspbo.suaAnhSanPhamTheoMau(masanpham, lmau2, anhmau2);
+			}
+			if(anhmau3!= null) {
+				adspbo.suaAnhSanPhamTheoMau(masanpham, lmau3, anhmau3);
+			}
+			if(anhmau4!= null) {
+				adspbo.suaAnhSanPhamTheoMau(masanpham, lmau4, anhmau4);
+			}
+			if(anhmau5!= null) {
+				adspbo.suaAnhSanPhamTheoMau(masanpham, lmau5, anhmau5);
+			}
+			
+			response.sendRedirect("AdminSanPhamController?sspCT=1");
 			return;
+			
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();

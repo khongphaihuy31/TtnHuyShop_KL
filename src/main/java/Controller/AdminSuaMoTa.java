@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.jasper.tagplugins.jstl.core.Param;
 
+import Bo.AdminSanPhamBo;
+
 /**
  * Servlet implementation class AdminSuaMoTa
  */
@@ -39,10 +41,11 @@ public class AdminSuaMoTa extends HttpServlet {
 			if(request.getParameter("btnsuamotasanpham")!= null) {
 				String btnsuamotasanpham = request.getParameter("btnsuamotasanpham");
 				long masanpham = Long.parseLong(btnsuamotasanpham);
-				//Làm tiếp đây, cập nhật mô tả
+				//cập nhật mô tả
 				String motasanpham = request.getParameter("FCKeditor1");
-				
-				response.sendRedirect("AdminSuaSanPhamController?msp="+btnsuamotasanpham);
+				AdminSanPhamBo adspbo = new AdminSanPhamBo();
+				adspbo.capNhatMoTaSanPham(masanpham, motasanpham);
+				response.sendRedirect("AdminSuaSanPhamController?msp="+masanpham);
 				return;
 			}
 			

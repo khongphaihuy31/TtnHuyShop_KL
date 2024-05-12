@@ -158,6 +158,23 @@ public class AdminSanPhamDao {
 		return kq;
 	}
 	
+	//Sửa mô tả sản phẩm
+	public int capNhatMoTaSanPham(long masanpham ,String motasanpham)throws Exception{
+		KetNoiDao kn= new KetNoiDao();
+		kn.ketnoi();
+		
+		String sql = "update SanPham set motasanpham = ? where masanpham=?";
+		PreparedStatement cmd = kn.cn.prepareStatement(sql);
+		
+		cmd.setString(1, motasanpham);
+		cmd.setLong(2, masanpham);
+		
+		int kq = cmd.executeUpdate();
+		cmd.close();
+		kn.cn.close();
+		return kq;
+	}
+	
 	//Thêm sản phẩm
 	public int themSanPham(String tensanpham, String anh, long giaban, String motasanpham, long maloai, long mathuonghieu, long madanhmuc, String anhchonsize)throws Exception{
 		KetNoiDao kn = new KetNoiDao();
@@ -231,17 +248,19 @@ public class AdminSanPhamDao {
 	}
 	
 	//Nhập hàng
-	public int nhapHang(long masanpham, long soluongnhap, long gianhap, long tongtiennhap)throws Exception{
+	public int nhapHang(long masanpham, long soluongnhap, long gianhap, long tongtiennhap, String tensanpham, String anhsanpham)throws Exception{
 		KetNoiDao kn = new KetNoiDao();
 		kn.ketnoi();
 		
-		String sql = "insert into NhapHang(masanpham, soluongnhap, gianhap, tongtiennhap) values(?,?,?,?)";
+		String sql = "insert into NhapHang(masanpham, soluongnhap, gianhap, tongtiennhap, tensanpham, anhsanpham) values(?,?,?,?,?,?)";
 		
 		PreparedStatement cmd = kn.cn.prepareStatement(sql);
 		cmd.setLong(1, masanpham);
 		cmd.setLong(2, soluongnhap);
 		cmd.setLong(3, gianhap);
 		cmd.setLong(4, tongtiennhap);
+		cmd.setString(5, tensanpham);
+		cmd.setString(6, anhsanpham);
 		int kq = cmd.executeUpdate();
 		cmd.close();
 		kn.cn.close();
@@ -363,24 +382,73 @@ public class AdminSanPhamDao {
 		return dsSanPham;
 	}
 	
-	//Sửa sản phẩm
-	public int suaSanPham(long masanpham ,String tensanpham, long giacu, long giamoi, long soluongdaban, String motasanpham, String chitietsanpham, long maloai, long mathuonghieu, long madanhmuc)throws Exception{
+	//Sửa giá giảm sản phẩm
+	public int suaGiaGiamSanPham(long masanpham ,String tensanpham, long giaban, long giagiam, long maloai, long mathuonghieu, long madanhmuc)throws Exception{
 		KetNoiDao kn= new KetNoiDao();
 		kn.ketnoi();
 		
-		String sql = "update SanPham set tensanpham= ?, giacu=?, giamoi=?, soluongdaban=?, motasanpham=?, chitietsanpham=?, maloai=?, mathuonghieu=?, madanhmuc=? where masanpham=?";
+		String sql = "update SanPham set tensanpham= ?, giaban=?, giagiam=?, maloai=?, mathuonghieu=?, madanhmuc=? where masanpham=?";
 		PreparedStatement cmd = kn.cn.prepareStatement(sql);
 		
 		cmd.setString(1, tensanpham);
-		cmd.setLong(2, giacu);
-		cmd.setLong(3, giamoi);
-		cmd.setLong(4, soluongdaban);
-		cmd.setString(5, motasanpham);
-		cmd.setString(6, chitietsanpham);
-		cmd.setLong(7, maloai);
-		cmd.setLong(8, mathuonghieu);
-		cmd.setLong(9, madanhmuc);
-		cmd.setLong(10, masanpham);
+		cmd.setLong(2, giaban);
+		cmd.setLong(3, giagiam);
+		cmd.setLong(4, maloai);
+		cmd.setLong(5, mathuonghieu);
+		cmd.setLong(6, madanhmuc);
+		cmd.setLong(7, masanpham);
+		
+		int kq = cmd.executeUpdate();
+		cmd.close();
+		kn.cn.close();
+		return kq;
+	}
+
+	//Sửa ảnh sản phẩm
+	public int suaAnhSanPham(long masanpham ,String anh)throws Exception{
+		KetNoiDao kn= new KetNoiDao();
+		kn.ketnoi();
+		
+		String sql = "update SanPham set anh= ? where masanpham=?";
+		PreparedStatement cmd = kn.cn.prepareStatement(sql);
+		
+		cmd.setString(1, anh);
+		cmd.setLong(2, masanpham);
+		
+		int kq = cmd.executeUpdate();
+		cmd.close();
+		kn.cn.close();
+		return kq;
+	}
+	
+	//Sửa ảnh chọn size
+	public int suaAnhChonSize(long masanpham ,String anhchonsize)throws Exception{
+		KetNoiDao kn= new KetNoiDao();
+		kn.ketnoi();
+		
+		String sql = "update SanPham set anhchonsize= ? where masanpham=?";
+		PreparedStatement cmd = kn.cn.prepareStatement(sql);
+		
+		cmd.setString(1, anhchonsize);
+		cmd.setLong(2, masanpham);
+		
+		int kq = cmd.executeUpdate();
+		cmd.close();
+		kn.cn.close();
+		return kq;
+	}
+	
+	//Sửa ảnh sản phẩm theo màu
+	public int suaAnhSanPhamTheoMau(long masanpham ,String mau, String srcanh)throws Exception{
+		KetNoiDao kn= new KetNoiDao();
+		kn.ketnoi();
+		
+		String sql = "update AnhSanPham set srcanh= ? where masanpham=? and mau=?";
+		PreparedStatement cmd = kn.cn.prepareStatement(sql);
+		
+		cmd.setString(1, srcanh);
+		cmd.setLong(2, masanpham);
+		cmd.setString(3, mau);
 		
 		int kq = cmd.executeUpdate();
 		cmd.close();

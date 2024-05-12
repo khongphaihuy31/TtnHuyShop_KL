@@ -365,7 +365,7 @@ a:focus, a:hover {
 				showErrorToastSuaLoaiTC();
 			</script>
 		</c:if>
-	<c:if test="${param.skmTC != null}">
+	<c:if test="${param.sspCT != null}">
 		<script type="text/javascript">
 			//window.alert("Tài khoản hoặc mật khẩu chưa đúng!");
 			function showSuccessToastSuaLoaiTB() {

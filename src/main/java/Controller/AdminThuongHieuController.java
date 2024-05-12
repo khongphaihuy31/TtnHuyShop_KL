@@ -88,12 +88,12 @@ public class AdminThuongHieuController extends HttpServlet {
 				ArrayList<SanPhamBean> dssanpham = adspbo.dsSanPhamThuocThuongHieu(mathuonghieu);
 				for(SanPhamBean sp: dssanpham) {
 					AdminLoaiBo adlbo = new AdminLoaiBo();
+					//Xóa ChiTietSanPham
+					adlbo.xoaChiTietSanPham(sp.getMasanpham());
 					//Xóa SizeSanPham
 					adlbo.xoaSizeSanPham(sp.getMasanpham());
 					//Xóa AnhSanPham
 					adlbo.xoaAnhSanPham(sp.getMasanpham());
-					//Xóa ChiTietSanPham
-					adlbo.xoaChiTietSanPham(sp.getMasanpham());
 					//Xóa GioHang
 					adlbo.xoaGioHang(sp.getMasanpham());
 				}
