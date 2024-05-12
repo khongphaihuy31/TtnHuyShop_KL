@@ -104,7 +104,7 @@ a:focus, a:hover {
                 onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>-->
             <a href="AdminTrangChuController" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-house"></i>  Trang chủ</a>
             <a href="AdminXacNhanController" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-truck-ramp-box"></i>  Xác nhận đơn hàng</a>
-            <a href="AdminLoaiSanPhamController" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa-solid fa-layer-group"></i>  Quản lý loại sản phẩm</a>
+            <a href="AdminLoaiSanPhamController" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-layer-group"></i>  Quản lý loại sản phẩm</a>
             <a href="AdminLoaiTrongDanhMucController" class="w3-bar-item w3-button w3-padding"><i class="fa-brands fa-docker"></i>  Quản lý loại trong danh mục</a>
             <a href="AdminSanPhamController" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-boxes-stacked"></i>  Quản lý sản phẩm</a>
             <a href="AdminKhachHangController" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users"></i>  Quản lý khách hàng</a>
@@ -112,7 +112,7 @@ a:focus, a:hover {
             <a href="AdminBannerController" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-image"></i>  Quản lý banner</a>
             <a href="AdminKhuyenMaiController" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-gift"></i>  Quản lý khuyến mãi</a>
             <a href="AdminTichDiemController" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-star"></i>  Quản lý tích điểm</a>
-            <a href="AdminThongKeController" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-chart-pie"></i>  Thống kê doanh thu</a><br><br>
+            <a href="AdminThongKeController" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa-solid fa-chart-pie"></i>  Thống kê doanh thu</a><br><br>
         </div>
     </nav>
 
@@ -126,63 +126,124 @@ a:focus, a:hover {
 
         <!-- Header -->
         <header class="w3-container" style="padding-top:22px;color:var(--primary-color); margin-bottom: 16px;">
-            <h2 style="display: inline-block;"><b><i class="fa-solid fa-layer-group"></i>  Loại sản phẩm</b></h2>
-            <div style="display: inline-block; float: right;margin-top: 18px; cursor: pointer;" class="w3-quarter">
-	            <a data-toggle="modal" data-target="#modalThemLoai" style="text-decoration: none;">
-	                <div style="text-align: center; border-radius: 10px; background-color: var(--primary-color)" class="w3-container w3-text-white">
-	                    <h4><i class="fa-solid fa-circle-plus"></i> Thêm loại</h4>
-	                </div>
-		        </a>
-            </div>
+            <h2 style="display: inline-block;"><b><i class="fa-solid fa-chart-pie"></i>  Thống kê danh thu</b></h2>
         </header>
         <div class="w3-row-padding w3-margin-bottom">
 	       	<c:choose>
-				<c:when test="${dsloai.size()!=0 }">
+				<c:when test="${dsThongKeDoanhThu.size()!=0 }">
+					<div class="w3-row-padding" style="display: flex;justify-content: center;">
+						<c:choose>
+							<c:when test="${param.thang != null }">
+								<div class="w3-quarter">
+						            <a href="AdminThongKeController" style="text-decoration: none;">
+						                <div style="text-align: center;border-radius: 10px; background-color: white; color: var(--primary-color);border: 2px solid var(--primary-color);" class="w3-container">
+						                    <h4>Ngày</h4>
+						                </div>
+							        </a>
+					           </div>
+					           <div class="w3-quarter">
+						            <a href="AdminThongKeController?thang=1" style="text-decoration: none;">
+						                <div style="text-align: center;border-radius: 10px; background-color: var(--primary-color); color: white; border: 2px solid var(--primary-color);" class="w3-container">
+						                    <h4>Tháng</h4>
+						                </div>
+							        </a>
+					           </div>
+					           <div class="w3-quarter">
+						            <a href="AdminThongKeController?nam=1" style="text-decoration: none;">
+						                <div style="text-align: center;border-radius: 10px; background-color: white; color: var(--primary-color);border: 2px solid var(--primary-color);" class="w3-container">
+						                    <h4>Năm</h4>
+						                </div>
+							        </a>
+					           </div>
+							</c:when>
+							<c:when test="${param.nam != null }">
+								<div class="w3-quarter">
+						            <a href="AdminThongKeController" style="text-decoration: none;">
+						                <div style="text-align: center;border-radius: 10px; background-color: white; color: var(--primary-color);border: 2px solid var(--primary-color);" class="w3-container">
+						                    <h4>Ngày</h4>
+						                </div>
+							        </a>
+					           </div>
+					           <div class="w3-quarter">
+						            <a href="AdminThongKeController?thang=1" style="text-decoration: none;">
+						                <div style="text-align: center;border-radius: 10px; background-color: white; color: var(--primary-color);border: 2px solid var(--primary-color);" class="w3-container">
+						                    <h4>Tháng</h4>
+						                </div>
+							        </a>
+					           </div>
+					           <div class="w3-quarter">
+						            <a href="AdminThongKeController?nam=1" style="text-decoration: none;">
+						                <div style="text-align: center;border-radius: 10px; background-color: var(--primary-color); color: white; border: 2px solid var(--primary-color);" class="w3-container">
+						                    <h4>Năm</h4>
+						                </div>
+							        </a>
+					           </div>
+							</c:when>
+							<c:otherwise>
+								<div class="w3-quarter">
+						            <a href="AdminThongKeController" style="text-decoration: none;">
+						                <div style="text-align: center;border-radius: 10px; background-color: var(--primary-color); color: white; border: 2px solid var(--primary-color);" class="w3-container">
+						                    <h4>Ngày</h4>
+						                </div>
+							        </a>
+					           </div>
+					           <div class="w3-quarter">
+						            <a href="AdminThongKeController?thang=1" style="text-decoration: none;">
+						                <div style="text-align: center;border-radius: 10px; background-color: white; color: var(--primary-color);border: 2px solid var(--primary-color);" class="w3-container">
+						                    <h4>Tháng</h4>
+						                </div>
+							        </a>
+					           </div>
+					           <div class="w3-quarter">
+						            <a href="AdminThongKeController?nam=1" style="text-decoration: none;">
+						                <div style="text-align: center;border-radius: 10px; background-color: white; color: var(--primary-color);border: 2px solid var(--primary-color);" class="w3-container">
+						                    <h4>Năm</h4>
+						                </div>
+							        </a>
+					           </div>
+							</c:otherwise>
+						</c:choose>
+			       </div>
 					<div style="border: 2px solid #4dcdcf; border-radius: 10px;width: 100%; padding: 10px 20px; margin-top: 20px; background-color: #fff;">
 				        
 				        <table id="example" class="table table-striped table-bordered" style="width:100%;">
 					        <thead>
 					            <tr>
 					                <th style="background-color: var(--primary-color); color: white; ">Stt</th>
-					                <th style="display:none;background-color: var(--primary-color); color: white; ">Mã loại</th>
-					                <th style="background-color: var(--primary-color); color: white; ">Tên loại</th>
-					                <th style="background-color: var(--primary-color); color: white; ">Sửa</th>
-					                <th style="background-color: var(--primary-color); color: white; ">Xóa</th>
+					                <th style="background-color: var(--primary-color); color: white; ">Thời gian</th>
+					                <th style="background-color: var(--primary-color); color: white; ">Thu</th>
+					                <th style="background-color: var(--primary-color); color: white; ">Chi</th>
+					                <th style="background-color: var(--primary-color); color: white; ">Tổng kết</th>
 					            </tr>
 					        </thead>
 					        <tbody>
-					        	<c:forEach items="${dsloai }" var="l" varStatus="index">
+					        	<c:forEach items="${dsThongKeDoanhThu }" var="l" varStatus="index">
 						            <tr>
 						                <td>${index.index+1 }</td>
-						                <td style="display:none;">${l.getMaloai() }</td>
-						                <td>${l.getTenloai() }</td>
+						                <td>${l.getThoigian() }</td>
 						                <td>
-						                	<a style="font-size: 18px; font-weight: 600; color: var(--primary-color); cursor: pointer;" data-toggle="modal" data-target="#modalsua${l.getMaloai() }"><i class="fa-solid fa-pen-to-square"></i></a>
+						                	<fmt:setLocale value="vi_VN"/>
+											<fmt:formatNumber value="${l.getThu() }" type="currency"/>
 						                </td>
 						                <td>
-						                	<a style="font-size: 18px; font-weight: 600; color: var(--primary-color); cursor: pointer;" data-toggle="modal" data-target="#modalxoa${l.getMaloai() }"><i class="fa-solid fa-trash"></i></a>
+						                	<fmt:setLocale value="vi_VN"/>
+											<fmt:formatNumber value="${l.getChi() }" type="currency"/>
 						                </td>
+						                <c:choose>
+						                	<c:when test="${l.getTongket()<0 }">
+						                		<td style="color: red;">
+						                			<fmt:setLocale value="vi_VN"/>
+													<fmt:formatNumber value="${l.getTongket() }" type="currency"/>
+						                		</td>
+						                	</c:when>
+						                	<c:otherwise>
+						                		<td style="color: green;">
+						                			<fmt:setLocale value="vi_VN"/>
+													<fmt:formatNumber value="${l.getTongket() }" type="currency"/>
+						                		</td>
+						                	</c:otherwise>
+						                </c:choose>
 						            </tr>
-									<div class="modal fade" id="modalxoa${l.getMaloai() }" role="dialog">
-									  <div class="modal-dialog">
-									    <!-- Modal content-->
-									    <div class="modal-content">
-									      <div class="modal-header">
-									        <button type="button" class="close" data-dismiss="modal">&times;</button>
-									        <h3 class="modal-title" style="font-weight: bold;color: var(--primary-color)">Bạn có muốn xóa loại này không?</h3>
-									      </div>
-									      <div class="modal-body text-center">
-									          <p><span style="color: red;">Lưu ý:</span> Nếu bạn đồng ý xóa, đồng nghĩa với việc các sản phẩm thuộc loại này cũng sẽ bị xóa.</p>
-									        <form action="AdminLoaiSanPhamController" style="font-size: 20px;">
-									        <p style="width: 120px; display: inline-block;font-weight: bold; font-size: 20px;">Mã loại <span style="color: red;">*</span></p> <input style="width: 260px; height: 30px;" type="text" name="maloai" value="${l.getMaloai() }" required="required" disabled="disabled"> <br>
-									          <p style="width: 120px; display: inline-block;font-weight: bold;font-size: 20px;">Tên loại <span style="color: red;">*</span></p> <input style="width: 260px; height: 30px;" type="text" name="tenloai" value="${l.getTenloai() }" required="required" disabled="disabled"> <br>
-									          <button class=" btn-lg" name="btnxoa" value="${l.getMaloai() }" style="background-color: var(--primary-color); color: white;font-weight: bold; border: none;">Có</button>
-									          <button class="btn-lg" data-dismiss="modal" style="background-color: red; color: white;font-weight: bold; border: none;">Không</button>
-									        </form>
-									      </div>
-									    </div>
-									  </div>
-									</div>
 					        	</c:forEach>
 					        </tbody>
 					    </table>
@@ -190,7 +251,7 @@ a:focus, a:hover {
 				</c:when>
 				<c:otherwise>
 					<div class="row" style="margin-top: 10px;">
-						<h3>Không có loại sản phẩm.</h3>
+						<h3>Không có thống kê.</h3>
 					</div>
 				</c:otherwise>
 			</c:choose>
@@ -204,84 +265,6 @@ a:focus, a:hover {
 
         <!-- End page content -->
     </div>
-    
-    <!-- Modal thêm loại sản phẩm -->
-<div class="modal fade" id="modalThemLoai" role="dialog">
-  <div class="modal-dialog">
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h3 class="modal-title" style="font-weight: bold;color: var(--primary-color)">Thêm loại</h3>
-      </div>
-      <div class="modal-body text-center">
-        <form action="AdminLoaiSanPhamController" style="font-size: 20px;" id="form-ThemLoai">
-          <div class="form-group" style="display: inline-block;">
-	          <h1 style="width: 120px; display: inline-block;font-weight: bold; font-size: 18px;">Tên loại <span style="color: red;">*</span></h1> 
-	        <input class="form-control" id="tenLoai" style="width: 260px; height: 30px; display: inline-block;" type="text" name="tenloai">
-          	<br><span style="margin-left: 125px; display: block;" class="form-message"></span>
-	          <input name="btnthem" value="them" hidden="">
-	          <button style="font-weight: bold; background-color: var(--primary-color); border: none; color: white; margin-top: 5px;" class=" btn-lg" name="btnthem" value="them">Thêm</button>
-          </div><br>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-
-<script lang="javascript" type="text/javascript">
-	Validator({
-		form : '#form-ThemLoai',
-		formGroupSelector : '.form-group',
-		errorElement : '.form-message',
-		rules : [
-				Validator.isRequired('#tenLoai','Bạn vui lòng nhập trường này.'),
-				//Validator.isRequired('#password6','Bạn vui lòng nhập trường này.'),
-		],
-	});
-</script>
-
-<c:forEach items="${dsloai }" var="l" varStatus="index">
-	<div class="modal fade" id="modalsua${l.getMaloai() }" role="dialog">
-	  <div class="modal-dialog">
-	    <!-- Modal content-->
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal">&times;</button>
-	        <h3 class="modal-title" style="font-weight: bold;color: var(--primary-color)">Sửa loại</h3>
-	      </div>
-	      <div class="modal-body text-center">
-	        <form action="AdminLoaiSanPhamController" style="font-size: 20px;" id="form-SuaLoai${index.index+1 }">
-	        	<h1 style="width: 120px; display: inline-block;font-weight: bold; font-size: 18px;">Mã loại <span style="color: red;">*</span></h1>  
-	        		<input style="width: 260px; height: 30px;" type="text" name="maloai" value="${l.getMaloai() }" required="required" disabled="disabled"> <br>
-		          <div class="form-group" style="display: inline-block;">
-			          <h1 style="width: 120px; display: inline-block;font-weight: bold; font-size: 18px;">Tên loại <span style="color: red;">*</span></h1> 
-			        <input class="form-control" id="tenLoaiSua${index.index+1 }" style="width: 260px; height: 30px; display: inline-block;" type="text" name="tenloai" value="${l.getTenloai() }">
-		          	<br><span style="margin-left: 125px; display: block;" class="form-message"></span>
-			          <input name="btnsua" value="${l.getMaloai() }" hidden="">
-			          <button style="font-weight: bold; background-color: var(--primary-color); border: none; color: white; margin-top: 5px;" class=" btn-lg" name="btnsua" value="${l.getMaloai() }">Sửa</button>
-		          </div><br>
-	        </form>
-	      </div>
-	    </div>
-	  </div>
-	</div>
-</c:forEach>
-
-<script lang="javascript" type="text/javascript">
-	var lengthDsLoai = ${dsloai.size()}
-	for(let i=1; i<=lengthDsLoai; i++){
-		Validator({
-			form : '#form-SuaLoai'+i,
-			formGroupSelector : '.form-group',
-			errorElement : '.form-message',
-			rules : [
-					Validator.isRequired('#tenLoaiSua'+i,'Bạn vui lòng nhập trường này.'),
-					//Validator.isRequired('#password6','Bạn vui lòng nhập trường này.'),
-			],
-		});
-	}
-</script>
 
     <script>
         // Get the Sidebar
@@ -321,7 +304,7 @@ a:focus, a:hover {
 	       "sInfoEmpty":    "Đang xem 0 đến 0 trong tổng số 0 mục",
 	       "sInfoFiltered": "(được lọc từ _MAX_ mục)",
 	       "sInfoPostFix":  "",
-	       "sSearch":       "Tìm kiếm loại:",
+	       "sSearch":       "Tìm kiếm:",
 	       "sUrl":          "",
 	       "oPaginate": {
 	           "sFirst":    "Đầu",
