@@ -109,4 +109,13 @@ public class AdminSanPhamBo {
 	public ArrayList<SanPhamBean> dsSanPhamThuocLoai(long maloai)throws Exception{
 		return spdao.dsSanPhamThuocLoai(maloai);
 	}
+	
+//	Lấy danh sách sản phẩm thuộc thương hiệu
+	public ArrayList<SanPhamBean> dsSanPhamThuocThuongHieu(long mathuonghieu)throws Exception{
+		return spdao.dsSanPhamThuocThuongHieu(mathuonghieu);
+	}
+//	Lấy giá nhập
+	public long getgianhap(long masanpham)throws Exception{
+		return spdao.getgianhap(masanpham);
+	}
 }

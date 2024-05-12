@@ -18,6 +18,8 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script src="assets/script/toast.js"></script>
 <script src="assets/script/validator.js"></script>
+<!-- FCK editor -->
+<script type="text/javascript" src="fckeditor/fckeditor.js"></script>
 <link rel="stylesheet" href="assets/css/validation.css">
 <link rel="stylesheet" href="assets/css/base.css">
 <link rel="stylesheet" href="assets/css/grid.css">
@@ -126,130 +128,45 @@ a:focus, a:hover {
 
         <!-- Header -->
         <header class="w3-container" style="padding-top:22px;color:var(--primary-color); margin-bottom: 16px;">
-            <h2 style="display: inline-block;"><b><i class="fa-solid fa-boxes-stacked"></i>  Sản phẩm</b></h2>
-            <div style="display: inline-block; float: right;margin-top: 18px; cursor: pointer;" class="w3-quarter">
-	            <a href="AdminNhapSanPhamMoi" style="text-decoration: none;">
-	                <div style="text-align: center; border-radius: 10px; background-color: var(--primary-color)" class="w3-container w3-text-white">
-	                    <h4><i class="fa-solid fa-truck-fast"></i> Nhập mới</h4>
-	                </div>
-		        </a>
-            </div>
+            <h2 style="display: inline-block;"><b><i class="fa-solid fa-pen-to-square"></i> Cập nhật mô tả sản phẩm</b></h2>
+            
         </header>
         <div class="w3-row-padding w3-margin-bottom">
 	       	<c:choose>
-				<c:when test="${dssanpham.size()!=0 }">
-					<div style="border: 2px solid #4dcdcf; border-radius: 10px;width: 100%; padding: 10px 20px; margin-top: 20px; background-color: #fff;">
-				        
-				        <table id="example" class="table table-striped table-bordered" style="width:100%;">
-					        <thead>
-					            <tr>
-					                <th style="background-color: var(--primary-color); color: white; ">Stt</th>
-					                <th style="background-color: var(--primary-color); color: white; ">Mã</th>
-					                <th style="background-color: var(--primary-color); color: white; width: 10%;">Ảnh</th>
-					                <th style="background-color: var(--primary-color); color: white; width: 30%;">Tên sản phẩm</th>
-					                <th style="background-color: var(--primary-color); color: white; ">Giá</th>
-					                <th style="background-color: var(--primary-color); color: white; display: none;">Tên loại</th>
-					                <th style="background-color: var(--primary-color); color: white; display: none;">Tên thương hiệu</th>
-					                <th style="background-color: var(--primary-color); color: white; display: none;">Tên danh mục</th>
-					                <th style="background-color: var(--primary-color); color: white; ">Tồn kho</th>
-					                <th style="background-color: var(--primary-color); color: white; ">SP hot</th>
-					                <th style="background-color: var(--primary-color); color: white; ">Nhập hàng</th>
-					                <th style="background-color: var(--primary-color); color: white; ">Sửa</th>
-					                <th style="background-color: var(--primary-color); color: white; ">Xóa</th>
-					            </tr>
-					        </thead>
-					        <tbody>
-					        	<c:forEach items="${dssanpham }" var="l" varStatus="index">
-						            <tr>
-						                <td>${index.index+1 }</td>
-						                <td>${l.getMasanpham() }</td>
-						                <td><img style="width: 50%;" alt="" src="${l.getAnh() }"></td>
-						                <td>${l.getTensanpham() }</td>
-						                <c:choose>
-						                	<c:when test="${l.getGiagiam()==0 }">
-								                <td>
-								                	<fmt:setLocale value="vi_VN"/>
-													<fmt:formatNumber value="${l.getGiaban() }" type="currency"/>
-								                </td>
-						                	</c:when>
-						                	<c:otherwise>
-								                <td>
-								                	<fmt:setLocale value="vi_VN"/>
-													<fmt:formatNumber value="${l.getGiagiam() }" type="currency"/>
-								                </td>
-						                	</c:otherwise>
-						                </c:choose>
-						                <c:forEach items="${dsloai }" var="dsl">
-						                	<c:if test="${dsl.getMaloai() == l.getMaloai()}">
-								                <td style="display: none;">${dsl.getTenloai() }</td>
-						                	</c:if>
-						                </c:forEach>
-						                <c:forEach items="${dsthuonghieu }" var="dsth">
-						                	<c:if test="${dsth.getMathuonghieu() == l.getMathuonghieu()}">
-								                <td style="display: none;">${dsth.getTenthuonghieu() }</td>
-						                	</c:if>
-						                </c:forEach>
-						                <c:forEach items="${dsdanhmuc }" var="dsdm">
-						                	<c:if test="${dsdm.getMadanhmuc() == l.getMadanhmuc()}">
-								                <td style="display: none;">${dsdm.getTendanhmuc() }</td>
-						                	</c:if>
-						                </c:forEach>
-						                <c:forEach items="${dstongsoluongtonkho }" var="tsltk">
-							                <c:if test="${tsltk.getMasanpham() == l.getMasanpham() }">
-								                <td>${tsltk.getSoluong()}</td>
-							                </c:if>
-						                </c:forEach>
-						                <c:choose>
-						                	<c:when test="${l.isSanphamhot() == true }">
-							                	<td>
-								                	<a href="AdminSanPhamController?suaSpHot=${l.getMasanpham() }&suathanh=0" style="font-size: 18px; font-weight: 600; color: var(--primary-color); cursor: pointer;"><i class="fa-regular fa-square-check"></i></a>
-								                </td>
-						                	</c:when>
-						                	<c:otherwise>
-						                		<td>
-								                	<a href="AdminSanPhamController?suaSpHot=${l.getMasanpham() }&suathanh=1" style="font-size: 18px; font-weight: 600; color: var(--primary-color); cursor: pointer;" ><i class="fa-regular fa-square"></i></a>
-								                </td>
-						                	</c:otherwise>
-						                </c:choose>
-						                <td>
-						                	<a href="AdminNhapSanPhamMoi?msp=${l.getMasanpham() }&btnnhapcu=1" style="font-size: 18px; font-weight: 600; color: var(--primary-color); cursor: pointer;"><i class="fa-solid fa-truck-fast"></i></a>
-						                </td>
-						                <td>
-						                	<a href="AdminSuaSanPhamController?msp=${l.getMasanpham() }" style="font-size: 18px; font-weight: 600; color: var(--primary-color); cursor: pointer;"><i class="fa-solid fa-pen-to-square"></i></a>
-						                </td>
-						                <td>
-						                	<a style="font-size: 18px; font-weight: 600; color: var(--primary-color); cursor: pointer;" data-toggle="modal" data-target="#modalxoa${l.getMasanpham() }"><i class="fa-solid fa-trash"></i></a>
-						                </td>
-						            </tr>
-									<div class="modal fade" id="modalxoa${l.getMasanpham() }" role="dialog">
-									  <div class="modal-dialog">
-									    <!-- Modal content-->
-									    <div class="modal-content">
-									      <div class="modal-header">
-									        <button type="button" class="close" data-dismiss="modal">&times;</button>
-									        <h3 class="modal-title" style="font-weight: bold;color: var(--primary-color)">Bạn có muốn xóa không?</h3>
-									      </div>
-									      <div class="modal-body text-center">
-									          <p><span style="color: red;">Lưu ý:</span> Nếu bạn đồng ý xóa, đồng nghĩa với việc sản phẩm này sẽ bị xóa.</p>
-									        <form action="AdminSanPhamController" style="font-size: 20px;">
-									        <p style="width: 120px; display: inline-block;font-weight: bold; font-size: 20px;">Mã SP <span style="color: red;">*</span></p> <input style="width: 260px; height: 30px;" type="text" name="masanpham" value="${l.getMasanpham() }" required="required" disabled="disabled"> <br>
-									          <p style="width: 120px; display: inline-block;font-weight: bold;font-size: 20px;">Tên SP <span style="color: red;">*</span></p> <input style="width: 260px; height: 30px;" type="text" name="tensanpham" value="${l.getTensanpham() }" required="required" disabled="disabled"> <br>
-									          <button class=" btn-lg" name="btnxoa" value="${l.getMasanpham() }" style="background-color: var(--primary-color); color: white;font-weight: bold; border: none;">Có</button>
-									          <button class="btn-lg" data-dismiss="modal" style="background-color: red; color: white;font-weight: bold; border: none;">Không</button>
-									        </form>
-									      </div>
-									    </div>
-									  </div>
-									</div>
-					        	</c:forEach>
-					        </tbody>
-					    </table>
-				    </div>
+				<c:when test="${param.btnsuamota != null}">
+					<script type="text/javascript">
+						window.onload = function()
+						{
+							// Automatically calculates the editor base path based on the _samples directory.
+							// This is usefull only for these samples. A real application should use something like this:
+							// oFCKeditor.BasePath = '/fckeditor/' ;	// '/fckeditor/' is the default value.
+							var sBasePath = document.location.href.substring(0,document.location.href.lastIndexOf('_samples')) ;
+						
+							var oFCKeditor = new FCKeditor( 'FCKeditor1' ) ;
+							oFCKeditor.BasePath	= sBasePath ;
+							oFCKeditor.ReplaceTextarea() ;
+						}
+					</script>
+			        <form id="formNhapChiTiet" action="AdminSuaMoTaa">
+						<div style="border: 2px solid #4dcdcf; border-radius: 10px;width: 100%; padding: 10px 20px; margin-top: 20px; background-color: #fff; display: inline-block;">
+					        <div class="form-group">
+								<label style="font-size: 20px; margin-bottom: 0;" for="motasanpham">
+									Mô tả sản phẩm <span style="color: red;">*</span>
+								</label>
+								<div style="margin-top: 10px;" class="control">
+									<textarea class="form-control" form="formNhapChiTiet" id="motasanpham" name="FCKeditor1" rows="10" cols="30" style="width: 100%; height: 500px">
+									</textarea>
+									<span class="form-message"></span> 
+								</div>
+							</div>
+							<div class="w3-third" style="width: 100%; text-align: center;margin-bottom: 20px;">
+						      	<button name="btnsuamotasanpham" value="${param.btnsuamota}" form="formNhapChiTiet" class="w3-button btnNhapHang" style="padding: 15px 20px; background-color: var(--primary-color); color: var(--text-color); font-size: 25px; border-radius: 10px; width: 30%;">Cập nhật</button>
+				    		</div>
+					    </div>
+		    		</form>
 				</c:when>
 				<c:otherwise>
-					<div class="row" style="margin-top: 10px;">
-						<h3>Không có sản phẩm.</h3>
-					</div>
+					
 				</c:otherwise>
 			</c:choose>
         </div>
@@ -286,67 +203,36 @@ a:focus, a:hover {
             mySidebar.style.display = "none";
             overlayBg.style.display = "none";
         }
-    </script>
+    </script> 
     
-    <script>
-	    $(document).ready(function() {
-	   
-	   // Cấu hình các nhãn phân trang
-	   $('#example').dataTable( {
-	       "language": {
-	       "sProcessing":   "Đang xử lý...",
-	       "sLengthMenu":   "Số mục xem_MENU_",
-	       "sZeroRecords":  "Không tìm thấy dòng nào phù hợp",
-	       "sInfo":         "Đang xem _START_ đến _END_ trong tổng số _TOTAL_ mục",
-	       "sInfoEmpty":    "Đang xem 0 đến 0 trong tổng số 0 mục",
-	       "sInfoFiltered": "(được lọc từ _MAX_ mục)",
-	       "sInfoPostFix":  "",
-	       "sSearch":       "Tìm kiếm:",
-	       "sUrl":          "",
-	       "oPaginate": {
-	           "sFirst":    "Đầu",
-	           "sPrevious": "Trước",
-	           "sNext":     "Tiếp",
-	           "sLast":     "Cuối"
-	           }
-	       },
-	       "processing": true, // tiền xử lý trước
-	       "aLengthMenu": [[5, 10, 20, 50], [5, 10, 20, 50]], // danh sách số trang trên 1 lần hiển thị bảng
-	       "order": [[ 1, 'desc' ]] //sắp xếp giảm dần theo cột thứ 1
-	   } );
-	        
-	   } );
-	  </script>   
-    
-	
-	<c:if test="${param.tkmTB != null }">
+	<c:if test="${param.chuacosl != null }">
 			<script type="text/javascript">
 				//window.alert("Đăng kí không thành công!");
 				//var el = document.querySelector("#dkweb");
 				//el.click();
-				function showErrorToastThemLoaiTC() {
+				function showErrorToastChuaNhapSL() {
 					toast({
 						title : 'Thất bại',
-						message : 'Thêm không thành công.',
+						message : 'Vui lòng nhập số lượng cho từng loại.',
 						type : 'error',
 						duration : 5000
 					})
 				}
-				showErrorToastThemLoaiTC();
+				showErrorToastChuaNhapSL();
 			</script>
 		</c:if>
-	<c:if test="${param.nmTC != null}">
+	<c:if test="${param.tkmTC != null}">
 		<script type="text/javascript">
 			//window.alert("Tài khoản hoặc mật khẩu chưa đúng!");
-			function showSuccessToastNhapHangMoiTC() {
+			function showSuccessToastThemLoaiTB() {
 				toast({
 			        title :'Thành công',
-			        message : 'Nhập hàng mới thành công.',
+			        message : 'Thêm thành công.',
 			        type  : 'success',
 			        duration : 5000
 			    })
 			}
-			showSuccessToastNhapHangMoiTC();
+			showSuccessToastThemLoaiTB();
 		</script>
 	</c:if>
 	<c:if test="${param.skmTB != null }">

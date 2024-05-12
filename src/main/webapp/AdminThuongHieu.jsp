@@ -157,10 +157,10 @@ a:focus, a:hover {
 						                <td style="display:none;">${l.getMathuonghieu() }</td>
 						                <td>${l.getTenthuonghieu() }</td>
 						                <td>
-						                	<a style="font-size: 18px; font-weight: 600; color: var(--primary-color);" data-toggle="modal" data-target="#modalsua${l.getMathuonghieu() }"><i class="fa-solid fa-pen-to-square"></i></a>
+						                	<a style="font-size: 18px; font-weight: 600; color: var(--primary-color); cursor: pointer;" data-toggle="modal" data-target="#modalsua${l.getMathuonghieu() }"><i class="fa-solid fa-pen-to-square"></i></a>
 						                </td>
 						                <td>
-						                	<a style="font-size: 18px; font-weight: 600; color: var(--primary-color);" data-toggle="modal" data-target="#modalxoa${l.getMathuonghieu() }"><i class="fa-solid fa-trash"></i></a>
+						                	<a style="font-size: 18px; font-weight: 600; color: var(--primary-color); cursor: pointer;" data-toggle="modal" data-target="#modalxoa${l.getMathuonghieu() }"><i class="fa-solid fa-trash"></i></a>
 						                </td>
 						            </tr>
 									<div class="modal fade" id="modalxoa${l.getMathuonghieu() }" role="dialog">
@@ -338,7 +338,7 @@ a:focus, a:hover {
 	   } );
 	  </script>   
     
-	
+    
 	<c:if test="${param.tth != null }">
 			<script type="text/javascript">
 				//window.alert("Đăng kí không thành công!");

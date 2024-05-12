@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Bean.SanPhamBean;
 import Bean.ThuongHieuBean;
+import Bo.AdminLoaiBo;
 import Bo.AdminLoaiTrongDanhMucBo;
 import Bo.AdminSanPhamBo;
 import Bo.AdminThuongHieuBo;
@@ -81,6 +83,20 @@ public class AdminThuongHieuController extends HttpServlet {
 			String btnxoa = request.getParameter("btnxoa");
 			if(btnxoa != null) {
 				long mathuonghieu = Long.parseLong(btnxoa);
+				AdminSanPhamBo adspbo = new AdminSanPhamBo();
+				//danh sách sản phẩm thuộc loại
+				ArrayList<SanPhamBean> dssanpham = adspbo.dsSanPhamThuocThuongHieu(mathuonghieu);
+				for(SanPhamBean sp: dssanpham) {
+					AdminLoaiBo adlbo = new AdminLoaiBo();
+					//Xóa SizeSanPham
+					adlbo.xoaSizeSanPham(sp.getMasanpham());
+					//Xóa AnhSanPham
+					adlbo.xoaAnhSanPham(sp.getMasanpham());
+					//Xóa ChiTietSanPham
+					adlbo.xoaChiTietSanPham(sp.getMasanpham());
+					//Xóa GioHang
+					adlbo.xoaGioHang(sp.getMasanpham());
+				}
 				adthbo.xoaSanPhamThuocThuongHieu(mathuonghieu);
 				adthbo.xoaThuongHieu(mathuonghieu);
 				response.sendRedirect("AdminThuongHieuController?xthTC=1");

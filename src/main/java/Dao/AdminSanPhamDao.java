@@ -109,6 +109,23 @@ public class AdminSanPhamDao {
 		return dsSanPham;
 	}
 	
+//	Lấy giá nhập
+	public long getgianhap(long masanpham)throws Exception{
+		long gianhap=0;
+		KetNoiDao kn = new KetNoiDao();
+		kn.ketnoi();
+		
+		String sql = "select * from NhapHang where masanpham=?";
+		
+		PreparedStatement cmd = kn.cn.prepareStatement(sql);
+		cmd.setLong(1, masanpham);
+		ResultSet rs = cmd.executeQuery();
+		if(rs.next()) {
+			gianhap = rs.getLong("gianhap");
+		}
+		return gianhap;
+	}
+	
 	//Xóa sản phẩm
 	public int xoaSanPham(long masanpham)throws Exception{
 		KetNoiDao kn = new KetNoiDao();
@@ -411,6 +428,36 @@ public class AdminSanPhamDao {
 			String anhchonsize = rs.getString("anhchonsize");
 			
 			dsSanPham.add(new SanPhamBean(masanpham, tensanpham, anh, giaban, giagiam, soluongdaban, sanphamhot, motasanpham, maloai1, mathuonghieu, madanhmuc, anhchonsize));
+		}
+		return dsSanPham;
+	}
+	
+//	Lấy danh sách sản phẩm thuộc thương hiệu
+	public ArrayList<SanPhamBean> dsSanPhamThuocThuongHieu(long mathuonghieu)throws Exception{
+		ArrayList<SanPhamBean> dsSanPham = new ArrayList<SanPhamBean>();
+		KetNoiDao kn = new KetNoiDao();
+		kn.ketnoi();
+		
+		String sql = "select * from SanPham where mathuonghieu=?";
+		
+		PreparedStatement cmd = kn.cn.prepareStatement(sql);
+		cmd.setLong(1, mathuonghieu);
+		ResultSet rs = cmd.executeQuery();
+		while(rs.next()) {
+			long masanpham = rs.getLong("masanpham");
+			String tensanpham = rs.getString("tensanpham");
+			String anh = rs.getString("anh");
+			long giaban = rs.getLong("giaban");
+			long giagiam = rs.getLong("giagiam");
+			long soluongdaban = rs.getLong("soluongdaban");
+			boolean sanphamhot = rs.getBoolean("sanphamhot");
+			String motasanpham = rs.getString("motasanpham");
+			long maloai1 = rs.getLong("maloai");
+			long mathuonghieu1 = rs.getLong("mathuonghieu");
+			long madanhmuc = rs.getLong("madanhmuc");
+			String anhchonsize = rs.getString("anhchonsize");
+			
+			dsSanPham.add(new SanPhamBean(masanpham, tensanpham, anh, giaban, giagiam, soluongdaban, sanphamhot, motasanpham, maloai1, mathuonghieu1, madanhmuc, anhchonsize));
 		}
 		return dsSanPham;
 	}
