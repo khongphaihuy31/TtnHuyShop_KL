@@ -107,7 +107,7 @@ a:focus, a:hover {
             <a href="AdminBannerController" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-image"></i>  Quản lý banner</a>
             <a href="AdminKhuyenMaiController" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-gift"></i>  Quản lý khuyến mãi</a>
             <a href="AdminTichDiemController" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-star"></i>  Quản lý tích điểm</a>
-            <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-chart-pie"></i>  Thống kê doanh thu</a><br><br>
+            <a href="AdminThongKeController" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-chart-pie"></i>  Thống kê doanh thu</a><br><br>
         </div>
     </nav>
 
@@ -125,9 +125,9 @@ a:focus, a:hover {
         </header>
         <div class="w3-row-padding">
         	<div class="timKiem" style="text-align: center;">
-				<p style="display: inline-block; font-size: 20px; margin: 0"> <b>Tìm kiếm</b> </p>
+				<p style="display: inline-block; font-size: 20px; margin: 0; color: var(--primary-color);"> <b>Tìm kiếm</b> </p>
 				<form action="AdminXacNhanController" method="get" style="display: inline-block;">
-					<select name="mahoadon" style="display: inline-block; margin-left: 10px; height: 100%; font-size: 20px; width: 250px;">
+					<select name="mahoadon" style="display: inline-block; margin-left: 10px; font-size: 20px; width: 250px; height:41px; padding: 2px 10px; border-radius: 10px; border: 1px solid #ccc;">
 						<option value="All">Tất cả</option>
 						<c:if test="${dshoadon.size() !=0 }">
 							<c:forEach items="${dshoadon }" var="mhd">
@@ -135,7 +135,7 @@ a:focus, a:hover {
 							</c:forEach>
 						</c:if>
 					</select>
-					<button style="display: inline-block; height: 25px; position: relative; top: 0px; width: 40px;"><i style="height: 26px; line-height: 26px; color: var(--primary-color)" class="fa-solid fa-magnifying-glass"></i></button>
+					<button style="display: inline-block; height: 25px; width: 40px; height:41px; padding: 2px 10px; border-radius: 10px; border: 2px solid var(--primary-color); background-color: white;"><i style=" color: var(--primary-color); font-size: 20px" class="fa-solid fa-magnifying-glass"></i></button>
 				</form>
 			</div>
 			
@@ -400,6 +400,7 @@ a:focus, a:hover {
 																									src="${dm.getAnhthietke() }" alt="preview-img">
 																							</div>
 																						</div>
+																						<a>down ảnh design</a>
 																					</c:otherwise>
 																				</c:choose>
 														                    </td>

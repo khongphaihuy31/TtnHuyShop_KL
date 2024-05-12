@@ -114,7 +114,7 @@ a:focus, a:hover {
             <a href="AdminBannerController" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-image"></i>  Quản lý banner</a>
             <a href="AdminKhuyenMaiController" class="w3-bar-item w3-button w3-padding "><i class="fa-solid fa-gift"></i>  Quản lý khuyến mãi</a>
             <a href="AdminTichDiemController" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-star"></i>  Quản lý tích điểm</a>
-            <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-chart-pie"></i>  Thống kê doanh thu</a><br><br>
+            <a href="AdminThongKeController" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-chart-pie"></i>  Thống kê doanh thu</a><br><br>
         </div>
     </nav>
 
@@ -361,6 +361,30 @@ a:focus, a:hover {
 
         <!-- End page content -->
     </div>
+    <script lang="javascript" type="text/javascript">
+		Validator({
+			form : '#formNhapHangDaCo',
+			formGroupSelector : '.form-group',
+			errorElement : '.form-message',
+			rules : [
+					Validator.isRequired('#tensanpham','Bạn vui lòng nhập trường này.'),
+					Validator.isRequired('#giaban','Bạn vui lòng nhập trường này.'),
+					Validator.isRequired('#loai','Bạn vui lòng chọn trường này.'),
+					Validator.isRequired('#thuonghieu','Bạn vui lòng chọn trường này.'),
+					Validator.isRequired('#danhmuc','Bạn vui lòng chọn trường này.'),
+					//Validator.isRequired('#lsize2','Bạn vui lòng nhập trường này.'),
+					//Validator.isRequired('#lsize3','Bạn vui lòng nhập trường này.'),
+					//Validator.isRequired('#lsize4','Bạn vui lòng nhập trường này.'),
+					//Validator.isRequired('#lsize5','Bạn vui lòng nhập trường này.'),
+					//Validator.isRequired('#lmau1','Bạn vui lòng nhập và chọn trường này.'),
+					//Validator.isRequired('#lmau2','Bạn vui lòng nhập và chọn trường này.'),
+					//Validator.isRequired('#lmau3','Bạn vui lòng nhập và chọn trường này.'),
+					//Validator.isRequired('#lmau4','Bạn vui lòng nhập và chọn trường này.'),
+					//Validator.isRequired('#lmau5','Bạn vui lòng nhập và chọn trường này.'),
+					//Validator.isRequired('#password6','Bạn vui lòng nhập trường này.'),
+			],
+		});
+	</script>
    
     <script>
         // Get the Sidebar
