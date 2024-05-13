@@ -16,12 +16,15 @@ import Bean.GioHangBean;
 import Bean.KhachHangBean;
 import Bean.LoaiThuocDanhMucBean;
 import Bean.SanPhamBean;
+import Bean.SanPhamFullBean;
 import Bo.BannerBo;
+import Bo.GiamGiaBo;
 import Bo.GioHangBo;
 import Bo.KhachHangBo;
 //import Bo.GioHangBo;
 import Bo.LoaiBo;
 import Bo.SanPhamBo;
+import Bo.TichDiemBo;
 
 /**
  * Servlet implementation class TrangChuController
@@ -54,7 +57,14 @@ public class TrangChuController extends HttpServlet {
 			request.setAttribute("dsTenLoaiDMDoNu", lbo.getTenLoaiDMDoNu());
 			request.setAttribute("dsTenLoaiDMTreEm", lbo.getTenLoaiDMTreEm());
 			
+			GiamGiaBo ggbo = new GiamGiaBo();
+			request.setAttribute("dsGiamGia", ggbo.getGiamGia());
+			
+			TichDiemBo tdbo = new TichDiemBo();
+			request.setAttribute("dsTichDiem", tdbo.getDsTichDiem());
+			
 			request.setAttribute("dsLoai", lbo.getDsLoai());
+			
 			
 			
 			//Lấy danh sách banner
@@ -107,6 +117,42 @@ public class TrangChuController extends HttpServlet {
 			}else {
 				SanPhamBo spbo = new SanPhamBo();
 				String keyTimKiem = request.getParameter("keyTimKiem");
+				HttpSession session = request.getSession();
+				if(session.getAttribute("dn")!= null) {
+					KhachHangBean khbean = (KhachHangBean)session.getAttribute("dn");
+					if(khbean.getSothich() == null) {
+						khbo.capNhatSoThich(khbean.getMakhachhang(), keyTimKiem);
+					}else {
+						String [] dsSoThich = khbean.getSothich().split(">");
+						ArrayList<String> sothich= new ArrayList<String>();
+						if(dsSoThich.length ==2) {
+							for(int i=0; i<dsSoThich.length; i++) {
+								sothich.add(dsSoThich[i]);
+							}
+							sothich.remove(0);
+							sothich.add(keyTimKiem);
+							String sothichcapnhat = sothich.get(0);
+							for(String st: sothich) {
+								if(st.equals(sothich.get(0))==false) {
+									sothichcapnhat += ">"+st;
+								}
+							}
+							khbo.capNhatSoThich(khbean.getMakhachhang(), sothichcapnhat);
+						}else {
+							for(int i=0; i<dsSoThich.length; i++) {
+								sothich.add(dsSoThich[i]);
+							}
+							sothich.add(keyTimKiem);
+							String sothichcapnhat = sothich.get(0);
+							for(String st: sothich) {
+								if(st.equals(sothich.get(0))==false) {
+									sothichcapnhat += ">"+st;
+								}
+							}
+							khbo.capNhatSoThich(khbean.getMakhachhang(), sothichcapnhat);
+						}
+					}
+				}
 				request.setAttribute("dsSanPhamTimKiem", spbo.getSanPhamTimKiem(keyTimKiem));
 			}
 			
@@ -115,6 +161,34 @@ public class TrangChuController extends HttpServlet {
 			if(session.getAttribute("dn")!= null) {
 				KhachHangBean khbean = (KhachHangBean)session.getAttribute("dn");			
 				request.setAttribute("giohang", ghbo.getSanPhamTrongGio(khbean.getMakhachhang()));
+				
+				//lấy sản phẩm gợi ý mua
+//				System.out.println(khbean.getSothich());
+				if(khbean.getSothich() != null) {
+					SanPhamBo spbo = new SanPhamBo();
+					String [] sothich = khbean.getSothich().split(">");
+					ArrayList<SanPhamFullBean> dsspfullbean = new ArrayList<SanPhamFullBean>();
+					for(String st: sothich) {
+						if(dsspfullbean.size()==0) {
+							dsspfullbean = spbo.getSanPhamTimKiem(st);
+						}else {
+							ArrayList<SanPhamFullBean> dskiemduoc = spbo.getSanPhamTimKiem(st);
+							for(SanPhamFullBean spkiemduoc: dskiemduoc) {
+								boolean daco= false;
+								for(SanPhamFullBean spfullbean: dsspfullbean) {
+									if(spkiemduoc.getMasanpham()== spfullbean.getMasanpham()) {
+										daco = true;
+										break;
+									}
+								}
+								if(daco== false) {
+									dsspfullbean.add(spkiemduoc);
+								}
+							}
+						}
+					}
+					request.setAttribute("dsSpGoiYMua", dsspfullbean);
+				}
 			}else {
 				ArrayList<GioHangBean> giohang = null;
 				request.setAttribute("giohang", giohang);

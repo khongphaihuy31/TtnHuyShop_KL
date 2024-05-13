@@ -120,6 +120,163 @@ a:hover, a:focus {
     top: 30px;
     /* background-color: red; */
 }
+
+
+
+/*Khuyến mãi*/
+
+.mySlides {display: none}
+/* Slideshow container */
+.slideshow-container {
+  max-width: 100%;
+  position: relative;
+  margin: auto;
+}
+
+.mySlides1 {display: none}
+/* Slideshow container */
+.slideshow-container1 {
+  max-width: 100%;
+  position: relative;
+  margin: auto;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: var(--primary-color);
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+.prev1, .next1 {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: var(--primary-color);
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.next1 {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: #ccc;
+}
+
+.prev1:hover, .next1:hover {
+  background-color: #ccc;
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: var(--primary-color);
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 10px;
+}
+/* Number text (1/3 etc) */
+.numbertext1 {
+  color: var(--primary-color);
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 10px;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .prev, .next,.text {font-size: 11px}
+}
+
+.khuyen-mai-hb {
+	margin-bottom:2px;
+	margin-top:2px;
+	background:white;
+	padding:10px;
+	border-radius:5px;
+	border:2px solid var(--primary-color);
+	font-size:15px;
+	width:100%;
+}
+.khuyen-mai-hb .tieu-de {
+	background:var(--primary-color);
+	padding:2px 20px;
+	margin-top:-24px;
+	font-size:18px;
+	font-weight:500;
+	color:#ffffff;
+	display:block;
+	border-radius:99px;
+    width: 45%;
+    text-align: center;
+}
+ 
+.khuyen-mai-hb ul {
+   margin-top: 20px;
+   margin-left:50px;
+   margin-bottom:4px;
+   list-style-image:url(tick.png);	
+}
 </style>
 </head>
 <body>
@@ -666,6 +823,178 @@ a:hover, a:focus {
 		<!-- Container -->
 		<div class="container1">
 			<div class="grid wide">
+				
+				<!-- Slide khuyến mãi -->
+				<c:if test="${param.maloai == null && param.madanhmuc == null && param.mathuonghieu == null && param.btnTimKiem == null }">
+					<div class="container__top-selling" style="margin-bottom: 0;">
+						<h3 class="container__heading" style="font-weight: 600;">Khuyến mãi khi mua tại Ttn-Huy</h3>
+						<div class="row sm-gutter">
+							<c:if test="${dsGiamGia.size()!=0 }">
+								<div class="product-item-col col l-6 m-12 c-12" style="margin-bottom: 0;margin-top: 10px;">
+									<div class="slideshow-container">
+										<c:forEach items="${dsGiamGia }" var="gg" varStatus="index">
+											<div class="mySlides fade" style="opacity: 1;">
+											  <div class="numbertext">${index.index+1 } / ${dsGiamGia.size() }</div>
+											  <div class="khuyen-mai-hb"> 
+											  	<span class="tieu-de"><i class="fa-solid fa-gift"></i>  Khuyến mãi giảm giá</span> 
+											     <ul>
+											      <li style="font-size: 18px;">${gg.getTengiamgia() }</li>
+											      <li style="font-size: 18px;">Khi tổng giá trị đơn hàng từ 
+											      	<fmt:setLocale value="vi_VN"/>
+		       										<fmt:formatNumber value="${gg.getDieukien() }" type="currency"/>
+											      </li>
+											      <li style="font-size: 18px;">${gg.getMota() }</li>
+											     </ul>
+											  </div>
+											</div>
+										</c:forEach>
+										
+										<a class="prev" onclick="plusSlides(-1)">❮</a>
+										<a class="next" onclick="plusSlides(1)">❯</a>
+										
+										</div>
+										
+										<script type="text/javascript">
+										let slideIndex = 1;
+										showSlides(slideIndex);
+										
+										function plusSlides(n) {
+										  showSlides(slideIndex += n);
+										}
+										
+										function currentSlide(n) {
+										  showSlides(slideIndex = n);
+										}
+										
+										function showSlides(n) {
+										  let i;
+										  let slides = document.getElementsByClassName("mySlides");
+										  if (n > slides.length) {slideIndex = 1}    
+										  if (n < 1) {slideIndex = slides.length}
+										  for (i = 0; i < slides.length; i++) {
+										    slides[i].style.display = "none";  
+										  }
+										  slides[slideIndex-1].style.display = "block";
+										}
+										</script>
+								</div>
+							</c:if>
+							<c:if test="${dsTichDiem.size()!=0 }">
+								<div class="product-item-col col l-6 m-12 c-12" style="height: 100%; margin-bottom: 0; margin-top: 10px;">
+									<div class="slideshow-container1">
+										<c:forEach items="${dsTichDiem }" var="gg" varStatus="index">
+											<div class="mySlides1 fade " style="opacity: 1;">
+											  <div class="numbertext1">${index.index+1 } / ${dsTichDiem.size() }</div>
+											  <div class="khuyen-mai-hb" style="min-height: 130px;"> 
+											  	<span class="tieu-de"><i class="fa-solid fa-gift"></i>  Khuyến mãi điểm cộng</span> 
+											     <ul>
+											      <li style="font-size: 18px;">Tích được ${gg.getDiemcong() } điểm</li>
+											      <li style="font-size: 18px;">Khi tổng giá trị đơn hàng từ 
+											      	<fmt:setLocale value="vi_VN"/>
+		       										<fmt:formatNumber value="${gg.getDieukien() }" type="currency"/>
+											      </li>
+											     </ul>
+											  </div>
+											</div>
+										</c:forEach>
+										
+										<a class="prev1" onclick="plusSlides1(-1)">❮</a>
+										<a class="next1" onclick="plusSlides1(1)">❯</a>
+										
+										</div>
+										
+										<script type="text/javascript">
+										let slideIndex1 = 1;
+										showSlides1(slideIndex1);
+										
+										function plusSlides1(n) {
+										  showSlides1(slideIndex1 += n);
+										}
+										
+										function currentSlide(n) {
+										  showSlides1(slideIndex1 = n);
+										}
+										
+										function showSlides1(n) {
+										  let i;
+										  let slides = document.getElementsByClassName("mySlides1");
+										  if (n > slides.length) {slideIndex1 = 1}    
+										  if (n < 1) {slideIndex1 = slides.length}
+										  for (i = 0; i < slides.length; i++) {
+										    slides[i].style.display = "none";  
+										  }
+										  slides[slideIndex1-1].style.display = "block";
+										}
+										</script>
+								</div>
+							</c:if>
+						</div>
+					</div>
+				</c:if>
+				<!-- sản phẩm bán chạy -->
+				<c:if test="${dsSanPhamLoaiTrongDanhMuc == null && dsSanPhamTimKiem == null }">
+					<div class="container__top-selling" style="margin-bottom: 0;">
+						<c:choose>
+							<c:when test="${dsSpGoiYMua !=null }">
+								<h3 class="container__heading" style="font-weight: 600;">Sản
+									phẩm bạn có thể thích</h3>
+								<div class="row sm-gutter">
+									<c:forEach items="${dsSpGoiYMua }" var="sphot">
+										<div class="product-item-col col l-2 m-4 c-6">
+											<!-- product item -->
+											<a class="product-item"
+												href="ChiTietSanPhamController?msp=${sphot.getMasanpham()}&tsp=${sphot.getTensanpham()}&anh=${sphot.getAnh()}&gb=${sphot.getGiaban()}&gg=${sphot.getGiagiam()}&sldb=${sphot.getSoluongdaban()}&mtsp=${sphot.getMotasanpham()}&ml=${sphot.getMaloai()}&mth=${sphot.getMathuonghieu()}&mdm=${sphot.getMadanhmuc()}&acs=${sphot.getAnhchonsize()}">
+												<img src="${sphot.getAnh()}" alt="" class="product-item__img">
+												<h4 class="product-item__name">${sphot.getTensanpham()}</h4>
+												<div class="product-item__price">
+													<c:choose>
+														<c:when test="${sphot.getGiagiam() ==0}">
+															<span class="product-item__price-current"
+																style="font-weight: 600;"><fmt:setLocale value="vi_VN"/>
+	                    										<fmt:formatNumber value="${sphot.getGiaban()}" type="currency"/></span>
+														</c:when>
+														<c:otherwise>
+															<span class="product-item__price-old">
+																<fmt:setLocale value="vi_VN"/>
+	                    										<fmt:formatNumber value="${sphot.getGiaban()}" type="currency"/>
+																</span>
+															<span class="product-item__price-current"
+																style="font-weight: 600;">
+																<fmt:setLocale value="vi_VN"/>
+	                    										<fmt:formatNumber value="${sphot.getGiagiam()}" type="currency"/>
+																</span>
+														</c:otherwise>
+													</c:choose>
+												</div>
+												<div class="product-item__action">
+													<span class="product-item__rating"> <i
+														class="product-item__start-gold fa-solid fa-star"></i> <i
+														class="product-item__start-gold fa-solid fa-star"></i> <i
+														class="product-item__start-gold fa-solid fa-star"></i> <i
+														class="product-item__start-gold fa-solid fa-star"></i> <i
+														class="fa-solid fa-star"></i>
+													</span> <span class="product-item__review-count">(20)</span>
+												</div> <span class="product-item__like"> <!-- product-item__liked -->
+													<input type="checkbox" hidden
+													id="like-checkbox${sphot.getMasanpham()}"
+													class="product-item__like-input"> <label
+													for="like-checkbox${sphot.getMasanpham()}"
+													class="product-item__like-empty"> <i
+														class="product-item__like-icon-empty fa-regular fa-heart"></i>
+												</label> <label for="like-checkbox${sphot.getMasanpham()}"
+													class="product-item__like-fill"> <i
+														class="product-item__like-icon-fill fa-solid fa-heart"></i>
+												</label>
+											</span>
+											</a>
+										</div>
+									</c:forEach>
+								</div>
+							</c:when>
+						</c:choose>
+					</div>
+				</c:if>
+				
 				<!-- sản phẩm bán chạy -->
 				<div class="container__top-selling">
 					<c:choose>
@@ -677,7 +1006,7 @@ a:hover, a:focus {
 									<div class="product-item-col col l-2 m-4 c-6">
 										<!-- product item -->
 										<a class="product-item"
-											href="ChiTietSanPhamController?msp=${sphot.getMasanpham()}&tsp=${sphot.getTensanpham()}&anh=${sphot.getAnh()}&gb=${sphot.getGiaban()}&gg=${sphot.getGiagiam()}&sldb=${sphot.getSoluongdaban()}&mtsp=${sphot.getMotasanpham()}&ml=${sphot.getMaloai()}&mth=${sphot.getMathuonghieu()}&mdm=${sphot.getMadanhmuc()}&acs=${sphot.getAnhchonsize()}">
+											href="ChiTietSanPhamController?msp=${sphot.getMasanpham()}">
 											<img src="${sphot.getAnh()}" alt="" class="product-item__img">
 											<h4 class="product-item__name">${sphot.getTensanpham()}</h4>
 											<div class="product-item__price">

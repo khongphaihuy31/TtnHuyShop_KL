@@ -67,4 +67,8 @@ public class KhachHangBo {
 	public ArrayList<String> getdsEmail()throws Exception{
 		return khdao.getdsEmail();
 	}
+	//xử lý cập nhật sở thích	
+	public int capNhatSoThich(long makhachhang, String sothich) throws Exception{
+		return khdao.capNhatSoThich(makhachhang, sothich);
+	}
 }

@@ -265,4 +265,20 @@ public class KhachHangDao {
 		}
 		return kh;
 	}
+	
+	//xử lý cập nhật sở thích	
+	public int capNhatSoThich(long makhachhang, String sothich) throws Exception{
+		KetNoiDao kn = new KetNoiDao();
+		kn.ketnoi();
+		
+		String sql = "update KhachHang set sothich = ? where makhachhang = ?";
+		PreparedStatement cmd = kn.cn.prepareStatement(sql);
+		cmd.setString(1, sothich);
+		cmd.setLong(2, makhachhang);
+		
+		int kq = cmd.executeUpdate();
+		cmd.close();
+		kn.cn.close();
+		return kq;
+	}
 }
