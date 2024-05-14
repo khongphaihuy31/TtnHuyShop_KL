@@ -444,6 +444,16 @@ input:checked + label{
     top: 30px;
     /* background-color: red; */
 }
+
+.product-item__price-old{
+	margin-bottom: 10px;
+	margin-left: 5px;
+}
+
+.product-item__price{
+	flex-direction: row-reverse;
+    justify-content: center;
+}
 </style>
 </head>
 <body>
@@ -1337,9 +1347,56 @@ input:checked + label{
 					<h3 class="container-bottom__nav container-bottom__detail">Mô tả sản phẩm</h3>
 					<!-- container bottom boby detail -->
 					<div class="container-bottom__body-detail">
-						<div class="row">
-							${spChon.getMotasanpham() }
-						</div>
+						<c:choose>
+							<c:when test="${spChon.getMotasanpham() != null}">
+								<div class="row">
+									${spChon.getMotasanpham() }
+								</div>
+							</c:when>
+							<c:otherwise>
+								<div class="row">
+									<div class="container-bottom__body-left col l-2 m-6 c-6">
+										Phong cách</div>
+									<div class="container-bottom__body-right col l-10 m-6 c-6">
+										Hàn Quốc</div>
+								</div>
+		
+								<div class="row">
+									<div class="container-bottom__body-left col l-2 m-6 c-6">
+										Xuất xứ</div>
+									<div class="container-bottom__body-right col l-10 m-6 c-6">
+										Việt Nam</div>
+								</div>
+		
+								<div class="row">
+									<div class="container-bottom__body-left col l-2 m-6 c-6">
+										Chất liệu</div>
+									<div class="container-bottom__body-right col l-10 m-6 c-6">
+										Thun</div>
+								</div>
+		
+								<div class="row">
+									<div class="container-bottom__body-left col l-2 m-6 c-6">
+										Loại</div>
+									<div class="container-bottom__body-right col l-10 m-6 c-6">
+										Áo thun tay ngắn</div>
+								</div>
+		
+								<div class="row">
+									<div class="container-bottom__body-left col l-2 m-6 c-6">
+										Mẫu</div>
+									<div class="container-bottom__body-right col l-10 m-6 c-6">
+										Có hình Logo Kappa</div>
+								</div>
+		
+								<div class="row">
+									<div class="container-bottom__body-left col l-2 m-6 c-6">
+										Giới tính</div>
+									<div class="container-bottom__body-right col l-10 m-6 c-6">
+										Nữ</div>
+								</div>
+							</c:otherwise>
+						</c:choose>
 					</div>
 
 					<!-- container bottom boby describe -->

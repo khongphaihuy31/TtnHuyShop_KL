@@ -277,6 +277,16 @@ a:hover, a:focus {
    margin-bottom:4px;
    list-style-image:url(tick.png);	
 }
+
+.product-item__price-old{
+	margin-bottom: 10px;
+	margin-left: 5px;
+}
+
+.product-item__price{
+	flex-direction: row-reverse;
+    justify-content: center;
+}
 </style>
 </head>
 <body>
@@ -1083,7 +1093,7 @@ a:hover, a:focus {
 											<div class="product-item-col col l-2 m-4 c-6">
 												<!-- product item -->
 												<a class="product-item"
-													href="ChiTietSanPhamController?msp=${sphot.getMasanpham()}&tsp=${sphot.getTensanpham()}&anh=${sphot.getAnh()}&gb=${sphot.getGiaban()}&gg=${sphot.getGiagiam()}&sldb=${sphot.getSoluongdaban()}&mtsp=${sphot.getMotasanpham()}&ml=${sphot.getMaloai()}&mth=${sphot.getMathuonghieu()}&mdm=${sphot.getMadanhmuc()}&acs=${sphot.getAnhchonsize()}">
+													href="ChiTietSanPhamController?msp=${sphot.getMasanpham()}">
 													<img src="${sphot.getAnh()}" alt="" class="product-item__img">
 													<h4 class="product-item__name">${sphot.getTensanpham()}</h4>
 													<div class="product-item__price">

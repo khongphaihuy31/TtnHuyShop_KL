@@ -136,6 +136,16 @@ a:hover, a:focus {
     top: 30px;
     /* background-color: red; */
 }
+
+.product-item__price-old{
+	margin-bottom: 10px;
+	margin-left: 5px;
+}
+
+.product-item__price{
+	flex-direction: row-reverse;
+    justify-content: center;
+}
 </style>
 </head>
 <body>

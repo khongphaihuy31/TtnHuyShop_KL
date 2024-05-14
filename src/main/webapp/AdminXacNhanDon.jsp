@@ -377,7 +377,7 @@ a:focus, a:hover {
 												                </tr>
 												            </thead>
 												            <tbody>
-												            	<c:forEach items="${dsSPChoXacNhan }" var="dm">
+												            	<c:forEach items="${dsSPChoXacNhan }" var="dm" varStatus="index">
 													                <c:if test="${dm.getMahoadon() == hdcb.getMahoadon() }">
 														                <tr>
 														                    <td rowspan="2" style="width: 80px;">
@@ -395,12 +395,12 @@ a:focus, a:hover {
 																								alt="" src="${dm.getAnhsanpham()}">
 																							<div
 																								style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: flex; justify-content: center; align-items: center; "
-																								class="preview-img">
+																								class="preview-img${index.index }">
 																								<img style="width: 100%" class="previewImgDesign"
 																									src="${dm.getAnhthietke() }" alt="preview-img">
 																							</div>
 																						</div>
-																						<a>down ảnh design</a>
+																						<a style="margin-top: 15px; cursor: pointer;" onclick="saveImage('preview-img${index.index}','save-img${index.index}')">Download</a>
 																					</c:otherwise>
 																				</c:choose>
 														                    </td>
@@ -485,6 +485,34 @@ a:focus, a:hover {
 									</c:forEach>
 								</c:if>
 							</c:forEach>
+							<script type="text/javascript">
+						      const saveImage = (a, b) => {
+						          previewImg = document.querySelector("."+a+" img"),
+						          saveImgBtn = document.querySelector("."+b);
+						
+						          let brightness = "100", saturation = "100", inversion = "0", grayscale = "0";
+						          let rotate = 0, flipHorizontal = 1, flipVertical = 1;
+						
+						          const canvas = document.createElement("canvas");
+						          const ctx = canvas.getContext("2d");
+						          canvas.width = previewImg.naturalWidth;
+						          canvas.height = previewImg.naturalHeight;
+						          
+						          ctx.filter = `brightness(${brightness}%) saturate(${saturation}%) invert(${inversion}%) grayscale(${grayscale}%)`;
+						          ctx.translate(canvas.width / 2, canvas.height / 2);
+						          if(rotate !== 0) {
+						              ctx.rotate(rotate * Math.PI / 180);
+						          }
+						          ctx.scale(flipHorizontal, flipVertical);
+						          ctx.drawImage(previewImg, -canvas.width / 2, -canvas.height / 2, canvas.width, canvas.height);
+						          
+						          const link = document.createElement("a");
+						          link.download = "image.jpg";
+						          link.href = canvas.toDataURL();
+						          link.click();
+						        }
+						        // saveImgBtn.addEventListener("click", saveImage);
+						    </script>
 						</c:when>
 						<c:otherwise>
 							<div class="row" style="margin-top: 10px;">
