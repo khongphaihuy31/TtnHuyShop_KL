@@ -871,7 +871,7 @@ input:checked + label{
 									<input style="background-color: white;" form="soluongmua" type="text"
 										class="input--quantity__show input--quantity__show-js"
 										name="soluongmua" value="1" role="spinbutton"
-										aria-valuenow="1" disabled="disabled">
+										aria-valuenow="1">
 									<button class="input--quantity__up up-js">
 										<i class="input--quantity__up-icon fa-solid fa-plus"></i>
 									</button>

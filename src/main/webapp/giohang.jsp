@@ -703,7 +703,7 @@ a:hover, a:focus {
 												<div class="col l-2 text-center">
 													<c:choose>
 														<c:when test="${sp.getGiagiam() == 0}">
-															<h4 style="font-size: 20px;">
+															<h4 style="font-size: 20px; color: var(--primary-color); font-weight: bold;">
 																<fmt:setLocale value="vi_VN"/>
 																<fmt:formatNumber value="${sp.getGiaban()}" type="currency"/>
 															</h4>
