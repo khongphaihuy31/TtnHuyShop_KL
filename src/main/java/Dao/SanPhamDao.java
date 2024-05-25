@@ -37,6 +37,35 @@ public class SanPhamDao {
 		return dsSanPhamHot;
 	}
 	
+//	Lấy các sản phẩm khuyến mãi
+	public ArrayList<SanPhamBean> getSanPhamGiamGia()throws Exception{
+		ArrayList<SanPhamBean> dsSanPhamHot = new ArrayList<SanPhamBean>();
+		KetNoiDao kn = new KetNoiDao();
+		kn.ketnoi();
+		
+		String sql = "select * from SanPham where giagiam != 0";
+		
+		PreparedStatement cmd = kn.cn.prepareStatement(sql);
+		ResultSet rs = cmd.executeQuery();
+		while(rs.next()) {
+			long masanpham = rs.getLong("masanpham");
+			String tensanpham = rs.getString("tensanpham");
+			String anh = rs.getString("anh");
+			long giaban = rs.getLong("giaban");
+			long giagiam = rs.getLong("giagiam");
+			String anhchonsize = rs.getString("anhchonsize");
+			long soluongdaban = rs.getLong("soluongdaban");
+			boolean sanphamhot = rs.getBoolean("sanphamhot");
+			String motasanpham = rs.getString("motasanpham");
+			long maloai = rs.getLong("maloai");
+			long mathuonghieu = rs.getLong("mathuonghieu");
+			long madanhmuc = rs.getLong("madanhmuc");
+			
+			dsSanPhamHot.add(new SanPhamBean(masanpham, tensanpham, anh, giaban, giagiam, soluongdaban, sanphamhot, motasanpham, maloai, mathuonghieu, madanhmuc, anhchonsize));
+		}
+		return dsSanPhamHot;
+	}
+	
 //	Lấy sản phẩm theo mã sản phẩm
 	public SanPhamBean getSanPham(long msp)throws Exception{
 		SanPhamBean sp = new SanPhamBean();

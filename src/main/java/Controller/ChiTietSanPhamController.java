@@ -112,6 +112,7 @@ public class ChiTietSanPhamController extends HttpServlet {
 			//Xử lý lấy sản phẩm ưa thích
 			SanPhamBo spbo =  new SanPhamBo();
 			request.setAttribute("dsSPUaThich", spbo.getSanPhamUaThich());
+			request.setAttribute("dsSanPhamKhuyenMai", spbo.getSanPhamGiamGia());
 			
 			//Xử lý lấy size, màu và ảnh của sản phẩm
 			ChiTietSanPhamBo ctspbo = new ChiTietSanPhamBo();

@@ -418,7 +418,7 @@ a:focus, a:hover {
 											<div style="margin-top: 10px;" class="control">
 												<input form="formNhapHangDaCo"
 												style="width: 100%; height: 20px; font-size: 18px; padding: 20px 10px; border-radius: 10px; border: 1px solid #ccc;"
-												type="number" id="gianhap" name="gianhap"
+												type="number" id="gianhapspcu" name="gianhap"
 												placeholder="Nhập giá nhập"
 												class="input-text required-entry form-control">
 												<span class="form-message"></span> 
@@ -721,6 +721,16 @@ a:focus, a:hover {
 					//Validator.isRequired('#lmau4','Bạn vui lòng nhập và chọn trường này.'),
 					//Validator.isRequired('#lmau5','Bạn vui lòng nhập và chọn trường này.'),
 					//Validator.isRequired('#password6','Bạn vui lòng nhập trường này.'),
+			],
+		});
+	</script>
+	<script lang="javascript" type="text/javascript">
+		Validator({
+			form : '#formNhapHangDaCo',
+			formGroupSelector : '.form-group',
+			errorElement : '.form-message',
+			rules : [
+					Validator.isRequired('#gianhapspcu','Bạn vui lòng nhập trường này.'),
 			],
 		});
 	</script>

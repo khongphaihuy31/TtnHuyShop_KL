@@ -66,6 +66,7 @@ public class ThietKeAoController extends HttpServlet {
 			
 			//Xử lý lấy sản phẩm ưa thích
 			request.setAttribute("dsSPUaThich", spbo.getSanPhamUaThich());
+			request.setAttribute("dsSPKhuyenMai", spbo.getSanPhamGiamGia());
 			
 			//Xử lý lấy size, màu và ảnh của sản phẩm
 			ChiTietSanPhamBo ctspbo = new ChiTietSanPhamBo();

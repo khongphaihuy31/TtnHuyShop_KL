@@ -1377,59 +1377,57 @@ input:checked + label{
 				<c:if test="${dsSPUaThich != null }">
 					<h3 class="container__heading"
 						style="font-weight: 600; margin-top: 30px;">SẢN PHẨM GIÁ TỐT</h3>
-					<div class="row sm-gutter">
-						<c:forEach items="${dsSPUaThich }" var="sp">
-							<div class="product-item-col col l-2 m-4 c-6">
-								<!-- product item -->
-								<a class="product-item"
-									href="ChiTietSanPhamController?msp=${sp.getMasanpham()}&tsp=${sp.getTensanpham()}&anh=${sp.getAnh()}&gb=${sp.getGiaban()}&gg=${sp.getGiagiam()}&sldb=${sp.getSoluongdaban()}&mtsp=${sp.getMotasanpham()}&ml=${sp.getMaloai()}&mth=${sp.getMathuonghieu()}&mdm=${sp.getMadanhmuc()}&acs=${sp.getAnhchonsize()}">
-									<img src="${sp.getAnh()}" alt="" class="product-item__img">
-									<h4 class="product-item__name">${sp.getTensanpham()}</h4>
-									<div class="product-item__price">
-										<c:choose>
-											<c:when test="${sp.getGiagiam() ==0}">
-												<span class="product-item__price-current"
-													style="font-weight: 600;">
-													<fmt:setLocale value="vi_VN"/>
-                    								<fmt:formatNumber value="${sp.getGiaban()}" type="currency"/>
-													</span>
-											</c:when>
-											<c:otherwise>
-												<span class="product-item__price-old">
-													<fmt:setLocale value="vi_VN"/>
-                    								<fmt:formatNumber value="${sp.getGiaban()}" type="currency"/>
-												</span>
-												<span class="product-item__price-current"
-													style="font-weight: 600;">
-													<fmt:setLocale value="vi_VN"/>
-                    								<fmt:formatNumber value="${sp.getGiagiam()}" type="currency"/>
-													</span>
-											</c:otherwise>
-										</c:choose>
+								<div class="row sm-gutter">
+								<c:forEach items="${dsSanPhamKhuyenMai }" var="sphot">
+									<div class="product-item-col col l-2 m-4 c-6">
+										<!-- product item -->
+										<a class="product-item"
+											href="ChiTietSanPhamController?msp=${sphot.getMasanpham()}">
+											<img src="${sphot.getAnh()}" alt="" class="product-item__img">
+											<h4 class="product-item__name">${sphot.getTensanpham()}</h4>
+											<div class="product-item__price">
+												<c:choose>
+													<c:when test="${sphot.getGiagiam() ==0}">
+														<span class="product-item__price-current"
+															style="font-weight: 600;"><fmt:setLocale value="vi_VN"/>
+                    										<fmt:formatNumber value="${sphot.getGiaban()}" type="currency"/></span>
+													</c:when>
+													<c:otherwise>
+														<span class="product-item__price-old">
+															<fmt:setLocale value="vi_VN"/>
+                    										<fmt:formatNumber value="${sphot.getGiaban()}" type="currency"/>
+															</span>
+														<span class="product-item__price-current"
+															style="font-weight: 600;">
+															<fmt:setLocale value="vi_VN"/>
+                    										<fmt:formatNumber value="${sphot.getGiagiam()}" type="currency"/>
+															</span>
+													</c:otherwise>
+												</c:choose>
+											</div>
+											<div class="product-item__action">
+												<span class="product-item__rating"> <i
+													class="product-item__start-gold fa-solid fa-star"></i> <i
+													class="product-item__start-gold fa-solid fa-star"></i> <i
+													class="product-item__start-gold fa-solid fa-star"></i> <i
+													class="product-item__start-gold fa-solid fa-star"></i> <i
+													class="fa-solid fa-star"></i>
+												</span> <span class="product-item__review-count">(20)</span>
+											</div> <span class="product-item__like"> <!-- product-item__liked -->
+												<input type="checkbox" hidden
+												id="like-checkbox${sphot.getMasanpham()}"
+												class="product-item__like-input"> <label
+												for="like-checkbox${sphot.getMasanpham()}"
+												class="product-item__like-empty"> <i
+													class="product-item__like-icon-empty fa-regular fa-heart"></i>
+											</label> <label for="like-checkbox${sphot.getMasanpham()}"
+												class="product-item__like-fill"> <i
+													class="product-item__like-icon-fill fa-solid fa-heart"></i>
+											</label>
+										</span>
+										</a>
 									</div>
-									<div class="product-item__action">
-										<span class="product-item__rating"> <i
-											class="product-item__start-gold fa-solid fa-star"></i> <i
-											class="product-item__start-gold fa-solid fa-star"></i> <i
-											class="product-item__start-gold fa-solid fa-star"></i> <i
-											class="product-item__start-gold fa-solid fa-star"></i> <i
-											class="fa-solid fa-star"></i>
-										</span> <span class="product-item__review-count">(20)</span>
-									</div> <span class="product-item__like"> <!-- product-item__liked -->
-										<input type="checkbox" hidden
-										id="like-checkbox${sp.getMasanpham()}"
-										class="product-item__like-input"> <label
-										for="like-checkbox${sp.getMasanpham()}"
-										class="product-item__like-empty"> <i
-											class="product-item__like-icon-empty fa-regular fa-heart"></i>
-									</label> <label for="like-checkbox${sp.getMasanpham()}"
-										class="product-item__like-fill"> <i
-											class="product-item__like-icon-fill fa-solid fa-heart"></i>
-									</label>
-								</span>
-								</a>
-							</div>
-						</c:forEach>
+								</c:forEach>
 				</c:if>
 				</div>
 			</div>

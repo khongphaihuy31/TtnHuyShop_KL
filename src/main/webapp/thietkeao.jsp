@@ -974,6 +974,8 @@ input:checked + label{
                                 <li style="margin-bottom: 5px;">Up ảnh một cách rõ nét nhất.</li>
                                 <li style="margin-bottom: 5px;">Có thể vào canva để thiết kế ảnh dễ dàng và thuận tiện.
                                 </li>
+                                <li style="margin-bottom: 5px;">Tên file không được để tiếng Việt.
+                                </li>
                                 <li style="margin-bottom: 5px;">Nếu mua nhiều hơn 50 áo có thể liên hệ qua hotline:
                                     0985243520 (để được tư vấn và đặt mua một cách dễ dàng).</li>
                             </ul>
@@ -1331,9 +1333,56 @@ input:checked + label{
 					<h3 class="container-bottom__nav container-bottom__describe">Hướng dẫn chọn size</h3>
 					<!-- container bottom boby detail -->
 					<div class="container-bottom__body-detail">
-						<div class="row" style="margin-left: 15px;">
-							${spChon.getMotasanpham() }
-						</div>
+						<c:choose>
+							<c:when test="${spChon.getMotasanpham() != null} ">
+								<div class="row">
+									${spChon.getMotasanpham() }
+								</div>
+							</c:when>
+							<c:otherwise>
+								<div class="row">
+									<div class="container-bottom__body-left col l-2 m-6 c-6">
+										Phong cách</div>
+									<div class="container-bottom__body-right col l-10 m-6 c-6">
+										Hàn Quốc</div>
+								</div>
+		
+								<div class="row">
+									<div class="container-bottom__body-left col l-2 m-6 c-6">
+										Xuất xứ</div>
+									<div class="container-bottom__body-right col l-10 m-6 c-6">
+										Việt Nam</div>
+								</div>
+		
+								<div class="row">
+									<div class="container-bottom__body-left col l-2 m-6 c-6">
+										Chất liệu</div>
+									<div class="container-bottom__body-right col l-10 m-6 c-6">
+										Thun</div>
+								</div>
+		
+								<div class="row">
+									<div class="container-bottom__body-left col l-2 m-6 c-6">
+										Loại</div>
+									<div class="container-bottom__body-right col l-10 m-6 c-6">
+										Áo thun tay ngắn</div>
+								</div>
+		
+								<div class="row">
+									<div class="container-bottom__body-left col l-2 m-6 c-6">
+										Mẫu</div>
+									<div class="container-bottom__body-right col l-10 m-6 c-6">
+										Có hình Logo Kappa</div>
+								</div>
+		
+								<div class="row">
+									<div class="container-bottom__body-left col l-2 m-6 c-6">
+										Giới tính</div>
+									<div class="container-bottom__body-right col l-10 m-6 c-6">
+										Nữ</div>
+								</div>
+							</c:otherwise>
+						</c:choose>
 					</div>
 
 					<!-- container bottom boby describe -->
@@ -1481,11 +1530,11 @@ input:checked + label{
 					</div>
 				</c:if>
 				<!-- Hiển thị sản phẩm bạn có thể thích -->
-				<c:if test="${dsSPUaThich != null }">
+				<c:if test="${dsSPKhuyenMai != null }">
 					<h3 class="container__heading"
 						style="font-weight: 600; margin-top: 30px; margin-left: 50px; margin-right: 50px;">SẢN PHẨM GIÁ TỐT</h3>
 					<div style="margin-left: 50px; margin-right: 50px;" class="row sm-gutter">
-						<c:forEach items="${dsSPUaThich }" var="sp">
+						<c:forEach items="${dsSPKhuyenMai }" var="sp">
 							<div class="product-item-col col l-2 m-4 c-6">
 								<!-- product item -->
 								<a class="product-item"

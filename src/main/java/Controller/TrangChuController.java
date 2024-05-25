@@ -101,21 +101,20 @@ public class TrangChuController extends HttpServlet {
 			String maloai = request.getParameter("maloai");
 			String madanhmuc = request.getParameter("madanhmuc");
 			String mathuonghieu = request.getParameter("mathuonghieu");
-			
+			SanPhamBo spbo = new SanPhamBo();
+			request.setAttribute("dsSanPhamKhuyenMai", spbo.getSanPhamGiamGia());
 			if(maloai == null && madanhmuc == null && mathuonghieu == null && request.getParameter("btnTimKiem") == null ) {
 				//Xử lý lấy danh sách sản phẩm hot
-				SanPhamBo spbo = new SanPhamBo();
 				request.setAttribute("dsSanPhamHot", spbo.getSanPhamHot());
+				
 			}else if(request.getParameter("btnTimKiem") == null){
 				//Xử lý lấy danh sách sản phẩm loai trong danh muc
-				SanPhamBo spbo = new SanPhamBo();
 				ArrayList<SanPhamBean> spbean = spbo.getSanPhamLoaiTrongDanhMuc(Long.parseLong(maloai), Long.parseLong(madanhmuc), Long.parseLong(mathuonghieu));
 				for(SanPhamBean sp: spbean) {
 					System.out.print(sp.getMasanpham());
 				}
 				request.setAttribute("dsSanPhamLoaiTrongDanhMuc", (ArrayList<SanPhamBean>)spbo.getSanPhamLoaiTrongDanhMuc(Long.parseLong(maloai), Long.parseLong(madanhmuc), Long.parseLong(mathuonghieu)));
 			}else {
-				SanPhamBo spbo = new SanPhamBo();
 				String keyTimKiem = request.getParameter("keyTimKiem");
 				HttpSession session = request.getSession();
 				if(session.getAttribute("dn")!= null) {
@@ -165,7 +164,6 @@ public class TrangChuController extends HttpServlet {
 				//lấy sản phẩm gợi ý mua
 //				System.out.println(khbean.getSothich());
 				if(khbean.getSothich() != null) {
-					SanPhamBo spbo = new SanPhamBo();
 					String [] sothich = khbean.getSothich().split(">");
 					ArrayList<SanPhamFullBean> dsspfullbean = new ArrayList<SanPhamFullBean>();
 					for(String st: sothich) {

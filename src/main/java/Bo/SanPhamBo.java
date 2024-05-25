@@ -13,6 +13,11 @@ public class SanPhamBo {
 		return spdao.getSanPhamHot();
 	}
 	
+//	Lấy các sản phẩm khuyến mãi
+	public ArrayList<SanPhamBean> getSanPhamGiamGia()throws Exception{
+		return spdao.getSanPhamGiamGia();
+	}
+	
 // Lấy các sản phẩm theo mã loại và mã danh mục
 	public ArrayList<SanPhamBean> getSanPhamLoaiTrongDanhMuc(long maloai, long madanhmuc, long mathuonghieu)throws Exception{
 		return spdao.getSanPhamLoaiTrongDanhMuc(maloai, madanhmuc, mathuonghieu);

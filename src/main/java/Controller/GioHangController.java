@@ -52,7 +52,7 @@ public class GioHangController extends HttpServlet {
 			
 			//Xử lý lấy sản phẩm ưa thích
 			SanPhamBo spbo =  new SanPhamBo();
-			request.setAttribute("dsSPUaThich", spbo.getSanPhamUaThich());
+			request.setAttribute("dsSPUaThich", spbo.getSanPhamGiamGia());
 			
 			// Xử lý thêm sản phẩm vào giỏ
 			if(request.getParameter("ht") != null && request.getParameter("addCart") == null) {
