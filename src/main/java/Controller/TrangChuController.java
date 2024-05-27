@@ -110,9 +110,9 @@ public class TrangChuController extends HttpServlet {
 			}else if(request.getParameter("btnTimKiem") == null){
 				//Xử lý lấy danh sách sản phẩm loai trong danh muc
 				ArrayList<SanPhamBean> spbean = spbo.getSanPhamLoaiTrongDanhMuc(Long.parseLong(maloai), Long.parseLong(madanhmuc), Long.parseLong(mathuonghieu));
-				for(SanPhamBean sp: spbean) {
-					System.out.print(sp.getMasanpham());
-				}
+//				for(SanPhamBean sp: spbean) {
+//					System.out.print(sp.getMasanpham());
+//				}
 				request.setAttribute("dsSanPhamLoaiTrongDanhMuc", (ArrayList<SanPhamBean>)spbo.getSanPhamLoaiTrongDanhMuc(Long.parseLong(maloai), Long.parseLong(madanhmuc), Long.parseLong(mathuonghieu)));
 			}else {
 				String keyTimKiem = request.getParameter("keyTimKiem");

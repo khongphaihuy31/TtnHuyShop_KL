@@ -215,7 +215,7 @@ a:focus, a:hover {
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h3 class="modal-title" style="font-weight: bold;color: var(--primary-color)">Thêm loại</h3>
+        <h3 class="modal-title" style="font-weight: bold;color: var(--primary-color)">Thêm loại trong danh mục</h3>
       </div>
       <div class="modal-body text-center">
         <form action="AdminLoaiTrongDanhMucController" style="font-size: 20px;" id="form-ThemLoaiTrongDanhMuc">
