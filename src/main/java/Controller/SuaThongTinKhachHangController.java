@@ -93,7 +93,7 @@ public class SuaThongTinKhachHangController extends HttpServlet {
 			}
 			int a = hskhbo.ktraSuaThongTinKh(email, sodienthoai, khbean.getMakhachhang());
 			if(a==1) {
-				response.sendRedirect("HoSoKhachHangController?info=1&suainfo=thatbai");
+				response.sendRedirect("HoSoKhachHang?info=1&suainfo=thatbai");
 				return;
 			}else {
 				if(anhDaiDien1!=null && anhDaiDien== null) {

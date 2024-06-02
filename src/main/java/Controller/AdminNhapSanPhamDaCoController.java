@@ -244,7 +244,7 @@ public class AdminNhapSanPhamDaCoController extends HttpServlet {
 				}
 			}
 			
-			response.sendRedirect("AdminNhapChiTietController?btnnhapcu="+btnnhapcu+"&gianhap="+gianhap+"&lsize1="+lsize1+"&lsize2="+lsize2+"&lsize3="+lsize3+"&lsize4="+lsize4+"&lsize5="+lsize5+"&lmau1="+lmau1+"&anhmau1="+anhmau1+"&lmau2="+lmau2+"&anhmau2="+anhmau2+"&lmau3="+lmau3+"&anhmau3="+anhmau3+"&lmau4="+lmau4+"&anhmau4="+anhmau4+"&lmau5="+lmau5+"&anhmau5="+anhmau5);
+			response.sendRedirect("AdminNhapChiTiet?btnnhapcu="+btnnhapcu+"&gianhap="+gianhap+"&lsize1="+lsize1+"&lsize2="+lsize2+"&lsize3="+lsize3+"&lsize4="+lsize4+"&lsize5="+lsize5+"&lmau1="+lmau1+"&anhmau1="+anhmau1+"&lmau2="+lmau2+"&anhmau2="+anhmau2+"&lmau3="+lmau3+"&anhmau3="+anhmau3+"&lmau4="+lmau4+"&anhmau4="+anhmau4+"&lmau5="+lmau5+"&anhmau5="+anhmau5);
 			return;
 		} catch (Exception e) {
 			// TODO: handle exception

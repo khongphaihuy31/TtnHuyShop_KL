@@ -25,7 +25,7 @@ import Bo.LoaiBo;
 /**
  * Servlet implementation class AdminSanPhamController
  */
-@WebServlet("/AdminSanPhamController")
+@WebServlet("/AdminSanPham")
 public class AdminSanPhamController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -101,7 +101,7 @@ public class AdminSanPhamController extends HttpServlet {
 				lbo.xoaGioHang(masanpham);
 				//Xóa SanPham
 				spbo.xoaSanPham(masanpham);
-				response.sendRedirect("AdminSanPhamController?xspTC=1");
+				response.sendRedirect("AdminSanPham?xspTC=1");
 				return;
 			}
 			
@@ -111,7 +111,7 @@ public class AdminSanPhamController extends HttpServlet {
 				String suathanh = request.getParameter("suathanh");
 				long sanphamhot = Long.parseLong(suathanh);
 				spbo.capNhatSpHot(masanpham, sanphamhot);
-				response.sendRedirect("AdminSanPhamController?ssphot=1");
+				response.sendRedirect("AdminSanPham?ssphot=1");
 				return;
 			}
 			

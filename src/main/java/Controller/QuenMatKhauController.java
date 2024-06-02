@@ -41,10 +41,10 @@ public class QuenMatKhauController extends HttpServlet {
 				KhachHangBo khbo = new KhachHangBo();
 				KhachHangBean kh = khbo.ktraQuenPass(email, sodienthoai);
 				if(kh != null) {
-					response.sendRedirect("TrangChuController?btnQuenPass=1&email="+email);
+					response.sendRedirect("TrangChu?btnQuenPass=1&email="+email);
 					return;
 				}else {
-					response.sendRedirect("TrangChuController?loiQuenPass=1");
+					response.sendRedirect("TrangChu?loiQuenPass=1");
 					return;
 				}
 			}
@@ -57,10 +57,10 @@ public class QuenMatKhauController extends HttpServlet {
 					String codeGui= khbo.getMaCode(btnCodeEmail);
 					if(codeNhap.equals(codeGui)) {
 						khbo.capNhatCode(btnCodeEmail, null);
-						response.sendRedirect("TrangChuController?btnDoiPassMoi=1&email="+btnCodeEmail);
+						response.sendRedirect("TrangChu?btnDoiPassMoi=1&email="+btnCodeEmail);
 						return;
 					}else {
-						response.sendRedirect("TrangChuController?btnDoiPassMoiLoi=1&email="+btnCodeEmail);
+						response.sendRedirect("TrangChu?btnDoiPassMoiLoi=1&email="+btnCodeEmail);
 						return;
 					}
 				}else {
@@ -71,10 +71,10 @@ public class QuenMatKhauController extends HttpServlet {
 					khbo.capNhatCode(btnCodeEmail, codeGui);
 					if(codeNhap.equals(codeGui)) {
 						khbo.capNhatCode(btnCodeEmail, null);
-						response.sendRedirect("TrangChuController?btnDoiPassMoi=1&email="+btnCodeEmail);
+						response.sendRedirect("TrangChu?btnDoiPassMoi=1&email="+btnCodeEmail);
 						return;
 					}else {
-						response.sendRedirect("TrangChuController?btnDoiPassMoiLoi=1&email="+btnCodeEmail);
+						response.sendRedirect("TrangChu?btnDoiPassMoiLoi=1&email="+btnCodeEmail);
 						return;
 					}
 				}
@@ -88,7 +88,7 @@ public class QuenMatKhauController extends HttpServlet {
 					KhachHangBo khbo = new KhachHangBo();
 					int n = khbo.doiPassTheoEmail(email, matkhau2);
 					if(n==1) {
-						response.sendRedirect("TrangChuController?doiPassQuen=1");
+						response.sendRedirect("TrangChu?doiPassQuen=1");
 						return;
 					}
 				}

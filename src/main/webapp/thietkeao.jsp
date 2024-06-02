@@ -488,11 +488,11 @@ input:checked + label{
 								</a>
 									<ul class="header__welcome-item__list">
 										<li class="header__welcome-item__list-item"><a
-											href="HoSoKhachHangController?info=1"
+											href="HoSoKhachHang?info=1"
 											class="header__welcome-item__list-item-link">Hồ sơ của
 												tôi</a></li>
 										<li class="header__welcome-item__list-item"><a
-											href="HoSoKhachHangController?donmua=1"
+											href="HoSoKhachHang?donmua=1"
 											class="header__welcome-item__list-item-link">Đơn mua</a></li>
 									</ul></li>
 								<li class="header__welcome-item"><a
@@ -505,7 +505,7 @@ input:checked + label{
 					</c:choose>
 				</div>
 				<div class="header-with-search">
-					<a href="TrangChuController" class="header-with-search__logo-link">
+					<a href="TrangChu" class="header-with-search__logo-link">
 						<img src="assets/img/huy-removebg-preview.png" alt=""
 						class="header-with-search__logo hide-on-mobile">
 					</a>
@@ -523,7 +523,7 @@ input:checked + label{
 								<ul class="header-nav-item-all__list">
 									<c:forEach items="${dsTenLoaiDMTatCa}" var="tc">
 										<li class="header-nav-item-all__item"><a
-											href="TrangChuController?maloai=${tc.getMaloai()}&madanhmuc=0&mathuonghieu=0"
+											href="TrangChu?maloai=${tc.getMaloai()}&madanhmuc=0&mathuonghieu=0"
 											class="header-nav-item-all__link"> ${tc.getTenloai()} </a></li>
 									</c:forEach>
 								</ul>
@@ -538,7 +538,7 @@ input:checked + label{
 								<ul style="max-height: 30vh;overflow-y: auto;" class="header-nav-item-trademark__list">
 									<c:forEach items="${dsTenLoaiDMThuongHieu}" var="tt">
 										<li class="header-nav-item-trademark__item"><a
-											href="TrangChuController?maloai=0&madanhmuc=0&mathuonghieu=${tt.getMathuonghieu()}"
+											href="TrangChu?maloai=0&madanhmuc=0&mathuonghieu=${tt.getMathuonghieu()}"
 											class="header-nav-item-trademark__link">${tt.getTenthuonghieu()}
 										</a></li>
 									</c:forEach>
@@ -554,7 +554,7 @@ input:checked + label{
 								<ul style="max-height: 30vh;overflow-y: auto;" class="header-nav-item-men__list">
 									<c:forEach items="${dsTenLoaiDMDoNam}" var="dn">
 										<li class="header-nav-item-men__item"><a
-											href="TrangChuController?maloai=${dn.getMaloai()}&madanhmuc=${dn.getMadanhmuc()}&mathuonghieu=0"
+											href="TrangChu?maloai=${dn.getMaloai()}&madanhmuc=${dn.getMadanhmuc()}&mathuonghieu=0"
 											class="header-nav-item-men__link"> ${dn.getTenloai()} </a></li>
 									</c:forEach>
 								</ul>
@@ -569,7 +569,7 @@ input:checked + label{
 								<ul style="max-height: 30vh;overflow-y: auto;" class="header-nav-item-women__list">
 									<c:forEach items="${dsTenLoaiDMDoNu }" var="dnu">
 										<li class="header-nav-item-women__item"><a
-											href="TrangChuController?maloai=${dnu.getMaloai()}&madanhmuc=${ dnu.getMadanhmuc()}&mathuonghieu=0"
+											href="TrangChu?maloai=${dnu.getMaloai()}&madanhmuc=${ dnu.getMadanhmuc()}&mathuonghieu=0"
 											class="header-nav-item-women__link"> ${dnu.getTenloai()}
 										</a></li>
 									</c:forEach>
@@ -578,7 +578,7 @@ input:checked + label{
 							<!-- list đồ trẻ em -->
 							<div class="header-nav__item-children">
 								<li class="header-nav__item">
-									<a href="TrangChuController?maloai=${dsTenLoaiDMTreEm.get(0).getMaloai()}&madanhmuc=${dsTenLoaiDMTreEm.get(0).getMadanhmuc()}&mathuonghieu=0"
+									<a href="TrangChu?maloai=${dsTenLoaiDMTreEm.get(0).getMaloai()}&madanhmuc=${dsTenLoaiDMTreEm.get(0).getMadanhmuc()}&mathuonghieu=0"
 									class="header-nav__link"> Design áo
 									<!--  <i class="header-nav__icon fa-solid fa-caret-down"></i>-->
 								</a></li>
@@ -627,7 +627,7 @@ input:checked + label{
 										<c:forEach items="${dsTenLoaiDMTatCa}" var="tc">
 											<li class="header-nav-item-all-mobile-tablet__item"><a
 												style="padding: 0 0 0 60px; color: var(--text-color); line-height: 50px;"
-												href="TrangChuController?maloai=${tc.getMaloai()}&madanhmuc=0&mathuonghieu=0"
+												href="TrangChu?maloai=${tc.getMaloai()}&madanhmuc=0&mathuonghieu=0"
 												class="header-nav-item-all-mobile-tablet__link">${tc.getTenloai()}</a>
 											</li>
 										</c:forEach>
@@ -647,7 +647,7 @@ input:checked + label{
 										<c:forEach items="${dsTenLoaiDMThuongHieu}" var="tt">
 											<li class="header-nav-item-all-mobile-tablet__item"><a
 												style="padding: 0 0 0 60px; color: var(--text-color); line-height: 50px;"
-												href="TrangChuController?maloai=0&madanhmuc=0&mathuonghieu=${tt.getMathuonghieu()}"
+												href="TrangChu?maloai=0&madanhmuc=0&mathuonghieu=${tt.getMathuonghieu()}"
 												class="header-nav-item-all-mobile-tablet__link">${tt.getTenthuonghieu()}</a>
 											</li>
 										</c:forEach>
@@ -664,7 +664,7 @@ input:checked + label{
 										<c:forEach items="${dsTenLoaiDMDoNam}" var="dn">
 											<li class="header-nav-item-all-mobile-tablet__item"><a
 												style="padding: 0 0 0 60px; color: var(--text-color); line-height: 50px;"
-												href="TrangChuController?maloai=${dn.getMaloai()}&madanhmuc=${dn.getMadanhmuc()}&mathuonghieu=0"
+												href="TrangChu?maloai=${dn.getMaloai()}&madanhmuc=${dn.getMadanhmuc()}&mathuonghieu=0"
 												class="header-nav-item-all-mobile-tablet__link">
 													${dn.getTenloai()} </a></li>
 										</c:forEach>
@@ -680,14 +680,14 @@ input:checked + label{
 										<c:forEach items="${dsTenLoaiDMDoNu }" var="dnu">
 											<li class="header-nav-item-all-mobile-tablet__item"><a
 												style="padding: 0 0 0 60px; color: var(--text-color); line-height: 50px;"
-												href="TrangChuController?maloai=${dnu.getMaloai()}&madanhmuc=${ dnu.getMadanhmuc()}&mathuonghieu=0"
+												href="TrangChu?maloai=${dnu.getMaloai()}&madanhmuc=${ dnu.getMadanhmuc()}&mathuonghieu=0"
 												class="header-nav-item-all-mobile-tablet__link">
 													${dnu.getTenloai()} </a></li>
 										</c:forEach>
 									</ul></li>
 								<li id="js-product-children-id"
 									class="dropdown header-nav-mobile-tablet__item-children js-product-children">
-									<a class="dropdown-toggle header-nav-mobile-tablet__link" href="TrangChuController?maloai=${dsTenLoaiDMTreEm.get(0).getMaloai()}&madanhmuc=${dsTenLoaiDMTreEm.get(0).getMadanhmuc()}&mathuonghieu=0">
+									<a class="dropdown-toggle header-nav-mobile-tablet__link" href="TrangChu?maloai=${dsTenLoaiDMTreEm.get(0).getMaloai()}&madanhmuc=${dsTenLoaiDMTreEm.get(0).getMadanhmuc()}&mathuonghieu=0">
 									Design áo
 									<!--<i class="header-nav-mobile-tablet__icon fa-solid fa-caret-down"></i>-->
 								</a>
@@ -719,7 +719,7 @@ input:checked + label{
 						<div class="header-search hide-on-mobile">
 							<div class="header-search__input-wrap">
 								<form style="width: 100%;" id="timKiem"
-									action="TrangChuController" method="post">
+									action="TrangChu" method="post">
 									<input style="width: 100%; display: block;" type="text"
 										class="header-search__input" name="keyTimKiem"
 										placeholder="Nhập sản phẩm bạn cần tìm kiếm" required>
@@ -754,7 +754,7 @@ input:checked + label{
 								<c:when test="${dn != null}">
 									<a
 										style="display: block; width: 44px; position: relative; z-index: 2;"
-										href="GioHangController"> <i
+										href="GioHang"> <i
 										class="header__cart-icon fa-sharp fa-solid fa-cart-shopping"></i></a>
 
 									<c:choose>
@@ -800,7 +800,7 @@ input:checked + label{
 														</tr>
 													</c:forEach>
 												</table>
-												<a href="GioHangController"
+												<a href="GioHang"
 													style="display: block; width: 150px; background-color: var(--primary-color); color: var(--text-color); padding: 8px 5px; float: right; margin-right: 10px; margin-bottom: 5px; font-size: 1.4rem;">
 													<b>Xem giỏ hàng</b>
 												</a>
@@ -826,7 +826,7 @@ input:checked + label{
 						</div>
 					</div>
 
-					<a href="TrangChuController"
+					<a href="TrangChu"
 						class="header-with-search__logo-mobile-link"> <img
 						src="./assets/img/huy-removebg-preview.png" alt=""
 						class="header-with-search__logo-mobile">
@@ -839,7 +839,7 @@ input:checked + label{
 							for="header__checkbox-cart"
 							class="header__label-cart-mobile-tablet"> <c:choose>
 								<c:when test="${dn !=null }">
-									<a href="GioHangController"
+									<a href="GioHang"
 										style="display: block; position: relative;"> <i
 										class="header__cart-icon fa-sharp fa-solid fa-cart-shopping"></i>
 										<c:if test="${giohang.size() !=0}">
@@ -886,7 +886,7 @@ input:checked + label{
 															</tr>
 														</c:forEach>
 													</table>
-													<a href="GioHangController"
+													<a href="GioHang"
 														style="display: block; width: 150px; background-color: var(--primary-color); color: var(--text-color); padding: 8px 5px; float: right; margin-right: 10px; margin-bottom: 5px; font-size: 1.4rem;">
 														<b>Xem giỏ hàng</b>
 													</a>
@@ -1479,7 +1479,7 @@ input:checked + label{
 							<div class="product-item-col col l-2 m-4 c-6">
 								<!-- product item -->
 								<a class="product-item"
-									href="ChiTietSanPhamController?msp=${sp.getMasanpham()}&tsp=${sp.getTensanpham()}&anh=${sp.getAnh()}&gb=${sp.getGiaban()}&gg=${sp.getGiagiam()}&sldb=${sp.getSoluongdaban()}&mtsp=${sp.getMotasanpham()}&ml=${sp.getMaloai()}&mth=${sp.getMathuonghieu()}&mdm=${sp.getMadanhmuc()}&acs=${sp.getAnhchonsize()}">
+									href="ChiTietSanPham?msp=${sp.getMasanpham()}&tsp=${sp.getTensanpham()}&anh=${sp.getAnh()}&gb=${sp.getGiaban()}&gg=${sp.getGiagiam()}&sldb=${sp.getSoluongdaban()}&mtsp=${sp.getMotasanpham()}&ml=${sp.getMaloai()}&mth=${sp.getMathuonghieu()}&mdm=${sp.getMadanhmuc()}&acs=${sp.getAnhchonsize()}">
 									<img src="${sp.getAnh()}" alt="" class="product-item__img">
 									<h4 class="product-item__name">${sp.getTensanpham()}</h4>
 									<div class="product-item__price">
@@ -1538,7 +1538,7 @@ input:checked + label{
 							<div class="product-item-col col l-2 m-4 c-6">
 								<!-- product item -->
 								<a class="product-item"
-									href="ChiTietSanPhamController?msp=${sp.getMasanpham()}&tsp=${sp.getTensanpham()}&anh=${sp.getAnh()}&gb=${sp.getGiaban()}&gg=${sp.getGiagiam()}&sldb=${sp.getSoluongdaban()}&mtsp=${sp.getMotasanpham()}&ml=${sp.getMaloai()}&mth=${sp.getMathuonghieu()}&mdm=${sp.getMadanhmuc()}&acs=${sp.getAnhchonsize()}">
+									href="ChiTietSanPham?msp=${sp.getMasanpham()}&tsp=${sp.getTensanpham()}&anh=${sp.getAnh()}&gb=${sp.getGiaban()}&gg=${sp.getGiagiam()}&sldb=${sp.getSoluongdaban()}&mtsp=${sp.getMotasanpham()}&ml=${sp.getMaloai()}&mth=${sp.getMathuonghieu()}&mdm=${sp.getMadanhmuc()}&acs=${sp.getAnhchonsize()}">
 									<img src="${sp.getAnh()}" alt="" class="product-item__img">
 									<h4 class="product-item__name">${sp.getTensanpham()}</h4>
 									<div class="product-item__price">

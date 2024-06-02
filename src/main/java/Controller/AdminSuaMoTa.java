@@ -45,7 +45,7 @@ public class AdminSuaMoTa extends HttpServlet {
 				String motasanpham = request.getParameter("FCKeditor1");
 				AdminSanPhamBo adspbo = new AdminSanPhamBo();
 				adspbo.capNhatMoTaSanPham(masanpham, motasanpham);
-				response.sendRedirect("AdminSuaSanPhamController?msp="+masanpham);
+				response.sendRedirect("AdminSuaSanPham?msp="+masanpham);
 				return;
 			}
 			

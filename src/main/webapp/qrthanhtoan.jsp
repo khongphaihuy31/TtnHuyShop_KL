@@ -243,8 +243,8 @@
 							</p>
 							<h1 style="display: none;" class="tienThanhToan">${tienthanhtoan}</h1>
 							<h1 style="display: none;" class="noiDungChuyenKhoan">${noiDungChuyenKhoan}</h1>
-							<a style="display: none;" class="btnChuyenKhoanThanhCong" href="HoSoKhachHangController?donmua=1&btnchoxacnhan=1&thanhtoan=thanhcong"></a>
-							<a style="display: none;" class="btnChuyenKhoanThatBai" href="HoSoKhachHangController?donmua=1&btnchoxacnhan=1&thanhtoan=thatbai"></a>
+							<a style="display: none;" class="btnChuyenKhoanThanhCong" href="HoSoKhachHang?donmua=1&btnchoxacnhan=1&thanhtoan=thanhcong"></a>
+							<a style="display: none;" class="btnChuyenKhoanThatBai" href="HoSoKhachHang?donmua=1&btnchoxacnhan=1&thanhtoan=thatbai"></a>
 							<p style="margin: 0">
 								<span style="margin: 0; font-size: 20px; font-weight: bold;"
 									id="ndck"> </span><i style="margin-left: 28px;"

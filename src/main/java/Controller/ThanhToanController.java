@@ -27,7 +27,7 @@ import Bo.SanPhamBo;
 /**
  * Servlet implementation class ThanhToanController
  */
-@WebServlet("/ThanhToanController")
+@WebServlet("/ThanhToan")
 public class ThanhToanController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

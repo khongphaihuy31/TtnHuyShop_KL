@@ -79,14 +79,14 @@ public class AdminThemSuaBannerController extends HttpServlet {
 			if(mabanner== null) {
 				int n = bnbo.themBanner(srcbanner);
 				if(n ==1) {
-					response.sendRedirect("AdminBannerController?thembanner=1");
+					response.sendRedirect("AdminBanner?thembanner=1");
 					return;
 				}
 			}else {
 				long LongMabanner = Long.parseLong(mabanner);
 				int n = bnbo.suaBanner(LongMabanner, srcbanner);
 				if(n ==1) {
-					response.sendRedirect("AdminBannerController?suabanner=1");
+					response.sendRedirect("AdminBanner?suabanner=1");
 					return;
 				}
 			}

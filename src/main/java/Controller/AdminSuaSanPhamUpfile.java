@@ -327,7 +327,7 @@ public class AdminSuaSanPhamUpfile extends HttpServlet {
 				adspbo.suaAnhSanPhamTheoMau(masanpham, lmau5, anhmau5);
 			}
 			
-			response.sendRedirect("AdminSanPhamController?sspCT=1");
+			response.sendRedirect("AdminSanPham?sspCT=1");
 			return;
 			
 		} catch (Exception e) {

@@ -20,7 +20,7 @@ import Bo.DanhMucBo;
 /**
  * Servlet implementation class AdminLoaiTrongDanhMucController
  */
-@WebServlet("/AdminLoaiTrongDanhMucController")
+@WebServlet("/AdminLoaiTrongDanhMuc")
 public class AdminLoaiTrongDanhMucController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -64,7 +64,7 @@ public class AdminLoaiTrongDanhMucController extends HttpServlet {
 				String madanhmuc = request.getParameter("madanhmuc");
 				String maloai = request.getParameter("maloai");
 				if(madanhmuc.equals("null") || maloai.equals("null")) {
-					response.sendRedirect("AdminLoaiTrongDanhMucController?mdm=null");
+					response.sendRedirect("AdminLoaiTrongDanhMuc?mdm=null");
 					return;
 				}else {
 					long maloai1 = Long.parseLong(maloai);
@@ -73,10 +73,10 @@ public class AdminLoaiTrongDanhMucController extends HttpServlet {
 					if(ktraLoaiTrongDanhMuc == 0) {
 						String tenloai = ltdmbo.timTenLoai(maloai1);
 						ltdmbo.themLoaiTrongDanhMuc(maloai1, tenloai, madanhmuc1);
-						response.sendRedirect("AdminLoaiTrongDanhMucController?themTC=1");
+						response.sendRedirect("AdminLoaiTrongDanhMuc?themTC=1");
 						return;
 					}else {
-						response.sendRedirect("AdminLoaiTrongDanhMucController?themTB=1");
+						response.sendRedirect("AdminLoaiTrongDanhMuc?themTB=1");
 						return;
 					}
 				}
@@ -90,7 +90,7 @@ public class AdminLoaiTrongDanhMucController extends HttpServlet {
 				long madanhmucmoi = Long.parseLong(request.getParameter("madanhmucmoi"));
 				
 				ltdmbo.suaLoaiTrongDanhMuc(maloai, madanhmuccu, madanhmucmoi);
-				response.sendRedirect("AdminLoaiTrongDanhMucController?suaTC=1");
+				response.sendRedirect("AdminLoaiTrongDanhMuc?suaTC=1");
 				return;
 			}
 			
@@ -101,7 +101,7 @@ public class AdminLoaiTrongDanhMucController extends HttpServlet {
 				long maloai = Long.parseLong(request.getParameter("btnxoa"));
 				
 				ltdmbo.xoaLoaiTrongDanhMuc(maloai, madanhmuc);
-				response.sendRedirect("AdminLoaiTrongDanhMucController?xoaTC=1");
+				response.sendRedirect("AdminLoaiTrongDanhMuc?xoaTC=1");
 				return;
 			}
 					

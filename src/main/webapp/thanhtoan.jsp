@@ -180,11 +180,11 @@ a:hover, a:focus {
 								</a>
 									<ul class="header__welcome-item__list">
 										<li class="header__welcome-item__list-item"><a
-											href="HoSoKhachHangController?info=1"
+											href="HoSoKhachHang?info=1"
 											class="header__welcome-item__list-item-link">Hồ sơ của
 												tôi</a></li>
 										<li class="header__welcome-item__list-item"><a
-											href="HoSoKhachHangController?donmua=1"
+											href="HoSoKhachHang?donmua=1"
 											class="header__welcome-item__list-item-link">Đơn mua</a></li>
 									</ul></li>
 								<li class="header__welcome-item"><a
@@ -197,7 +197,7 @@ a:hover, a:focus {
 					</c:choose>
 				</div>
 				<div class="header-with-search">
-					<a href="TrangChuController" class="header-with-search__logo-link">
+					<a href="TrangChu" class="header-with-search__logo-link">
 						<img src="assets/img/huy-removebg-preview.png" alt=""
 						class="header-with-search__logo hide-on-mobile">
 					</a>
@@ -215,7 +215,7 @@ a:hover, a:focus {
 								<ul class="header-nav-item-all__list">
 									<c:forEach items="${dsTenLoaiDMTatCa}" var="tc">
 										<li class="header-nav-item-all__item"><a
-											href="TrangChuController?maloai=${tc.getMaloai()}&madanhmuc=0&mathuonghieu=0"
+											href="TrangChu?maloai=${tc.getMaloai()}&madanhmuc=0&mathuonghieu=0"
 											class="header-nav-item-all__link"> ${tc.getTenloai()} </a></li>
 									</c:forEach>
 								</ul>
@@ -230,7 +230,7 @@ a:hover, a:focus {
 								<ul style="max-height: 30vh;overflow-y: auto;" class="header-nav-item-trademark__list">
 									<c:forEach items="${dsTenLoaiDMThuongHieu}" var="tt">
 										<li class="header-nav-item-trademark__item"><a
-											href="TrangChuController?maloai=0&madanhmuc=0&mathuonghieu=${tt.getMathuonghieu()}"
+											href="TrangChu?maloai=0&madanhmuc=0&mathuonghieu=${tt.getMathuonghieu()}"
 											class="header-nav-item-trademark__link">${tt.getTenthuonghieu()}
 										</a></li>
 									</c:forEach>
@@ -246,7 +246,7 @@ a:hover, a:focus {
 								<ul style="max-height: 30vh;overflow-y: auto;" class="header-nav-item-men__list">
 									<c:forEach items="${dsTenLoaiDMDoNam}" var="dn">
 										<li class="header-nav-item-men__item"><a
-											href="TrangChuController?maloai=${dn.getMaloai()}&madanhmuc=${dn.getMadanhmuc()}&mathuonghieu=0"
+											href="TrangChu?maloai=${dn.getMaloai()}&madanhmuc=${dn.getMadanhmuc()}&mathuonghieu=0"
 											class="header-nav-item-men__link"> ${dn.getTenloai()} </a></li>
 									</c:forEach>
 								</ul>
@@ -261,7 +261,7 @@ a:hover, a:focus {
 								<ul style="max-height: 30vh;overflow-y: auto;" class="header-nav-item-women__list">
 									<c:forEach items="${dsTenLoaiDMDoNu }" var="dnu">
 										<li class="header-nav-item-women__item"><a
-											href="TrangChuController?maloai=${dnu.getMaloai()}&madanhmuc=${ dnu.getMadanhmuc()}&mathuonghieu=0"
+											href="TrangChu?maloai=${dnu.getMaloai()}&madanhmuc=${ dnu.getMadanhmuc()}&mathuonghieu=0"
 											class="header-nav-item-women__link"> ${dnu.getTenloai()}
 										</a></li>
 									</c:forEach>
@@ -270,7 +270,7 @@ a:hover, a:focus {
 							<!-- list đồ trẻ em -->
 							<div class="header-nav__item-children">
 								<li class="header-nav__item">
-									<a href="TrangChuController?maloai=${dsTenLoaiDMTreEm.get(0).getMaloai()}&madanhmuc=${dsTenLoaiDMTreEm.get(0).getMadanhmuc()}&mathuonghieu=0"
+									<a href="TrangChu?maloai=${dsTenLoaiDMTreEm.get(0).getMaloai()}&madanhmuc=${dsTenLoaiDMTreEm.get(0).getMadanhmuc()}&mathuonghieu=0"
 									class="header-nav__link"> Design áo
 									<!--  <i class="header-nav__icon fa-solid fa-caret-down"></i>-->
 								</a></li>
@@ -319,7 +319,7 @@ a:hover, a:focus {
 										<c:forEach items="${dsTenLoaiDMTatCa}" var="tc">
 											<li class="header-nav-item-all-mobile-tablet__item"><a
 												style="padding: 0 0 0 60px; color: var(--text-color); line-height: 50px;"
-												href="TrangChuController?maloai=${tc.getMaloai()}&madanhmuc=0&mathuonghieu=0"
+												href="TrangChu?maloai=${tc.getMaloai()}&madanhmuc=0&mathuonghieu=0"
 												class="header-nav-item-all-mobile-tablet__link">${tc.getTenloai()}</a>
 											</li>
 										</c:forEach>
@@ -339,7 +339,7 @@ a:hover, a:focus {
 										<c:forEach items="${dsTenLoaiDMThuongHieu}" var="tt">
 											<li class="header-nav-item-all-mobile-tablet__item"><a
 												style="padding: 0 0 0 60px; color: var(--text-color); line-height: 50px;"
-												href="TrangChuController?maloai=0&madanhmuc=0&mathuonghieu=${tt.getMathuonghieu()}"
+												href="TrangChu?maloai=0&madanhmuc=0&mathuonghieu=${tt.getMathuonghieu()}"
 												class="header-nav-item-all-mobile-tablet__link">${tt.getTenthuonghieu()}</a>
 											</li>
 										</c:forEach>
@@ -356,7 +356,7 @@ a:hover, a:focus {
 										<c:forEach items="${dsTenLoaiDMDoNam}" var="dn">
 											<li class="header-nav-item-all-mobile-tablet__item"><a
 												style="padding: 0 0 0 60px; color: var(--text-color); line-height: 50px;"
-												href="TrangChuController?maloai=${dn.getMaloai()}&madanhmuc=${dn.getMadanhmuc()}&mathuonghieu=0"
+												href="TrangChu?maloai=${dn.getMaloai()}&madanhmuc=${dn.getMadanhmuc()}&mathuonghieu=0"
 												class="header-nav-item-all-mobile-tablet__link">
 													${dn.getTenloai()} </a></li>
 										</c:forEach>
@@ -372,14 +372,14 @@ a:hover, a:focus {
 										<c:forEach items="${dsTenLoaiDMDoNu }" var="dnu">
 											<li class="header-nav-item-all-mobile-tablet__item"><a
 												style="padding: 0 0 0 60px; color: var(--text-color); line-height: 50px;"
-												href="TrangChuController?maloai=${dnu.getMaloai()}&madanhmuc=${ dnu.getMadanhmuc()}&mathuonghieu=0"
+												href="TrangChu?maloai=${dnu.getMaloai()}&madanhmuc=${ dnu.getMadanhmuc()}&mathuonghieu=0"
 												class="header-nav-item-all-mobile-tablet__link">
 													${dnu.getTenloai()} </a></li>
 										</c:forEach>
 									</ul></li>
 								<li id="js-product-children-id"
 									class="dropdown header-nav-mobile-tablet__item-children js-product-children">
-									<a class="dropdown-toggle header-nav-mobile-tablet__link" href="TrangChuController?maloai=${dsTenLoaiDMTreEm.get(0).getMaloai()}&madanhmuc=${dsTenLoaiDMTreEm.get(0).getMadanhmuc()}&mathuonghieu=0">
+									<a class="dropdown-toggle header-nav-mobile-tablet__link" href="TrangChu?maloai=${dsTenLoaiDMTreEm.get(0).getMaloai()}&madanhmuc=${dsTenLoaiDMTreEm.get(0).getMadanhmuc()}&mathuonghieu=0">
 									Design áo
 									<!--<i class="header-nav-mobile-tablet__icon fa-solid fa-caret-down"></i>-->
 								</a>
@@ -411,7 +411,7 @@ a:hover, a:focus {
 						<div class="header-search hide-on-mobile">
 							<div class="header-search__input-wrap">
 								<form style="width: 100%;" id="timKiem"
-									action="TrangChuController" method="post">
+									action="TrangChu" method="post">
 									<input style="width: 100%; display: block;" type="text"
 										class="header-search__input" name="keyTimKiem"
 										placeholder="Nhập sản phẩm bạn cần tìm kiếm" required>
@@ -446,7 +446,7 @@ a:hover, a:focus {
 								<c:when test="${dn != null}">
 									<a
 										style="display: block; width: 44px; position: relative; z-index: 2;"
-										href="GioHangController"> <i
+										href="GioHang"> <i
 										class="header__cart-icon fa-sharp fa-solid fa-cart-shopping"></i></a>
 
 									<c:choose>
@@ -492,7 +492,7 @@ a:hover, a:focus {
 														</tr>
 													</c:forEach>
 												</table>
-												<a href="GioHangController"
+												<a href="GioHang"
 													style="display: block; width: 150px; background-color: var(--primary-color); color: var(--text-color); padding: 8px 5px; float: right; margin-right: 10px; margin-bottom: 5px; font-size: 1.4rem;">
 													<b>Xem giỏ hàng</b>
 												</a>
@@ -518,7 +518,7 @@ a:hover, a:focus {
 						</div>
 					</div>
 
-					<a href="TrangChuController"
+					<a href="TrangChu"
 						class="header-with-search__logo-mobile-link"> <img
 						src="./assets/img/huy-removebg-preview.png" alt=""
 						class="header-with-search__logo-mobile">
@@ -531,7 +531,7 @@ a:hover, a:focus {
 							for="header__checkbox-cart"
 							class="header__label-cart-mobile-tablet"> <c:choose>
 								<c:when test="${dn !=null }">
-									<a href="GioHangController"
+									<a href="GioHang"
 										style="display: block; position: relative;"> <i
 										class="header__cart-icon fa-sharp fa-solid fa-cart-shopping"></i>
 										<c:if test="${giohang.size() !=0}">
@@ -578,7 +578,7 @@ a:hover, a:focus {
 															</tr>
 														</c:forEach>
 													</table>
-													<a href="GioHangController"
+													<a href="GioHang"
 														style="display: block; width: 150px; background-color: var(--primary-color); color: var(--text-color); padding: 8px 5px; float: right; margin-right: 10px; margin-bottom: 5px; font-size: 1.4rem;">
 														<b>Xem giỏ hàng</b>
 													</a>
@@ -792,7 +792,7 @@ a:hover, a:focus {
 				<div style="border: 1px solid var(--primary-color); padding: 15px; border-radius: 20px">
 				<h3 style="margin-top: 10px;border-bottom: 1px solid var(--primary-color); padding-bottom: 25px; font-weight: bold; color: var(--primary-color);">THÔNG TIN GIAO HÀNG & THANH TOÁN</h3>
 				<form id="thanhtoan" action="XacNhanThanhToanController" method="get"></form>
-				<h3 style="margin-left: 15px; display: inline-block;"> <b>Thông tin khách hàng</b></h3> <a href="HoSoKhachHangController?info=1" style="display: inline-block; cursor: pointer; margin-left: 20px; font-size: 1.4rem;"> <b>Thay đổi thông tin</b> </a>
+				<h3 style="margin-left: 15px; display: inline-block;"> <b>Thông tin khách hàng</b></h3> <a href="HoSoKhachHang?info=1" style="display: inline-block; cursor: pointer; margin-left: 20px; font-size: 1.4rem;"> <b>Thay đổi thông tin</b> </a>
 				<!--<div class="row">
 					<div class="col l-6" style="width: 50%;">
 						<h4 style="font-size: 20px;">Họ tên:</h4>
@@ -813,7 +813,7 @@ a:hover, a:focus {
 						<h4 style="font-size: 20px;">${dn.getEmail()}</h4>
 					</div>
 				</div>
-				<h3 style="margin-left: 15px; display: inline-block;"> <b>Địa chỉ giao hàng</b></h3> <a href="HoSoKhachHangController?location=1" style="display: inline-block; cursor: pointer; margin-left: 20px; font-size: 1.4rem;"> <b>Thêm / Thay đổi nơi giao hàng</b> </a>
+				<h3 style="margin-left: 15px; display: inline-block;"> <b>Địa chỉ giao hàng</b></h3> <a href="HoSoKhachHang?location=1" style="display: inline-block; cursor: pointer; margin-left: 20px; font-size: 1.4rem;"> <b>Thêm / Thay đổi nơi giao hàng</b> </a>
 				<c:choose>
 					<c:when test="${noinhan == null}">
 						<!--<div class="row">
@@ -1050,7 +1050,7 @@ a:hover, a:focus {
 							<div class="col l-4 text-center">
 							</div>
 							<div class="col l-4 text-center">
-								<a href="ThanhToanController?nn=null" style="padding: 15px 5px; color: var(--text-color); background-color: var(--primary-color); width: 100%; display: block; font-size: 2rem; border: none;" ><b>Xác nhận thanh toán</b> </a>
+								<a href="ThanhToan?nn=null" style="padding: 15px 5px; color: var(--text-color); background-color: var(--primary-color); width: 100%; display: block; font-size: 2rem; border: none;" ><b>Xác nhận thanh toán</b> </a>
 							</div>
 							<div class="col l-4 text-center">
 							</div>

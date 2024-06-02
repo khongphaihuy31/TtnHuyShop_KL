@@ -180,11 +180,11 @@ p {
 								</a>
 									<ul class="header__welcome-item__list">
 										<li class="header__welcome-item__list-item"><a
-											href="HoSoKhachHangController?info=1"
+											href="HoSoKhachHang?info=1"
 											class="header__welcome-item__list-item-link">Hồ sơ của
 												tôi</a></li>
 										<li class="header__welcome-item__list-item"><a
-											href="HoSoKhachHangController?donmua=1"
+											href="HoSoKhachHang?donmua=1"
 											class="header__welcome-item__list-item-link">Đơn mua</a></li>
 									</ul></li>
 								<li class="header__welcome-item"><a
@@ -197,7 +197,7 @@ p {
 					</c:choose>
 				</div>
 				<div class="header-with-search">
-					<a href="TrangChuController" class="header-with-search__logo-link">
+					<a href="TrangChu" class="header-with-search__logo-link">
 						<img src="assets/img/huy-removebg-preview.png" alt=""
 						class="header-with-search__logo hide-on-mobile">
 					</a>
@@ -215,7 +215,7 @@ p {
 								<ul class="header-nav-item-all__list">
 									<c:forEach items="${dsTenLoaiDMTatCa}" var="tc">
 										<li class="header-nav-item-all__item"><a
-											href="TrangChuController?maloai=${tc.getMaloai()}&madanhmuc=0&mathuonghieu=0"
+											href="TrangChu?maloai=${tc.getMaloai()}&madanhmuc=0&mathuonghieu=0"
 											class="header-nav-item-all__link"> ${tc.getTenloai()} </a></li>
 									</c:forEach>
 								</ul>
@@ -230,7 +230,7 @@ p {
 								<ul style="max-height: 30vh;overflow-y: auto;" class="header-nav-item-trademark__list">
 									<c:forEach items="${dsTenLoaiDMThuongHieu}" var="tt">
 										<li class="header-nav-item-trademark__item"><a
-											href="TrangChuController?maloai=0&madanhmuc=0&mathuonghieu=${tt.getMathuonghieu()}"
+											href="TrangChu?maloai=0&madanhmuc=0&mathuonghieu=${tt.getMathuonghieu()}"
 											class="header-nav-item-trademark__link">${tt.getTenthuonghieu()}
 										</a></li>
 									</c:forEach>
@@ -246,7 +246,7 @@ p {
 								<ul style="max-height: 30vh;overflow-y: auto;" class="header-nav-item-men__list">
 									<c:forEach items="${dsTenLoaiDMDoNam}" var="dn">
 										<li class="header-nav-item-men__item"><a
-											href="TrangChuController?maloai=${dn.getMaloai()}&madanhmuc=${dn.getMadanhmuc()}&mathuonghieu=0"
+											href="TrangChu?maloai=${dn.getMaloai()}&madanhmuc=${dn.getMadanhmuc()}&mathuonghieu=0"
 											class="header-nav-item-men__link"> ${dn.getTenloai()} </a></li>
 									</c:forEach>
 								</ul>
@@ -261,7 +261,7 @@ p {
 								<ul style="max-height: 30vh;overflow-y: auto;" class="header-nav-item-women__list">
 									<c:forEach items="${dsTenLoaiDMDoNu }" var="dnu">
 										<li class="header-nav-item-women__item"><a
-											href="TrangChuController?maloai=${dnu.getMaloai()}&madanhmuc=${ dnu.getMadanhmuc()}&mathuonghieu=0"
+											href="TrangChu?maloai=${dnu.getMaloai()}&madanhmuc=${ dnu.getMadanhmuc()}&mathuonghieu=0"
 											class="header-nav-item-women__link"> ${dnu.getTenloai()}
 										</a></li>
 									</c:forEach>
@@ -270,7 +270,7 @@ p {
 							<!-- list đồ trẻ em -->
 							<div class="header-nav__item-children">
 								<li class="header-nav__item"><a
-									href="TrangChuController?maloai=${dsTenLoaiDMTreEm.get(0).getMaloai()}&madanhmuc=${dsTenLoaiDMTreEm.get(0).getMadanhmuc()}&mathuonghieu=0"
+									href="TrangChu?maloai=${dsTenLoaiDMTreEm.get(0).getMaloai()}&madanhmuc=${dsTenLoaiDMTreEm.get(0).getMadanhmuc()}&mathuonghieu=0"
 									class="header-nav__link"> Design áo <!--  <i class="header-nav__icon fa-solid fa-caret-down"></i>-->
 								</a></li>
 								<!-- list trong list đồ trẻ em -->
@@ -319,7 +319,7 @@ p {
 										<c:forEach items="${dsTenLoaiDMTatCa}" var="tc">
 											<li class="header-nav-item-all-mobile-tablet__item"><a
 												style="padding: 0 0 0 60px; color: var(--text-color); line-height: 50px;"
-												href="TrangChuController?maloai=${tc.getMaloai()}&madanhmuc=0&mathuonghieu=0"
+												href="TrangChu?maloai=${tc.getMaloai()}&madanhmuc=0&mathuonghieu=0"
 												class="header-nav-item-all-mobile-tablet__link">${tc.getTenloai()}</a>
 											</li>
 										</c:forEach>
@@ -339,7 +339,7 @@ p {
 										<c:forEach items="${dsTenLoaiDMThuongHieu}" var="tt">
 											<li class="header-nav-item-all-mobile-tablet__item"><a
 												style="padding: 0 0 0 60px; color: var(--text-color); line-height: 50px;"
-												href="TrangChuController?maloai=0&madanhmuc=0&mathuonghieu=${tt.getMathuonghieu()}"
+												href="TrangChu?maloai=0&madanhmuc=0&mathuonghieu=${tt.getMathuonghieu()}"
 												class="header-nav-item-all-mobile-tablet__link">${tt.getTenthuonghieu()}</a>
 											</li>
 										</c:forEach>
@@ -356,7 +356,7 @@ p {
 										<c:forEach items="${dsTenLoaiDMDoNam}" var="dn">
 											<li class="header-nav-item-all-mobile-tablet__item"><a
 												style="padding: 0 0 0 60px; color: var(--text-color); line-height: 50px;"
-												href="TrangChuController?maloai=${dn.getMaloai()}&madanhmuc=${dn.getMadanhmuc()}&mathuonghieu=0"
+												href="TrangChu?maloai=${dn.getMaloai()}&madanhmuc=${dn.getMadanhmuc()}&mathuonghieu=0"
 												class="header-nav-item-all-mobile-tablet__link">
 													${dn.getTenloai()} </a></li>
 										</c:forEach>
@@ -372,7 +372,7 @@ p {
 										<c:forEach items="${dsTenLoaiDMDoNu }" var="dnu">
 											<li class="header-nav-item-all-mobile-tablet__item"><a
 												style="padding: 0 0 0 60px; color: var(--text-color); line-height: 50px;"
-												href="TrangChuController?maloai=${dnu.getMaloai()}&madanhmuc=${ dnu.getMadanhmuc()}&mathuonghieu=0"
+												href="TrangChu?maloai=${dnu.getMaloai()}&madanhmuc=${ dnu.getMadanhmuc()}&mathuonghieu=0"
 												class="header-nav-item-all-mobile-tablet__link">
 													${dnu.getTenloai()} </a></li>
 										</c:forEach>
@@ -380,7 +380,7 @@ p {
 								<li id="js-product-children-id"
 									class="dropdown header-nav-mobile-tablet__item-children js-product-children">
 									<a class="dropdown-toggle header-nav-mobile-tablet__link"
-									href="TrangChuController?maloai=${dsTenLoaiDMTreEm.get(0).getMaloai()}&madanhmuc=${dsTenLoaiDMTreEm.get(0).getMadanhmuc()}&mathuonghieu=0">
+									href="TrangChu?maloai=${dsTenLoaiDMTreEm.get(0).getMaloai()}&madanhmuc=${dsTenLoaiDMTreEm.get(0).getMadanhmuc()}&mathuonghieu=0">
 										Design áo <!--<i class="header-nav-mobile-tablet__icon fa-solid fa-caret-down"></i>-->
 								</a> <!-- <ul class="dropdown-menu"
 										style="position: relative; float: none; border: none; border-radius: 0; box-shadow: none; background-color: var(--primary-color); -webkit-box-shadow: 0;">
@@ -410,7 +410,7 @@ p {
 						<div class="header-search hide-on-mobile">
 							<div class="header-search__input-wrap">
 								<form style="width: 100%;" id="timKiem"
-									action="TrangChuController" method="post">
+									action="TrangChu" method="post">
 									<input style="width: 100%; display: block;" type="text"
 										class="header-search__input" name="keyTimKiem"
 										placeholder="Nhập sản phẩm bạn cần tìm kiếm" required>
@@ -445,7 +445,7 @@ p {
 								<c:when test="${dn != null}">
 									<a
 										style="display: block; width: 44px; position: relative; z-index: 2;"
-										href="GioHangController"> <i
+										href="GioHang"> <i
 										class="header__cart-icon fa-sharp fa-solid fa-cart-shopping"></i></a>
 
 									<c:choose>
@@ -489,7 +489,7 @@ p {
 														</tr>
 													</c:forEach>
 												</table>
-												<a href="GioHangController"
+												<a href="GioHang"
 													style="display: block; width: 150px; background-color: var(--primary-color); color: var(--text-color); padding: 8px 5px; float: right; margin-right: 10px; margin-bottom: 5px; font-size: 1.4rem;">
 													<b>Xem giỏ hàng</b>
 												</a>
@@ -515,7 +515,7 @@ p {
 						</div>
 					</div>
 
-					<a href="TrangChuController"
+					<a href="TrangChu"
 						class="header-with-search__logo-mobile-link"> <img
 						src="./assets/img/huy-removebg-preview.png" alt=""
 						class="header-with-search__logo-mobile">
@@ -528,7 +528,7 @@ p {
 							for="header__checkbox-cart"
 							class="header__label-cart-mobile-tablet"> <c:choose>
 								<c:when test="${dn !=null }">
-									<a href="GioHangController"
+									<a href="GioHang"
 										style="display: block; position: relative;"> <i
 										class="header__cart-icon fa-sharp fa-solid fa-cart-shopping"></i>
 										<c:if test="${giohang.size() !=0}">
@@ -575,7 +575,7 @@ p {
 															</tr>
 														</c:forEach>
 													</table>
-													<a href="GioHangController"
+													<a href="GioHang"
 														style="display: block; width: 150px; background-color: var(--primary-color); color: var(--text-color); padding: 8px 5px; float: right; margin-right: 10px; margin-bottom: 5px; font-size: 1.4rem;">
 														<b>Xem giỏ hàng</b>
 													</a>
@@ -669,7 +669,7 @@ p {
 										</span>
 									</div>
 								</a>-->
-								<a href="HoSoKhachHangController?info=1" class="row"
+								<a href="HoSoKhachHang?info=1" class="row"
 									style="margin-top: 10px; cursor: pointer; padding: 5px 0;">
 									<div class="col l-12">
 										<span
@@ -679,7 +679,7 @@ p {
 										</span>
 									</div>
 								</a>
-								<a href="HoSoKhachHangController?location=1" class="row"
+								<a href="HoSoKhachHang?location=1" class="row"
 									style="margin-top: 10px; cursor: pointer; color: black; padding: 5px 0;">
 									<div class="col l-12">
 										<span style="font-size: 2rem; font-weight: bold;"> <i
@@ -688,7 +688,7 @@ p {
 										</span>
 									</div>
 								</a>
-								<a href="HoSoKhachHangController?donmua=1" class="row"
+								<a href="HoSoKhachHang?donmua=1" class="row"
 									style="margin-top: 10px; cursor: pointer; color: black; padding: 5px 0;">
 									<div class="col l-12">
 										<span style="font-size: 2rem; font-weight: bold;"> <i
@@ -708,7 +708,7 @@ p {
 										</span>
 									</div>
 								</a>-->
-								<a href="HoSoKhachHangController?info=1" class="row"
+								<a href="HoSoKhachHang?info=1" class="row"
 									style="margin-top: 10px; cursor: pointer; color: black; padding: 5px 0;">
 									<div class="col l-12">
 										<span style="font-size: 2rem; font-weight: bold;"> <i
@@ -717,7 +717,7 @@ p {
 										</span>
 									</div>
 								</a>
-								<a href="HoSoKhachHangController?location=1" class="row"
+								<a href="HoSoKhachHang?location=1" class="row"
 									style="margin-top: 10px; cursor: pointer; color: black; padding: 5px 0;">
 									<div class="col l-12">
 										<span
@@ -727,7 +727,7 @@ p {
 										</span>
 									</div>
 								</a>
-								<a href="HoSoKhachHangController?donmua=1" class="row"
+								<a href="HoSoKhachHang?donmua=1" class="row"
 									style="margin-top: 10px; cursor: pointer; color: black; padding: 5px 0;">
 									<div class="col l-12">
 										<span style="font-size: 2rem; font-weight: bold;"> <i
@@ -747,7 +747,7 @@ p {
 										</span>
 									</div>
 								</a>-->
-								<a href="HoSoKhachHangController?info=1" class="row"
+								<a href="HoSoKhachHang?info=1" class="row"
 									style="margin-top: 10px; cursor: pointer; color: black; padding: 5px 0;">
 									<div class="col l-12">
 										<span style="font-size: 2rem; font-weight: bold;"> <i
@@ -756,7 +756,7 @@ p {
 										</span>
 									</div>
 								</a>
-								<a href="HoSoKhachHangController?location=1" class="row"
+								<a href="HoSoKhachHang?location=1" class="row"
 									style="margin-top: 10px; cursor: pointer; color: black; padding: 5px 0;">
 									<div class="col l-12">
 										<span style="font-size: 2rem; font-weight: bold;"> <i
@@ -765,7 +765,7 @@ p {
 										</span>
 									</div>
 								</a>
-								<a href="HoSoKhachHangController?donmua=1" class="row"
+								<a href="HoSoKhachHang?donmua=1" class="row"
 									style="margin-top: 10px; cursor: pointer; color: black; padding: 5px 0;">
 									<div class="col l-12">
 										<span
@@ -816,7 +816,9 @@ p {
 													src="${dn.getAvatar() }" alt="preview-img">
 											</c:otherwise>
 										</c:choose>
-										<h4 style="width: 100%; text-align: center; color: var(--primary-color); font-weight: bold; margin-top: 35px;">Số điểm: <span style="color: red; font-size: 20px;">${dn.getTichdiem() } điểm</span></h4>
+										<h4 style="width: 100%; text-align: center; color: var(--primary-color); font-weight: bold; margin-top: 35px;">Số điểm: 
+											<span style="color: red; font-size: 20px;">${dn.getTichdiem() } điểm</span>
+										</h4>
 									</div>
 									<div class="col l-9">
 									<form id="formInfo" action="SuaThongTinKhachHangController"
@@ -873,12 +875,12 @@ p {
 												style="margin-left: 15px;"> <c:choose>
 														<c:when test="${noinhan!=null }">
 															<a style="color: #3aa8d0;"
-																href="HoSoKhachHangController?location=1&capnhatdc=sua">Sửa
+																href="HoSoKhachHang?location=1&capnhatdc=sua">Sửa
 																địa chỉ</a>
 														</c:when>
 														<c:otherwise>
 															<a style="color: #3aa8d0;"
-																href="HoSoKhachHangController?location=1&capnhatdc=them">Thêm
+																href="HoSoKhachHang?location=1&capnhatdc=them">Thêm
 																địa chỉ</a>
 														</c:otherwise>
 													</c:choose>
@@ -966,7 +968,7 @@ p {
 										</c:choose>
 										<div class="row"
 											style="padding: 10px 30px 20px 20px; border: 2px solid var(--primary-color); border-radius: 10px;">
-											<form id="formLocation" action="HoSoKhachHangController"
+											<form id="formLocation" action="HoSoKhachHang"
 												method="get" style="width: 100%;">
 											<div class="col l-12">
 												<div style="margin-top: 20px;"
@@ -1072,7 +1074,7 @@ p {
 																<div
 																	style="width: 30%; font-size: 20px; border-radius: 10px; border: 1px solid var(--primary-color); float: left; background-color: #fff; font-weight: bold; text-align: center; cursor: pointer;"
 																	class="control">
-																	<a href="HoSoKhachHangController?location=1"
+																	<a href="HoSoKhachHang?location=1"
 																		style="display: block; color: var(--primary-color); padding: 10px 5px;">Trở
 																		lại</a>
 																</div>
@@ -1094,7 +1096,7 @@ p {
 																<div
 																	style="width: 30%; font-size: 20px; border-radius: 10px; border: 1px solid var(--primary-color); float: left; background-color: #fff; font-weight: bold; text-align: center; cursor: pointer;"
 																	class="control">
-																	<a href="HoSoKhachHangController?location=1"
+																	<a href="HoSoKhachHang?location=1"
 																		style="display: block; color: var(--primary-color); padding: 10px 5px;">Trở
 																		lại</a>
 																</div>
@@ -1206,7 +1208,7 @@ p {
 														<div style="margin-top: 30px;" class="formLuu">
 															<div style="margin-top: 10px;" class="control">
 																<a
-																	href="HoSoKhachHangController?location=1&capnhatdc=sua"
+																	href="HoSoKhachHang?location=1&capnhatdc=sua"
 																	style="width: 40%; font-size: 20px; padding: 14px 5px; border-radius: 10px; border: 1px solid #3aa8d0; float: left; background-color: var(--primary-color); color: #fff; font-weight: bold; text-align: center;">
 																	<i style="margin-right: 10px;" class="fa-solid fa-pen"></i>Sửa
 																	địa chỉ
@@ -1227,7 +1229,7 @@ p {
 														<div style="margin-top: 30px;" class="formLuu">
 															<div style="margin-top: 10px;" class="control">
 																<a
-																	href="HoSoKhachHangController?location=1&capnhatdc=them"
+																	href="HoSoKhachHang?location=1&capnhatdc=them"
 																	style="width: 30%; font-size: 20px; padding: 14px 5px; border-radius: 10px; border: 1px solid #3aa8d0; float: left; background-color: var(--primary-color); color: #fff; font-weight: bold; text-align: center;">
 																	<i style="margin-right: 10px;"
 																	class="fa-solid fa-circle-plus"></i>Thêm địa chỉ
@@ -1247,25 +1249,25 @@ p {
 									<c:choose>
 										<c:when test="${param.btnchuanbi != null }">
 											<div class="col l-3">
-												<a href="HoSoKhachHangController?donmua=1&btnchoxacnhan=1"
+												<a href="HoSoKhachHang?donmua=1&btnchoxacnhan=1"
 													style="margin: 0; padding-bottom: 1px; color: black; font-size: 25px;">
 													<b>Chờ xác nhận</b>
 												</a>
 											</div>
 											<div class="col l-3">
-												<a href="HoSoKhachHangController?donmua=1&btnchuanbi=1"
+												<a href="HoSoKhachHang?donmua=1&btnchuanbi=1"
 													style="margin: 0; padding-bottom: 1px; color: var(--primary-color); font-size: 25px;">
 													<b>Chuẩn bị đơn</b>
 												</a>
 											</div>
 											<div class="col l-3">
-												<a href="HoSoKhachHangController?donmua=1&btndanggiao=1"
+												<a href="HoSoKhachHang?donmua=1&btndanggiao=1"
 													style="margin: 0; padding-bottom: 1px; color: black; font-size: 25px;">
 													<b>Đang giao</b>
 												</a>
 											</div>
 											<div class="col l-3">
-												<a href="HoSoKhachHangController?donmua=1&btndagiao=1"
+												<a href="HoSoKhachHang?donmua=1&btndagiao=1"
 													style="margin: 0; padding-bottom: 1px; color: black; font-size: 25px;">
 													<b>Đã giao</b>
 												</a>
@@ -1273,25 +1275,25 @@ p {
 										</c:when>
 										<c:when test="${param.btndanggiao != null }">
 											<div class="col l-3">
-												<a href="HoSoKhachHangController?donmua=1&btnchoxacnhan=1"
+												<a href="HoSoKhachHang?donmua=1&btnchoxacnhan=1"
 													style="margin: 0; padding-bottom: 1px; color: black; font-size: 25px;">
 													<b>Chờ xác nhận</b>
 												</a>
 											</div>
 											<div class="col l-3">
-												<a href="HoSoKhachHangController?donmua=1&btnchuanbi=1"
+												<a href="HoSoKhachHang?donmua=1&btnchuanbi=1"
 													style="margin: 0; padding-bottom: 1px; color: black; font-size: 25px;">
 													<b>Chuẩn bị đơn</b>
 												</a>
 											</div>
 											<div class="col l-3">
-												<a href="HoSoKhachHangController?donmua=1&btndanggiao=1"
+												<a href="HoSoKhachHang?donmua=1&btndanggiao=1"
 													style="margin: 0; padding-bottom: 1px; color: var(--primary-color); font-size: 25px;">
 													<b>Đang giao</b>
 												</a>
 											</div>
 											<div class="col l-3">
-												<a href="HoSoKhachHangController?donmua=1&btndagiao=1"
+												<a href="HoSoKhachHang?donmua=1&btndagiao=1"
 													style="margin: 0; padding-bottom: 1px; color: black; font-size: 25px;">
 													<b>Đã giao</b>
 												</a>
@@ -1299,25 +1301,25 @@ p {
 										</c:when>
 										<c:when test="${param.btndagiao != null }">
 											<div class="col l-3">
-												<a href="HoSoKhachHangController?donmua=1&btnchoxacnhan=1"
+												<a href="HoSoKhachHang?donmua=1&btnchoxacnhan=1"
 													style="margin: 0; padding-bottom: 1px; color: black; font-size: 25px;">
 													<b>Chờ xác nhận</b>
 												</a>
 											</div>
 											<div class="col l-3">
-												<a href="HoSoKhachHangController?donmua=1&btnchuanbi=1"
+												<a href="HoSoKhachHang?donmua=1&btnchuanbi=1"
 													style="margin: 0; padding-bottom: 1px; color: black; font-size: 25px;">
 													<b>Chuẩn bị đơn</b>
 												</a>
 											</div>
 											<div class="col l-3">
-												<a href="HoSoKhachHangController?donmua=1&btndanggiao=1"
+												<a href="HoSoKhachHang?donmua=1&btndanggiao=1"
 													style="margin: 0; padding-bottom: 1px; color: black; font-size: 25px;">
 													<b>Đang giao</b>
 												</a>
 											</div>
 											<div class="col l-3">
-												<a href="HoSoKhachHangController?donmua=1&btndagiao=1"
+												<a href="HoSoKhachHang?donmua=1&btndagiao=1"
 													style="margin: 0; padding-bottom: 1px; color: var(--primary-color); font-size: 25px;">
 													<b>Đã giao</b>
 												</a>
@@ -1325,25 +1327,25 @@ p {
 										</c:when>
 										<c:otherwise>
 											<div class="col l-3">
-												<a href="HoSoKhachHangController?donmua=1&btnchoxacnhan=1"
+												<a href="HoSoKhachHang?donmua=1&btnchoxacnhan=1"
 													style="margin: 0; padding-bottom: 1px; color: var(--primary-color); font-size: 25px;">
 													<b>Chờ xác nhận</b>
 												</a>
 											</div>
 											<div class="col l-3">
-												<a href="HoSoKhachHangController?donmua=1&btnchuanbi=1"
+												<a href="HoSoKhachHang?donmua=1&btnchuanbi=1"
 													style="margin: 0; padding-bottom: 1px; color: black; font-size: 25px;">
 													<b>Chuẩn bị đơn</b>
 												</a>
 											</div>
 											<div class="col l-3">
-												<a href="HoSoKhachHangController?donmua=1&btndanggiao=1"
+												<a href="HoSoKhachHang?donmua=1&btndanggiao=1"
 													style="margin: 0; padding-bottom: 1px; color: black; font-size: 25px;">
 													<b>Đang giao</b>
 												</a>
 											</div>
 											<div class="col l-3">
-												<a href="HoSoKhachHangController?donmua=1&btndagiao=1"
+												<a href="HoSoKhachHang?donmua=1&btndagiao=1"
 													style="margin: 0; padding-bottom: 1px; color: black; font-size: 25px;">
 													<b>Đã giao</b>
 												</a>
@@ -1923,7 +1925,7 @@ p {
 					class="modal-body">
 
 					<form style="width: 90%; position: relative;"
-						action="HoSoKhachHangController" method="get" id="form-1">
+						action="HoSoKhachHang" method="get" id="form-1">
 
 						<div style="position: relative;" class="form-group">
 							<h1 for="password1" style="font-size: 18px; margin-bottom: 5px; margin-top: 0;">Mật
@@ -2037,7 +2039,7 @@ p {
 					class="modal-body">
 
 					<form style="width: 90%; position: relative;"
-						action="HoSoKhachHangController" method="get" id="form-2">
+						action="HoSoKhachHang" method="get" id="form-2">
 
 						<div class="form-group">
 							<h1 style="font-size: 18px; margin-bottom: 5px; margin-top: 0;">Nhập

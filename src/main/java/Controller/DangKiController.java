@@ -47,16 +47,16 @@ public class DangKiController extends HttpServlet {
 						if(ktdk == 1) {
 							response.sendRedirect("DangNhapController?taikhoan=" + sodienthoai+"&matkhau="+ matkhau1);
 						}else {
-							response.sendRedirect("TrangChuController?loidangki=1");
+							response.sendRedirect("TrangChu?loidangki=1");
 						}	
 					}else {
-						response.sendRedirect("TrangChuController?loidangki=1");
+						response.sendRedirect("TrangChu?loidangki=1");
 					}
 				}else {
-					response.sendRedirect("TrangChuController?loidangki=1&hotendk="+hoten+"&sodienthoaidk="+sodienthoai+"&emaildk="+email+"&matkhau1dk="+matkhau1+"&matkhau2dk="+matkhau2);
+					response.sendRedirect("TrangChu?loidangki=1&hotendk="+hoten+"&sodienthoaidk="+sodienthoai+"&emaildk="+email+"&matkhau1dk="+matkhau1+"&matkhau2dk="+matkhau2);
 				}
 			}else {
-				response.sendRedirect("TrangChuController?loidangki=1");
+				response.sendRedirect("TrangChu?loidangki=1");
 			} 
 			
 		} catch (Exception e) {

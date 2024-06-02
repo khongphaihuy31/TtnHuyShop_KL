@@ -15,7 +15,7 @@ import Bean.KhachHangBean;
 /**
  * Servlet implementation class ChuyenKhoanController
  */
-@WebServlet("/ChuyenKhoanController")
+@WebServlet("/ChuyenKhoan")
 public class ChuyenKhoanController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

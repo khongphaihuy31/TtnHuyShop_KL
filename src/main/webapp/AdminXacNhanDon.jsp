@@ -66,7 +66,7 @@ a:focus, a:hover {
         <button style="height: 100%;" class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey"
             onclick="w3_open();"><i class="fa fa-bars"></i></button>
         <span class="w3-bar-item w3-left" style="line-height: 56px;">Website Admin Ttn-Huy Fashion</span>
-        <a href="AdminTrangChuController" class="w3-bar-item w3-right" style="padding: 0 !important;">
+        <a href="AdminTrangChu" class="w3-bar-item w3-right" style="padding: 0 !important;">
             <img alt="" src="assets/img/huy-removebg-preview.png" style="height: 70px;">
         </a>
     </div>
@@ -97,17 +97,17 @@ a:focus, a:hover {
         <div class="w3-bar-block">
             <!--<a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black"
                 onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>-->
-            <a href="AdminTrangChuController" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-house"></i>  Trang chủ</a>
-            <a href="AdminXacNhanController" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa-solid fa-truck-ramp-box"></i>  Xác nhận đơn hàng</a>
-            <a href="AdminLoaiSanPhamController" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-layer-group"></i>  Quản lý loại sản phẩm</a>
-            <a href="AdminLoaiTrongDanhMucController" class="w3-bar-item w3-button w3-padding"><i class="fa-brands fa-docker"></i>  Quản lý loại trong danh mục</a>
-            <a href="AdminSanPhamController" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-boxes-stacked"></i>  Quản lý sản phẩm</a>
-            <a href="AdminKhachHangController" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users"></i>  Quản lý khách hàng</a>
-            <a href="AdminThuongHieuController" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-shirt"></i>  Quản lý thương hiệu</a>
-            <a href="AdminBannerController" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-image"></i>  Quản lý banner</a>
-            <a href="AdminKhuyenMaiController" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-gift"></i>  Quản lý khuyến mãi</a>
-            <a href="AdminTichDiemController" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-star"></i>  Quản lý tích điểm</a>
-            <a href="AdminThongKeController" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-chart-pie"></i>  Thống kê doanh thu</a><br><br>
+            <a href="AdminTrangChu" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-house"></i>  Trang chủ</a>
+            <a href="AdminXacNhan" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa-solid fa-truck-ramp-box"></i>  Xác nhận đơn hàng</a>
+            <a href="AdminLoaiSanPham" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-layer-group"></i>  Quản lý loại sản phẩm</a>
+            <a href="AdminLoaiTrongDanhMuc" class="w3-bar-item w3-button w3-padding"><i class="fa-brands fa-docker"></i>  Quản lý loại trong danh mục</a>
+            <a href="AdminSanPham" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-boxes-stacked"></i>  Quản lý sản phẩm</a>
+            <a href="AdminKhachHang" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users"></i>  Quản lý khách hàng</a>
+            <a href="AdminThuongHieu" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-shirt"></i>  Quản lý thương hiệu</a>
+            <a href="AdminBanner" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-image"></i>  Quản lý banner</a>
+            <a href="AdminKhuyenMai" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-gift"></i>  Quản lý khuyến mãi</a>
+            <a href="AdminTichDiem" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-star"></i>  Quản lý tích điểm</a>
+            <a href="AdminThongKe" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-chart-pie"></i>  Thống kê doanh thu</a><br><br>
         </div>
     </nav>
 
@@ -126,7 +126,7 @@ a:focus, a:hover {
         <div class="w3-row-padding">
         	<div class="timKiem" style="text-align: center;">
 				<p style="display: inline-block; font-size: 20px; margin: 0; color: var(--primary-color);"> <b>Tìm kiếm</b> </p>
-				<form action="AdminXacNhanController" method="get" style="display: inline-block;">
+				<form action="AdminXacNhan" method="get" style="display: inline-block;">
 					<select name="mahoadon" style="display: inline-block; margin-left: 10px; font-size: 20px; width: 250px; height:41px; padding: 2px 10px; border-radius: 10px; border: 1px solid #ccc;">
 						<option value="All">Tất cả</option>
 						<c:if test="${dshoadon.size() !=0 }">
@@ -142,12 +142,12 @@ a:focus, a:hover {
 			<div class="w3-section" style="margin-bottom: -16px !important;">
 				<c:choose>
 					<c:when test="${param.donDesign!= null }">
-						<a href="AdminXacNhanController" class="w3-button w3-white w3-hide-small" style="background-color: var(--primary-color); color: #fff"><i class="fa-solid fa-box"></i> Đơn hàng bình thường</a>
-				    	<a href="AdminXacNhanController?donDesign=1" class="w3-button" style="background-color: var(--primary-color); color: #fff"><i class="fa-solid fa-box"></i> Đơn hàng design</a>
+						<a href="AdminXacNhan" class="w3-button w3-white w3-hide-small" style="background-color: var(--primary-color); color: #fff"><i class="fa-solid fa-box"></i> Đơn hàng bình thường</a>
+				    	<a href="AdminXacNhan?donDesign=1" class="w3-button" style="background-color: var(--primary-color); color: #fff"><i class="fa-solid fa-box"></i> Đơn hàng design</a>
 					</c:when>
 					<c:otherwise>
-				    	<a href="AdminXacNhanController" class="w3-button" style="background-color: var(--primary-color); color: #fff"><i class="fa-solid fa-box"></i> Đơn hàng bình thường</a>
-				    	<a href="AdminXacNhanController?donDesign=1" class="w3-button w3-white w3-hide-small"><i class="fa-solid fa-box"></i> Đơn hàng design</a>
+				    	<a href="AdminXacNhan" class="w3-button" style="background-color: var(--primary-color); color: #fff"><i class="fa-solid fa-box"></i> Đơn hàng bình thường</a>
+				    	<a href="AdminXacNhan?donDesign=1" class="w3-button w3-white w3-hide-small"><i class="fa-solid fa-box"></i> Đơn hàng design</a>
 					</c:otherwise>
 				</c:choose>
 		    </div>
@@ -274,7 +274,7 @@ a:focus, a:hover {
 										        <div class="w3-row-padding w3-margin-top">
 										        	<c:if test="${hdcb.getMatrangthai() ==1 }">
 											           <div class="w3-quarter">
-												        <a href="AdminXacNhanController?xacNhanDon=${hdcb.getMahoadon() }" style="text-decoration: none;">
+												        <a href="AdminXacNhan?xacNhanDon=${hdcb.getMahoadon() }" style="text-decoration: none;">
 											                <div style="text-align: center;border-radius: 10px;" class="w3-container w3-orange w3-text-white">
 											                    <h4>Xác nhận đơn</h4>
 											                </div>
@@ -283,7 +283,7 @@ a:focus, a:hover {
 										        	</c:if>
 										        	<c:if test="${hdcb.getMatrangthai() ==2 }">
 											           <div class="w3-quarter">
-											            <a href="AdminXacNhanController?dangGiaoDon=${hdcb.getMahoadon() }" style="text-decoration: none;">
+											            <a href="AdminXacNhan?dangGiaoDon=${hdcb.getMahoadon() }" style="text-decoration: none;">
 											                <div style="text-align: center;border-radius: 10px;" class="w3-container w3-blue">
 											                    <h4>Chuẩn bị xong</h4>
 											                </div>
@@ -292,7 +292,7 @@ a:focus, a:hover {
 										        	</c:if>
 										           <c:if test="${hdcb.getMatrangthai() ==3 }">
 											           <div class="w3-quarter">
-											            <a href="AdminXacNhanController?daGiaoDon=${hdcb.getMahoadon() }" style="text-decoration: none;">
+											            <a href="AdminXacNhan?daGiaoDon=${hdcb.getMahoadon() }" style="text-decoration: none;">
 											                <div style="text-align: center; border-radius: 10px;" class="w3-container w3-teal">
 											                    <h4>Đã giao</h4>
 											                </div>
@@ -300,7 +300,7 @@ a:focus, a:hover {
 											           </div>
 										        	</c:if>
 										           <div class="w3-quarter">
-										            <a href="AdminXacNhanController?huyDon=${hdcb.getMahoadon() }" style="text-decoration: none;">
+										            <a href="AdminXacNhan?huyDon=${hdcb.getMahoadon() }" style="text-decoration: none;">
 										                <div style="text-align: center; border-radius: 10px;" class="w3-container w3-red w3-text-white">
 										                    <h4>Hủy đơn</h4>
 										                </div>
@@ -445,7 +445,7 @@ a:focus, a:hover {
 												        <div class="w3-row-padding w3-margin-top">
 												        	<c:if test="${hdcb.getMatrangthai() ==1 }">
 													           <div class="w3-quarter">
-														        <a href="AdminXacNhanController?xacNhanDon=${hdcb.getMahoadon() }" style="text-decoration: none;">
+														        <a href="AdminXacNhan?xacNhanDon=${hdcb.getMahoadon() }" style="text-decoration: none;">
 													                <div style="text-align: center;border-radius: 10px;" class="w3-container w3-orange w3-text-white">
 													                    <h4>Xác nhận đơn</h4>
 													                </div>
@@ -454,7 +454,7 @@ a:focus, a:hover {
 												        	</c:if>
 												        	<c:if test="${hdcb.getMatrangthai() ==2 }">
 													           <div class="w3-quarter">
-													            <a href="AdminXacNhanController?dangGiaoDon=${hdcb.getMahoadon() }" style="text-decoration: none;">
+													            <a href="AdminXacNhan?dangGiaoDon=${hdcb.getMahoadon() }" style="text-decoration: none;">
 													                <div style="text-align: center;border-radius: 10px;" class="w3-container w3-blue">
 													                    <h4>Chuẩn bị xong</h4>
 													                </div>
@@ -463,7 +463,7 @@ a:focus, a:hover {
 												        	</c:if>
 												           <c:if test="${hdcb.getMatrangthai() ==3 }">
 													           <div class="w3-quarter">
-													            <a href="AdminXacNhanController?daGiaoDon=${hdcb.getMahoadon() }" style="text-decoration: none;">
+													            <a href="AdminXacNhan?daGiaoDon=${hdcb.getMahoadon() }" style="text-decoration: none;">
 													                <div style="text-align: center; border-radius: 10px;" class="w3-container w3-teal">
 													                    <h4>Đã giao</h4>
 													                </div>
@@ -471,7 +471,7 @@ a:focus, a:hover {
 													           </div>
 												        	</c:if>
 												           <div class="w3-quarter">
-												            <a href="AdminXacNhanController?huyDon=${hdcb.getMahoadon() }" style="text-decoration: none;">
+												            <a href="AdminXacNhan?huyDon=${hdcb.getMahoadon() }" style="text-decoration: none;">
 												                <div style="text-align: center; border-radius: 10px;" class="w3-container w3-red w3-text-white">
 												                    <h4>Hủy đơn</h4>
 												                </div>
@@ -645,7 +645,7 @@ a:focus, a:hover {
 												        <div class="w3-row-padding w3-margin-top">
 												        	<c:if test="${hdcb.getMatrangthai() ==1 }">
 													           <div class="w3-quarter">
-														        <a href="AdminXacNhanController?xacNhanDon=${hdcb.getMahoadon() }" style="text-decoration: none;">
+														        <a href="AdminXacNhan?xacNhanDon=${hdcb.getMahoadon() }" style="text-decoration: none;">
 													                <div style="text-align: center;border-radius: 10px;" class="w3-container w3-orange w3-text-white">
 													                    <h4>Xác nhận đơn</h4>
 													                </div>
@@ -654,7 +654,7 @@ a:focus, a:hover {
 												        	</c:if>
 												        	<c:if test="${hdcb.getMatrangthai() ==2 }">
 													           <div class="w3-quarter">
-													            <a href="AdminXacNhanController?dangGiaoDon=${hdcb.getMahoadon() }" style="text-decoration: none;">
+													            <a href="AdminXacNhan?dangGiaoDon=${hdcb.getMahoadon() }" style="text-decoration: none;">
 													                <div style="text-align: center;border-radius: 10px;" class="w3-container w3-blue">
 													                    <h4>Chuẩn bị xong</h4>
 													                </div>
@@ -663,7 +663,7 @@ a:focus, a:hover {
 												        	</c:if>
 												           <c:if test="${hdcb.getMatrangthai() ==3 }">
 													           <div class="w3-quarter">
-													            <a href="AdminXacNhanController?daGiaoDon=${hdcb.getMahoadon() }" style="text-decoration: none;">
+													            <a href="AdminXacNhan?daGiaoDon=${hdcb.getMahoadon() }" style="text-decoration: none;">
 													                <div style="text-align: center; border-radius: 10px;" class="w3-container w3-teal">
 													                    <h4>Đã giao</h4>
 													                </div>
@@ -671,7 +671,7 @@ a:focus, a:hover {
 													           </div>
 												        	</c:if>
 												           <div class="w3-quarter">
-												            <a href="AdminXacNhanController?huyDon=${hdcb.getMahoadon() }" style="text-decoration: none;">
+												            <a href="AdminXacNhan?huyDon=${hdcb.getMahoadon() }" style="text-decoration: none;">
 												                <div style="text-align: center; border-radius: 10px;" class="w3-container w3-red w3-text-white">
 												                    <h4>Hủy đơn</h4>
 												                </div>

@@ -18,7 +18,7 @@ import Bo.AdminThongKeBo;
 /**
  * Servlet implementation class AdminThongKeController
  */
-@WebServlet("/AdminThongKeController")
+@WebServlet("/AdminThongKe")
 public class AdminThongKeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -167,9 +167,6 @@ public class AdminThongKeController extends HttpServlet {
 				
 				request.setAttribute("dsThongKeDoanhThu", dsThongKeDoanhThu);
 			}
-			
-			
-			
 			
 			RequestDispatcher rd = request.getRequestDispatcher("AdminThongKe.jsp");
 			rd.forward(request, response);

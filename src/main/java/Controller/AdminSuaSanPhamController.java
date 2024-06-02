@@ -24,7 +24,7 @@ import Bo.LoaiBo;
 /**
  * Servlet implementation class AdminSuaSanPhamController
  */
-@WebServlet("/AdminSuaSanPhamController")
+@WebServlet("/AdminSuaSanPham")
 public class AdminSuaSanPhamController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

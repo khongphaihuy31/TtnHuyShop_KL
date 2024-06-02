@@ -16,7 +16,7 @@ import Bo.BannerBo;
 /**
  * Servlet implementation class AdminBannerController
  */
-@WebServlet("/AdminBannerController")
+@WebServlet("/AdminBanner")
 public class AdminBannerController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -48,7 +48,7 @@ public class AdminBannerController extends HttpServlet {
 			if(mabanner != null) {
 				long mabannerLong = Long.parseLong(mabanner);
 				bnbo.xoaBanner(mabannerLong);
-				response.sendRedirect("AdminBannerController?xoabanner=1");
+				response.sendRedirect("AdminBanner?xoabanner=1");
 				return;
 			}
 			

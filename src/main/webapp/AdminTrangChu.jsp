@@ -48,7 +48,7 @@ a:focus, a:hover {
         <button style="height: 100%;" class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey"
             onclick="w3_open();"><i class="fa fa-bars"></i></button>
         <span class="w3-bar-item w3-left" style="line-height: 56px;">Website Admin Ttn-Huy Fashion</span>
-        <a href="AdminTrangChuController" class="w3-bar-item w3-right" style="padding: 0 !important;">
+        <a href="AdminTrangChu" class="w3-bar-item w3-right" style="padding: 0 !important;">
             <img alt="" src="assets/img/huy-removebg-preview.png" style="height: 70px;">
         </a>
     </div>
@@ -79,17 +79,17 @@ a:focus, a:hover {
         <div class="w3-bar-block">
             <!--<a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black"
                 onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>-->
-            <a href="AdminTrangChuController" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa-solid fa-house"></i>  Trang chủ</a>
-            <a href="AdminXacNhanController" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-truck-ramp-box"></i>  Xác nhận đơn hàng</a>
-            <a href="AdminLoaiSanPhamController" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-layer-group"></i>  Quản lý loại sản phẩm</a>
-            <a href="AdminLoaiTrongDanhMucController" class="w3-bar-item w3-button w3-padding"><i class="fa-brands fa-docker"></i>  Quản lý loại trong danh mục</a>
-            <a href="AdminSanPhamController" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-boxes-stacked"></i>  Quản lý sản phẩm</a>
-            <a href="AdminKhachHangController" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users"></i>  Quản lý khách hàng</a>
-            <a href="AdminThuongHieuController" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-shirt"></i>  Quản lý thương hiệu</a>
-            <a href="AdminBannerController" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-image"></i>  Quản lý banner</a>
-            <a href="AdminKhuyenMaiController" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-gift"></i>  Quản lý khuyến mãi</a>
-            <a href="AdminTichDiemController" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-star"></i>  Quản lý tích điểm</a>
-            <a href="AdminThongKeController" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-chart-pie"></i>  Thống kê doanh thu</a><br><br>
+            <a href="AdminTrangChu" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa-solid fa-house"></i>  Trang chủ</a>
+            <a href="AdminXacNhan" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-truck-ramp-box"></i>  Xác nhận đơn hàng</a>
+            <a href="AdminLoaiSanPham" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-layer-group"></i>  Quản lý loại sản phẩm</a>
+            <a href="AdminLoaiTrongDanhMuc" class="w3-bar-item w3-button w3-padding"><i class="fa-brands fa-docker"></i>  Quản lý loại trong danh mục</a>
+            <a href="AdminSanPham" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-boxes-stacked"></i>  Quản lý sản phẩm</a>
+            <a href="AdminKhachHang" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users"></i>  Quản lý khách hàng</a>
+            <a href="AdminThuongHieu" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-shirt"></i>  Quản lý thương hiệu</a>
+            <a href="AdminBanner" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-image"></i>  Quản lý banner</a>
+            <a href="AdminKhuyenMai" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-gift"></i>  Quản lý khuyến mãi</a>
+            <a href="AdminTichDiem" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-star"></i>  Quản lý tích điểm</a>
+            <a href="AdminThongKe" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-chart-pie"></i>  Thống kê doanh thu</a><br><br>
         </div>
     </nav>
 
@@ -108,7 +108,7 @@ a:focus, a:hover {
 
         <div class="w3-row-padding w3-margin-bottom">
             <div class="w3-quarter">
-		        <a href="AdminSanPhamController" style="text-decoration: none;">
+		        <a href="AdminSanPham" style="text-decoration: none;">
 	                <div class="w3-container w3-red w3-padding-16">
 	                    <div class="w3-left"><i style="font-size: 50px;" class="fa-solid fa-boxes-stacked"></i></div>
 	                    <div class="w3-right">
@@ -120,7 +120,7 @@ a:focus, a:hover {
 		        </a>
             </div>
             <div class="w3-quarter">
-	            <a href="AdminXacNhanController" style="text-decoration: none;">
+	            <a href="AdminXacNhan" style="text-decoration: none;">
 	                <div class="w3-container w3-blue w3-padding-16">
 	                    <div class="w3-left"><i style="font-size: 50px;" class="fa-solid fa-box"></i></div>
 	                    <div class="w3-right">
@@ -147,7 +147,7 @@ a:focus, a:hover {
 		        </a>
             </div>
             <div class="w3-quarter">
-	            <a href="AdminKhachHangController" style="text-decoration: none;">
+	            <a href="AdminKhachHang" style="text-decoration: none;">
 	                <div class="w3-container w3-orange w3-text-white w3-padding-16">
 	                    <div class="w3-left"><i class="fa fa-users w3-xxxlarge"></i></div>
 	                    <div class="w3-right">

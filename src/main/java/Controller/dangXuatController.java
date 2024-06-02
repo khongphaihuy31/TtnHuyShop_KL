@@ -30,7 +30,7 @@ public class dangXuatController extends HttpServlet {
 		HttpSession session = request.getSession();
 		if(session.getAttribute("dn") != null){
 			session.removeAttribute("dn");
-			response.sendRedirect("TrangChuController");
+			response.sendRedirect("TrangChu");
 		}
 	}
 

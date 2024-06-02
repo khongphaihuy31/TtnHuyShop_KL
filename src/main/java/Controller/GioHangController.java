@@ -22,7 +22,7 @@ import Bo.SanPhamBo;
 /**
  * Servlet implementation class GioHangController
  */
-@WebServlet("/GioHangController")
+@WebServlet("/GioHang")
 public class GioHangController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -74,7 +74,7 @@ public class GioHangController extends HttpServlet {
 				ChiTietSanPhamBo ctspbo = new ChiTietSanPhamBo();
 				long soluongSpTrongKho = ctspbo.getSoluongTrongKho(masanpham, mausanpham, size);
 				if(soluongmua> soluongSpTrongKho) {
-					response.sendRedirect("ChiTietSanPhamController?msp="+masanpham+"&khongdu=1");
+					response.sendRedirect("ChiTietSanPham?msp="+masanpham+"&khongdu=1");
 					return;
 				}
 				
@@ -84,7 +84,7 @@ public class GioHangController extends HttpServlet {
 					KhachHangBean khbean = (KhachHangBean)session.getAttribute("dn");
 					sp.themSanPhamVaoGio(masanpham, khbean.getMakhachhang(), soluongmua, mausanpham, size);
 				}
-				response.sendRedirect("GioHangController");
+				response.sendRedirect("GioHang");
 				return;
 			}
 			
@@ -98,7 +98,7 @@ public class GioHangController extends HttpServlet {
 				ChiTietSanPhamBo ctspbo = new ChiTietSanPhamBo();
 				long soluongSpTrongKho = ctspbo.getSoluongTrongKho(masanpham, mausanpham, size);
 				if(soluongmua> soluongSpTrongKho) {
-					response.sendRedirect("ChiTietSanPhamController?msp="+masanpham+"&khongdu=1");
+					response.sendRedirect("ChiTietSanPham?msp="+masanpham+"&khongdu=1");
 					return;
 				}
 				
@@ -108,7 +108,7 @@ public class GioHangController extends HttpServlet {
 					KhachHangBean khbean = (KhachHangBean)session.getAttribute("dn");
 					sp.themSanPhamVaoGio(masanpham, khbean.getMakhachhang(), soluongmua, mausanpham, size);
 				}
-				response.sendRedirect("ChiTietSanPhamController?themsp=1&msp="+masanpham);
+				response.sendRedirect("ChiTietSanPham?themsp=1&msp="+masanpham);
 				return;
 			}
 			
@@ -153,10 +153,10 @@ public class GioHangController extends HttpServlet {
 				long soluongSPtrongKho = ctspbo.getSoluongTrongKho(masanpham, mausanpham, size);
 				if(soluongcapnhat<=soluongSPtrongKho) {
 					ghbo.capNhatGio(masanpham, khbaen.getMakhachhang(), soluongcapnhat, mausanpham, size);
-					response.sendRedirect("GioHangController?capNhatTC=1");
+					response.sendRedirect("GioHang?capNhatTC=1");
 					return;
 				}else {
-					response.sendRedirect("GioHangController?capNhatTB=1");
+					response.sendRedirect("GioHang?capNhatTB=1");
 					return;
 				}
 			}
@@ -170,7 +170,7 @@ public class GioHangController extends HttpServlet {
 				KhachHangBean khbaen = (KhachHangBean)session.getAttribute("dn");
 				GioHangBo ghbo = new GioHangBo();
 				ghbo.xoaSpTrongGio(magiohang);
-				response.sendRedirect("GioHangController");
+				response.sendRedirect("GioHang");
 				return;
 			}
 			
@@ -189,7 +189,7 @@ public class GioHangController extends HttpServlet {
 						ghbo.xoaSpTrongGio(mgh); 
 					}
 				}
-				response.sendRedirect("GioHangController");
+				response.sendRedirect("GioHang");
 				return;
 			}
 			
@@ -217,11 +217,11 @@ public class GioHangController extends HttpServlet {
 					}
 				}
 				if(chonSp) {
-					response.sendRedirect("ThanhToanController?dsMaGioChon="+dsMaGioChon);
+					response.sendRedirect("ThanhToan?dsMaGioChon="+dsMaGioChon);
 					return;
 				}else {
 //					request.setAttribute("csp", 1);
-					response.sendRedirect("GioHangController?csp=null");
+					response.sendRedirect("GioHang?csp=null");
 					return;
 				}
 			}

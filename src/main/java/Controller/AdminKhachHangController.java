@@ -16,7 +16,7 @@ import Bo.AdminKhachHangBo;
 /**
  * Servlet implementation class AdminKhachHangController
  */
-@WebServlet("/AdminKhachHangController")
+@WebServlet("/AdminKhachHang")
 public class AdminKhachHangController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

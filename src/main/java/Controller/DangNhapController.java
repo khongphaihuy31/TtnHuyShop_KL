@@ -59,19 +59,19 @@ public class DangNhapController extends HttpServlet {
 								session.setAttribute("dn", kHangBean);
 								session.setAttribute("taikhoan", kHangBean.getHoten());
 								if(request.getParameter("suathongtin") != null) {
-									response.sendRedirect("HoSoKhachHangController?info=1&suathongtin=1");
+									response.sendRedirect("HoSoKhachHang?info=1&suathongtin=1");
 								}else {
-									response.sendRedirect("TrangChuController");
+									response.sendRedirect("TrangChu");
 								}
 							}else {
 								session.setAttribute("dn", kHangBean);
 								session.setAttribute("taikhoan", taikhoan);
-								response.sendRedirect("AdminTrangChuController");
+								response.sendRedirect("AdminTrangChu");
 							}
 						}else {
 							session.setAttribute("so", (int)session.getAttribute("so")+1);
 							session.setAttribute("solanloi", session.getAttribute("so"));
-							response.sendRedirect("TrangChuController?loi=dangNhap");
+							response.sendRedirect("TrangChu?loi=dangNhap");
 						}
 				}
 			}else {
@@ -85,19 +85,19 @@ public class DangNhapController extends HttpServlet {
 							session.setAttribute("dn", kHangBean);
 							session.setAttribute("taikhoan", taikhoan);
 							if(request.getParameter("suathongtin") != null) {
-								response.sendRedirect("HoSoKhachHangController?info=1");
+								response.sendRedirect("HoSoKhachHang?info=1");
 							}else {
-								response.sendRedirect("TrangChuController");
+								response.sendRedirect("TrangChu");
 							}
 						}else {
 							session.setAttribute("dn", kHangBean);
 							session.setAttribute("taikhoan", taikhoan);
-							response.sendRedirect("AdminTrangChuController");
+							response.sendRedirect("AdminTrangChu");
 						}
 					}else {
 						session.setAttribute("so", (int)session.getAttribute("so")+1);
 						session.setAttribute("solanloi", session.getAttribute("so"));
-						response.sendRedirect("TrangChuController?loi=dangNhap");
+						response.sendRedirect("TrangChu?loi=dangNhap");
 					}
 			}
 			}

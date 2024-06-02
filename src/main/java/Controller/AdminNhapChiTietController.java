@@ -20,7 +20,7 @@ import Bo.AdminSanPhamBo;
 /**
  * Servlet implementation class AdminNhapChiTietController
  */
-@WebServlet("/AdminNhapChiTietController")
+@WebServlet("/AdminNhapChiTiet")
 public class AdminNhapChiTietController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -151,7 +151,7 @@ public class AdminNhapChiTietController extends HttpServlet {
 						}
 					}
 					if(soluongnhap==0) {
-						response.sendRedirect("AdminNhapChiTietController?tensanpham="+tensanpham+"&gianhap="+gianhap+"&giaban="+giaban+"&maloai="+maloai+"&mathuonghieu="+mathuonghieu+"&madanhmuc="+madanhmuc+"&motasanpham="+motasanpham+"&anh="+anh+"&anhchonsize="+anhchonsize+"&lsize1="+lsize1+"&lsize2="+lsize2+"&lsize3="+lsize3+"&lsize4="+lsize4+"&lsize5="+lsize5+"&lmau1="+lmau1+"&anhmau1="+anhmau1+"&lmau2="+lmau2+"&anhmau2="+anhmau2+"&lmau3="+lmau3+"&anhmau3="+anhmau3+"&lmau4="+lmau4+"&anhmau4="+anhmau4+"&lmau5="+lmau5+"&anhmau5="+anhmau5+"&chuacosl=1");
+						response.sendRedirect("AdminNhapChiTiet?tensanpham="+tensanpham+"&gianhap="+gianhap+"&giaban="+giaban+"&maloai="+maloai+"&mathuonghieu="+mathuonghieu+"&madanhmuc="+madanhmuc+"&motasanpham="+motasanpham+"&anh="+anh+"&anhchonsize="+anhchonsize+"&lsize1="+lsize1+"&lsize2="+lsize2+"&lsize3="+lsize3+"&lsize4="+lsize4+"&lsize5="+lsize5+"&lmau1="+lmau1+"&anhmau1="+anhmau1+"&lmau2="+lmau2+"&anhmau2="+anhmau2+"&lmau3="+lmau3+"&anhmau3="+anhmau3+"&lmau4="+lmau4+"&anhmau4="+anhmau4+"&lmau5="+lmau5+"&anhmau5="+anhmau5+"&chuacosl=1");
 						return;
 					}else {
 						//Nhập sản phẩm mới
@@ -209,7 +209,7 @@ public class AdminNhapChiTietController extends HttpServlet {
 								}
 							}
 						}
-						response.sendRedirect("AdminSanPhamController?nmTC=1");
+						response.sendRedirect("AdminSanPham?nmTC=1");
 						return;
 					}
 				}
@@ -344,7 +344,7 @@ public class AdminNhapChiTietController extends HttpServlet {
 						}
 					}
 					if(soluongnhap==0) {
-						response.sendRedirect("AdminNhapChiTietController?btnnhapcu="+btnnhapcu+"&gianhap="+gianhap+"&lsize1="+lsize1+"&lsize2="+lsize2+"&lsize3="+lsize3+"&lsize4="+lsize4+"&lsize5="+lsize5+"&lmau1="+lmau1+"&anhmau1="+anhmau1+"&lmau2="+lmau2+"&anhmau2="+anhmau2+"&lmau3="+lmau3+"&anhmau3="+anhmau3+"&lmau4="+lmau4+"&anhmau4="+anhmau4+"&lmau5="+lmau5+"&anhmau5="+anhmau5);
+						response.sendRedirect("AdminNhapChiTiet?btnnhapcu="+btnnhapcu+"&gianhap="+gianhap+"&lsize1="+lsize1+"&lsize2="+lsize2+"&lsize3="+lsize3+"&lsize4="+lsize4+"&lsize5="+lsize5+"&lmau1="+lmau1+"&anhmau1="+anhmau1+"&lmau2="+lmau2+"&anhmau2="+anhmau2+"&lmau3="+lmau3+"&anhmau3="+anhmau3+"&lmau4="+lmau4+"&anhmau4="+anhmau4+"&lmau5="+lmau5+"&anhmau5="+anhmau5);
 						return;
 					}else {
 						//Nhập size cho sản phẩm
@@ -415,7 +415,7 @@ public class AdminNhapChiTietController extends HttpServlet {
 								}
 							}
 						}
-						response.sendRedirect("AdminSanPhamController?nmTC=1");
+						response.sendRedirect("AdminSanPham?nmTC=1");
 						return;
 					}
 				}

@@ -26,7 +26,7 @@ import Bo.KhachHangBo;
 /**
  * Servlet implementation class AdminXacNhanController
  */
-@WebServlet("/AdminXacNhanController")
+@WebServlet("/AdminXacNhan")
 public class AdminXacNhanController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -96,7 +96,7 @@ public class AdminXacNhanController extends HttpServlet {
 			if(xacNhanDon!= null) {
 				long mhd = Long.parseLong(xacNhanDon);
 				ddhbo.capNhatChiTietHDChuanBiDon(mhd);
-				response.sendRedirect("AdminXacNhanController?xacNhanTC=1");
+				response.sendRedirect("AdminXacNhan?xacNhanTC=1");
 				return;
 			}
 			
@@ -105,7 +105,7 @@ public class AdminXacNhanController extends HttpServlet {
 			if(dangGiaoDon!= null) {
 				long mhd = Long.parseLong(dangGiaoDon);
 				ddhbo.capNhatChiTietHDDangGiao(mhd);
-				response.sendRedirect("AdminXacNhanController?dangGiaoTC=1");
+				response.sendRedirect("AdminXacNhan?dangGiaoTC=1");
 				return;
 			}
 			
@@ -114,7 +114,7 @@ public class AdminXacNhanController extends HttpServlet {
 			if(daGiaoDon!= null) {
 				long mhd = Long.parseLong(daGiaoDon);
 				ddhbo.capNhatChiTietHDDaGiao(mhd);
-				response.sendRedirect("AdminXacNhanController?daGiaoTC=1");
+				response.sendRedirect("AdminXacNhan?daGiaoTC=1");
 				return;
 			}
 			
@@ -180,7 +180,7 @@ public class AdminXacNhanController extends HttpServlet {
 				//Xóa đơn đặt hàng
 				axnbo.xoaDonDatHang(mhd);
 				
-				response.sendRedirect("AdminXacNhanController?huyDonTC=1");
+				response.sendRedirect("AdminXacNhan?huyDonTC=1");
 				return;
 			}
 					

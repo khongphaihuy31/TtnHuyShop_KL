@@ -22,7 +22,7 @@ import Bo.SanPhamBo;
 /**
  * Servlet implementation class AdminTrangChuController
  */
-@WebServlet("/AdminTrangChuController")
+@WebServlet("/AdminTrangChu")
 public class AdminTrangChuController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

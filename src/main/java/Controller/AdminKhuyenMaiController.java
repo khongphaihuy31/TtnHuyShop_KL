@@ -16,7 +16,7 @@ import Bo.GiamGiaBo;
 /**
  * Servlet implementation class AdminKhuyenMaiController
  */
-@WebServlet("/AdminKhuyenMaiController")
+@WebServlet("/AdminKhuyenMai")
 public class AdminKhuyenMaiController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -58,10 +58,10 @@ public class AdminKhuyenMaiController extends HttpServlet {
 					long tiengiamlong = Long.parseLong(tiengiam);
 					long dieukienlong = Long.parseLong(dieukien);
 					ggbo.themKhuyenMai(tengiamgia, tiengiamlong, dieukienlong, mota);
-					response.sendRedirect("AdminKhuyenMaiController?tkmTC=1");
+					response.sendRedirect("AdminKhuyenMai?tkmTC=1");
 					return;
 				}else {
-					response.sendRedirect("AdminKhuyenMaiController?tkmTB=1");
+					response.sendRedirect("AdminKhuyenMai?tkmTB=1");
 					return;
 				}
 			}
@@ -81,10 +81,10 @@ public class AdminKhuyenMaiController extends HttpServlet {
 					long dieukienlong = Long.parseLong(dieukien);
 					long magiamgia = Long.parseLong(btnsua);
 					ggbo.suaKhuyenMai(magiamgia, tengiamgia, tiengiamlong, dieukienlong, mota);
-					response.sendRedirect("AdminKhuyenMaiController?skmTC=1");
+					response.sendRedirect("AdminKhuyenMai?skmTC=1");
 					return;
 				}else {
-					response.sendRedirect("AdminKhuyenMaiController?skmTB=1");
+					response.sendRedirect("AdminKhuyenMai?skmTB=1");
 					return;
 				}
 			}
@@ -94,7 +94,7 @@ public class AdminKhuyenMaiController extends HttpServlet {
 			if(btnxoa != null) {
 				long magiamgia = Long.parseLong(btnxoa);
 				ggbo.xoaKhuyenMai(magiamgia);
-				response.sendRedirect("AdminKhuyenMaiController?xkmTC=1");
+				response.sendRedirect("AdminKhuyenMai?xkmTC=1");
 				return;
 			}
 			

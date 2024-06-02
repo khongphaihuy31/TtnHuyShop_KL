@@ -20,7 +20,7 @@ import Bo.AdminSanPhamBo;
 /**
  * Servlet implementation class AdminLoaiSanPhamController
  */
-@WebServlet("/AdminLoaiSanPhamController")
+@WebServlet("/AdminLoaiSanPham")
 public class AdminLoaiSanPhamController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -50,11 +50,11 @@ public class AdminLoaiSanPhamController extends HttpServlet {
 				String tenloai = request.getParameter("tenloai");
 				if(tenloai != null && tenloai.trim()!= "") {
 					lbo.themLoai(tenloai);
-					response.sendRedirect("AdminLoaiSanPhamController?tlTC=1");
+					response.sendRedirect("AdminLoaiSanPham?tlTC=1");
 					return;
 //					System.out.print("ok đấy");
 				}else {
-					response.sendRedirect("AdminLoaiSanPhamController?tl=null")	;
+					response.sendRedirect("AdminLoaiSanPham?tl=null")	;
 					return;
 //					System.out.print("ko ok lắm");
 				}
@@ -66,10 +66,10 @@ public class AdminLoaiSanPhamController extends HttpServlet {
 				String tenloai = request.getParameter("tenloai");
 				if(tenloai != null && tenloai.trim()!= "") {
 					lbo.suaLoai(maloai, tenloai);
-					response.sendRedirect("AdminLoaiSanPhamController?slTC=1")	;
+					response.sendRedirect("AdminLoaiSanPham?slTC=1")	;
 					return;
 				}else {
-					response.sendRedirect("AdminLoaiSanPhamController?sl=null")	;
+					response.sendRedirect("AdminLoaiSanPham?sl=null")	;
 					return;
 				}
 			}
@@ -94,7 +94,7 @@ public class AdminLoaiSanPhamController extends HttpServlet {
 				AdminLoaiTrongDanhMucBo adltdmbo =  new AdminLoaiTrongDanhMucBo();
 				adltdmbo.xoaLoaiTrongDanhMucThuocLoai(maloai);
 				lbo.xoaLoai(maloai);
-				response.sendRedirect("AdminLoaiSanPhamController?xlTC=1");
+				response.sendRedirect("AdminLoaiSanPham?xlTC=1");
 				return;
 			}
 			

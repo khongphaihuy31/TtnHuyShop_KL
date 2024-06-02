@@ -16,7 +16,7 @@ import Bo.TichDiemBo;
 /**
  * Servlet implementation class AdminTichDiemController
  */
-@WebServlet("/AdminTichDiemController")
+@WebServlet("/AdminTichDiem")
 public class AdminTichDiemController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -52,7 +52,7 @@ public class AdminTichDiemController extends HttpServlet {
 				long dieukienlong= Long.parseLong(dieukien);
 				long diemconglong= Long.parseLong(diemcong);
 				tdbo.themTichDiem(dieukienlong, diemconglong);
-				response.sendRedirect("AdminTichDiemController?ttdTC=1");
+				response.sendRedirect("AdminTichDiem?ttdTC=1");
 				return;
 			}
 			
@@ -65,7 +65,7 @@ public class AdminTichDiemController extends HttpServlet {
 				long diemconglong= Long.parseLong(diemcong);
 				long matichdiem= Long.parseLong(btnsua);
 				tdbo.suaTichDiem(matichdiem, dieukienlong, diemconglong);
-				response.sendRedirect("AdminTichDiemController?stdTC=1");
+				response.sendRedirect("AdminTichDiem?stdTC=1");
 				return;
 			}
 			
@@ -74,7 +74,7 @@ public class AdminTichDiemController extends HttpServlet {
 			if(btnxoa != null) {
 				long matichdiem = Long.parseLong(btnxoa);
 				tdbo.xoaTichDiem(matichdiem);
-				response.sendRedirect("AdminTichDiemController?xtdTC=1");
+				response.sendRedirect("AdminTichDiem?xtdTC=1");
 				return;
 			}
 			

@@ -27,7 +27,7 @@ import Bo.LoaiBo;
 /**
  * Servlet implementation class HoSoKhachHangController
  */
-@WebServlet("/HoSoKhachHangController")
+@WebServlet("/HoSoKhachHang")
 public class HoSoKhachHangController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -78,7 +78,7 @@ public class HoSoKhachHangController extends HttpServlet {
 				String code = request.getParameter("code");
 				if(code.equals(codeDoiEmail)) {
 					hskhbo1.doiEmailTheoMakhachhang(emailDoi, makhachhang);
-					response.sendRedirect("HoSoKhachHangController?info=1");
+					response.sendRedirect("HoSoKhachHang?info=1");
 					return;
 				}
 			}
@@ -113,7 +113,7 @@ public class HoSoKhachHangController extends HttpServlet {
 				int nn = hskhbo.themNoiNhanHang(khbean.getMakhachhang(), tenTinhThanh, tenQuanHuyen, tenPhuongXa, sonha);
 				hskhbo.capNhatDiaChi(khbean.getMakhachhang(), diachi);
 				if(nn == 1) {
-					response.sendRedirect("HoSoKhachHangController?location=1&themlocation=1");
+					response.sendRedirect("HoSoKhachHang?location=1&themlocation=1");
 					return;
 				}
 			}
@@ -130,7 +130,7 @@ public class HoSoKhachHangController extends HttpServlet {
 				HoSoKhachHangBo hskhbo = new HoSoKhachHangBo();
 				hskhbo.suaNoiNhanHang(khbean.getMakhachhang(), tenTinhThanh, tenQuanHuyen, tenPhuongXa, sonha);
 				hskhbo.capNhatDiaChi(khbean.getMakhachhang(), diachi);
-				response.sendRedirect("HoSoKhachHangController?location=1&capnhatlocation=1");
+				response.sendRedirect("HoSoKhachHang?location=1&capnhatlocation=1");
 				return;
 			}
 			
@@ -149,7 +149,7 @@ public class HoSoKhachHangController extends HttpServlet {
 						kHangBean = khbo.getKhachHang(khachHangBean.getMakhachhang());
 						session.removeAttribute("dn");
 						session.setAttribute("dn", kHangBean);
-						response.sendRedirect("HoSoKhachHangController?info=1&doipass=thanhcong");
+						response.sendRedirect("HoSoKhachHang?info=1&doipass=thanhcong");
 						return;
 					}else {
 						kHangBean = khbo.ktradangnhap(khachHangBean.getSodienthoai(), passHienTai);
@@ -158,15 +158,15 @@ public class HoSoKhachHangController extends HttpServlet {
 							kHangBean = khbo.getKhachHang(khachHangBean.getMakhachhang());
 							session.removeAttribute("dn");
 							session.setAttribute("dn", kHangBean);
-							response.sendRedirect("HoSoKhachHangController?info=1&doipass=thanhcong");
+							response.sendRedirect("HoSoKhachHang?info=1&doipass=thanhcong");
 							return;
 						}else {
-							response.sendRedirect("HoSoKhachHangController?info=1&doipass=kodung");
+							response.sendRedirect("HoSoKhachHang?info=1&doipass=kodung");
 							return;
 						}
 					}
 				}else {
-					response.sendRedirect("HoSoKhachHangController?info=1&doipass=kokhop");
+					response.sendRedirect("HoSoKhachHang?info=1&doipass=kokhop");
 					return;
 				}
 			}

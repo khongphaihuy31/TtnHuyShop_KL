@@ -30,7 +30,7 @@ import Bo.SanPhamBo;
 /**
  * Servlet implementation class ThietKeAoController
  */
-@WebServlet("/ThietKeAoController")
+@WebServlet("/ThietKeAo")
 public class ThietKeAoController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

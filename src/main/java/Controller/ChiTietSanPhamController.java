@@ -25,7 +25,7 @@ import Bo.SanPhamBo;
 /**
  * Servlet implementation class ChiTietSanPhamController
  */
-@WebServlet("/ChiTietSanPhamController")
+@WebServlet("/ChiTietSanPham")
 public class ChiTietSanPhamController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

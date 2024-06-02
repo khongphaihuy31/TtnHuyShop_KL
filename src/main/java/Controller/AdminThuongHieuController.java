@@ -20,7 +20,7 @@ import Bo.AdminThuongHieuBo;
 /**
  * Servlet implementation class AdminThuongHieuController
  */
-@WebServlet("/AdminThuongHieuController")
+@WebServlet("/AdminThuongHieu")
 public class AdminThuongHieuController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -54,11 +54,11 @@ public class AdminThuongHieuController extends HttpServlet {
 				String tenthuonghieu = request.getParameter("tenthuonghieu");
 				if(tenthuonghieu != null && tenthuonghieu.trim()!= "") {
 					adthbo.themThuongHieu(tenthuonghieu);
-					response.sendRedirect("AdminThuongHieuController?tthTC=1");
+					response.sendRedirect("AdminThuongHieu?tthTC=1");
 					return;
 //					System.out.print("ok đấy");
 				}else {
-					response.sendRedirect("AdminThuongHieuController?tth=null")	;
+					response.sendRedirect("AdminThuongHieu?tth=null")	;
 					return;
 //					System.out.print("ko ok lắm");
 				}
@@ -71,10 +71,10 @@ public class AdminThuongHieuController extends HttpServlet {
 				String tenthuonghieu = request.getParameter("tenthuonghieu");
 				if(tenthuonghieu != null && tenthuonghieu.trim()!= "") {
 					adthbo.suaThuongHieu(mathuonghieu, tenthuonghieu);
-					response.sendRedirect("AdminThuongHieuController?sthTC=1")	;
+					response.sendRedirect("AdminThuongHieu?sthTC=1")	;
 					return;
 				}else {
-					response.sendRedirect("AdminThuongHieuController?sth=null")	;
+					response.sendRedirect("AdminThuongHieu?sth=null")	;
 					return;
 				}
 			}
@@ -99,7 +99,7 @@ public class AdminThuongHieuController extends HttpServlet {
 				}
 				adthbo.xoaSanPhamThuocThuongHieu(mathuonghieu);
 				adthbo.xoaThuongHieu(mathuonghieu);
-				response.sendRedirect("AdminThuongHieuController?xthTC=1");
+				response.sendRedirect("AdminThuongHieu?xthTC=1");
 				return;
 			}
 			

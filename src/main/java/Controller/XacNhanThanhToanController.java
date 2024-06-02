@@ -194,7 +194,7 @@ public class XacNhanThanhToanController extends HttpServlet {
 				// }
 //				System.out.print(request.getParameter("thanhtoan"));
 //				session.removeAttribute("giohang");
-				response.sendRedirect("HoSoKhachHangController?donmua=1&btnchoxacnhan=1");
+				response.sendRedirect("HoSoKhachHang?donmua=1&btnchoxacnhan=1");
 			} // Nếu kiểm tra thanhtoan === online thì sẽ kiểm tra có phải sản phẩm thiết kế ko
 //					nếu mà sản phẩm design 
 //			chuyển sang trang mã QRcode
@@ -369,7 +369,7 @@ public class XacNhanThanhToanController extends HttpServlet {
 				
 //				request.setAttribute("madonvuathem", madonvuathem);
 //				request.setAttribute("tienthanhtoan", tongdongia);
-				response.sendRedirect("ChuyenKhoanController?madonvuathem="+madonvuathem+"&tienthanhtoan="+tongdongia);
+				response.sendRedirect("ChuyenKhoan?madonvuathem="+madonvuathem+"&tienthanhtoan="+tongdongia);
 				return;
 			}
 

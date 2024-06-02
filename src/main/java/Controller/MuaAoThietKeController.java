@@ -113,12 +113,12 @@ public class MuaAoThietKeController extends HttpServlet {
 				ChiTietSanPhamBo ctspbo = new ChiTietSanPhamBo();
 				long soluongSpTrongKho = ctspbo.getSoluongTrongKho(masanpham, mausanpham, size);
 				if(soluongmua1> soluongSpTrongKho) {
-					response.sendRedirect("ThietKeAoController?msp="+masanpham+"&khongdu=1");
+					response.sendRedirect("ThietKeAo?msp="+masanpham+"&khongdu=1");
 					return;
 				}
 //				AdminSanPhamBo spbo = new AdminSanPhamBo();
 //				spbo.themSanPham(tensanpham, anh, giacu1, giamoi1, soluongdaban1, motasanpham, chitietsanpham, maloai1, mathuonghieu1, madanhmuc1);
-				response.sendRedirect("ThanhToanController?maumua="+maumua1+"&sizemua="+sizemua+"&maaodesign="+maaodesign+"&soluongmua="+soluongmua+"&anhdesign="+anhdesign+"&anhTheoMau="+anhTheoMau);
+				response.sendRedirect("ThanhToan?maumua="+maumua1+"&sizemua="+sizemua+"&maaodesign="+maaodesign+"&soluongmua="+soluongmua+"&anhdesign="+anhdesign+"&anhTheoMau="+anhTheoMau);
 				return;
 			
 		} catch (Exception e) {

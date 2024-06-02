@@ -71,7 +71,7 @@ a:focus, a:hover {
         <button style="height: 100%;" class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey"
             onclick="w3_open();"><i class="fa fa-bars"></i></button>
         <span class="w3-bar-item w3-left" style="line-height: 56px;">Website Admin Ttn-Huy Fashion</span>
-        <a href="AdminTrangChuController" class="w3-bar-item w3-right" style="padding: 0 !important;">
+        <a href="AdminTrangChu" class="w3-bar-item w3-right" style="padding: 0 !important;">
             <img alt="" src="assets/img/huy-removebg-preview.png" style="height: 70px;">
         </a>
     </div>
@@ -102,17 +102,17 @@ a:focus, a:hover {
         <div class="w3-bar-block">
             <!--<a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black"
                 onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>-->
-            <a href="AdminTrangChuController" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-house"></i>  Trang chủ</a>
-            <a href="AdminXacNhanController" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-truck-ramp-box"></i>  Xác nhận đơn hàng</a>
-            <a href="AdminLoaiSanPhamController" class="w3-bar-item w3-button w3-padding "><i class="fa-solid fa-layer-group"></i>  Quản lý loại sản phẩm</a>
-            <a href="AdminLoaiTrongDanhMucController" class="w3-bar-item w3-button w3-padding"><i class="fa-brands fa-docker"></i>  Quản lý loại trong danh mục</a>
-            <a href="AdminSanPhamController" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa-solid fa-boxes-stacked"></i>  Quản lý sản phẩm</a>
-            <a href="AdminKhachHangController" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users"></i>  Quản lý khách hàng</a>
-            <a href="AdminThuongHieuController" class="w3-bar-item w3-button w3-padding "><i class="fa-solid fa-shirt"></i>  Quản lý thương hiệu</a>
-            <a href="AdminBannerController" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-image"></i>  Quản lý banner</a>
-            <a href="AdminKhuyenMaiController" class="w3-bar-item w3-button w3-padding "><i class="fa-solid fa-gift"></i>  Quản lý khuyến mãi</a>
-            <a href="AdminTichDiemController" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-star"></i>  Quản lý tích điểm</a>
-            <a href="AdminThongKeController" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-chart-pie"></i>  Thống kê doanh thu</a><br><br>
+            <a href="AdminTrangChu" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-house"></i>  Trang chủ</a>
+            <a href="AdminXacNhan" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-truck-ramp-box"></i>  Xác nhận đơn hàng</a>
+            <a href="AdminLoaiSanPham" class="w3-bar-item w3-button w3-padding "><i class="fa-solid fa-layer-group"></i>  Quản lý loại sản phẩm</a>
+            <a href="AdminLoaiTrongDanhMuc" class="w3-bar-item w3-button w3-padding"><i class="fa-brands fa-docker"></i>  Quản lý loại trong danh mục</a>
+            <a href="AdminSanPham" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa-solid fa-boxes-stacked"></i>  Quản lý sản phẩm</a>
+            <a href="AdminKhachHang" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users"></i>  Quản lý khách hàng</a>
+            <a href="AdminThuongHieu" class="w3-bar-item w3-button w3-padding "><i class="fa-solid fa-shirt"></i>  Quản lý thương hiệu</a>
+            <a href="AdminBanner" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-image"></i>  Quản lý banner</a>
+            <a href="AdminKhuyenMai" class="w3-bar-item w3-button w3-padding "><i class="fa-solid fa-gift"></i>  Quản lý khuyến mãi</a>
+            <a href="AdminTichDiem" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-star"></i>  Quản lý tích điểm</a>
+            <a href="AdminThongKe" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-chart-pie"></i>  Thống kê doanh thu</a><br><br>
         </div>
     </nav>
 
@@ -202,12 +202,12 @@ a:focus, a:hover {
 						                <c:choose>
 						                	<c:when test="${l.isSanphamhot() == true }">
 							                	<td>
-								                	<a href="AdminSanPhamController?suaSpHot=${l.getMasanpham() }&suathanh=0" style="font-size: 18px; font-weight: 600; color: var(--primary-color); cursor: pointer;"><i class="fa-regular fa-square-check"></i></a>
+								                	<a href="AdminSanPham?suaSpHot=${l.getMasanpham() }&suathanh=0" style="font-size: 18px; font-weight: 600; color: var(--primary-color); cursor: pointer;"><i class="fa-regular fa-square-check"></i></a>
 								                </td>
 						                	</c:when>
 						                	<c:otherwise>
 						                		<td>
-								                	<a href="AdminSanPhamController?suaSpHot=${l.getMasanpham() }&suathanh=1" style="font-size: 18px; font-weight: 600; color: var(--primary-color); cursor: pointer;" ><i class="fa-regular fa-square"></i></a>
+								                	<a href="AdminSanPham?suaSpHot=${l.getMasanpham() }&suathanh=1" style="font-size: 18px; font-weight: 600; color: var(--primary-color); cursor: pointer;" ><i class="fa-regular fa-square"></i></a>
 								                </td>
 						                	</c:otherwise>
 						                </c:choose>
@@ -215,7 +215,7 @@ a:focus, a:hover {
 						                	<a href="AdminNhapSanPhamMoi?msp=${l.getMasanpham() }&btnnhapcu=1" style="font-size: 18px; font-weight: 600; color: var(--primary-color); cursor: pointer;"><i class="fa-solid fa-truck-fast"></i></a>
 						                </td>
 						                <td>
-						                	<a href="AdminSuaSanPhamController?msp=${l.getMasanpham() }" style="font-size: 18px; font-weight: 600; color: var(--primary-color); cursor: pointer;"><i class="fa-solid fa-pen-to-square"></i></a>
+						                	<a href="AdminSuaSanPham?msp=${l.getMasanpham() }" style="font-size: 18px; font-weight: 600; color: var(--primary-color); cursor: pointer;"><i class="fa-solid fa-pen-to-square"></i></a>
 						                </td>
 						                <td>
 						                	<a style="font-size: 18px; font-weight: 600; color: var(--primary-color); cursor: pointer;" data-toggle="modal" data-target="#modalxoa${l.getMasanpham() }"><i class="fa-solid fa-trash"></i></a>
@@ -231,7 +231,7 @@ a:focus, a:hover {
 									      </div>
 									      <div class="modal-body text-center">
 									          <p><span style="color: red;">Lưu ý:</span> Nếu bạn đồng ý xóa, đồng nghĩa với việc sản phẩm này sẽ bị xóa.</p>
-									        <form action="AdminSanPhamController" style="font-size: 20px;">
+									        <form action="AdminSanPham" style="font-size: 20px;">
 									        <p style="width: 120px; display: inline-block;font-weight: bold; font-size: 20px;">Mã SP <span style="color: red;">*</span></p> <input style="width: 260px; height: 30px;" type="text" name="masanpham" value="${l.getMasanpham() }" required="required" disabled="disabled"> <br>
 									          <p style="width: 120px; display: inline-block;font-weight: bold;font-size: 20px;">Tên SP <span style="color: red;">*</span></p> <input style="width: 260px; height: 30px;" type="text" name="tensanpham" value="${l.getTensanpham() }" required="required" disabled="disabled"> <br>
 									          <button class=" btn-lg" name="btnxoa" value="${l.getMasanpham() }" style="background-color: var(--primary-color); color: white;font-weight: bold; border: none;">Có</button>
