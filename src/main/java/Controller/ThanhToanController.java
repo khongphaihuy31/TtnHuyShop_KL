@@ -66,6 +66,7 @@ public class ThanhToanController extends HttpServlet {
 			}
 			
 			
+			
 			GioHangBo sp =  new GioHangBo();
 			if(session.getAttribute("dn")!= null && request.getParameter("maaodesign") == null) {
 				String dsMaGioChon = request.getParameter("dsMaGioChon");
@@ -136,6 +137,7 @@ public class ThanhToanController extends HttpServlet {
 				String maaodesign = request.getParameter("maaodesign");
 				String anhdesign = request.getParameter("anhdesign");
 				String maumua =  request.getParameter("maumua");
+				System.out.println(maumua);
 				String sizemua =  request.getParameter("sizemua");
 				String anhTheoMau =  request.getParameter("anhTheoMau");
 				long soluongmua = Long.parseLong(request.getParameter("soluongmua"));

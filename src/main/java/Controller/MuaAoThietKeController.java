@@ -39,15 +39,17 @@ public class MuaAoThietKeController extends HttpServlet {
 		DiskFileItemFactory fileItemFactory = new DiskFileItemFactory();
 		ServletFileUpload upload = new ServletFileUpload(fileItemFactory);
 		try {
-				
 //				String maumua = request.getParameter("mau");
 //				String sizemua = request.getParameter("size");
 //				String maaodesign = request.getParameter("maaodesign");
 //				String soluongmua = request.getParameter("soluongmua");
 //				String anhdesign = request.getParameter("soluongmua");
 				
+			request.setCharacterEncoding("utf-8");
+			response.setCharacterEncoding("utf-8");
 				//Thêm sản phẩm , upload file
 				String maumua = null ;
+				String maumua1 = null ;
 				String sizemua = null;
 				String maaodesign = null;
 				String soluongmua = null;
@@ -67,8 +69,10 @@ public class MuaAoThietKeController extends HttpServlet {
 							if (!dir.exists()) {//nếu ko có thư mục thì tạo ra
 								dir.mkdir();
 							}
+							
 							String fileImg = dirUrl + File.separator + nameimg;
 							File file = new File(fileImg);//tạo file
+							
 							try {
 								fileItem.write(file);//lưu file
 								anhdesign = "anhDesign/"+nameimg;
@@ -80,19 +84,20 @@ public class MuaAoThietKeController extends HttpServlet {
 					 {
 						String tentk=fileItem.getFieldName();
 						if(tentk.equals("mau")) {
-							maumua = fileItem.getString("UTF-8");
+							maumua = fileItem.getString("utf-8");
+							maumua1 = fileItem.getString();
 						}
 						if(tentk.equals("size")) {
-							sizemua = fileItem.getString("UTF-8");
+							sizemua = fileItem.getString();
 						}
 						if(tentk.equals("maaodesign")) {
-							maaodesign = fileItem.getString("UTF-8");
+							maaodesign = fileItem.getString();
 						}
 						if(tentk.equals("soluongmua")) {
-							soluongmua = fileItem.getString("UTF-8");
+							soluongmua = fileItem.getString();
 						}
 						if(tentk.equals("anhTheoMau")) {
-							anhTheoMau = fileItem.getString("UTF-8");
+							anhTheoMau = fileItem.getString();
 						}
 					}
 				}
@@ -113,7 +118,7 @@ public class MuaAoThietKeController extends HttpServlet {
 				}
 //				AdminSanPhamBo spbo = new AdminSanPhamBo();
 //				spbo.themSanPham(tensanpham, anh, giacu1, giamoi1, soluongdaban1, motasanpham, chitietsanpham, maloai1, mathuonghieu1, madanhmuc1);
-				response.sendRedirect("ThanhToanController?maumua="+maumua+"&sizemua="+sizemua+"&maaodesign="+maaodesign+"&soluongmua="+soluongmua+"&anhdesign="+anhdesign+"&anhTheoMau="+anhTheoMau);
+				response.sendRedirect("ThanhToanController?maumua="+maumua1+"&sizemua="+sizemua+"&maaodesign="+maaodesign+"&soluongmua="+soluongmua+"&anhdesign="+anhdesign+"&anhTheoMau="+anhTheoMau);
 				return;
 			
 		} catch (Exception e) {
