@@ -110,15 +110,22 @@ public class AdminXacNhanController extends HttpServlet {
 				request.setAttribute("dsSPChuaXacNhan", dsSPChuaXacNhan);
 			}
 			
+			if(request.getParameter("btnTimKiem1")!=null) {
+				request.setAttribute("ngayDatCheck", request.getParameter("ngaySQL"));
+			}
+			
 			ArrayList<Long> dsMaKhachHangTimKiem = new ArrayList<Long>();
 			String btnTimKiem = request.getParameter("btnTimKiem");
 			if(btnTimKiem != null) {
 				String date = request.getParameter("date");
 				String ngaydat = "";
+				String ngaySQL ="";
 				if(date.equals("")==false) {
 					String ngayChon[] = date.split("/");
 					ngaydat = ngayChon[1]+"-"+ngayChon[0]+"-"+ngayChon[2];
-					request.setAttribute("ngaydat", ngayChon[2]+"-"+ngayChon[0]+"-"+ngayChon[1]);
+					System.out.println(ngaydat);
+					ngaySQL = ngayChon[2]+"-"+ngayChon[0]+"-"+ngayChon[1];
+					request.setAttribute("ngayDatCheck", ngayChon[2]+"-"+ngayChon[0]+"-"+ngayChon[1]);
 				}
 				String tenkhachhang = request.getParameter("tenkhachhang");
 				AdminXacNhanBo adminxnbo = new AdminXacNhanBo();
@@ -144,7 +151,7 @@ public class AdminXacNhanController extends HttpServlet {
 							response.sendRedirect("AdminXacNhan");
 							return;
 						}else {
-							response.sendRedirect("AdminXacNhan?date="+ngaydat);
+							response.sendRedirect("AdminXacNhan?tenkhachhang=&sodienthoai=&date="+ngaydat+"&ngaySQL="+ngaySQL+"&btnTimKiem1=1");
 							return;
 						}
 					}

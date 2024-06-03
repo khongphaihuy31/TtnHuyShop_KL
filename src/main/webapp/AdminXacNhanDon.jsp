@@ -173,214 +173,638 @@ a:focus, a:hover {
         </div>
         <div class="w3-row-padding w3-margin-bottom">
         	<c:choose>
-        		<c:when test="${param.btnTimKiem != null}">
-		        	<c:choose>
-						<c:when test="${dsMaKhachHangTimKiem.size()!=0 }">
-							<c:forEach items="${dsMaKhachHangTimKiem }" var="mkh">
-								<c:forEach items="${dshdchoxacnhan }" var="hdcb">
-							        <c:if test="${hdcb.getMakhachhang()==mkh}">
-							        	<c:forEach items="${dskhachhang }" var="kh">
-											<c:if test="${kh.getMakhachhang() ==  hdcb.getMakhachhang()}">
-												<div style="border: 2px solid #4dcdcf; border-radius: 10px;width: 100%; padding: 10px 20px; margin-top: 20px; background-color: #fff;">
-											        <div style="display: flex; width: 100%; justify-content: space-around;">
-											            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold;">Mã hóa đơn: <span style="color: black; font-weight: 500;">${hdcb.getMahoadon() }</span></span> 
-											            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold;">Tổng tiền: <span style="color: black; font-weight: 500;"><fmt:setLocale value="vi_VN" />
-														<fmt:formatNumber value="${hdcb.getTongdongia() }"
-															type="currency" /></span></span>
-											            <div>
-												            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold;">Thanh toán: </span> 
-												            <c:choose>
-												            	<c:when test="${hdcb.isPhuongthucthanhtoan() == true }">
-														            <span style="color: black; font-weight: 500;">Thanh toán online </span>
-												            	</c:when>
-												            	<c:otherwise>
-												            		<span style="color: black; font-weight: 500;">Thanh toán tiền mặt </span>
-												            	</c:otherwise>
-												            </c:choose>
-												            <c:choose>
-												            	<c:when test="${hdcb.isThanhtoan() == true }">
-														            <span style=" color: rgb(65, 200, 65);">(Đã thanh toán)</span>
-												            	</c:when>
-												            	<c:otherwise>
-												            		<span style=" color: red;">(Chưa thanh toán)</span>
-												            	</c:otherwise>
-												            </c:choose>
-												            
-											            </div>
-											        </div>
-											        <div style="display: flex; width: 100%; justify-content: space-around;">
-											            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold; ">Họ tên: <span style="color: black; font-weight: 500;">${kh.getHoten() }</span></span> 
-											            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold; width: 30%;">Số điện thoại: <span style="color: black; font-weight: 500;">${kh.getSodienthoai() }</span></span> 
-											        	<span style="color: #4dcdcf; font-size: 15px; font-weight: bold; width: 30%;">Email: <span style="color: black; font-weight: 500;">${kh.getEmail() }</span></span>
-											        </div>
-											        <div style="display: flex; width: 100%; justify-content: space-around;">
-											            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold; ">Địa chỉ nhận hàng: <span style="color: black; font-weight: 500;">${hdcb.getDiachinhanhang() }</span></span> 
-											            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold; width: 30%;">Ngày đặt: <span style="color: black; font-weight: 500;">${hdcb.getNgaydat() }</span></span> 
-											        </div>
-											        <table class="table" style="width: 100%; margin-top: 10px; margin-bottom: 0;"  cellpadding="2" cellspacing="2">
-											            <thead>
-											                <tr>
-											                   <th style="text-align: center; border-bottom: 2px solid var(--primary-color);" colspan="2">Tên sản phẩm</th>
-											                   <th style="text-align: center; border-bottom: 2px solid var(--primary-color);">Màu</th>
-											                   <th style="text-align: center; border-bottom: 2px solid var(--primary-color);">Size</th>
-											                   <th style="text-align: center; border-bottom: 2px solid var(--primary-color);">Giá</th>
-											                   <th style="text-align: center; border-bottom: 2px solid var(--primary-color);">SL</th>
-											                   <th style="text-align: center; border-bottom: 2px solid var(--primary-color);">Thành tiền</th>
-											                </tr>
-											            </thead>
-											            <tbody>
-											            	<c:forEach items="${dsSPChoXacNhan }" var="dm" varStatus="index">
-												                <c:if test="${dm.getMahoadon() == hdcb.getMahoadon() }">
+        		<c:when test="${param.btnTimKiem != null || param.btnTimKiem1 != null}">
+	        		<c:choose>
+	        			<c:when test="${param.date!='' }">
+	        				<c:choose>
+	        					<c:when test="${param.tenkhachhang== '' && param.sodienthoai=='' }">
+	        						<c:choose>
+										<c:when test="${dsSPChoXacNhan.size()!=0 }">
+											<c:forEach items="${dshdchoxacnhan }" var="hdcb">
+										        <c:if test="${ngayDatCheck==hdcb.getNgaydat() }">
+										        	<c:forEach items="${dskhachhang }" var="kh">
+														<c:if test="${kh.getMakhachhang() ==  hdcb.getMakhachhang()}">
+															<div style="border: 2px solid #4dcdcf; border-radius: 10px;width: 100%; padding: 10px 20px; margin-top: 20px; background-color: #fff;">
+														        <div style="display: flex; width: 100%; justify-content: space-around;">
+														            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold;">Mã hóa đơn: <span style="color: black; font-weight: 500;">${hdcb.getMahoadon() }</span></span> 
+														            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold;">Tổng tiền: <span style="color: black; font-weight: 500;"><fmt:setLocale value="vi_VN" />
+																	<fmt:formatNumber value="${hdcb.getTongdongia() }"
+																		type="currency" /></span></span>
+														            <div>
+															            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold;">Thanh toán: </span> 
+															            <c:choose>
+															            	<c:when test="${hdcb.isPhuongthucthanhtoan() == true }">
+																	            <span style="color: black; font-weight: 500;">Thanh toán online </span>
+															            	</c:when>
+															            	<c:otherwise>
+															            		<span style="color: black; font-weight: 500;">Thanh toán tiền mặt </span>
+															            	</c:otherwise>
+															            </c:choose>
+															            <c:choose>
+															            	<c:when test="${hdcb.isThanhtoan() == true }">
+																	            <span style=" color: rgb(65, 200, 65);">(Đã thanh toán)</span>
+															            	</c:when>
+															            	<c:otherwise>
+															            		<span style=" color: red;">(Chưa thanh toán)</span>
+															            	</c:otherwise>
+															            </c:choose>
+															            
+														            </div>
+														        </div>
+														        <div style="display: flex; width: 100%; justify-content: space-around;">
+														            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold; ">Họ tên: <span style="color: black; font-weight: 500;">${kh.getHoten() }</span></span> 
+														            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold; width: 30%;">Số điện thoại: <span style="color: black; font-weight: 500;">${kh.getSodienthoai() }</span></span> 
+														        	<span style="color: #4dcdcf; font-size: 15px; font-weight: bold; width: 30%;">Email: <span style="color: black; font-weight: 500;">${kh.getEmail() }</span></span>
+														        </div>
+														        <div style="display: flex; width: 100%; justify-content: space-around;">
+														            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold; ">Địa chỉ nhận hàng: <span style="color: black; font-weight: 500;">${hdcb.getDiachinhanhang() }</span></span> 
+														            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold; width: 30%;">Ngày đặt: <span style="color: black; font-weight: 500;">${hdcb.getNgaydat() }</span></span> 
+														        </div>
+														        <table class="table" style="width: 100%; margin-top: 10px; margin-bottom: 0;"  cellpadding="2" cellspacing="2">
+														            <thead>
+														                <tr>
+														                   <th style="text-align: center; border-bottom: 2px solid var(--primary-color);" colspan="2">Tên sản phẩm</th>
+														                   <th style="text-align: center; border-bottom: 2px solid var(--primary-color);">Màu</th>
+														                   <th style="text-align: center; border-bottom: 2px solid var(--primary-color);">Size</th>
+														                   <th style="text-align: center; border-bottom: 2px solid var(--primary-color);">Giá</th>
+														                   <th style="text-align: center; border-bottom: 2px solid var(--primary-color);">SL</th>
+														                   <th style="text-align: center; border-bottom: 2px solid var(--primary-color);">Thành tiền</th>
+														                </tr>
+														            </thead>
+														            <tbody>
+														            	<c:forEach items="${dsSPChoXacNhan }" var="dm" varStatus="index">
+															                <c:if test="${dm.getMahoadon() == hdcb.getMahoadon() }">
+																                <tr>
+																                    <td style="width: 80px;">
+																                    	<c:choose>
+																							<c:when test="${dm.getAnhthietke() == null }">
+																								<div>
+																									<img style="width: 100%; display: inline-block;"
+																										alt="" src="${dm.getAnhsanpham()}">
+																								</div>
+																							</c:when>
+																							<c:otherwise>
+																								<div 
+																									style="position: relative; height: fit-content; text-align: center;box-shadow: 2px 1px 5px #ccc">
+																									<img style="width: 100%; display: inline-block;"
+																										alt="" src="${dm.getAnhsanpham()}">
+																									<div
+																										style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: flex; justify-content: center; align-items: center; "
+																										class="preview-img${index.index }">
+																										<img style="width: 100%" class="previewImgDesign"
+																											src="${dm.getAnhthietke() }" alt="preview-img">
+																									</div>
+																								</div>
+																								<a style="margin-top: 15px; cursor: pointer;" onclick="saveImage('preview-img${index.index}','save-img${index.index}')">Download</a>
+																							</c:otherwise>
+																						</c:choose>
+																                    </td>
+																                    <td>
+																                    	<h4
+																				style="font-size: 2rem; line-height: 2.5rem; font-weight: 500; height: 5rem; overflow: hidden; display: block; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2;">${dm.getTensanpham() }</h4>
+																                    </td>
+																                    <td> 
+																                    	<h4 style="font-size: 2rem; text-align: center;">
+																							${dm.getMausanpham()}
+																						</h4>
+																                    </td>
+																                    <td>
+																	                   	<h4 style="font-size: 2rem; text-align: center;">
+																							${dm.getSizesanpham() }
+																						</h4>
+																                   </td>
+																                   <td>
+																				   		<h4 style="font-size: 2rem;">
+																							<fmt:setLocale value="vi_VN" />
+																							<fmt:formatNumber value="${dm.getGiasanpham()}"
+																								type="currency" />
+																						</h4>
+																				   </td>
+																                   <td>
+																                   		<h4 style="font-size: 2rem; text-align: center;">${dm.getSoluongmua() }</h4>
+																                   </td>
+																                   <td>
+																                   		<h4 style="font-size: 2rem; text-align: center;">
+																							<fmt:setLocale value="vi_VN" />
+																							<fmt:formatNumber value="${dm.getThanhtien()}"
+																								type="currency" />
+																						</h4>
+																                   </td>
+																                </tr>
+																               <!--  <tr >
+																                    <td> 
+																                    	<p style="font-size: 1.6rem;">
+																						Màu: <b style="font-size: 1.8rem;">${dm.getMausanpham()}</b>
+																						</p>
+																                    </td>
+																                   <td>
+																	                   	<p style="font-size: 1.6rem;">
+																							Size: <b style="font-size: 1.8rem;">${dm.getSizesanpham() }</b>
+																						</p>
+																                   </td>
+																                </tr>-->
+															                </c:if>
+														            	</c:forEach>
+														            </tbody>
+														        </table>
+														        <div class="w3-row-padding w3-margin-top">
+														        	<c:if test="${hdcb.getMatrangthai() ==1 }">
+															           <div class="w3-quarter">
+																        <a href="AdminXacNhan?xacNhanDon=${hdcb.getMahoadon() }" style="text-decoration: none;">
+															                <div style="text-align: center;border-radius: 10px;" class="w3-container w3-orange w3-text-white">
+															                    <h4>Xác nhận đơn</h4>
+															                </div>
+																        </a>
+															           </div>
+														        	</c:if>
+														        	<c:if test="${hdcb.getMatrangthai() ==2 }">
+															           <div class="w3-quarter">
+															            <a href="AdminXacNhan?dangGiaoDon=${hdcb.getMahoadon() }" style="text-decoration: none;">
+															                <div style="text-align: center;border-radius: 10px;" class="w3-container w3-blue">
+															                    <h4>Chuẩn bị xong</h4>
+															                </div>
+																        </a>
+															           </div>
+														        	</c:if>
+														           <c:if test="${hdcb.getMatrangthai() ==3 }">
+															           <div class="w3-quarter">
+															            <a href="AdminXacNhan?daGiaoDon=${hdcb.getMahoadon() }" style="text-decoration: none;">
+															                <div style="text-align: center; border-radius: 10px;" class="w3-container w3-teal">
+															                    <h4>Đã giao</h4>
+															                </div>
+																        </a>
+															           </div>
+														        	</c:if>
+														           <div class="w3-quarter">
+														            <a href="AdminXacNhan?huyDon=${hdcb.getMahoadon() }" style="text-decoration: none;">
+														                <div style="text-align: center; border-radius: 10px;" class="w3-container w3-red w3-text-white">
+														                    <h4>Hủy đơn</h4>
+														                </div>
+															        </a>
+														           </div>
+														       </div>
+														    </div>
+														</c:if>
+													</c:forEach>
+										        </c:if>
+											</c:forEach>
+											<script type="text/javascript">
+										      const saveImage = (a, b) => {
+										          previewImg = document.querySelector("."+a+" img"),
+										          saveImgBtn = document.querySelector("."+b);
+										
+										          let brightness = "100", saturation = "100", inversion = "0", grayscale = "0";
+										          let rotate = 0, flipHorizontal = 1, flipVertical = 1;
+										
+										          const canvas = document.createElement("canvas");
+										          const ctx = canvas.getContext("2d");
+										          canvas.width = previewImg.naturalWidth;
+										          canvas.height = previewImg.naturalHeight;
+										          
+										          ctx.filter = `brightness(${brightness}%) saturate(${saturation}%) invert(${inversion}%) grayscale(${grayscale}%)`;
+										          ctx.translate(canvas.width / 2, canvas.height / 2);
+										          if(rotate !== 0) {
+										              ctx.rotate(rotate * Math.PI / 180);
+										          }
+										          ctx.scale(flipHorizontal, flipVertical);
+										          ctx.drawImage(previewImg, -canvas.width / 2, -canvas.height / 2, canvas.width, canvas.height);
+										          
+										          const link = document.createElement("a");
+										          link.download = "image.jpg";
+										          link.href = canvas.toDataURL();
+										          link.click();
+										        }
+										        // saveImgBtn.addEventListener("click", saveImage);
+										    </script>
+										</c:when>
+										<c:otherwise>
+											<div class="row" style="margin-top: 10px; margin-left: 10px">
+												<h3>Không tìm thấy đơn hàng</h3>
+											</div>
+										</c:otherwise>
+									</c:choose>
+	        					</c:when>
+	        					<c:otherwise>
+						        	<c:choose>
+										<c:when test="${dsMaKhachHangTimKiem.size()!=0 }">
+											<c:forEach items="${dsMaKhachHangTimKiem }" var="mkh">
+												<c:forEach items="${dshdchoxacnhan }" var="hdcb">
+											        <c:if test="${hdcb.getMakhachhang()==mkh && ngayDatCheck==hdcb.getNgaydat() }">
+											        	<c:forEach items="${dskhachhang }" var="kh">
+															<c:if test="${kh.getMakhachhang() ==  hdcb.getMakhachhang()}">
+																<div style="border: 2px solid #4dcdcf; border-radius: 10px;width: 100%; padding: 10px 20px; margin-top: 20px; background-color: #fff;">
+															        <div style="display: flex; width: 100%; justify-content: space-around;">
+															            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold;">Mã hóa đơn: <span style="color: black; font-weight: 500;">${hdcb.getMahoadon() }</span></span> 
+															            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold;">Tổng tiền: <span style="color: black; font-weight: 500;"><fmt:setLocale value="vi_VN" />
+																		<fmt:formatNumber value="${hdcb.getTongdongia() }"
+																			type="currency" /></span></span>
+															            <div>
+																            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold;">Thanh toán: </span> 
+																            <c:choose>
+																            	<c:when test="${hdcb.isPhuongthucthanhtoan() == true }">
+																		            <span style="color: black; font-weight: 500;">Thanh toán online </span>
+																            	</c:when>
+																            	<c:otherwise>
+																            		<span style="color: black; font-weight: 500;">Thanh toán tiền mặt </span>
+																            	</c:otherwise>
+																            </c:choose>
+																            <c:choose>
+																            	<c:when test="${hdcb.isThanhtoan() == true }">
+																		            <span style=" color: rgb(65, 200, 65);">(Đã thanh toán)</span>
+																            	</c:when>
+																            	<c:otherwise>
+																            		<span style=" color: red;">(Chưa thanh toán)</span>
+																            	</c:otherwise>
+																            </c:choose>
+																            
+															            </div>
+															        </div>
+															        <div style="display: flex; width: 100%; justify-content: space-around;">
+															            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold; ">Họ tên: <span style="color: black; font-weight: 500;">${kh.getHoten() }</span></span> 
+															            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold; width: 30%;">Số điện thoại: <span style="color: black; font-weight: 500;">${kh.getSodienthoai() }</span></span> 
+															        	<span style="color: #4dcdcf; font-size: 15px; font-weight: bold; width: 30%;">Email: <span style="color: black; font-weight: 500;">${kh.getEmail() }</span></span>
+															        </div>
+															        <div style="display: flex; width: 100%; justify-content: space-around;">
+															            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold; ">Địa chỉ nhận hàng: <span style="color: black; font-weight: 500;">${hdcb.getDiachinhanhang() }</span></span> 
+															            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold; width: 30%;">Ngày đặt: <span style="color: black; font-weight: 500;">${hdcb.getNgaydat() }</span></span> 
+															        </div>
+															        <table class="table" style="width: 100%; margin-top: 10px; margin-bottom: 0;"  cellpadding="2" cellspacing="2">
+															            <thead>
+															                <tr>
+															                   <th style="text-align: center; border-bottom: 2px solid var(--primary-color);" colspan="2">Tên sản phẩm</th>
+															                   <th style="text-align: center; border-bottom: 2px solid var(--primary-color);">Màu</th>
+															                   <th style="text-align: center; border-bottom: 2px solid var(--primary-color);">Size</th>
+															                   <th style="text-align: center; border-bottom: 2px solid var(--primary-color);">Giá</th>
+															                   <th style="text-align: center; border-bottom: 2px solid var(--primary-color);">SL</th>
+															                   <th style="text-align: center; border-bottom: 2px solid var(--primary-color);">Thành tiền</th>
+															                </tr>
+															            </thead>
+															            <tbody>
+															            	<c:forEach items="${dsSPChoXacNhan }" var="dm" varStatus="index">
+																                <c:if test="${dm.getMahoadon() == hdcb.getMahoadon() }">
+																	                <tr>
+																	                    <td style="width: 80px;">
+																	                    	<c:choose>
+																								<c:when test="${dm.getAnhthietke() == null }">
+																									<div>
+																										<img style="width: 100%; display: inline-block;"
+																											alt="" src="${dm.getAnhsanpham()}">
+																									</div>
+																								</c:when>
+																								<c:otherwise>
+																									<div 
+																										style="position: relative; height: fit-content; text-align: center;box-shadow: 2px 1px 5px #ccc">
+																										<img style="width: 100%; display: inline-block;"
+																											alt="" src="${dm.getAnhsanpham()}">
+																										<div
+																											style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: flex; justify-content: center; align-items: center; "
+																											class="preview-img${index.index }">
+																											<img style="width: 100%" class="previewImgDesign"
+																												src="${dm.getAnhthietke() }" alt="preview-img">
+																										</div>
+																									</div>
+																									<a style="margin-top: 15px; cursor: pointer;" onclick="saveImage('preview-img${index.index}','save-img${index.index}')">Download</a>
+																								</c:otherwise>
+																							</c:choose>
+																	                    </td>
+																	                    <td>
+																	                    	<h4
+																					style="font-size: 2rem; line-height: 2.5rem; font-weight: 500; height: 5rem; overflow: hidden; display: block; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2;">${dm.getTensanpham() }</h4>
+																	                    </td>
+																	                    <td> 
+																	                    	<h4 style="font-size: 2rem; text-align: center;">
+																								${dm.getMausanpham()}
+																							</h4>
+																	                    </td>
+																	                    <td>
+																		                   	<h4 style="font-size: 2rem; text-align: center;">
+																								${dm.getSizesanpham() }
+																							</h4>
+																	                   </td>
+																	                   <td>
+																					   		<h4 style="font-size: 2rem;">
+																								<fmt:setLocale value="vi_VN" />
+																								<fmt:formatNumber value="${dm.getGiasanpham()}"
+																									type="currency" />
+																							</h4>
+																					   </td>
+																	                   <td>
+																	                   		<h4 style="font-size: 2rem; text-align: center;">${dm.getSoluongmua() }</h4>
+																	                   </td>
+																	                   <td>
+																	                   		<h4 style="font-size: 2rem; text-align: center;">
+																								<fmt:setLocale value="vi_VN" />
+																								<fmt:formatNumber value="${dm.getThanhtien()}"
+																									type="currency" />
+																							</h4>
+																	                   </td>
+																	                </tr>
+																	               <!--  <tr >
+																	                    <td> 
+																	                    	<p style="font-size: 1.6rem;">
+																							Màu: <b style="font-size: 1.8rem;">${dm.getMausanpham()}</b>
+																							</p>
+																	                    </td>
+																	                   <td>
+																		                   	<p style="font-size: 1.6rem;">
+																								Size: <b style="font-size: 1.8rem;">${dm.getSizesanpham() }</b>
+																							</p>
+																	                   </td>
+																	                </tr>-->
+																                </c:if>
+															            	</c:forEach>
+															            </tbody>
+															        </table>
+															        <div class="w3-row-padding w3-margin-top">
+															        	<c:if test="${hdcb.getMatrangthai() ==1 }">
+																           <div class="w3-quarter">
+																	        <a href="AdminXacNhan?xacNhanDon=${hdcb.getMahoadon() }" style="text-decoration: none;">
+																                <div style="text-align: center;border-radius: 10px;" class="w3-container w3-orange w3-text-white">
+																                    <h4>Xác nhận đơn</h4>
+																                </div>
+																	        </a>
+																           </div>
+															        	</c:if>
+															        	<c:if test="${hdcb.getMatrangthai() ==2 }">
+																           <div class="w3-quarter">
+																            <a href="AdminXacNhan?dangGiaoDon=${hdcb.getMahoadon() }" style="text-decoration: none;">
+																                <div style="text-align: center;border-radius: 10px;" class="w3-container w3-blue">
+																                    <h4>Chuẩn bị xong</h4>
+																                </div>
+																	        </a>
+																           </div>
+															        	</c:if>
+															           <c:if test="${hdcb.getMatrangthai() ==3 }">
+																           <div class="w3-quarter">
+																            <a href="AdminXacNhan?daGiaoDon=${hdcb.getMahoadon() }" style="text-decoration: none;">
+																                <div style="text-align: center; border-radius: 10px;" class="w3-container w3-teal">
+																                    <h4>Đã giao</h4>
+																                </div>
+																	        </a>
+																           </div>
+															        	</c:if>
+															           <div class="w3-quarter">
+															            <a href="AdminXacNhan?huyDon=${hdcb.getMahoadon() }" style="text-decoration: none;">
+															                <div style="text-align: center; border-radius: 10px;" class="w3-container w3-red w3-text-white">
+															                    <h4>Hủy đơn</h4>
+															                </div>
+																        </a>
+															           </div>
+															       </div>
+															    </div>
+															</c:if>
+														</c:forEach>
+											        </c:if>
+												</c:forEach>
+											</c:forEach>
+											<script type="text/javascript">
+										      const saveImage = (a, b) => {
+										          previewImg = document.querySelector("."+a+" img"),
+										          saveImgBtn = document.querySelector("."+b);
+										
+										          let brightness = "100", saturation = "100", inversion = "0", grayscale = "0";
+										          let rotate = 0, flipHorizontal = 1, flipVertical = 1;
+										
+										          const canvas = document.createElement("canvas");
+										          const ctx = canvas.getContext("2d");
+										          canvas.width = previewImg.naturalWidth;
+										          canvas.height = previewImg.naturalHeight;
+										          
+										          ctx.filter = `brightness(${brightness}%) saturate(${saturation}%) invert(${inversion}%) grayscale(${grayscale}%)`;
+										          ctx.translate(canvas.width / 2, canvas.height / 2);
+										          if(rotate !== 0) {
+										              ctx.rotate(rotate * Math.PI / 180);
+										          }
+										          ctx.scale(flipHorizontal, flipVertical);
+										          ctx.drawImage(previewImg, -canvas.width / 2, -canvas.height / 2, canvas.width, canvas.height);
+										          
+										          const link = document.createElement("a");
+										          link.download = "image.jpg";
+										          link.href = canvas.toDataURL();
+										          link.click();
+										        }
+										        // saveImgBtn.addEventListener("click", saveImage);
+										    </script>
+										</c:when>
+										<c:otherwise>
+											<div class="row" style="margin-top: 10px; margin-left: 10px">
+												<h3>Không tìm thấy đơn hàng</h3>
+											</div>
+										</c:otherwise>
+									</c:choose>
+	        					</c:otherwise>
+	        				</c:choose>
+	        			</c:when>
+	        			<c:otherwise>
+	        				<c:choose>
+								<c:when test="${dsMaKhachHangTimKiem.size()!=0 }">
+									<c:forEach items="${dsMaKhachHangTimKiem }" var="mkh">
+										<c:forEach items="${dshdchoxacnhan }" var="hdcb">
+									        <c:if test="${hdcb.getMakhachhang()==mkh }">
+									        	<c:forEach items="${dskhachhang }" var="kh">
+													<c:if test="${kh.getMakhachhang() ==  hdcb.getMakhachhang()}">
+														<div style="border: 2px solid #4dcdcf; border-radius: 10px;width: 100%; padding: 10px 20px; margin-top: 20px; background-color: #fff;">
+													        <div style="display: flex; width: 100%; justify-content: space-around;">
+													            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold;">Mã hóa đơn: <span style="color: black; font-weight: 500;">${hdcb.getMahoadon() }</span></span> 
+													            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold;">Tổng tiền: <span style="color: black; font-weight: 500;"><fmt:setLocale value="vi_VN" />
+																<fmt:formatNumber value="${hdcb.getTongdongia() }"
+																	type="currency" /></span></span>
+													            <div>
+														            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold;">Thanh toán: </span> 
+														            <c:choose>
+														            	<c:when test="${hdcb.isPhuongthucthanhtoan() == true }">
+																            <span style="color: black; font-weight: 500;">Thanh toán online </span>
+														            	</c:when>
+														            	<c:otherwise>
+														            		<span style="color: black; font-weight: 500;">Thanh toán tiền mặt </span>
+														            	</c:otherwise>
+														            </c:choose>
+														            <c:choose>
+														            	<c:when test="${hdcb.isThanhtoan() == true }">
+																            <span style=" color: rgb(65, 200, 65);">(Đã thanh toán)</span>
+														            	</c:when>
+														            	<c:otherwise>
+														            		<span style=" color: red;">(Chưa thanh toán)</span>
+														            	</c:otherwise>
+														            </c:choose>
+														            
+													            </div>
+													        </div>
+													        <div style="display: flex; width: 100%; justify-content: space-around;">
+													            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold; ">Họ tên: <span style="color: black; font-weight: 500;">${kh.getHoten() }</span></span> 
+													            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold; width: 30%;">Số điện thoại: <span style="color: black; font-weight: 500;">${kh.getSodienthoai() }</span></span> 
+													        	<span style="color: #4dcdcf; font-size: 15px; font-weight: bold; width: 30%;">Email: <span style="color: black; font-weight: 500;">${kh.getEmail() }</span></span>
+													        </div>
+													        <div style="display: flex; width: 100%; justify-content: space-around;">
+													            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold; ">Địa chỉ nhận hàng: <span style="color: black; font-weight: 500;">${hdcb.getDiachinhanhang() }</span></span> 
+													            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold; width: 30%;">Ngày đặt: <span style="color: black; font-weight: 500;">${hdcb.getNgaydat() }</span></span> 
+													        </div>
+													        <table class="table" style="width: 100%; margin-top: 10px; margin-bottom: 0;"  cellpadding="2" cellspacing="2">
+													            <thead>
 													                <tr>
-													                    <td style="width: 80px;">
-													                    	<c:choose>
-																				<c:when test="${dm.getAnhthietke() == null }">
-																					<div>
-																						<img style="width: 100%; display: inline-block;"
-																							alt="" src="${dm.getAnhsanpham()}">
-																					</div>
-																				</c:when>
-																				<c:otherwise>
-																					<div 
-																						style="position: relative; height: fit-content; text-align: center;box-shadow: 2px 1px 5px #ccc">
-																						<img style="width: 100%; display: inline-block;"
-																							alt="" src="${dm.getAnhsanpham()}">
-																						<div
-																							style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: flex; justify-content: center; align-items: center; "
-																							class="preview-img${index.index }">
-																							<img style="width: 100%" class="previewImgDesign"
-																								src="${dm.getAnhthietke() }" alt="preview-img">
-																						</div>
-																					</div>
-																					<a style="margin-top: 15px; cursor: pointer;" onclick="saveImage('preview-img${index.index}','save-img${index.index}')">Download</a>
-																				</c:otherwise>
-																			</c:choose>
-													                    </td>
-													                    <td>
-													                    	<h4
-																	style="font-size: 2rem; line-height: 2.5rem; font-weight: 500; height: 5rem; overflow: hidden; display: block; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2;">${dm.getTensanpham() }</h4>
-													                    </td>
-													                    <td> 
-													                    	<h4 style="font-size: 2rem; text-align: center;">
-																				${dm.getMausanpham()}
-																			</h4>
-													                    </td>
-													                    <td>
-														                   	<h4 style="font-size: 2rem; text-align: center;">
-																				${dm.getSizesanpham() }
-																			</h4>
-													                   </td>
-													                   <td>
-																	   		<h4 style="font-size: 2rem;">
-																				<fmt:setLocale value="vi_VN" />
-																				<fmt:formatNumber value="${dm.getGiasanpham()}"
-																					type="currency" />
-																			</h4>
-																	   </td>
-													                   <td>
-													                   		<h4 style="font-size: 2rem; text-align: center;">${dm.getSoluongmua() }</h4>
-													                   </td>
-													                   <td>
-													                   		<h4 style="font-size: 2rem; text-align: center;">
-																				<fmt:setLocale value="vi_VN" />
-																				<fmt:formatNumber value="${dm.getThanhtien()}"
-																					type="currency" />
-																			</h4>
-													                   </td>
+													                   <th style="text-align: center; border-bottom: 2px solid var(--primary-color);" colspan="2">Tên sản phẩm</th>
+													                   <th style="text-align: center; border-bottom: 2px solid var(--primary-color);">Màu</th>
+													                   <th style="text-align: center; border-bottom: 2px solid var(--primary-color);">Size</th>
+													                   <th style="text-align: center; border-bottom: 2px solid var(--primary-color);">Giá</th>
+													                   <th style="text-align: center; border-bottom: 2px solid var(--primary-color);">SL</th>
+													                   <th style="text-align: center; border-bottom: 2px solid var(--primary-color);">Thành tiền</th>
 													                </tr>
-													               <!--  <tr >
-													                    <td> 
-													                    	<p style="font-size: 1.6rem;">
-																			Màu: <b style="font-size: 1.8rem;">${dm.getMausanpham()}</b>
-																			</p>
-													                    </td>
-													                   <td>
-														                   	<p style="font-size: 1.6rem;">
-																				Size: <b style="font-size: 1.8rem;">${dm.getSizesanpham() }</b>
-																			</p>
-													                   </td>
-													                </tr>-->
-												                </c:if>
-											            	</c:forEach>
-											            </tbody>
-											        </table>
-											        <div class="w3-row-padding w3-margin-top">
-											        	<c:if test="${hdcb.getMatrangthai() ==1 }">
-												           <div class="w3-quarter">
-													        <a href="AdminXacNhan?xacNhanDon=${hdcb.getMahoadon() }" style="text-decoration: none;">
-												                <div style="text-align: center;border-radius: 10px;" class="w3-container w3-orange w3-text-white">
-												                    <h4>Xác nhận đơn</h4>
-												                </div>
-													        </a>
-												           </div>
-											        	</c:if>
-											        	<c:if test="${hdcb.getMatrangthai() ==2 }">
-												           <div class="w3-quarter">
-												            <a href="AdminXacNhan?dangGiaoDon=${hdcb.getMahoadon() }" style="text-decoration: none;">
-												                <div style="text-align: center;border-radius: 10px;" class="w3-container w3-blue">
-												                    <h4>Chuẩn bị xong</h4>
-												                </div>
-													        </a>
-												           </div>
-											        	</c:if>
-											           <c:if test="${hdcb.getMatrangthai() ==3 }">
-												           <div class="w3-quarter">
-												            <a href="AdminXacNhan?daGiaoDon=${hdcb.getMahoadon() }" style="text-decoration: none;">
-												                <div style="text-align: center; border-radius: 10px;" class="w3-container w3-teal">
-												                    <h4>Đã giao</h4>
-												                </div>
-													        </a>
-												           </div>
-											        	</c:if>
-											           <div class="w3-quarter">
-											            <a href="AdminXacNhan?huyDon=${hdcb.getMahoadon() }" style="text-decoration: none;">
-											                <div style="text-align: center; border-radius: 10px;" class="w3-container w3-red w3-text-white">
-											                    <h4>Hủy đơn</h4>
-											                </div>
-												        </a>
-											           </div>
-											       </div>
-											    </div>
-											</c:if>
+													            </thead>
+													            <tbody>
+													            	<c:forEach items="${dsSPChoXacNhan }" var="dm" varStatus="index">
+														                <c:if test="${dm.getMahoadon() == hdcb.getMahoadon() }">
+															                <tr>
+															                    <td style="width: 80px;">
+															                    	<c:choose>
+																						<c:when test="${dm.getAnhthietke() == null }">
+																							<div>
+																								<img style="width: 100%; display: inline-block;"
+																									alt="" src="${dm.getAnhsanpham()}">
+																							</div>
+																						</c:when>
+																						<c:otherwise>
+																							<div 
+																								style="position: relative; height: fit-content; text-align: center;box-shadow: 2px 1px 5px #ccc">
+																								<img style="width: 100%; display: inline-block;"
+																									alt="" src="${dm.getAnhsanpham()}">
+																								<div
+																									style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: flex; justify-content: center; align-items: center; "
+																									class="preview-img${index.index }">
+																									<img style="width: 100%" class="previewImgDesign"
+																										src="${dm.getAnhthietke() }" alt="preview-img">
+																								</div>
+																							</div>
+																							<a style="margin-top: 15px; cursor: pointer;" onclick="saveImage('preview-img${index.index}','save-img${index.index}')">Download</a>
+																						</c:otherwise>
+																					</c:choose>
+															                    </td>
+															                    <td>
+															                    	<h4
+																			style="font-size: 2rem; line-height: 2.5rem; font-weight: 500; height: 5rem; overflow: hidden; display: block; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2;">${dm.getTensanpham() }</h4>
+															                    </td>
+															                    <td> 
+															                    	<h4 style="font-size: 2rem; text-align: center;">
+																						${dm.getMausanpham()}
+																					</h4>
+															                    </td>
+															                    <td>
+																                   	<h4 style="font-size: 2rem; text-align: center;">
+																						${dm.getSizesanpham() }
+																					</h4>
+															                   </td>
+															                   <td>
+																			   		<h4 style="font-size: 2rem;">
+																						<fmt:setLocale value="vi_VN" />
+																						<fmt:formatNumber value="${dm.getGiasanpham()}"
+																							type="currency" />
+																					</h4>
+																			   </td>
+															                   <td>
+															                   		<h4 style="font-size: 2rem; text-align: center;">${dm.getSoluongmua() }</h4>
+															                   </td>
+															                   <td>
+															                   		<h4 style="font-size: 2rem; text-align: center;">
+																						<fmt:setLocale value="vi_VN" />
+																						<fmt:formatNumber value="${dm.getThanhtien()}"
+																							type="currency" />
+																					</h4>
+															                   </td>
+															                </tr>
+															               <!--  <tr >
+															                    <td> 
+															                    	<p style="font-size: 1.6rem;">
+																					Màu: <b style="font-size: 1.8rem;">${dm.getMausanpham()}</b>
+																					</p>
+															                    </td>
+															                   <td>
+																                   	<p style="font-size: 1.6rem;">
+																						Size: <b style="font-size: 1.8rem;">${dm.getSizesanpham() }</b>
+																					</p>
+															                   </td>
+															                </tr>-->
+														                </c:if>
+													            	</c:forEach>
+													            </tbody>
+													        </table>
+													        <div class="w3-row-padding w3-margin-top">
+													        	<c:if test="${hdcb.getMatrangthai() ==1 }">
+														           <div class="w3-quarter">
+															        <a href="AdminXacNhan?xacNhanDon=${hdcb.getMahoadon() }" style="text-decoration: none;">
+														                <div style="text-align: center;border-radius: 10px;" class="w3-container w3-orange w3-text-white">
+														                    <h4>Xác nhận đơn</h4>
+														                </div>
+															        </a>
+														           </div>
+													        	</c:if>
+													        	<c:if test="${hdcb.getMatrangthai() ==2 }">
+														           <div class="w3-quarter">
+														            <a href="AdminXacNhan?dangGiaoDon=${hdcb.getMahoadon() }" style="text-decoration: none;">
+														                <div style="text-align: center;border-radius: 10px;" class="w3-container w3-blue">
+														                    <h4>Chuẩn bị xong</h4>
+														                </div>
+															        </a>
+														           </div>
+													        	</c:if>
+													           <c:if test="${hdcb.getMatrangthai() ==3 }">
+														           <div class="w3-quarter">
+														            <a href="AdminXacNhan?daGiaoDon=${hdcb.getMahoadon() }" style="text-decoration: none;">
+														                <div style="text-align: center; border-radius: 10px;" class="w3-container w3-teal">
+														                    <h4>Đã giao</h4>
+														                </div>
+															        </a>
+														           </div>
+													        	</c:if>
+													           <div class="w3-quarter">
+													            <a href="AdminXacNhan?huyDon=${hdcb.getMahoadon() }" style="text-decoration: none;">
+													                <div style="text-align: center; border-radius: 10px;" class="w3-container w3-red w3-text-white">
+													                    <h4>Hủy đơn</h4>
+													                </div>
+														        </a>
+													           </div>
+													       </div>
+													    </div>
+													</c:if>
+												</c:forEach>
+									        </c:if>
 										</c:forEach>
-							        </c:if>
-								</c:forEach>
-							</c:forEach>
-							<script type="text/javascript">
-						      const saveImage = (a, b) => {
-						          previewImg = document.querySelector("."+a+" img"),
-						          saveImgBtn = document.querySelector("."+b);
-						
-						          let brightness = "100", saturation = "100", inversion = "0", grayscale = "0";
-						          let rotate = 0, flipHorizontal = 1, flipVertical = 1;
-						
-						          const canvas = document.createElement("canvas");
-						          const ctx = canvas.getContext("2d");
-						          canvas.width = previewImg.naturalWidth;
-						          canvas.height = previewImg.naturalHeight;
-						          
-						          ctx.filter = `brightness(${brightness}%) saturate(${saturation}%) invert(${inversion}%) grayscale(${grayscale}%)`;
-						          ctx.translate(canvas.width / 2, canvas.height / 2);
-						          if(rotate !== 0) {
-						              ctx.rotate(rotate * Math.PI / 180);
-						          }
-						          ctx.scale(flipHorizontal, flipVertical);
-						          ctx.drawImage(previewImg, -canvas.width / 2, -canvas.height / 2, canvas.width, canvas.height);
-						          
-						          const link = document.createElement("a");
-						          link.download = "image.jpg";
-						          link.href = canvas.toDataURL();
-						          link.click();
-						        }
-						        // saveImgBtn.addEventListener("click", saveImage);
-						    </script>
-						</c:when>
-						<c:otherwise>
-							<div class="row" style="margin-top: 10px; margin-left: 10px">
-								<h3>Không tìm thấy đơn hàng</h3>
-							</div>
-						</c:otherwise>
-					</c:choose>
+									</c:forEach>
+									<script type="text/javascript">
+								      const saveImage = (a, b) => {
+								          previewImg = document.querySelector("."+a+" img"),
+								          saveImgBtn = document.querySelector("."+b);
+								
+								          let brightness = "100", saturation = "100", inversion = "0", grayscale = "0";
+								          let rotate = 0, flipHorizontal = 1, flipVertical = 1;
+								
+								          const canvas = document.createElement("canvas");
+								          const ctx = canvas.getContext("2d");
+								          canvas.width = previewImg.naturalWidth;
+								          canvas.height = previewImg.naturalHeight;
+								          
+								          ctx.filter = `brightness(${brightness}%) saturate(${saturation}%) invert(${inversion}%) grayscale(${grayscale}%)`;
+								          ctx.translate(canvas.width / 2, canvas.height / 2);
+								          if(rotate !== 0) {
+								              ctx.rotate(rotate * Math.PI / 180);
+								          }
+								          ctx.scale(flipHorizontal, flipVertical);
+								          ctx.drawImage(previewImg, -canvas.width / 2, -canvas.height / 2, canvas.width, canvas.height);
+								          
+								          const link = document.createElement("a");
+								          link.download = "image.jpg";
+								          link.href = canvas.toDataURL();
+								          link.click();
+								        }
+								        // saveImgBtn.addEventListener("click", saveImage);
+								    </script>
+								</c:when>
+								<c:otherwise>
+									<div class="row" style="margin-top: 10px; margin-left: 10px">
+										<h3>Không tìm thấy đơn hàng</h3>
+									</div>
+								</c:otherwise>
+							</c:choose>
+	        			</c:otherwise>
+	        		</c:choose>
         		</c:when>
         		<c:when test="${param.donDesign != null }">
         			<c:choose>
