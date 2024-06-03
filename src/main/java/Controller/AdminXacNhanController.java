@@ -73,6 +73,25 @@ public class AdminXacNhanController extends HttpServlet {
 			DonMuaBo dmbo = new DonMuaBo();
 			request.setAttribute("dsSPChoXacNhan", (ArrayList<DonMuaBean>)dmbo.getSPChuaGiao());
 			
+			ArrayList<DonMuaBean> dsSPKiemTraDesign = new ArrayList<DonMuaBean>();
+			for(DonMuaBean dmb: (ArrayList<DonMuaBean>)dmbo.getSPChuaGiao()) {
+				if(dsSPKiemTraDesign.size()==0) {
+					dsSPKiemTraDesign.add(dmb);
+				}else {
+					boolean daCo = false;
+					for(DonMuaBean dmb1: dsSPKiemTraDesign) {
+						if(dmb1.getMahoadon() == dmb.getMahoadon()) {
+							daCo = true;
+							break;
+						}
+					}
+					if(daCo == false) {
+						dsSPKiemTraDesign.add(dmb);
+					}
+				}
+			}
+			request.setAttribute("dsSPKiemTraDesign", dsSPKiemTraDesign);
+			
 			//lấy danh sách sản phẩm chưa xác nhận
 			ArrayList<DonMuaBean> dsSPChuaXacNhan;
 			String mahoadon = request.getParameter("mahoadon");
@@ -90,6 +109,48 @@ public class AdminXacNhanController extends HttpServlet {
 				dsSPChuaXacNhan = dmbo.getSPChuaGiao();
 				request.setAttribute("dsSPChuaXacNhan", dsSPChuaXacNhan);
 			}
+			
+			ArrayList<Long> dsMaKhachHangTimKiem = new ArrayList<Long>();
+			String btnTimKiem = request.getParameter("btnTimKiem");
+			if(btnTimKiem != null) {
+				String date = request.getParameter("date");
+				String ngaydat = "";
+				if(date.equals("")==false) {
+					String ngayChon[] = date.split("/");
+					ngaydat = ngayChon[1]+"-"+ngayChon[0]+"-"+ngayChon[2];
+					request.setAttribute("ngaydat", ngayChon[2]+"-"+ngayChon[0]+"-"+ngayChon[1]);
+				}
+				String tenkhachhang = request.getParameter("tenkhachhang");
+				AdminXacNhanBo adminxnbo = new AdminXacNhanBo();
+				if(tenkhachhang.equals("")== false) {
+					String sodienthoai = request.getParameter("sodienthoai");
+					if(sodienthoai != null) {
+						// Tìm theo cả tên và số điện thoại
+						dsMaKhachHangTimKiem = adminxnbo.dsMaKhachHangTimKiem(tenkhachhang, sodienthoai);
+						request.setAttribute("dsMaKhachHangTimKiem", dsMaKhachHangTimKiem);
+					}else {
+						//Tìm theo tên
+						dsMaKhachHangTimKiem = adminxnbo.dsMaKhachHangTimKiem(tenkhachhang, "");
+						request.setAttribute("dsMaKhachHangTimKiem", dsMaKhachHangTimKiem);
+					}
+				}else {
+					String sodienthoai = request.getParameter("sodienthoai");
+					if(sodienthoai.equals("")== false) {
+						// Tìm số điện thoại
+						dsMaKhachHangTimKiem = adminxnbo.dsMaKhachHangTimKiem("", sodienthoai);
+						request.setAttribute("dsMaKhachHangTimKiem", dsMaKhachHangTimKiem);
+					}else {
+						if(date.equals("")== true) {
+							response.sendRedirect("AdminXacNhan");
+							return;
+						}else {
+							response.sendRedirect("AdminXacNhan?date="+ngaydat);
+							return;
+						}
+					}
+				}
+			}
+			
 			
 			//Xử lý xác nhận đơn
 			String xacNhanDon = request.getParameter("xacNhanDon");

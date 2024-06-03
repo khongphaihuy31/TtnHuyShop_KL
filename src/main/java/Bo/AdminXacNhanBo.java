@@ -25,4 +25,9 @@ public class AdminXacNhanBo {
 	public int xoaDonDatHang(long mahoadon)throws Exception{
 		return adminXN.xoaDonDatHang(mahoadon);
 	}
+	
+	//Tìm danh sách khách hàng phù hợp
+	public ArrayList<Long> dsMaKhachHangTimKiem(String tenkhachhang, String sodienthoai)throws Exception{
+		return adminXN.dsMaKhachHangTimKiem(tenkhachhang, sodienthoai);
+	}
 }

@@ -337,7 +337,7 @@ public class DonDatHangDao {
 		KetNoiDao kn = new KetNoiDao();
 		kn.ketnoi();
 
-		String sql = "select * from DonDatHang where matrangthai != 4 order by mahoadon DESC";
+		String sql = "select * from DonDatHang where matrangthai != 4";
 
 		PreparedStatement cmd = kn.cn.prepareStatement(sql);
 		ResultSet rs = cmd.executeQuery();

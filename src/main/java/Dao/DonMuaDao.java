@@ -217,7 +217,7 @@ public class DonMuaDao {
 		KetNoiDao kn = new KetNoiDao();
 		kn.ketnoi();
 		
-		String sql = "select * from tb_DonMua where matrangthai!=4 order by mahoadon DESC";
+		String sql = "select * from tb_DonMua where matrangthai!=4";
 		PreparedStatement cmd = kn.cn.prepareStatement(sql);
 		ResultSet rs = cmd.executeQuery();
 		while(rs.next()) {

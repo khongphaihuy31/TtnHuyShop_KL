@@ -87,4 +87,44 @@ public class AdminXacNhanDao {
 		kn.cn.close();
 		return kq;
 	}
+	//Tìm danh sách khách hàng phù hợp
+	public ArrayList<Long> dsMaKhachHangTimKiem(String tenkhachhang, String sodienthoai)throws Exception{
+		ArrayList<Long> dsDonChuaXacNhan = new ArrayList<Long>();
+		KetNoiDao kn = new KetNoiDao();
+		kn.ketnoi();
+		
+		String sql = "";
+		if(tenkhachhang.equals("")== false) {
+			if(sodienthoai.equals("")== false) {
+				sql = "select makhachhang from KhachHang where hoten like N'%'+?+'%' and sodienthoai = ?";
+			}else {
+				sql = "select makhachhang from KhachHang where hoten like N'%'+?+'%'";
+			}
+		}else {
+			if(sodienthoai.equals("")== false) {
+				sql = "select makhachhang from KhachHang where sodienthoai = ?";
+			}
+		}
+		PreparedStatement cmd = kn.cn.prepareStatement(sql);
+		if(tenkhachhang.equals("")== false) {
+			if(sodienthoai.equals("")== false) {
+				cmd.setString(1, tenkhachhang);
+				cmd.setString(2, sodienthoai);
+			}else {
+				cmd.setString(1, tenkhachhang);
+			}
+		}else {
+			if(sodienthoai.equals("")== false) {
+				cmd.setString(1, sodienthoai);
+			}
+		}
+		
+		ResultSet rs = cmd.executeQuery();
+		while(rs.next()) {
+			long makhachhang1 = rs.getLong("makhachhang");
+			
+			dsDonChuaXacNhan.add(makhachhang1);
+		}
+		return dsDonChuaXacNhan;
+	}
 }
