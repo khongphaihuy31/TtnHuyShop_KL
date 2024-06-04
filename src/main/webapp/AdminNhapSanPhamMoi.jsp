@@ -230,18 +230,37 @@ a:focus, a:hover {
 										Ảnh sản phẩm <span style="color: red;">*</span>
 									</label>
 									<div style="margin-top: 10px;" class="control">
+										<!--<img class="choose-img" style="width: 20%;"
+											src="${spnhapdacotrongcuahang.getAnh() }" alt="preview-img">-->
+										<img style="display: none; width: 100px; margin-left: 10px;" class="previewImgDesign" src="" alt="preview-img">
 										<input form="formNhapHang"
 										style="width: 100%; height: 41px; font-size: 18px;border: none; box-shadow: none;"
 										type="file" id="anh" name="anh"
 										class="input-text required-entry form-control" accept="image/*">
 										<span class="form-message"></span> 
 									</div>
+									<script type="text/javascript">
+										const fileInput = document.querySelector("#anh");
+										const previewImgDesign = document.querySelector('.previewImgDesign');
+										let brightness = "100", saturation = "100", inversion = "0", grayscale = "0";
+										let rotate = 0, flipHorizontal = 1, flipVertical = 1;
+									
+										const loadImage = () => {
+										    let file = fileInput.files[0];
+										    if(!file) return;
+										    previewImgDesign.src = URL.createObjectURL(file);
+										    previewImgDesign.style.display = "inline-block";
+										    fileInput.style.width = "200px";
+										}
+										fileInput.addEventListener("change", loadImage);
+									</script>
 								</div>
 								<div style="margin-top: 20px;" class="form-group">
 									<label style="font-size: 20px; margin-bottom: 0;" for="anhchonsize">
 										Ảnh HD chọn size <span style="color: red;">*</span>
 									</label>
 									<div style="margin-top: 10px;" class="control">
+										<img style="display: none; width: 100px; margin-left: 10px;" class="anhchonsize" src="" alt="preview-img">
 										<input form="formNhapHang"
 										style="width: 100%; height: 42px; font-size: 18px;border: none; box-shadow: none;"
 										type="file" id="anhchonsize" name="anhchonsize"
@@ -249,6 +268,19 @@ a:focus, a:hover {
 										<span class="form-message"></span> 
 									</div>
 								</div>
+								<script type="text/javascript">
+									const fileInputAnhchonsize = document.querySelector("#anhchonsize");
+									const previewImgDesignAnhchonsize = document.querySelector('.anhchonsize');
+								
+									const loadImage1 = () => {
+									    let file = fileInputAnhchonsize.files[0];
+									    if(!file) return;
+									    previewImgDesignAnhchonsize.src = URL.createObjectURL(file);
+									    previewImgDesignAnhchonsize.style.display = "inline-block";
+									    fileInputAnhchonsize.style.width = "200px";
+									}
+									fileInputAnhchonsize.addEventListener("change", loadImage1);
+								</script>
 								<div style="margin-top: 20px;" class="form-group">
 									<label style="font-size: 20px; margin-bottom: 0;">
 										Size <span style="color: red;">*</span>
@@ -286,12 +318,26 @@ a:focus, a:hover {
 												type="text" id="lmau1" name="lmau1"
 												placeholder="Nhập màu"
 												class="input-text required-entry form-control">
+											<img style="display: none; width: 100px; margin-left: 10px;" class="anhmau1" src="" alt="preview-img">
 											<input form="formNhapHang"
 												style="width: 100%; height: 41px; font-size: 18px;border: none; box-shadow: none; margin-top: 10px; border-radius: 10px;"
 												type="file" id="anhmau1" name="anhmau1"
 												class="input-text required-entry form-control" accept="image/*">
 											<span class="form-message"></span> 
 										</div>
+										<script type="text/javascript">
+											const fileInputanhmau1 = document.querySelector("#anhmau1");
+											const previewImgDesignanhmau1 = document.querySelector('.anhmau1');
+										
+											const loadImageanhmau1 = () => {
+											    let file = fileInputanhmau1.files[0];
+											    if(!file) return;
+											    previewImgDesignanhmau1.src = URL.createObjectURL(file);
+											    previewImgDesignanhmau1.style.display = "inline-block";
+											    fileInputanhmau1.style.width = "200px";
+											}
+											fileInputanhmau1.addEventListener("change", loadImageanhmau1);
+										</script>
 									</div>
 									<c:forEach var = "i" begin = "2" end = "5">
 										<div style="margin-top: 10px; display: none;" class="control warpper-lmau${i } form-group">
@@ -302,6 +348,7 @@ a:focus, a:hover {
 												type="text" id="lmau${i }" name="lmau${i }"
 												placeholder="Nhập màu"
 												class="input-text required-entry form-control">
+											<img style="display: none; width: 100px; margin-left: 10px;" class="anhmau${i }" src="" alt="preview-img">
 											<input form="formNhapHang"
 												style="width: 100%; height: 41px; font-size: 18px;border: none; box-shadow: none; margin-top: 10px; border-radius: 10px;"
 												type="file" id="anhmau${i }" name="anhmau${i }"
@@ -311,6 +358,44 @@ a:focus, a:hover {
 									</c:forEach>
 						      </div>
 				    		</div>
+							<script type="text/javascript">
+								const loadImageanhmau2= () => {
+								    let file = document.querySelector("#anhmau2").files[0];
+								    if(!file) return;
+								    document.querySelector(".anhmau2").src = URL.createObjectURL(file);
+								    document.querySelector(".anhmau2").style.display = "inline-block";
+								    document.querySelector("#anhmau2").style.width = "200px";
+								}
+								const loadImageanhmau3= () => {
+								    let file = document.querySelector("#anhmau3").files[0];
+								    if(!file) return;
+								    document.querySelector(".anhmau3").src = URL.createObjectURL(file);
+								    document.querySelector(".anhmau3").style.display = "inline-block";
+								    document.querySelector("#anhmau3").style.width = "200px";
+								}
+								const loadImageanhmau4= () => {
+								    let file = document.querySelector("#anhmau4").files[0];
+								    if(!file) return;
+								    document.querySelector(".anhmau4").src = URL.createObjectURL(file);
+								    document.querySelector(".anhmau4").style.display = "inline-block";
+								    document.querySelector("#anhmau4").style.width = "200px";
+								}
+								const loadImageanhmau5= () => {
+								    let file = document.querySelector("#anhmau5").files[0];
+								    if(!file) return;
+								    document.querySelector(".anhmau5").src = URL.createObjectURL(file);
+								    document.querySelector(".anhmau5").style.display = "inline-block";
+								    document.querySelector("#anhmau5").style.width = "200px";
+								}
+								const fileInputanhmau2 = document.querySelector("#anhmau2");
+								const fileInputanhmau3 = document.querySelector("#anhmau3");
+								const fileInputanhmau4 = document.querySelector("#anhmau4");
+								const fileInputanhmau5 = document.querySelector("#anhmau5");
+								fileInputanhmau2.addEventListener("change", loadImageanhmau2);
+								fileInputanhmau3.addEventListener("change", loadImageanhmau3);
+								fileInputanhmau4.addEventListener("change", loadImageanhmau4);
+								fileInputanhmau5.addEventListener("change", loadImageanhmau5);
+							</script>
 				    		<div class="w3-third" style="width: 100%; text-align: center;margin-bottom: 20px">
 						      <button form="formNhapHang" class="w3-button" style="padding: 15px 20px; background-color: var(--primary-color); color: var(--text-color); font-size: 25px; border-radius: 10px; width: 40%;">Nhập chi tiết số lượng</button>
 				    		</div>

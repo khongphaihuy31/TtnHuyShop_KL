@@ -169,6 +169,52 @@ a:focus, a:hover {
 				    	<a href="AdminXacNhan?donDesign=1" class="w3-button w3-white w3-hide-small"><i class="fa-solid fa-box"></i> Đơn hàng design</a>
 					</c:otherwise>
 				</c:choose>
+				<c:choose>
+					<c:when test="${param.donDesign!= null }">
+						<c:choose>
+							<c:when test="${param.sort != null }">
+								<div class="w3-quarter" style="float: right;">
+						            <a href="AdminXacNhan?donDesign=1" style="text-decoration: none;">
+						                <div style="text-align: center; border-radius: 10px; border: 1px solid black;" class="w3-container w3-black w3-text-white">
+						                    <h4>Đơn mới nhất</h4>
+						                </div>
+							        </a>
+					           	</div>
+							</c:when>
+							<c:otherwise>
+								<div class="w3-quarter" style="float: right;">
+						            <a href="AdminXacNhan?donDesign=1&sort=1" style="text-decoration: none;">
+						                <div style="text-align: center; border-radius: 10px; border: 1px solid black;" class="w3-container w3-white w3-text-black">
+						                    <h4>Đơn mới nhất</h4>
+						                </div>
+							        </a>
+					           	</div>
+							</c:otherwise>
+						</c:choose>
+					</c:when>
+					<c:otherwise>
+						<c:choose>
+							<c:when test="${param.sort != null }">
+								<div class="w3-quarter" style="float: right;">
+						            <a href="AdminXacNhan" style="text-decoration: none;">
+						                <div style="text-align: center; border-radius: 10px; border: 1px solid black;" class="w3-container w3-black w3-text-white">
+						                    <h4>Đơn mới nhất</h4>
+						                </div>
+							        </a>
+					           	</div>
+							</c:when>
+							<c:otherwise>
+								<div class="w3-quarter" style="float: right;">
+						            <a href="AdminXacNhan?sort=1" style="text-decoration: none;">
+						                <div style="text-align: center; border-radius: 10px; border: 1px solid black;" class="w3-container w3-white w3-text-black">
+						                    <h4>Đơn mới nhất</h4>
+						                </div>
+							        </a>
+					           	</div>
+							</c:otherwise>
+						</c:choose>
+					</c:otherwise>
+				</c:choose>
 		    </div>
         </div>
         <div class="w3-row-padding w3-margin-bottom">

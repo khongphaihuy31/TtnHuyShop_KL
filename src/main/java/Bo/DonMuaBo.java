@@ -39,4 +39,7 @@ public class DonMuaBo {
 	public ArrayList<DonMuaBean> getSPChuaGiao()throws Exception{
 		return dmdao.getSPChuaGiao();
 	}
+	public ArrayList<DonMuaBean> getSPChuaGiaoSort()throws Exception{
+		return dmdao.getSPChuaGiaoSort();
+	}
 }

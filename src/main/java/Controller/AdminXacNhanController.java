@@ -66,27 +66,55 @@ public class AdminXacNhanController extends HttpServlet {
 			dshoadon = ddhbo.dshoadonchuagiao();
 			request.setAttribute("dshoadon", dshoadon);
 			
-			//lấy danh sách hóa đơn chưa giao
-			request.setAttribute("dshdchoxacnhan", (ArrayList<DonDatHangBean>)ddhbo.dsdonchuagiao());
-			
-			//Lấy danh sách sản phẩm chưa giao
 			DonMuaBo dmbo = new DonMuaBo();
-			request.setAttribute("dsSPChoXacNhan", (ArrayList<DonMuaBean>)dmbo.getSPChuaGiao());
+			if(request.getParameter("sort") !=null) {
+				//lấy danh sách hóa đơn chưa giao
+				request.setAttribute("dshdchoxacnhan", (ArrayList<DonDatHangBean>)ddhbo.dsdonchuagiaoSort());
+				
+				//Lấy danh sách sản phẩm chưa giao
+				request.setAttribute("dsSPChoXacNhan", (ArrayList<DonMuaBean>)dmbo.getSPChuaGiaoSort());
+			}else {
+				//lấy danh sách hóa đơn chưa giao
+				request.setAttribute("dshdchoxacnhan", (ArrayList<DonDatHangBean>)ddhbo.dsdonchuagiao());
+				
+				//Lấy danh sách sản phẩm chưa giao
+				request.setAttribute("dsSPChoXacNhan", (ArrayList<DonMuaBean>)dmbo.getSPChuaGiao());
+			}
+			
 			
 			ArrayList<DonMuaBean> dsSPKiemTraDesign = new ArrayList<DonMuaBean>();
-			for(DonMuaBean dmb: (ArrayList<DonMuaBean>)dmbo.getSPChuaGiao()) {
-				if(dsSPKiemTraDesign.size()==0) {
-					dsSPKiemTraDesign.add(dmb);
-				}else {
-					boolean daCo = false;
-					for(DonMuaBean dmb1: dsSPKiemTraDesign) {
-						if(dmb1.getMahoadon() == dmb.getMahoadon()) {
-							daCo = true;
-							break;
+			if(request.getParameter("sort") !=null) {
+				for(DonMuaBean dmb: (ArrayList<DonMuaBean>)dmbo.getSPChuaGiaoSort()) {
+					if(dsSPKiemTraDesign.size()==0) {
+						dsSPKiemTraDesign.add(dmb);
+					}else {
+						boolean daCo = false;
+						for(DonMuaBean dmb1: dsSPKiemTraDesign) {
+							if(dmb1.getMahoadon() == dmb.getMahoadon()) {
+								daCo = true;
+								break;
+							}
+						}
+						if(daCo == false) {
+							dsSPKiemTraDesign.add(dmb);
 						}
 					}
-					if(daCo == false) {
+				}
+			}else {
+				for(DonMuaBean dmb: (ArrayList<DonMuaBean>)dmbo.getSPChuaGiao()) {
+					if(dsSPKiemTraDesign.size()==0) {
 						dsSPKiemTraDesign.add(dmb);
+					}else {
+						boolean daCo = false;
+						for(DonMuaBean dmb1: dsSPKiemTraDesign) {
+							if(dmb1.getMahoadon() == dmb.getMahoadon()) {
+								daCo = true;
+								break;
+							}
+						}
+						if(daCo == false) {
+							dsSPKiemTraDesign.add(dmb);
+						}
 					}
 				}
 			}
@@ -122,8 +150,8 @@ public class AdminXacNhanController extends HttpServlet {
 				String ngaySQL ="";
 				if(date.equals("")==false) {
 					String ngayChon[] = date.split("/");
-					ngaydat = ngayChon[1]+"-"+ngayChon[0]+"-"+ngayChon[2];
-					System.out.println(ngaydat);
+					ngaydat = ngayChon[0]+"/"+ngayChon[1]+"/"+ngayChon[2];
+//					System.out.println(ngaydat);
 					ngaySQL = ngayChon[2]+"-"+ngayChon[0]+"-"+ngayChon[1];
 					request.setAttribute("ngayDatCheck", ngayChon[2]+"-"+ngayChon[0]+"-"+ngayChon[1]);
 				}

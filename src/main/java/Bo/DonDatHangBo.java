@@ -90,4 +90,7 @@ public class DonDatHangBo {
 	public ArrayList<DonDatHangBean> dsdonchuagiao() throws Exception {
 		return ddhdao.dsdonchuagiao();
 	}
+	public ArrayList<DonDatHangBean> dsdonchuagiaoSort() throws Exception {
+		return ddhdao.dsdonchuagiaoSort();
+	}
 }

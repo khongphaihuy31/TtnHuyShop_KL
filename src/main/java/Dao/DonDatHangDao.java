@@ -356,4 +356,30 @@ public class DonDatHangDao {
 		}
 		return dshoadon;
 	}
+	
+	// xử lý lấy danh sách đơn đặt hàng chưa giao
+	public ArrayList<DonDatHangBean> dsdonchuagiaoSort() throws Exception {
+		ArrayList<DonDatHangBean> dshoadon = new ArrayList<DonDatHangBean>();
+		KetNoiDao kn = new KetNoiDao();
+		kn.ketnoi();
+
+		String sql = "select * from DonDatHang where matrangthai != 4 order by mahoadon DESC";
+
+		PreparedStatement cmd = kn.cn.prepareStatement(sql);
+		ResultSet rs = cmd.executeQuery();
+		while (rs.next()) {
+			Date ngaydat = rs.getDate("ngaydat");
+			long mahoadon = rs.getLong("mahoadon");
+			boolean phuongthucthanhtoan = rs.getBoolean("phuongthucthanhtoan");
+			boolean thanhtoan = rs.getBoolean("thanhtoan");
+			long tongdongia = rs.getLong("tongdongia");
+			String diachinhanhang = rs.getString("diachinhanhang");
+			long makhachhang1 = rs.getLong("makhachhang");
+			long matrangthai = rs.getLong("matrangthai");
+
+			dshoadon.add(
+					new DonDatHangBean(mahoadon, ngaydat, phuongthucthanhtoan, thanhtoan, tongdongia, diachinhanhang,makhachhang1,matrangthai));
+		}
+		return dshoadon;
+	}
 }
