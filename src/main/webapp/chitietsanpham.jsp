@@ -1079,7 +1079,7 @@ input:checked + label{
 					<!-- container bottom boby detail -->
 					<div class="container-bottom__body-detail">
 						<c:choose>
-							<c:when test="${motasanpham != null}">
+							<c:when test="${motasanpham != ''}">
 								<div class="row">
 									${motasanpham }
 								</div>
@@ -1193,7 +1193,7 @@ input:checked + label{
 					<!-- container bottom boby detail -->
 					<div class="container-bottom__body-detail">
 						<c:choose>
-							<c:when test="${motasanpham != null}">
+							<c:when test="${motasanpham != ''}">
 								<div class="row">
 									${motasanpham }
 								</div>

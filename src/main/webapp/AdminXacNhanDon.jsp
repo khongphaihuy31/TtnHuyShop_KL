@@ -173,44 +173,20 @@ a:focus, a:hover {
 					<c:when test="${param.donDesign!= null }">
 						<c:choose>
 							<c:when test="${param.sort != null }">
-								<div class="w3-quarter" style="float: right;">
-						            <a href="AdminXacNhan?donDesign=1" style="text-decoration: none;">
-						                <div style="text-align: center; border-radius: 10px; border: 1px solid black;" class="w3-container w3-black w3-text-white">
-						                    <h4>Đơn mới nhất</h4>
-						                </div>
-							        </a>
-					           	</div>
+								<a href="AdminXacNhan?donDesign=1" style="border-radius: 10px; border: 1px solid black; float: right;" class="w3-button w3-black w3-hide-small">Đơn mới nhất</a>
 							</c:when>
 							<c:otherwise>
-								<div class="w3-quarter" style="float: right;">
-						            <a href="AdminXacNhan?donDesign=1&sort=1" style="text-decoration: none;">
-						                <div style="text-align: center; border-radius: 10px; border: 1px solid black;" class="w3-container w3-white w3-text-black">
-						                    <h4>Đơn mới nhất</h4>
-						                </div>
-							        </a>
-					           	</div>
+								<a href="AdminXacNhan?donDesign=1&sort=1" style="border-radius: 10px; border: 1px solid black; float: right;" class="w3-button w3-white w3-hide-small">Đơn mới nhất</a>
 							</c:otherwise>
 						</c:choose>
 					</c:when>
 					<c:otherwise>
 						<c:choose>
 							<c:when test="${param.sort != null }">
-								<div class="w3-quarter" style="float: right;">
-						            <a href="AdminXacNhan" style="text-decoration: none;">
-						                <div style="text-align: center; border-radius: 10px; border: 1px solid black;" class="w3-container w3-black w3-text-white">
-						                    <h4>Đơn mới nhất</h4>
-						                </div>
-							        </a>
-					           	</div>
+								<a href="AdminXacNhan" style="border-radius: 10px; border: 1px solid black; float: right;" class="w3-button w3-black w3-hide-small">Đơn mới nhất</a>
 							</c:when>
 							<c:otherwise>
-								<div class="w3-quarter" style="float: right;">
-						            <a href="AdminXacNhan?sort=1" style="text-decoration: none;">
-						                <div style="text-align: center; border-radius: 10px; border: 1px solid black;" class="w3-container w3-white w3-text-black">
-						                    <h4>Đơn mới nhất</h4>
-						                </div>
-							        </a>
-					           	</div>
+								<a href="AdminXacNhan?sort=1" style="border-radius: 10px; border: 1px solid black; float: right;" class="w3-button w3-white w3-hide-small">Đơn mới nhất</a>
 							</c:otherwise>
 						</c:choose>
 					</c:otherwise>
@@ -230,7 +206,7 @@ a:focus, a:hover {
 										        <c:if test="${ngayDatCheck==hdcb.getNgaydat() }">
 										        	<c:forEach items="${dskhachhang }" var="kh">
 														<c:if test="${kh.getMakhachhang() ==  hdcb.getMakhachhang()}">
-															<div style="border: 2px solid #4dcdcf; border-radius: 10px;width: 100%; padding: 10px 20px; margin-top: 20px; background-color: #fff;">
+															<div style="border: 2px solid #4dcdcf; border-radius: 10px;width: 100%; padding: 10px 20px; margin-top: 10px; background-color: #fff;">
 														        <div style="display: flex; width: 100%; justify-content: space-around;">
 														            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold;">Mã hóa đơn: <span style="color: black; font-weight: 500;">${hdcb.getMahoadon() }</span></span> 
 														            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold;">Tổng tiền: <span style="color: black; font-weight: 500;"><fmt:setLocale value="vi_VN" />
@@ -438,7 +414,7 @@ a:focus, a:hover {
 											        <c:if test="${hdcb.getMakhachhang()==mkh && ngayDatCheck==hdcb.getNgaydat() }">
 											        	<c:forEach items="${dskhachhang }" var="kh">
 															<c:if test="${kh.getMakhachhang() ==  hdcb.getMakhachhang()}">
-																<div style="border: 2px solid #4dcdcf; border-radius: 10px;width: 100%; padding: 10px 20px; margin-top: 20px; background-color: #fff;">
+																<div style="border: 2px solid #4dcdcf; border-radius: 10px;width: 100%; padding: 10px 20px; margin-top: 10px; background-color: #fff;">
 															        <div style="display: flex; width: 100%; justify-content: space-around;">
 															            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold;">Mã hóa đơn: <span style="color: black; font-weight: 500;">${hdcb.getMahoadon() }</span></span> 
 															            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold;">Tổng tiền: <span style="color: black; font-weight: 500;"><fmt:setLocale value="vi_VN" />
@@ -649,7 +625,7 @@ a:focus, a:hover {
 									        <c:if test="${hdcb.getMakhachhang()==mkh }">
 									        	<c:forEach items="${dskhachhang }" var="kh">
 													<c:if test="${kh.getMakhachhang() ==  hdcb.getMakhachhang()}">
-														<div style="border: 2px solid #4dcdcf; border-radius: 10px;width: 100%; padding: 10px 20px; margin-top: 20px; background-color: #fff;">
+														<div style="border: 2px solid #4dcdcf; border-radius: 10px;width: 100%; padding: 10px 20px; margin-top: 10px; background-color: #fff;">
 													        <div style="display: flex; width: 100%; justify-content: space-around;">
 													            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold;">Mã hóa đơn: <span style="color: black; font-weight: 500;">${hdcb.getMahoadon() }</span></span> 
 													            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold;">Tổng tiền: <span style="color: black; font-weight: 500;"><fmt:setLocale value="vi_VN" />
@@ -861,7 +837,7 @@ a:focus, a:hover {
 										<c:if test="${hdcb.getMahoadon()==ktraDesign.getMahoadon()  }">
 											<c:forEach items="${dskhachhang }" var="kh">
 												<c:if test="${kh.getMakhachhang() ==  hdcb.getMakhachhang()}">
-													<div style="border: 2px solid #4dcdcf; border-radius: 10px;width: 100%; padding: 10px 20px; margin-top: 20px; background-color: #fff;">
+													<div style="border: 2px solid #4dcdcf; border-radius: 10px;width: 100%; padding: 10px 20px; margin-top: 10px; background-color: #fff;">
 												        <div style="display: flex; width: 100%; justify-content: space-around;">
 												            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold;">Mã hóa đơn: <span style="color: black; font-weight: 500;">${hdcb.getMahoadon() }</span></span> 
 												            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold;">Tổng tiền: <span style="color: black; font-weight: 500;">
@@ -1074,7 +1050,7 @@ a:focus, a:hover {
 										<c:if test="${hdcb.getMahoadon()==ktraDesign.getMahoadon() }">
 											<c:forEach items="${dskhachhang }" var="kh">
 												<c:if test="${kh.getMakhachhang() ==  hdcb.getMakhachhang()}">
-													<div style="border: 2px solid #4dcdcf; border-radius: 10px;width: 100%; padding: 10px 20px; margin-top: 20px; background-color: #fff;">
+													<div style="border: 2px solid #4dcdcf; border-radius: 10px;width: 100%; padding: 10px 20px; margin-top: 10px; background-color: #fff;">
 												        <div style="display: flex; width: 100%; justify-content: space-around;">
 												            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold;">Mã hóa đơn: <span style="color: black; font-weight: 500;">${hdcb.getMahoadon() }</span></span> 
 												            <span style="color: #4dcdcf; font-size: 15px; font-weight: bold;">Tổng tiền: <span style="color: black; font-weight: 500;">
